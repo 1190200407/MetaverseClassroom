@@ -1,0 +1,169 @@
+<Elements>
+  <element id="1">
+    <name>classroom01_8x10x3.5m</name>
+    <web_path>null</web_path>
+    <position x="0" y="0" z="0" />
+    <rotation x="0" y="0" z="0" />
+    <scale x="1" y="1" z="1" />
+    <parent_id>0</parent_id>
+  </element>
+  <element id="2">
+    <name>Environment</name>
+    <web_path>Prefabs/Environment</web_path>
+    <position x="0" y="0" z="0" />
+    <rotation x="0" y="0" z="0" />
+    <scale x="1" y="1" z="1" />
+    <parent_id>0</parent_id>
+  </element>
+  <element id="6">
+    <name>wall</name>
+    <web_path>Prefabs/wall</web_path>
+    <position x="0" y="0" z="0" />
+    <rotation x="0" y="0" z="0" />
+    <scale x="3" y="2" z="2" />
+    <parent_id>1</parent_id>
+  </element>
+  <element id="4">
+    <name>ceiling</name>
+    <web_path>Prefabs/ceiling</web_path>
+    <position x="0" y="3.35" z="0" />
+    <rotation x="0" y="0" z="0" />
+    <scale x="3" y="1" z="2" />
+    <parent_id>1</parent_id>
+  </element>
+  <element id="3">
+    <name>beams</name>
+    <web_path>Prefabs/beams</web_path>
+    <position x="0" y="0" z="0" />
+    <rotation x="0" y="0" z="0" />
+    <scale x="3" y="2" z="2" />
+    <parent_id>1</parent_id>
+  </element>
+  <element id="5">
+    <name>floor</name>
+    <web_path>Prefabs/floor</web_path>
+    <position x="0" y="0.001" z="0" />
+    <rotation x="0" y="0" z="0" />
+    <scale x="3" y="0.1" z="2" />
+    <parent_id>1</parent_id>
+  </element>
+  <element id="7">
+    <name>classroom01_shadow</name>
+    <web_path>Prefabs/classroom01_shadow</web_path>
+    <position x="0" y="0" z="0" />
+    <rotation x="0" y="0" z="0" />
+    <scale x="3" y="2" z="2" />
+    <parent_id>1</parent_id>
+  </element>
+  <element id="25">
+    <name>chair9</name>
+    <web_path>Prefabs/chair01_1</web_path>
+    <position x="-1.64" y="0" z="2.62" />
+    <rotation x="0" y="85.09" z="0" />
+    <scale x="1" y="21" z="1" />
+    <parent_id>5</parent_id>
+    <interaction type="Sit" />
+  </element>
+  <element id="24">
+    <name>desk9</name>
+    <web_path>Prefabs/desk02</web_path>
+    <position x="-1.077" y="0" z="2.66" />
+    <rotation x="0" y="90" z="0" />
+    <scale x="1.5" y="25" z="1" />
+    <parent_id>5</parent_id>
+  </element>
+  <element id="23">
+    <name>chair8</name>
+    <web_path>Prefabs/chair01_1</web_path>
+    <position x="-1.6" y="0" z="-2.58" />
+    <rotation x="0" y="82.1" z="0" />
+    <scale x="1" y="21" z="1" />
+    <parent_id>5</parent_id>
+    <interaction type="Sit" />
+  </element>
+  <element id="22">
+    <name>desk8</name>
+    <web_path>Prefabs/desk02</web_path>
+    <position x="-1.037" y="0" z="-2.54" />
+    <rotation x="0" y="90" z="0" />
+    <scale x="1.5" y="25" z="1" />
+    <parent_id>5</parent_id>
+  </element>
+  <element id="21">
+    <name>chair7</name>
+    <web_path>Prefabs/chair01_1</web_path>
+    <position x="-1.64" y="0" z="0.08" />
+    <rotation x="0" y="68.89" z="0" />
+    <scale x="1" y="21" z="1" />
+    <parent_id>5</parent_id>
+    <interaction type="Sit" />
+  </element>
+  <element id="20">
+    <name>desk7</name>
+    <web_path>Prefabs/desk02</web_path>
+    <position x="-1.077" y="0" z="0.12" />
+    <rotation x="0" y="90" z="0" />
+    <scale x="1.5" y="25" z="1" />
+    <parent_id>5</parent_id>
+  </element>
+  <element id="19">
+    <name>chair6</name>
+    <web_path>Prefabs/chair01_1</web_path>
+    <position x="0.14" y="0" z="2.59" />
+    <rotation x="0" y="90" z="0" />
+    <scale x="1" y="21" z="1" />
+    <parent_id>5</parent_id>
+    <interaction type="Sit" />
+  </element>
+  <element id="18">
+    <name>desk6</name>
+    <web_path>Prefabs/desk02</web_path>
+    <position x="0.7030002" y="0" z="2.63" />
+    <rotation x="0" y="90" z="0" />
+    <scale x="1.5" y="25" z="1" />
+    <parent_id>5</parent_id>
+  </element>
+  <element id="17">
+    <name>chair5</name>
+    <web_path>Prefabs/chair01_1</web_path>
+    <position x="0.17" y="0" z="-2.4" />
+    <rotation x="0" y="97.19" z="0" />
+    <scale x="1" y="21" z="1" />
+    <parent_id>5</parent_id>
+    <interaction type="Sit" />
+  </element>
+  <element id="16">
+    <name>desk5</name>
+    <web_path>Prefabs/desk02</web_path>
+    <position x="0.733" y="0" z="-2.36" />
+    <rotation x="0" y="90" z="0" />
+    <scale x="1.5" y="25" z="1" />
+    <parent_id>5</parent_id>
+  </element>
+  <element id="15">
+    <name>chair4</name>
+    <web_path>Prefabs/chair01_1</web_path>
+    <position x="0.1499999" y="0" z="0.08" />
+    <rotation x="0" y="83.23" z="0" />
+    <scale x="1" y="21" z="1" />
+    <parent_id>5</parent_id>
+    <interaction type="Sit" />
+  </element>
+  <element id="14">
+    <name>desk4</name>
+    <web_path>Prefabs/desk02</web_path>
+    <position x="0.7130001" y="0" z="0.12" />
+    <rotation x="0" y="90" z="0" />
+    <scale x="1.5" y="25" z="1" />
+    <parent_id>5</parent_id>
+  </element>
+  <element id="30">
+    <name>whiteBoard</name>
+    <web_path>Prefabs/WhiteBoard</web_path>
+    <position x="14.12" y="3.34" z="0" />
+    <rotation x="0" y="90" z="0"/>
+    <scale x="10" y="5.6" z="0.028" />
+    <parent_id>0</parent_id>
+    <interaction type="View" />
+  </element>
+</Elements>

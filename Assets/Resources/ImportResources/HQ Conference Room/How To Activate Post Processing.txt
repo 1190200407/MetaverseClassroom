@@ -1,3 +1,0 @@
-Just add post Processing Package to you project:
-
-Windows/Package Manager/Post Processing

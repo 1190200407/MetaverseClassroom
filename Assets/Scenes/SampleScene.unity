@@ -267,7 +267,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 731b0aaac9e71ce439e0f026f22e7e68, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  xmlPath: smallroom
+  xmlPath: FFK
 --- !u!4 &1122826494
 Transform:
   m_ObjectHideFlags: 0

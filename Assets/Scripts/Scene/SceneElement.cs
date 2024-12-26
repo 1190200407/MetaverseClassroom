@@ -11,9 +11,7 @@ public class SceneElement : MonoBehaviourPunCallbacks
     [HideInInspector] public int id;
     public string path;
 
-    public string interactType {get; private set;} = string.Empty;
     public InteractionScript interactionScript;
-    public string interactionContent {get; private set;} = "";
 
     public override void OnEnable()
     {
@@ -32,7 +30,6 @@ public class SceneElement : MonoBehaviourPunCallbacks
         this.name = name;
         this.path = path;
         
-        SceneLoader.instance.NameToElement.Add(name, this);
         SceneLoader.instance.IdToElement.Add(id, this);
 
         if(SceneLoader.instance.IdToElement.ContainsKey(parent_id))
@@ -42,14 +39,11 @@ public class SceneElement : MonoBehaviourPunCallbacks
     }
 
     public void SetInteactionType(string type, string content = "") {
-        interactType = type;
-        interactionContent = content;
-
         Type t = Type.GetType(type);
         if (t != null)
         {
             interactionScript =  Activator.CreateInstance(t) as InteractionScript;
-            interactionScript.Init(this);
+            interactionScript.Init(this, type, content);
 
             // VR环境挂载XRSimpleInteractable
             if (GameSettings.instance.isVR)
@@ -69,7 +63,6 @@ public class SceneElement : MonoBehaviourPunCallbacks
     }
 
     private void OnDestroy() {
-        SceneLoader.instance.NameToElement.Remove(name);
         SceneLoader.instance.IdToElement.Remove(id);
     }
 

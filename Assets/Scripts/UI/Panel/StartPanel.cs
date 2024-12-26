@@ -136,7 +136,7 @@ public class StartPanel : BasePanel
             // 连接成功后执行以下逻辑
             //加入房间
             PhotonNetwork.JoinOrCreateRoom("Classroom", new Photon.Realtime.RoomOptions() { MaxPlayers = 4 }, default);
-            SceneLoader.instance.LoadSceneFromXml("smallroom");
+            SceneLoader.instance.LoadSceneFromXml();
             
             UIManager.instance.ShowMessage("连接成功", 1f);
             UIManager.instance.Pop(false);
@@ -158,7 +158,8 @@ public class StartPanel : BasePanel
         }
 
         chosenName = name;
-        nameIconDict[chosenName].enabled = true;
+        if (nameIconDict.ContainsKey(chosenName))
+            nameIconDict[chosenName].enabled = true;
         player.CharacterName = chosenName;
         PlayerPrefs.SetString("ChosenCharacter", chosenName);
     }

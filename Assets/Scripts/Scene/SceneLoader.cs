@@ -8,7 +8,7 @@ public class SceneLoader : UnitySingleton<SceneLoader>
 {   
     [Header("加载xml路径")]
     public string xmlPath = "smallroom";
-    public Dictionary<string, SceneElement> NameToElement {get; private set;} = new Dictionary<string, SceneElement>();
+    //public Dictionary<string, SceneElement> NameToElement {get; private set;} = new Dictionary<string, SceneElement>();
     public Dictionary<int, SceneElement> IdToElement {get; private set;} = new Dictionary<int, SceneElement>();
 
     private void Start() {
@@ -26,11 +26,10 @@ public class SceneLoader : UnitySingleton<SceneLoader>
     }
 
     private void OnReload(ReloadEvent @event){
-        NameToElement.Clear();
         IdToElement.Clear();
     }
 
-    public void LoadSceneFromXml(string xmlPath) {
+    public void LoadSceneFromXml() {
         TextAsset xmlFile = Resources.Load<TextAsset>(xmlPath); //TODO 目前通过Resources.Load读取，后面换成在库中读取
         XmlDocument document = new XmlDocument(); 
         document.LoadXml(xmlFile.text);
@@ -184,8 +183,8 @@ public class SceneLoader : UnitySingleton<SceneLoader>
             if (element.interactionScript != null)
             {
                 XmlElement interaction = xml.CreateElement("interaction");
-                interaction.SetAttribute("type", element.interactType);
-                interaction.InnerText = element.interactionContent;
+                interaction.SetAttribute("type", element.interactionScript.interactType);
+                interaction.InnerText = element.interactionScript.interactionContent;
                 info.AppendChild(interaction);
             }
 

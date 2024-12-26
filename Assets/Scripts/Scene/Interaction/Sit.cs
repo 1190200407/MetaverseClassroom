@@ -11,9 +11,9 @@ public class Sit : InteractionScript
     
     private const byte OccupyChairEventCode = 2; // 自定义事件代码
 
-    public override void Init(SceneElement element)
+    public override void Init(SceneElement element, string interactionType, string interactionContent)
     {
-        base.Init(element);
+        base.Init(element, interactionType, interactionContent);
         chairKey = element.name;
     }
 

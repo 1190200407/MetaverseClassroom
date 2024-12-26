@@ -8,6 +8,8 @@ using UnityEngine.XR.Interaction.Toolkit;
 public class InteractionScript
 {
     public SceneElement element;
+    public string interactType = string.Empty;
+    public string interactionContent = string.Empty;
 
     public virtual void OnEnable()
     {
@@ -22,9 +24,11 @@ public class InteractionScript
     /// <summary>
     /// 初始化参数
     /// </summary>
-    public virtual void Init(SceneElement element)
+    public virtual void Init(SceneElement element, string interactionType, string interactionContent)
     {
         this.element = element;
+        this.interactType = interactionType;
+        this.interactionContent = interactionContent;
     }
 
     public virtual void OnJoinRoom()

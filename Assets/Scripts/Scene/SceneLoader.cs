@@ -183,8 +183,8 @@ public class SceneLoader : UnitySingleton<SceneLoader>
             if (element.interactionScript != null)
             {
                 XmlElement interaction = xml.CreateElement("interaction");
-                interaction.SetAttribute("type", element.interactionScript.interactType);
-                interaction.InnerText = element.interactionScript.interactionContent;
+                interaction.SetAttribute("type", element.interactType);
+                interaction.InnerText = element.interactionContent;
                 info.AppendChild(interaction);
             }
 

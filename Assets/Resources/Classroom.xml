@@ -28,76 +28,80 @@
     <tag>Untagged</tag>
   </element>
   <element id="4">
-    <name>DeskAndChair</name>
-    <web_path>ImportResources/Classroom/Prefabs/DeskAndChair</web_path>
-    <position x="0" y="0" z="0" />
+    <name>Desk (8)</name>
+    <web_path>ImportResources/Classroom/Prefabs/Desk</web_path>
+    <position x="-2.024" y="0" z="-0.05800004" />
     <rotation x="0" y="0" z="0" />
     <scale x="1" y="1" z="1" />
     <parent_id>3</parent_id>
     <tag>Untagged</tag>
   </element>
   <element id="5">
-    <name>DeskAndChair (1)</name>
-    <web_path>ImportResources/Classroom/Prefabs/DeskAndChair</web_path>
-    <position x="-2" y="0" z="0" />
-    <rotation x="0" y="0" z="0" />
+    <name>Chair (8)</name>
+    <web_path>ImportResources/Classroom/Prefabs/Chair</web_path>
+    <position x="-2.058" y="-2.980232E-08" z="0.74" />
+    <rotation x="0" y="358.1372" z="0" />
     <scale x="1" y="1" z="1" />
     <parent_id>3</parent_id>
-    <tag>Untagged</tag>
+    <interaction type="Sit" />
+    <tag>Chair</tag>
   </element>
   <element id="6">
-    <name>DeskAndChair (3)</name>
-    <web_path>ImportResources/Classroom/Prefabs/DeskAndChair</web_path>
-    <position x="2" y="0" z="0" />
+    <name>Desk (7)</name>
+    <web_path>ImportResources/Classroom/Prefabs/Desk</web_path>
+    <position x="-0.01700006" y="0" z="0.073" />
     <rotation x="0" y="0" z="0" />
     <scale x="1" y="1" z="1" />
     <parent_id>3</parent_id>
     <tag>Untagged</tag>
   </element>
   <element id="7">
-    <name>DeskAndChair (6)</name>
-    <web_path>ImportResources/Classroom/Prefabs/DeskAndChair</web_path>
-    <position x="2" y="0" z="2.623" />
-    <rotation x="0" y="0" z="0" />
+    <name>Chair (7)</name>
+    <web_path>ImportResources/Classroom/Prefabs/Chair</web_path>
+    <position x="-0.051" y="-2.980232E-08" z="0.8710001" />
+    <rotation x="0" y="358.1372" z="0" />
     <scale x="1" y="1" z="1" />
     <parent_id>3</parent_id>
-    <tag>Untagged</tag>
+    <interaction type="Sit" />
+    <tag>Chair</tag>
   </element>
   <element id="8">
-    <name>DeskAndChair (8)</name>
-    <web_path>ImportResources/Classroom/Prefabs/DeskAndChair</web_path>
-    <position x="-2" y="0" z="2.623" />
+    <name>Desk (4)</name>
+    <web_path>ImportResources/Classroom/Prefabs/Desk</web_path>
+    <position x="2" y="0" z="0.073" />
     <rotation x="0" y="0" z="0" />
     <scale x="1" y="1" z="1" />
     <parent_id>3</parent_id>
     <tag>Untagged</tag>
   </element>
   <element id="9">
-    <name>DeskAndChair (9)</name>
-    <web_path>ImportResources/Classroom/Prefabs/DeskAndChair</web_path>
-    <position x="0" y="0" z="2.623" />
-    <rotation x="0" y="0" z="0" />
+    <name>Chair (4)</name>
+    <web_path>ImportResources/Classroom/Prefabs/Chair</web_path>
+    <position x="1.966" y="-2.980232E-08" z="0.8710001" />
+    <rotation x="0" y="358.1372" z="0" />
     <scale x="1" y="1" z="1" />
     <parent_id>3</parent_id>
-    <tag>Untagged</tag>
+    <interaction type="Sit" />
+    <tag>Chair</tag>
   </element>
   <element id="10">
-    <name>DeskAndChair (10)</name>
-    <web_path>ImportResources/Classroom/Prefabs/DeskAndChair</web_path>
-    <position x="0" y="0" z="4.84" />
+    <name>Desk (2)</name>
+    <web_path>ImportResources/Classroom/Prefabs/Desk</web_path>
+    <position x="-2.037" y="0" z="4.84" />
     <rotation x="0" y="0" z="0" />
     <scale x="1" y="1" z="1" />
     <parent_id>3</parent_id>
     <tag>Untagged</tag>
   </element>
   <element id="11">
-    <name>DeskAndChair (11)</name>
-    <web_path>ImportResources/Classroom/Prefabs/DeskAndChair</web_path>
-    <position x="-2" y="0" z="4.84" />
-    <rotation x="0" y="0" z="0" />
+    <name>Chair (2)</name>
+    <web_path>ImportResources/Classroom/Prefabs/Chair</web_path>
+    <position x="-2.071" y="-2.980232E-08" z="5.638" />
+    <rotation x="0" y="358.1372" z="0" />
     <scale x="1" y="1" z="1" />
     <parent_id>3</parent_id>
-    <tag>Untagged</tag>
+    <interaction type="Sit" />
+    <tag>Chair</tag>
   </element>
   <element id="12">
     <name>Desk</name>
@@ -115,9 +119,86 @@
     <rotation x="0" y="358.1372" z="0" />
     <scale x="1" y="1" z="1" />
     <parent_id>3</parent_id>
-    <tag>Untagged</tag>
+    <interaction type="Sit" />
+    <tag>Chair</tag>
   </element>
   <element id="14">
+    <name>Desk (1)</name>
+    <web_path>ImportResources/Classroom/Prefabs/Desk</web_path>
+    <position x="-0.04399991" y="0" z="4.774" />
+    <rotation x="0" y="0" z="0" />
+    <scale x="1" y="1" z="1" />
+    <parent_id>3</parent_id>
+    <tag>Untagged</tag>
+  </element>
+  <element id="15">
+    <name>Chair (1)</name>
+    <web_path>ImportResources/Classroom/Prefabs/Chair</web_path>
+    <position x="-0.078" y="-2.980232E-08" z="5.572" />
+    <rotation x="0" y="358.1372" z="0" />
+    <scale x="1" y="1" z="1" />
+    <parent_id>3</parent_id>
+    <interaction type="Sit" />
+    <tag>Chair</tag>
+  </element>
+  <element id="16">
+    <name>Desk (3)</name>
+    <web_path>ImportResources/Classroom/Prefabs/Desk</web_path>
+    <position x="2.068" y="0" z="2.616" />
+    <rotation x="0" y="0" z="0" />
+    <scale x="1" y="1" z="1" />
+    <parent_id>3</parent_id>
+    <tag>Untagged</tag>
+  </element>
+  <element id="17">
+    <name>Chair (3)</name>
+    <web_path>ImportResources/Classroom/Prefabs/Chair</web_path>
+    <position x="2.034" y="0" z="3.414" />
+    <rotation x="0" y="358.1372" z="0" />
+    <scale x="1" y="1" z="1" />
+    <parent_id>3</parent_id>
+    <interaction type="Sit" />
+    <tag>Chair</tag>
+  </element>
+  <element id="18">
+    <name>Desk (5)</name>
+    <web_path>ImportResources/Classroom/Prefabs/Desk</web_path>
+    <position x="-0.024" y="0" z="2.548" />
+    <rotation x="0" y="0" z="0" />
+    <scale x="1" y="1" z="1" />
+    <parent_id>3</parent_id>
+    <tag>Untagged</tag>
+  </element>
+  <element id="19">
+    <name>Chair (5)</name>
+    <web_path>ImportResources/Classroom/Prefabs/Chair</web_path>
+    <position x="-0.05799985" y="0" z="3.346" />
+    <rotation x="0" y="358.1372" z="0" />
+    <scale x="1" y="1" z="1" />
+    <parent_id>3</parent_id>
+    <interaction type="Sit" />
+    <tag>Chair</tag>
+  </element>
+  <element id="20">
+    <name>Desk (6)</name>
+    <web_path>ImportResources/Classroom/Prefabs/Desk</web_path>
+    <position x="-2.019" y="0" z="2.616" />
+    <rotation x="0" y="0" z="0" />
+    <scale x="1" y="1" z="1" />
+    <parent_id>3</parent_id>
+    <tag>Untagged</tag>
+  </element>
+  <element id="21">
+    <name>Chair (6)</name>
+    <web_path>ImportResources/Classroom/Prefabs/Chair</web_path>
+    <position x="-2.053" y="0" z="3.414" />
+    <rotation x="0" y="358.1372" z="0" />
+    <scale x="1" y="1" z="1" />
+    <parent_id>3</parent_id>
+    <interaction type="Sit" />
+    <tag>Chair</tag>
+  </element>
+  <element id="22">
     <name>Door</name>
     <web_path>ImportResources/Classroom/Prefabs/Door</web_path>
     <position x="-5.125" y="0" z="-3" />
@@ -126,7 +207,7 @@
     <parent_id>2</parent_id>
     <tag>Untagged</tag>
   </element>
-  <element id="15">
+  <element id="23">
     <name>Door</name>
     <web_path>ImportResources/Classroom/Prefabs/Door</web_path>
     <position x="-5.125" y="0" z="9" />
@@ -135,16 +216,7 @@
     <parent_id>2</parent_id>
     <tag>Untagged</tag>
   </element>
-  <element id="16">
-    <name>TeacherDesk</name>
-    <web_path>ImportResources/Classroom/Prefabs/TeacherDesk</web_path>
-    <position x="0" y="0" z="-2.3" />
-    <rotation x="0" y="180" z="0" />
-    <scale x="1" y="1" z="1" />
-    <parent_id>2</parent_id>
-    <tag>Untagged</tag>
-  </element>
-  <element id="17">
+  <element id="24">
     <name>Globe</name>
     <web_path>ImportResources/Classroom/Prefabs/Globe</web_path>
     <position x="4.717" y="1.17" z="-3.694" />
@@ -153,7 +225,7 @@
     <parent_id>2</parent_id>
     <tag>Untagged</tag>
   </element>
-  <element id="18">
+  <element id="25">
     <name>Noticeboard</name>
     <web_path>ImportResources/Classroom/Prefabs/Noticeboard</web_path>
     <position x="0" y="1.8" z="10" />
@@ -162,25 +234,7 @@
     <parent_id>2</parent_id>
     <tag>Untagged</tag>
   </element>
-  <element id="19">
-    <name>Blackboard</name>
-    <web_path>ImportResources/Classroom/Prefabs/Blackboard</web_path>
-    <position x="-1.5" y="1" z="-4" />
-    <rotation x="0" y="0" z="0" />
-    <scale x="1" y="1" z="1" />
-    <parent_id>2</parent_id>
-    <tag>Untagged</tag>
-  </element>
-  <element id="20">
-    <name>Blackboard (1)</name>
-    <web_path>ImportResources/Classroom/Prefabs/Blackboard</web_path>
-    <position x="1.5" y="1" z="-4" />
-    <rotation x="0" y="0" z="0" />
-    <scale x="1" y="1" z="1" />
-    <parent_id>2</parent_id>
-    <tag>Untagged</tag>
-  </element>
-  <element id="21">
+  <element id="26">
     <name>Chalk</name>
     <web_path>ImportResources/Classroom/Prefabs/Chalk</web_path>
     <position x="1.727" y="1.03" z="-3.912" />
@@ -189,7 +243,7 @@
     <parent_id>2</parent_id>
     <tag>Untagged</tag>
   </element>
-  <element id="22">
+  <element id="27">
     <name>Chalk (1)</name>
     <web_path>ImportResources/Classroom/Prefabs/Chalk</web_path>
     <position x="1.835" y="1.03" z="-3.8907" />
@@ -198,7 +252,7 @@
     <parent_id>2</parent_id>
     <tag>Untagged</tag>
   </element>
-  <element id="23">
+  <element id="28">
     <name>Brush</name>
     <web_path>ImportResources/Classroom/Prefabs/Brush</web_path>
     <position x="2.164" y="1.091" z="-3.898" />
@@ -207,7 +261,7 @@
     <parent_id>2</parent_id>
     <tag>Untagged</tag>
   </element>
-  <element id="24">
+  <element id="29">
     <name>Clock</name>
     <web_path>ImportResources/Classroom/Prefabs/Clock</web_path>
     <position x="0" y="3.4" z="-3.95" />
@@ -216,7 +270,7 @@
     <parent_id>2</parent_id>
     <tag>Untagged</tag>
   </element>
-  <element id="25">
+  <element id="30">
     <name>Classroom</name>
     <web_path>ImportResources/Classroom/Prefabs/Classroom</web_path>
     <position x="0" y="0" z="3" />
@@ -225,7 +279,7 @@
     <parent_id>2</parent_id>
     <tag>Untagged</tag>
   </element>
-  <element id="26">
+  <element id="31">
     <name>Windows</name>
     <web_path>null</web_path>
     <position x="0" y="0" z="0" />
@@ -234,79 +288,79 @@
     <parent_id>2</parent_id>
     <tag>Untagged</tag>
   </element>
-  <element id="27">
+  <element id="32">
     <name>WindowSmall</name>
     <web_path>ImportResources/Classroom/Prefabs/WindowSmall</web_path>
     <position x="5.2" y="3" z="6" />
     <rotation x="0" y="90" z="0" />
     <scale x="1" y="1" z="1" />
-    <parent_id>26</parent_id>
+    <parent_id>31</parent_id>
     <tag>Untagged</tag>
   </element>
-  <element id="28">
+  <element id="33">
     <name>WindowSmall (1)</name>
     <web_path>ImportResources/Classroom/Prefabs/WindowSmall</web_path>
     <position x="5.2" y="3" z="4" />
     <rotation x="0" y="90" z="0" />
     <scale x="1" y="1" z="1" />
-    <parent_id>26</parent_id>
+    <parent_id>31</parent_id>
     <tag>Untagged</tag>
   </element>
-  <element id="29">
+  <element id="34">
     <name>WindowSmall (2)</name>
     <web_path>ImportResources/Classroom/Prefabs/WindowSmall</web_path>
     <position x="5.2" y="3" z="2" />
     <rotation x="0" y="90" z="0" />
     <scale x="1" y="1" z="1" />
-    <parent_id>26</parent_id>
+    <parent_id>31</parent_id>
     <tag>Untagged</tag>
   </element>
-  <element id="30">
+  <element id="35">
     <name>WindowSmall (3)</name>
     <web_path>ImportResources/Classroom/Prefabs/WindowSmall</web_path>
     <position x="5.2" y="3" z="0" />
     <rotation x="0" y="90" z="0" />
     <scale x="1" y="1" z="1" />
-    <parent_id>26</parent_id>
+    <parent_id>31</parent_id>
     <tag>Untagged</tag>
   </element>
-  <element id="31">
+  <element id="36">
     <name>Window_1</name>
     <web_path>ImportResources/Classroom/Prefabs/Window_1</web_path>
     <position x="5.1" y="1" z="6" />
     <rotation x="0" y="270" z="0" />
     <scale x="1" y="1" z="1" />
-    <parent_id>26</parent_id>
+    <parent_id>31</parent_id>
     <tag>Untagged</tag>
   </element>
-  <element id="32">
+  <element id="37">
     <name>Window_2</name>
     <web_path>ImportResources/Classroom/Prefabs/Window_2</web_path>
     <position x="5.15" y="1" z="4" />
     <rotation x="0" y="270" z="0" />
     <scale x="1" y="1" z="1" />
-    <parent_id>26</parent_id>
+    <parent_id>31</parent_id>
     <tag>Untagged</tag>
   </element>
-  <element id="33">
+  <element id="38">
     <name>Window_1 (1)</name>
     <web_path>ImportResources/Classroom/Prefabs/Window_1</web_path>
     <position x="5.1" y="1" z="2" />
     <rotation x="0" y="270" z="0" />
     <scale x="1" y="1" z="1" />
-    <parent_id>26</parent_id>
+    <parent_id>31</parent_id>
     <tag>Untagged</tag>
   </element>
-  <element id="34">
+  <element id="39">
     <name>Window_2 (1)</name>
     <web_path>ImportResources/Classroom/Prefabs/Window_2</web_path>
     <position x="5.15" y="1" z="0" />
     <rotation x="0" y="270" z="0" />
     <scale x="1" y="1" z="1" />
-    <parent_id>26</parent_id>
+    <parent_id>31</parent_id>
     <tag>Untagged</tag>
   </element>
-  <element id="35">
+  <element id="40">
     <name>Light</name>
     <web_path>null</web_path>
     <position x="0" y="0" z="0" />
@@ -315,107 +369,62 @@
     <parent_id>2</parent_id>
     <tag>Untagged</tag>
   </element>
-  <element id="36">
+  <element id="41">
     <name>Light</name>
     <web_path>ImportResources/Classroom/Prefabs/Light</web_path>
     <position x="2.5" y="4" z="-1.5" />
     <rotation x="0" y="0" z="0" />
     <scale x="1" y="1" z="1" />
-    <parent_id>35</parent_id>
+    <parent_id>40</parent_id>
     <tag>Untagged</tag>
   </element>
-  <element id="37">
+  <element id="42">
     <name>Light (1)</name>
     <web_path>ImportResources/Classroom/Prefabs/Light</web_path>
     <position x="-2.5" y="4" z="-1.5" />
     <rotation x="0" y="0" z="0" />
     <scale x="1" y="1" z="1" />
-    <parent_id>35</parent_id>
+    <parent_id>40</parent_id>
     <tag>Untagged</tag>
   </element>
-  <element id="38">
+  <element id="43">
     <name>Light (2)</name>
     <web_path>ImportResources/Classroom/Prefabs/Light</web_path>
     <position x="2.5" y="4" z="2.5" />
     <rotation x="0" y="0" z="0" />
     <scale x="1" y="1" z="1" />
-    <parent_id>35</parent_id>
+    <parent_id>40</parent_id>
     <tag>Untagged</tag>
   </element>
-  <element id="39">
+  <element id="44">
     <name>Light (3)</name>
     <web_path>ImportResources/Classroom/Prefabs/Light</web_path>
     <position x="-2.5" y="4" z="2.5" />
     <rotation x="0" y="0" z="0" />
     <scale x="1" y="1" z="1" />
-    <parent_id>35</parent_id>
+    <parent_id>40</parent_id>
     <tag>Untagged</tag>
   </element>
-  <element id="40">
+  <element id="45">
     <name>Light (4)</name>
     <web_path>ImportResources/Classroom/Prefabs/Light</web_path>
     <position x="2.5" y="4" z="6.5" />
     <rotation x="0" y="0" z="0" />
     <scale x="1" y="1" z="1" />
-    <parent_id>35</parent_id>
+    <parent_id>40</parent_id>
     <tag>Untagged</tag>
   </element>
-  <element id="41">
+  <element id="46">
     <name>Light (5)</name>
     <web_path>ImportResources/Classroom/Prefabs/Light</web_path>
     <position x="-2.5" y="4" z="6.5" />
     <rotation x="0" y="0" z="0" />
     <scale x="1" y="1" z="1" />
-    <parent_id>35</parent_id>
-    <tag>Untagged</tag>
-  </element>
-  <element id="42">
-    <name>AirConditionerVent</name>
-    <web_path>null</web_path>
-    <position x="0" y="0" z="0" />
-    <rotation x="0" y="0" z="0" />
-    <scale x="1" y="1" z="1" />
-    <parent_id>2</parent_id>
-    <tag>Untagged</tag>
-  </element>
-  <element id="43">
-    <name>AirConditionerVent</name>
-    <web_path>ImportResources/Classroom/Prefabs/AirConditionerVent</web_path>
-    <position x="-2.5" y="4" z="4.5" />
-    <rotation x="0" y="0" z="0" />
-    <scale x="1" y="1" z="1" />
-    <parent_id>42</parent_id>
-    <tag>Untagged</tag>
-  </element>
-  <element id="44">
-    <name>AirConditionerVent (1)</name>
-    <web_path>ImportResources/Classroom/Prefabs/AirConditionerVent</web_path>
-    <position x="-2.5" y="4" z="0.5" />
-    <rotation x="0" y="0" z="0" />
-    <scale x="1" y="1" z="1" />
-    <parent_id>42</parent_id>
-    <tag>Untagged</tag>
-  </element>
-  <element id="45">
-    <name>AirConditionerVent (2)</name>
-    <web_path>ImportResources/Classroom/Prefabs/AirConditionerVent</web_path>
-    <position x="2.5" y="4" z="0.5" />
-    <rotation x="0" y="0" z="0" />
-    <scale x="1" y="1" z="1" />
-    <parent_id>42</parent_id>
-    <tag>Untagged</tag>
-  </element>
-  <element id="46">
-    <name>AirConditionerVent (3)</name>
-    <web_path>ImportResources/Classroom/Prefabs/AirConditionerVent</web_path>
-    <position x="2.5" y="4" z="4.5" />
-    <rotation x="0" y="0" z="0" />
-    <scale x="1" y="1" z="1" />
-    <parent_id>42</parent_id>
+    <parent_id>40</parent_id>
     <tag>Untagged</tag>
   </element>
   <element id="47">
-    <name>Books</name>
+    <name>AirConditionerVent</name>
     <web_path>null</web_path>
     <position x="0" y="0" z="0" />
     <rotation x="0" y="0" z="0" />
@@ -424,51 +433,96 @@
     <tag>Untagged</tag>
   </element>
   <element id="48">
-    <name>Books</name>
-    <web_path>ImportResources/Classroom/Prefabs/Books</web_path>
-    <position x="4.65" y="0.77" z="-3.77" />
-    <rotation x="0" y="90" z="0" />
+    <name>AirConditionerVent</name>
+    <web_path>ImportResources/Classroom/Prefabs/AirConditionerVent</web_path>
+    <position x="-2.5" y="4" z="4.5" />
+    <rotation x="0" y="0" z="0" />
     <scale x="1" y="1" z="1" />
     <parent_id>47</parent_id>
     <tag>Untagged</tag>
   </element>
   <element id="49">
-    <name>Bookcase</name>
-    <web_path>ImportResources/Classroom/Prefabs/Bookcase</web_path>
-    <position x="4.75" y="0" z="-3" />
-    <rotation x="0" y="270" z="0" />
+    <name>AirConditionerVent (1)</name>
+    <web_path>ImportResources/Classroom/Prefabs/AirConditionerVent</web_path>
+    <position x="-2.5" y="4" z="0.5" />
+    <rotation x="0" y="0" z="0" />
     <scale x="1" y="1" z="1" />
     <parent_id>47</parent_id>
     <tag>Untagged</tag>
   </element>
   <element id="50">
-    <name>Books (1)</name>
-    <web_path>ImportResources/Classroom/Prefabs/Books</web_path>
-    <position x="4.671" y="0.77" z="-3.356" />
-    <rotation x="0" y="90" z="0" />
+    <name>AirConditionerVent (2)</name>
+    <web_path>ImportResources/Classroom/Prefabs/AirConditionerVent</web_path>
+    <position x="2.5" y="4" z="0.5" />
+    <rotation x="0" y="0" z="0" />
     <scale x="1" y="1" z="1" />
     <parent_id>47</parent_id>
     <tag>Untagged</tag>
   </element>
   <element id="51">
-    <name>Books (2)</name>
-    <web_path>ImportResources/Classroom/Prefabs/Books</web_path>
-    <position x="4.625" y="0.34" z="-3.215" />
-    <rotation x="0" y="90" z="0" />
+    <name>AirConditionerVent (3)</name>
+    <web_path>ImportResources/Classroom/Prefabs/AirConditionerVent</web_path>
+    <position x="2.5" y="4" z="4.5" />
+    <rotation x="0" y="0" z="0" />
     <scale x="1" y="1" z="1" />
     <parent_id>47</parent_id>
     <tag>Untagged</tag>
   </element>
   <element id="52">
+    <name>Books</name>
+    <web_path>null</web_path>
+    <position x="0" y="0" z="0" />
+    <rotation x="0" y="0" z="0" />
+    <scale x="1" y="1" z="1" />
+    <parent_id>2</parent_id>
+    <tag>Untagged</tag>
+  </element>
+  <element id="53">
+    <name>Books</name>
+    <web_path>ImportResources/Classroom/Prefabs/Books</web_path>
+    <position x="4.65" y="0.77" z="-3.77" />
+    <rotation x="0" y="90" z="0" />
+    <scale x="1" y="1" z="1" />
+    <parent_id>52</parent_id>
+    <tag>Untagged</tag>
+  </element>
+  <element id="54">
+    <name>Bookcase</name>
+    <web_path>ImportResources/Classroom/Prefabs/Bookcase</web_path>
+    <position x="4.75" y="0" z="-3" />
+    <rotation x="0" y="270" z="0" />
+    <scale x="1" y="1" z="1" />
+    <parent_id>52</parent_id>
+    <tag>Untagged</tag>
+  </element>
+  <element id="55">
+    <name>Books (1)</name>
+    <web_path>ImportResources/Classroom/Prefabs/Books</web_path>
+    <position x="4.671" y="0.77" z="-3.356" />
+    <rotation x="0" y="90" z="0" />
+    <scale x="1" y="1" z="1" />
+    <parent_id>52</parent_id>
+    <tag>Untagged</tag>
+  </element>
+  <element id="56">
+    <name>Books (2)</name>
+    <web_path>ImportResources/Classroom/Prefabs/Books</web_path>
+    <position x="4.625" y="0.34" z="-3.215" />
+    <rotation x="0" y="90" z="0" />
+    <scale x="1" y="1" z="1" />
+    <parent_id>52</parent_id>
+    <tag>Untagged</tag>
+  </element>
+  <element id="57">
     <name>Books (3)</name>
     <web_path>ImportResources/Classroom/Prefabs/Books</web_path>
     <position x="4.633" y="0.34" z="-2.78" />
     <rotation x="0" y="90" z="0" />
     <scale x="1" y="1" z="1" />
-    <parent_id>47</parent_id>
+    <parent_id>52</parent_id>
     <tag>Untagged</tag>
   </element>
-  <element id="53">
+  <element id="58">
     <name>Shelf</name>
     <web_path>null</web_path>
     <position x="0" y="0" z="0" />
@@ -477,34 +531,34 @@
     <parent_id>2</parent_id>
     <tag>Untagged</tag>
   </element>
-  <element id="54">
+  <element id="59">
     <name>Shelf</name>
     <web_path>ImportResources/Classroom/Prefabs/Shelf</web_path>
     <position x="4.7" y="0" z="9.8" />
     <rotation x="0" y="180" z="0" />
     <scale x="1" y="1" z="1" />
-    <parent_id>53</parent_id>
+    <parent_id>58</parent_id>
     <tag>Untagged</tag>
   </element>
-  <element id="55">
+  <element id="60">
     <name>Shelf (1)</name>
     <web_path>ImportResources/Classroom/Prefabs/Shelf</web_path>
     <position x="4.1" y="0" z="9.8" />
     <rotation x="0" y="180" z="0" />
     <scale x="1" y="1" z="1" />
-    <parent_id>53</parent_id>
+    <parent_id>58</parent_id>
     <tag>Untagged</tag>
   </element>
-  <element id="56">
+  <element id="61">
     <name>Shelf (2)</name>
     <web_path>ImportResources/Classroom/Prefabs/Shelf</web_path>
     <position x="3.5" y="0" z="9.8" />
     <rotation x="0" y="180" z="0" />
     <scale x="1" y="1" z="1" />
-    <parent_id>53</parent_id>
+    <parent_id>58</parent_id>
     <tag>Untagged</tag>
   </element>
-  <element id="57">
+  <element id="62">
     <name>Switch</name>
     <web_path>ImportResources/Classroom/Prefabs/Switch</web_path>
     <position x="-4" y="1.5" z="-4" />
@@ -513,7 +567,7 @@
     <parent_id>2</parent_id>
     <tag>Untagged</tag>
   </element>
-  <element id="58">
+  <element id="63">
     <name>Reflection Probe</name>
     <web_path>ImportResources/Classroom/Prefabs/Reflection Probe</web_path>
     <position x="0" y="1.32" z="3.22" />
@@ -522,7 +576,7 @@
     <parent_id>0</parent_id>
     <tag>Untagged</tag>
   </element>
-  <element id="59">
+  <element id="64">
     <name>Reflection Probe (1)</name>
     <web_path>ImportResources/Classroom/Prefabs/Reflection Probe (1)</web_path>
     <position x="0" y="0.294" z="-3.234" />
@@ -530,5 +584,15 @@
     <scale x="1" y="1" z="1" />
     <parent_id>0</parent_id>
     <tag>Untagged</tag>
+  </element>
+  <element id="65">
+    <name>WhiteBoard</name>
+    <web_path>Prefabs/WhiteBoard</web_path>
+    <position x="0.14" y="2.83" z="-6.39" />
+    <rotation x="0" y="180" z="0" />
+    <scale x="8.212716" y="5.344171" z="0.02346198" />
+    <parent_id>0</parent_id>
+    <tag>Whiteboard</tag>
+    <interaction type="View" />
   </element>
 </Elements>

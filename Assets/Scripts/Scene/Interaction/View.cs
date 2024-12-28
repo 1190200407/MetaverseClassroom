@@ -4,9 +4,9 @@ public class View : InteractionScript
 {
     private Whiteboard whiteboard; 
 
-    public override void Init(SceneElement element, string interactionType, string interactionContent)
+    public override void Init(SceneElement element)
     {
-        base.Init(element, interactionType, interactionContent);
+        base.Init(element);
         whiteboard = element.gameObject.GetComponent<Whiteboard>();
     }
 

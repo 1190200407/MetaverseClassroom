@@ -13,6 +13,9 @@ public class SceneElement : MonoBehaviourPunCallbacks
 
     public InteractionScript interactionScript;
 
+    public string interactType = string.Empty;
+    public string interactionContent = string.Empty;
+
     public override void OnEnable()
     {
         base.OnEnable();
@@ -43,7 +46,9 @@ public class SceneElement : MonoBehaviourPunCallbacks
         if (t != null)
         {
             interactionScript =  Activator.CreateInstance(t) as InteractionScript;
-            interactionScript.Init(this, type, content);
+            interactType = type;
+            interactionContent = content;
+            interactionScript.Init(this);
 
             // VR环境挂载XRSimpleInteractable
             if (GameSettings.instance.isVR)

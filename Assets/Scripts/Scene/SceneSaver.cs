@@ -129,8 +129,8 @@ public class SceneSaver : EditorWindow
         if (gameObject.TryGetComponent(out SceneElement sceneElement))
         {
             XmlElement interaction = xml.CreateElement("interaction");
-            interaction.SetAttribute("type", sceneElement.interactionScript.GetType().ToString());
-            interaction.InnerText = sceneElement.interactionScript.interactionContent;
+            interaction.SetAttribute("type", sceneElement.interactType);
+            interaction.InnerText = sceneElement.interactionContent;
             info.AppendChild(interaction);
         }
 

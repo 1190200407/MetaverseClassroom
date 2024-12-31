@@ -9,13 +9,8 @@ public class SceneLoader : UnitySingleton<SceneLoader>
     [Header("加载xml路径")]
     public string xmlPath = "smallroom";
     //public Dictionary<string, SceneElement> NameToElement {get; private set;} = new Dictionary<string, SceneElement>();
-    public Dictionary<int, SceneElement> IdToElement {get; private set;} = new Dictionary<int, SceneElement>();
+    public Dictionary<string, SceneElement> IdToElement {get; private set;} = new();
 
-    private void Start() {
-        //SaveSceneAsXml("./Assets/Resources/SmallClassroom.xml");
-        //LoadSceneFromXml(xmlPath);
-    }    
-    
     private void OnEnable() 
     {
         EventHandler.Register<ReloadEvent>(OnReload);
@@ -104,7 +99,7 @@ public class SceneLoader : UnitySingleton<SceneLoader>
                 elementObject = new GameObject();
                 
             SceneElement sceneElement = elementObject.AddComponent<SceneElement>();
-            sceneElement.LoadData(id, name, path, parent_id);
+            sceneElement.LoadData(xmlPath + id, name, path, xmlPath + parent_id);
             sceneElement.SetInteactionType(interactionType, interactionContent);
             
             elementObject.tag = tag;
@@ -132,7 +127,7 @@ public class SceneLoader : UnitySingleton<SceneLoader>
             XmlElement info = xml.CreateElement("element");
 
             // 自动递增id
-            element.id = currentId++;
+            element.id = currentId++.ToString();
             info.SetAttribute("id", element.id.ToString());
 
             // 添加name

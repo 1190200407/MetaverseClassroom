@@ -8,7 +8,7 @@ using UnityEngine.XR.Interaction.Toolkit;
 
 public class SceneElement : MonoBehaviourPunCallbacks
 {
-    [HideInInspector] public int id;
+    [HideInInspector] public string id;
     public string path;
 
     public InteractionScript interactionScript;
@@ -28,7 +28,7 @@ public class SceneElement : MonoBehaviourPunCallbacks
         interactionScript?.OnDisable();
     }
 
-    public void LoadData(int id, string name, string path, int parent_id) {
+    public void LoadData(string id, string name, string path, string parent_id) {
         this.id = id;
         this.name = name;
         this.path = path;

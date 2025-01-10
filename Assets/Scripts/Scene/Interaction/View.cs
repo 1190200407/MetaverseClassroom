@@ -13,6 +13,6 @@ public class View : InteractionScript
     public override void OnSelectEnter()
     {
         base.OnSelectEnter();
-        whiteboard.NextSlide();
+        whiteboard.ChangeSlide(1);
     }
 }

@@ -7,6 +7,8 @@ using UnityEngine.UI;
 public class PausePanel : BasePanel
 {
     private Button changeSceneButton;
+    private Button lastPageButton;
+    private Button nextPageButton;
     
     public PausePanel(UIType uiType) : base(uiType)
     {
@@ -17,6 +19,10 @@ public class PausePanel : BasePanel
         base.OnStart();
         changeSceneButton = UIMethods.instance.GetOrAddComponentInChild<Button>(ActiveObj, "ChangeSceneButton");
         changeSceneButton.onClick.AddListener(ChangeScene);
+        lastPageButton = UIMethods.instance.GetOrAddComponentInChild<Button>(ActiveObj, "LastPageButton");
+        lastPageButton.onClick.AddListener(LastPage);
+        nextPageButton = UIMethods.instance.GetOrAddComponentInChild<Button>(ActiveObj, "NextPageButton");
+        nextPageButton.onClick.AddListener(NextPage);
     }
 
     public override void OnUpdate()
@@ -43,7 +49,16 @@ public class PausePanel : BasePanel
 
     public void ChangeScene()
     {
-        SceneLoader.instance.xmlPath = "FFK";
-        SceneLoader.instance.LoadSceneFromXml();
+        UIManager.instance.Push(new TransitionPanel(new UIType("Panels/TransitionPanel", "TransitionPanel")));
+    }
+
+    public void LastPage()
+    {
+        EventHandler.Trigger(new ChangeSlideEvent{ changeNum = -1 });
+    }
+
+    public void NextPage()
+    {
+        EventHandler.Trigger(new ChangeSlideEvent{ changeNum = 1 });
     }
 }

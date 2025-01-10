@@ -36,10 +36,15 @@ public class Whiteboard : MonoBehaviourPunCallbacks
         }
     }
 
-    public void NextSlide()
+    public void OnChangeSlideEvent(ChangeSlideEvent @event)
+    {
+        ChangeSlide(@event.changeNum);
+    }
+
+    public void ChangeSlide(int num)
     {
         int currentIndex = (int)PhotonNetwork.CurrentRoom.CustomProperties["CurrentSlideIndex"];
-        currentIndex = (currentIndex + 1) % pptSlides.Length;
+        currentIndex = (currentIndex + num + pptSlides.Length) % pptSlides.Length;
         UpdateSlideTexture(currentIndex);
 
         // 更新房间属性，保存当前页码
@@ -62,6 +67,7 @@ public class Whiteboard : MonoBehaviourPunCallbacks
         base.OnEnable();
         // 注册事件处理器
         PhotonNetwork.NetworkingClient.EventReceived += OnEvent;
+        EventHandler.Register<ChangeSlideEvent>(OnChangeSlideEvent);
     }
 
     public override void OnDisable()
@@ -69,6 +75,7 @@ public class Whiteboard : MonoBehaviourPunCallbacks
         base.OnDisable();
         // 取消注册事件处理器
         PhotonNetwork.NetworkingClient.EventReceived -= OnEvent;
+        EventHandler.Unregister<ChangeSlideEvent>(OnChangeSlideEvent);
     }
 
     private void OnEvent(EventData photonEvent)

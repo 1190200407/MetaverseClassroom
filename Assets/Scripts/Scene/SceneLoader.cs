@@ -10,6 +10,8 @@ public class SceneLoader : UnitySingleton<SceneLoader>
     public string xmlPath = "smallroom";
     //public Dictionary<string, SceneElement> NameToElement {get; private set;} = new Dictionary<string, SceneElement>();
     public Dictionary<string, SceneElement> IdToElement {get; private set;} = new();
+    public Dictionary<string, GameObject> PathToSceneObject {get; private set;} = new();
+    private GameObject curActiveObject = null;
 
     private void OnEnable() 
     {
@@ -24,7 +26,28 @@ public class SceneLoader : UnitySingleton<SceneLoader>
         IdToElement.Clear();
     }
 
-    public void LoadSceneFromXml() {
+    private void ChangeSceneObject(GameObject newSceneObject)
+    {
+        if (curActiveObject == newSceneObject) return;
+        curActiveObject?.SetActive(false);
+        newSceneObject.SetActive(true);
+        curActiveObject = newSceneObject;
+    }
+
+    public void LoadSceneFromXml(string xmlPath) {
+        //如果已经加载过了就直接打开原来加载过的场景
+        GameObject newSceneObject;
+        if (PathToSceneObject.ContainsKey(xmlPath))
+        {
+            newSceneObject = PathToSceneObject[xmlPath];
+            ChangeSceneObject(newSceneObject);
+            return;
+        }
+        newSceneObject = new GameObject(xmlPath);
+        //将多个场景错开来
+        newSceneObject.transform.position = Vector3.right * PathToSceneObject.Count * 10000;
+        PathToSceneObject.Add(xmlPath, newSceneObject);
+
         TextAsset xmlFile = Resources.Load<TextAsset>(xmlPath); //TODO 目前通过Resources.Load读取，后面换成在库中读取
         XmlDocument document = new XmlDocument(); 
         document.LoadXml(xmlFile.text);
@@ -99,7 +122,11 @@ public class SceneLoader : UnitySingleton<SceneLoader>
                 elementObject = new GameObject();
                 
             SceneElement sceneElement = elementObject.AddComponent<SceneElement>();
-            sceneElement.LoadData(xmlPath + id, name, path, xmlPath + parent_id);
+            sceneElement.LoadData(xmlPath + id, name, path);
+            if(IdToElement.ContainsKey(xmlPath + parent_id))
+                sceneElement.transform.SetParent(SceneLoader.instance.IdToElement[xmlPath + parent_id].transform);
+            else
+                sceneElement.transform.SetParent(newSceneObject.transform);
             sceneElement.SetInteactionType(interactionType, interactionContent);
             
             elementObject.tag = tag;
@@ -107,6 +134,8 @@ public class SceneLoader : UnitySingleton<SceneLoader>
             elementObject.transform.eulerAngles = rotation;
             elementObject.transform.localScale = scale;
         }
+
+        ChangeSceneObject(newSceneObject);
     }
 
     public void SaveSceneAsXml(string xmlPath) {

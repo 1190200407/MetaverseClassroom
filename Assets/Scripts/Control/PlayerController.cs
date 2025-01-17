@@ -3,11 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using Photon.Pun;
 using System;
+using Photon.Realtime;
+using Unity.VisualScripting;
 
-public class PlayerController : MonoBehaviourPun
+public class PlayerController : MonoBehaviourPunCallbacks
 {
     public static PlayerController localPlayer;
-    public GameObject playerCamera = null;
+    public Camera playerCamera = null;
     public Animator anim;
 
     public Transform handTransform;
@@ -16,12 +18,30 @@ public class PlayerController : MonoBehaviourPun
     protected bool isSitting = false;
     public bool IsSitting
     {
+        get { return isSitting; }
         set
         {
             if (photonView.IsMine)
             {
-                photonView.RPC("SetSittingState", RpcTarget.All, value);
+                photonView.RPC("SetSittingState", RpcTarget.AllBuffered, value);
             }
+        }
+    }
+
+    protected string currentScene;
+    public string CurrentScene
+    {
+        get { return currentScene; }
+        set
+        {
+            if (photonView.IsMine)
+            {
+                transform.position = SceneLoader.instance.PathToSceneObject[value].transform.position;
+            }
+            // if (photonView.IsMine)
+            // {
+            //     photonView.RPC("SetCurrentScene", RpcTarget.AllBuffered, value);
+            // }
         }
     }
 
@@ -32,6 +52,7 @@ public class PlayerController : MonoBehaviourPun
         //将自己的名字牌和模型隐藏
         anim = GetComponentInChildren<Animator>();
         rb = GetComponent<Rigidbody>();
+        CurrentScene = CourseManager.instance.currentScene;
     }
 
     [PunRPC]
@@ -39,9 +60,21 @@ public class PlayerController : MonoBehaviourPun
     {
         isSitting = sitting;
 
-        // 同步状态到其他客户端的对象
         rb.isKinematic = sitting;
         anim.SetFloat("MoveX", 0);
         anim.SetFloat("MoveY", 0);
+    }
+
+
+    [PunRPC]
+    public void SetCurrentScene(string sceneName)
+    {
+        currentScene = sceneName;
+
+        if (photonView.IsMine)
+        {
+            transform.SetParent(SceneLoader.instance.PathToSceneObject[sceneName].transform);
+            transform.localPosition = Vector3.zero;
+        }
     }
 }

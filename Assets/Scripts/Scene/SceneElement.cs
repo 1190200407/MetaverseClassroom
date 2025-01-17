@@ -28,17 +28,12 @@ public class SceneElement : MonoBehaviourPunCallbacks
         interactionScript?.OnDisable();
     }
 
-    public void LoadData(string id, string name, string path, string parent_id) {
+    public void LoadData(string id, string name, string path) {
         this.id = id;
         this.name = name;
         this.path = path;
         
         SceneLoader.instance.IdToElement.Add(id, this);
-
-        if(SceneLoader.instance.IdToElement.ContainsKey(parent_id))
-            transform.SetParent(SceneLoader.instance.IdToElement[parent_id].transform);
-        else
-            transform.SetParent(null);
     }
 
     public void SetInteactionType(string type, string content = "") {

@@ -49,7 +49,7 @@ public class PausePanel : BasePanel
 
     public void ChangeScene()
     {
-        UIManager.instance.Push(new TransitionPanel(new UIType("Panels/TransitionPanel", "TransitionPanel")));
+        CourseManager.instance.StartSceneTransition();
     }
 
     public void LastPage()

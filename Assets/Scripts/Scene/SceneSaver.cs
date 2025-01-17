@@ -4,6 +4,7 @@ using System.Xml;
 using UnityEditor;
 using UnityEngine;
 
+#if UNITY_EDITOR
 public class SceneSaver : EditorWindow
 {
     private Dictionary<GameObject, int> gameObjectToId = new();
@@ -149,3 +150,4 @@ public class SceneSaver : EditorWindow
         }
     }
 }
+#endif

@@ -9,6 +9,11 @@ public struct ChangeSlideEvent
     public int changeNum;
 }
 
+public struct ChangeSceneEvent
+{
+    public string sceneName;
+}
+
 public struct TransitionOpenEndEvent {}
 
 public struct TransitionCloseEndEvent {}

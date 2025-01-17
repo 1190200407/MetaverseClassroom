@@ -136,7 +136,7 @@ public class StartPanel : BasePanel
             // 连接成功后执行以下逻辑
             //加入房间
             PhotonNetwork.JoinOrCreateRoom("Classroom", new Photon.Realtime.RoomOptions() { MaxPlayers = 4 }, default);
-            SceneLoader.instance.LoadSceneFromXml();
+            CourseManager.instance.StartCourse();
             
             UIManager.instance.ShowMessage("连接成功", 1f);
             UIManager.instance.Pop(false);

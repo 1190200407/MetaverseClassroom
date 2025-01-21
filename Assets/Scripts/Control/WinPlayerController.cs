@@ -92,6 +92,27 @@ public class WinPlayerController : PlayerController
                 playerCamera.fieldOfView = fov; // 应用新的 FOV
             }
         }
+
+        // 更新红点的位置
+        if (redDot != null)
+        {
+            // 检测右键按下和松开
+            if (Input.GetMouseButtonDown(1)) // 右键按下
+            {
+                isShowingRedDot = true;
+            }
+
+            if (Input.GetMouseButtonUp(1)) // 右键松开
+            {
+                isShowingRedDot = false;
+                redDot.transform.position = Vector3.down * 10000f;
+            }
+
+            if (isShowingRedDot)
+            {
+                UpdateRedDotPosition();
+            }
+        }
     }
 
     void FixedUpdate()
@@ -132,5 +153,36 @@ public class WinPlayerController : PlayerController
         transform.localEulerAngles = new Vector3(0, rotationX, 0);
         if (playerCamera != null)
             playerCamera.transform.localEulerAngles = new Vector3(-rotationY, 0, 0);
+    }
+    
+    private void UpdateRedDotPosition()
+    {
+        if (playerCamera != null && redDot != null)
+        {
+            // 通过相机的正前方来设置红点位置
+            Vector3 targetPosition = playerCamera.transform.position + playerCamera.transform.forward * 5f; // 5f 是红点距离相机的距离，可以根据需要调整
+            redDot.transform.position = targetPosition;
+        }
+
+        if (playerCamera != null && redDot != null)
+        {
+            RaycastHit hit;
+            Ray ray = new Ray(playerCamera.transform.position, playerCamera.transform.forward); // 从摄像机出发，沿摄像机的正前方发射射线
+
+            if (Physics.Raycast(ray, out hit))
+            {
+                // 红点停留在碰撞点的位置
+                redDot.transform.position = hit.point;
+
+                // 旋转红点，使其与碰撞表面法线对齐
+                redDot.transform.rotation = Quaternion.FromToRotation(Vector3.up, hit.normal);
+            }
+            else
+            {
+                // 如果射线没有碰到物体，红点会停在射线的最大距离处
+                redDot.transform.position = ray.GetPoint(100f); // 100f 是射线的最大距离
+                redDot.transform.rotation = Quaternion.identity; // 保持默认的旋转
+            }
+        }
     }
 }

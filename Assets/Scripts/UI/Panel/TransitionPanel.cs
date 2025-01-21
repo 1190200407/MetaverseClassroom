@@ -28,7 +28,7 @@ public class TransitionPanel : BasePanel
     {
         //TODO开始换场景
         anim.Play("Close");
-        CourseManager.instance.ChangeScene();
+        ClassManager.instance.ChangeScene();
     }
 
     public override void OnEnable()

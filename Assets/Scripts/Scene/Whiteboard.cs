@@ -22,7 +22,6 @@ public class Whiteboard : MonoBehaviourPunCallbacks
         base.OnJoinedRoom();
 
         // 如果有已经存在的页码，更新到这个页码
-        Debug.Log("Joined");
         if (PhotonNetwork.CurrentRoom.CustomProperties.ContainsKey("CurrentSlideIndex"))
         {
             int currentIndex = (int)PhotonNetwork.CurrentRoom.CustomProperties["CurrentSlideIndex"];

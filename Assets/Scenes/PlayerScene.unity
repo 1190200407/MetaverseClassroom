@@ -1087,6 +1087,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isInClassroom: 1
+  currentScene: 
 --- !u!4 &4152723890859284228
 Transform:
   m_ObjectHideFlags: 0

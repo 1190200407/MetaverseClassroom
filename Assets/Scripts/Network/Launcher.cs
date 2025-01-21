@@ -7,6 +7,8 @@ using Photon.Realtime;
 
 public class Launcher : MonoBehaviourPunCallbacks
 {
+    private PlayerController player;
+
     public override void OnDisconnected(DisconnectCause cause)
     {
         base.OnDisconnected(cause);
@@ -25,8 +27,24 @@ public class Launcher : MonoBehaviourPunCallbacks
     {
         base.OnJoinedRoom();
 
-        PhotonNetwork.Instantiate("Player", Vector3.zero, Quaternion.identity);
+        GameObject playerObject = PhotonNetwork.Instantiate("Player", Vector3.zero, Quaternion.identity);
+        StartCoroutine(WaitToJoinRoom(playerObject));
+
         Debug.Log("Joined");
+    }
+
+    IEnumerator WaitToJoinRoom(GameObject gameObject)
+    {
+        yield return new WaitForEndOfFrame();
+        player = gameObject.GetComponent<PlayerController>();
+        player.JoinRoom();
+    }
+
+    public override void OnLeftRoom()
+    {
+        base.OnLeftRoom();
+
+        player.LeftRoom();
     }
 
     public void Connect()

@@ -1,3 +1,4 @@
+using Photon.Realtime;
 using UnityEngine;
 
 public struct ResumeEvent {}
@@ -12,6 +13,16 @@ public struct ChangeSlideEvent
 public struct ChangeSceneEvent
 {
     public string sceneName;
+}
+
+public struct PlayerJoinRoomEvent
+{
+    public PlayerController player;
+}
+
+public struct PlayerLeftRoomEvent
+{
+    public PlayerController player;
 }
 
 public struct TransitionOpenEndEvent {}

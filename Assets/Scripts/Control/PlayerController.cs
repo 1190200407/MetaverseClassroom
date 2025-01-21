@@ -36,14 +36,27 @@ public class PlayerController : MonoBehaviourPunCallbacks
         {
             if (photonView.IsMine)
             {
+                photonView.RPC("SetCurrentScene", RpcTarget.AllBuffered, value);
+
                 transform.position = SceneLoader.instance.PathToSceneObject[value].transform.position;
+                //切换场景后，更新player的状态
+                foreach (var player in ClassManager.instance.players)
+                {
+                    if (player != this && player.currentScene == value)
+                    {
+                        player.rb.isKinematic = isSitting;
+                    }
+                    else
+                    {
+                        player.rb.isKinematic = true;
+                    }
+                }
             }
-            // if (photonView.IsMine)
-            // {
-            //     photonView.RPC("SetCurrentScene", RpcTarget.AllBuffered, value);
-            // }
         }
     }
+
+    protected GameObject redDot;
+    protected bool isShowingRedDot = false;
 
     protected virtual void Start()
     {
@@ -52,7 +65,40 @@ public class PlayerController : MonoBehaviourPunCallbacks
         //将自己的名字牌和模型隐藏
         anim = GetComponentInChildren<Animator>();
         rb = GetComponent<Rigidbody>();
-        CurrentScene = CourseManager.instance.currentScene;
+    }
+    
+    public void JoinRoom()
+    {
+        CurrentScene = ClassManager.instance.currentScene;
+        EventHandler.Trigger(new PlayerJoinRoomEvent() { player = this });
+
+        // 初始化时隐藏红点
+        CreateRedDot();
+        isShowingRedDot = false;
+    }
+
+    public void LeftRoom()
+    {
+        EventHandler.Trigger(new PlayerLeftRoomEvent() { player = this });
+        DestroyRedDot();
+    }
+
+    private void CreateRedDot()
+    {
+        if (photonView.IsMine)
+        {
+            // 使用 PhotonNetwork.Instantiate 来实例化红点
+            redDot = PhotonNetwork.Instantiate("RedDot", Vector3.down * 10000f, Quaternion.identity);
+        }
+    }
+
+    private void DestroyRedDot()
+    {
+        if (redDot != null)
+        {
+            PhotonNetwork.Destroy(redDot);
+            redDot = null;
+        }
     }
 
     [PunRPC]
@@ -71,10 +117,13 @@ public class PlayerController : MonoBehaviourPunCallbacks
     {
         currentScene = sceneName;
 
-        if (photonView.IsMine)
+        if (sceneName != localPlayer.currentScene)
         {
-            transform.SetParent(SceneLoader.instance.PathToSceneObject[sceneName].transform);
-            transform.localPosition = Vector3.zero;
+            rb.isKinematic = true;
+        }
+        else
+        {
+            rb.isKinematic = isSitting;
         }
     }
 }

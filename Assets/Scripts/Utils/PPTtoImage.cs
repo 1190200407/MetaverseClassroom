@@ -1,34 +1,84 @@
-using Microsoft.Office.Interop.PowerPoint;
-using System;
+using System.Collections;
+using Spire.Presentation;
+using System.Drawing;
 using System.IO;
-using System.Runtime.InteropServices;
+using UnityEngine;
 
-public class PPTtoImage
+public class PPTToImageConverter : UnitySingleton<PPTToImageConverter>
 {
-    public static void ConvertPPTToImages(string pptFilePath, string outputDir)
+    /// <summary>
+    /// 将tiff文件转换为jpg文件，因为Spire.Presentation.FileFormat的枚举中没有jpg
+    /// </summary>
+    /// <param name="tiffFilePath"></param>
+    /// <param name="jpgFilePath"></param>
+    private void ConvertTiffToJpg(string tiffFilePath, string jpgFilePath)
     {
-        // 创建PowerPoint应用实例
-        Application pptApplication = new Application();
-
-        // 打开PPT文件
-        Presentations presentations = pptApplication.Presentations;
-        Presentation presentation = presentations.Open(null, default, default, default);
-
-        // 遍历所有幻灯片，导出为图片
-        for (int slideIndex = 1; slideIndex <= presentation.Slides.Count; slideIndex++)
+        using (Bitmap tiffImage = new Bitmap(tiffFilePath))
         {
-            Slide slide = presentation.Slides[slideIndex];
-            string outputFilePath = Path.Combine(outputDir, $"Slide_{slideIndex}.png");
-
-            // 导出为PNG图片
-            slide.Export(outputFilePath, "PNG");
+            // 保存为 JPG 格式，质量设定为 100
+            tiffImage.Save(jpgFilePath, System.Drawing.Imaging.ImageFormat.Jpeg);
         }
+    }
+    // 将 PPT 文件转换为图像，并保存在 PPT 所在路径的子文件夹中
+    public Texture2D[] ConvertPPTToImage(string pptFilePath)
+    {
+        try
+        {
+            // 确保文件存在
+            if (!File.Exists(pptFilePath))
+            {
+                Debug.LogError("PPT 文件未找到: " + pptFilePath);
+                return null;
+            }
 
-        // 关闭PPT文件
-        presentation.Close();
-        pptApplication.Quit();
+            // 获取 PPT 所在目录
+            string pptDirectory = Path.GetDirectoryName(pptFilePath);
+            string outputDir = Path.Combine(pptDirectory, "PPT_Images"); // 创建子文件夹
 
-        // 释放PowerPoint的资源
-        Marshal.ReleaseComObject(pptApplication);
+            // 确保输出目录存在
+            if (!Directory.Exists(outputDir))
+            {
+                Directory.CreateDirectory(outputDir);
+            }
+
+            // 创建 Presentation 实例并加载 PPT 文件
+            Presentation presentation = new Presentation();
+            presentation.LoadFromFile(pptFilePath);
+
+            // 获取幻灯片总数
+            int slideCount = presentation.Slides.Count;
+            Debug.Log($"Total Slides: {slideCount}");
+
+            // 创建 Texture2D 数组来存储幻灯片的图像
+            Texture2D[] textures = new Texture2D[slideCount];
+            // 遍历幻灯片并保存
+            for (int i = 0; i < slideCount; i++)
+            {
+                string tiffFilePath = Path.Combine(outputDir, $"Slide_{i + 1}.tif");
+
+                // 保存为tiff
+                presentation.Slides[i].SaveToFile(tiffFilePath, FileFormat.Tiff);
+                
+                string jpgFilePath = Path.Combine(outputDir, $"Slide_{i + 1}.jpeg");
+                //转换为jpg
+                ConvertTiffToJpg(tiffFilePath, jpgFilePath);
+                // 加载 JPG 文件为 Texture2D
+                byte[] imageData = File.ReadAllBytes(jpgFilePath);
+                Texture2D texture = new Texture2D(1024, 512); // 临时尺寸
+                texture.LoadImage(imageData); // 将图片数据加载到 Texture2D 中
+                // 存储 Texture2D 到数组
+                textures[i] = texture;
+                // 删除临时tiff文件
+                File.Delete(tiffFilePath);
+            }
+
+            Debug.Log($"所有幻灯片已保存至: {outputDir}");
+            return textures;
+        }
+        catch (System.Exception ex)
+        {
+            Debug.LogError("转换 PPT 失败: " + ex.Message);
+        }
+        return null;
     }
 }

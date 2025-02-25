@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2013/05/nuspec.xsd">
+  <metadata>
+    <id>Spire.Presentation</id>
+    <version>10.1.1</version>
+    <title>Spire.Presentation</title>
+    <authors>E-iceblue</authors>
+    <owners>E-iceblue</owners>
+    <requireLicenseAcceptance>true</requireLicenseAcceptance>
+    <license type="file">license.txt</license>
+    <licenseUrl>https://aka.ms/deprecateLicenseUrl</licenseUrl>
+    <projectUrl>http://www.e-iceblue.com/Introduce/presentation-for-net-introduce.html</projectUrl>
+    <iconUrl>http://www.e-iceblue.com/images/product_logo/product_buy/PresentationNET.png</iconUrl>
+    <description>Spire.Presentation for .NET is a professional PowerPoint® compatible component that enables developers to create, read, write, and modify PowerPoint® documents from any .NET(C#, VB.NET, ASP.NET) platform, NET Core 2.0. .netstand2.0. As an independent PowerPoint .NET component, Spire.Presentation for .NET doesn't need Microsoft PowerPoint installed on the machine.
+
+Spire.Presentation for .NET support PPT, PPS, PPTX and PPSX presentation formats. It provides functions such as managing text, image, shapes, tables, animations, audio and video on slides. It also support exporting presentation slides to EMF, JPG, PDF, XPS, SVG, HTML aand images etc.
+
+A powerpoint component which enables developers to  to create, read, write, and modify PowerPoint documents on .NET4.0, .NET6.0, .NET7.0, NETCore，NETStandard，MonoAndroid， Xamarin.</description>
+    <summary>A powerpoint component which enables developers to  to create, read, write, and modify PowerPoint documents on .NET (2.0/4.0/5.0), NET Core 2.0，NET Core 3.0，MonoAndroid， Xamarin.</summary>
+    <releaseNotes>https://www.e-iceblue.com/news/spire-presentation.html</releaseNotes>
+    <copyright>Copyright © 2025 e-iceblue. All Rights Reserved.</copyright>
+    <language>en-US</language>
+    <tags>PPT, PPTX, PPS, PPSX, PDF, Powerpoint, Image, EMF, JPEG, PNG, ppt-to-jpeg, ppt-to-pdf, ppt-to-png, ppt-to-svg, ppt-to-image, merge-ppt, convert-ppt, presentation, presentation-to-bmp, presentation-to-html, presentation-to-jpeg, presentation-to-pdf, presentation-to-png, presentation-to-svg, presentation-to-image, merge-pptx,C#, Vb.NET</tags>
+    <dependencies>
+      <group targetFramework=".NETCore2.0">
+        <dependency id="System.Drawing.Common" version="4.5.0" />
+        <dependency id="System.Text.Encoding.CodePages" version="4.5.0" />
+        <dependency id="System.Security.Cryptography.Xml" version="4.5.0" />
+        <dependency id="System.Security.Cryptography.Pkcs" version="4.5.0" />
+        <dependency id="System.Security.Permissions" version="4.5.0" />
+      </group>
+      <group targetFramework="net6.0">
+        <dependency id="System.Drawing.Common" version="6.0.0" />
+        <dependency id="System.Text.Encoding.CodePages" version="6.0.0" />
+        <dependency id="System.Security.Cryptography.Xml" version="6.0.0" />
+      </group>
+      <group targetFramework=".NETFramework4.0" />
+      <group targetFramework=".NETFramework4.8" />
+    </dependencies>
+  </metadata>
+</package>

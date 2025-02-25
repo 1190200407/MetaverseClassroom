@@ -3,22 +3,40 @@ using UnityEngine.UI;
 using Photon.Pun;
 using Photon.Realtime;
 using ExitGames.Client.Photon;
-
+using System.IO;
 public class Whiteboard : MonoBehaviourPunCallbacks
 {
-    public string pptPath = "PPTs/PPTDemo";
+    public string pptFilePath;//PPT文件的路径
+    private string outputDir;
     public Texture2D[] pptSlides;
     public Image screen;
     private const byte SlideChangeEventCode = 1; // 事件代码
 
     void Start()
     {
-        pptSlides = Resources.LoadAll<Texture2D>(pptPath);
-        screen = GetComponentInChildren<Image>();
+        
     }
 
     public override void OnJoinedRoom()
     {
+        pptFilePath = "Assets/Resources/PPTs/PPTDemo/test.pptx";
+        outputDir = "PPTs/PPTDemo/PPT_Images";
+        pptFilePath = Path.GetFullPath(pptFilePath);//获取绝对路径
+        if (Directory.GetFiles(Path.Combine(Path.GetDirectoryName(pptFilePath), "PPT_Images")).Length == 0)//如果图片文件夹是空的
+        {
+            pptSlides = PPTToImageConverter.instance.ConvertPPTToImage(pptFilePath);
+            Debug.Log("tmd");
+        }
+        else
+        {
+            pptSlides = Resources.LoadAll<Texture2D>(outputDir);
+        }
+        if (pptSlides.Length == 0)
+        {
+            Debug.Log("不可能");
+        }
+        screen = GetComponentInChildren<Image>();
+        
         base.OnJoinedRoom();
 
         // 如果有已经存在的页码，更新到这个页码

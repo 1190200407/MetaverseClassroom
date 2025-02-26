@@ -6,8 +6,6 @@ using ExitGames.Client.Photon;
 using System.IO;
 public class Whiteboard : MonoBehaviourPunCallbacks
 {
-    public string pptFilePath;//PPT文件的路径
-    private string outputDir;
     public Texture2D[] pptSlides;
     public Image screen;
     private const byte SlideChangeEventCode = 1; // 事件代码
@@ -19,21 +17,16 @@ public class Whiteboard : MonoBehaviourPunCallbacks
 
     public override void OnJoinedRoom()
     {
-        pptFilePath = "Assets/Resources/PPTs/PPTDemo/test.pptx";
-        outputDir = "PPTs/PPTDemo/PPT_Images";
-        pptFilePath = Path.GetFullPath(pptFilePath);//获取绝对路径
-        if (Directory.GetFiles(Path.Combine(Path.GetDirectoryName(pptFilePath), "PPT_Images")).Length == 0)//如果图片文件夹是空的
-        {
-            pptSlides = PPTToImageConverter.instance.ConvertPPTToImage(pptFilePath);
-            Debug.Log("tmd");
-        }
-        else
-        {
-            pptSlides = Resources.LoadAll<Texture2D>(outputDir);
-        }
+        string pptFilePath = ClassManager.instance.pptFilePath;
+        string pptFullPath = Path.Combine(Application.streamingAssetsPath, "PPTs/" + pptFilePath);
+        string outputDir = Path.Combine(Path.GetDirectoryName(pptFullPath), Path.GetFileNameWithoutExtension(pptFilePath) + "_Images"); //一个ppt对应一个文件夹
+
+        //获取ppt图片
+        pptSlides = PPTToImageConverter.instance.ConvertPPTToImage(pptFullPath, outputDir);
+
         if (pptSlides.Length == 0)
         {
-            Debug.Log("不可能");
+            Debug.Log("ppt的页数不正确");
         }
         screen = GetComponentInChildren<Image>();
         

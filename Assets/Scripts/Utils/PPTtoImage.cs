@@ -19,8 +19,9 @@ public class PPTToImageConverter : UnitySingleton<PPTToImageConverter>
             tiffImage.Save(jpgFilePath, System.Drawing.Imaging.ImageFormat.Jpeg);
         }
     }
+
     // 将 PPT 文件转换为图像，并保存在 PPT 所在路径的子文件夹中
-    public Texture2D[] ConvertPPTToImage(string pptFilePath)
+    public Texture2D[] ConvertPPTToImage(string pptFilePath, string outputDir)
     {
         try
         {
@@ -30,15 +31,33 @@ public class PPTToImageConverter : UnitySingleton<PPTToImageConverter>
                 Debug.LogError("PPT 文件未找到: " + pptFilePath);
                 return null;
             }
-
-            // 获取 PPT 所在目录
-            string pptDirectory = Path.GetDirectoryName(pptFilePath);
-            string outputDir = Path.Combine(pptDirectory, "PPT_Images"); // 创建子文件夹
+            Texture2D[] textures;
 
             // 确保输出目录存在
             if (!Directory.Exists(outputDir))
             {
                 Directory.CreateDirectory(outputDir);
+            }
+            // 如果输出目录缓存了图片则直接导出
+            else
+            {
+                string[] paths = Directory.GetFiles(outputDir);
+                if (paths.Length > 0)
+                {
+                    textures = new Texture2D[paths.Length];
+
+                    // 加载 JPG 文件为 Texture2D
+                    for (int i = 0; i < paths.Length; i++)
+                    {
+                        byte[] imageData = File.ReadAllBytes(paths[i]);
+                        Texture2D texture = new Texture2D(1024, 512); // 临时尺寸
+                        texture.LoadImage(imageData); // 将图片数据加载到 Texture2D 中
+                        // 存储 Texture2D 到数组
+                        textures[i] = texture;
+                    }
+
+                    return textures;
+                }
             }
 
             // 创建 Presentation 实例并加载 PPT 文件
@@ -50,7 +69,7 @@ public class PPTToImageConverter : UnitySingleton<PPTToImageConverter>
             Debug.Log($"Total Slides: {slideCount}");
 
             // 创建 Texture2D 数组来存储幻灯片的图像
-            Texture2D[] textures = new Texture2D[slideCount];
+            textures = new Texture2D[slideCount];
             // 遍历幻灯片并保存
             for (int i = 0; i < slideCount; i++)
             {

@@ -7,6 +7,7 @@ public class ClassManager : UnitySingleton<ClassManager>
 {
     public List<PlayerController> players = new List<PlayerController>();
     public bool isInClassroom = true;
+    public string pptFilePath;//PPT文件的路径
     public string currentScene;
 
     private void OnEnable()

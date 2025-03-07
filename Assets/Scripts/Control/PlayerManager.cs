@@ -42,10 +42,6 @@ public class PlayerManager : MonoBehaviourPun
     {
         animator = transform.Find("PlayerVisual").GetComponent<Animator>();
         nameText = GetComponentInChildren<NameText>();
-    }
-
-    void Start()
-    {
         if (isControllable)
         {
             if (GameSettings.instance.isVR)
@@ -56,7 +52,13 @@ public class PlayerManager : MonoBehaviourPun
             {
                 gameObject.AddComponent<WinPlayerController>();
             }
+        }
+    }
 
+    void Start()
+    {
+        if (isControllable)
+        {
             nameText = GetComponentInChildren<NameText>();
 
             if (!photonView.IsMine) 

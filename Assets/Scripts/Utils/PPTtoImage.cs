@@ -3,6 +3,7 @@ using Spire.Presentation;
 using System.Drawing;
 using System.IO;
 using UnityEngine;
+using System.Linq;
 
 public class PPTToImageConverter : UnitySingleton<PPTToImageConverter>
 {
@@ -41,7 +42,10 @@ public class PPTToImageConverter : UnitySingleton<PPTToImageConverter>
             // 如果输出目录缓存了图片则直接导出
             else
             {
-                string[] paths = Directory.GetFiles(outputDir);
+                string[] paths = Directory.GetFiles(outputDir)
+                          .Where(file => !file.EndsWith(".meta"))
+                          .ToArray();
+                          
                 if (paths.Length > 0)
                 {
                     textures = new Texture2D[paths.Length];

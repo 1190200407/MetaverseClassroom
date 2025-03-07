@@ -8,7 +8,9 @@ using Unity.VisualScripting;
 
 public class PlayerController : MonoBehaviourPunCallbacks
 {
+    public static List<PlayerController> allPlayers = new List<PlayerController>();
     public static PlayerController localPlayer;
+
     public Camera playerCamera = null;
     public Animator anim;
 
@@ -36,13 +38,13 @@ public class PlayerController : MonoBehaviourPunCallbacks
         {
             if (photonView.IsMine)
             {
-                photonView.RPC("SetCurrentScene", RpcTarget.AllBuffered, value);
+                photonView.RPC("SetCurrentScene", RpcTarget.OthersBuffered, value);
 
                 transform.position = SceneLoader.instance.PathToSceneObject[value].transform.position;
                 //切换场景后，更新player的状态
-                foreach (var player in ClassManager.instance.players)
+                foreach (var player in allPlayers)
                 {
-                    if (player != this && player.currentScene == value)
+                    if (player == this || player.currentScene == value)
                     {
                         player.rb.isKinematic = isSitting;
                     }
@@ -54,27 +56,75 @@ public class PlayerController : MonoBehaviourPunCallbacks
             }
         }
     }
+    
+    private bool isStudent;
+    public bool IsStudent
+    {
+        get { return isStudent; }
+        set
+        {
+            isStudent = value;
+        }
+    }
+    protected PermissionHolder permissionHolder = new PermissionHolder();
 
     protected GameObject redDot;
     protected bool isShowingRedDot = false;
 
-    protected virtual void Start()
+    private void Awake()
     {
         if (photonView.IsMine)
             localPlayer = this;
+        allPlayers.Add(this);
+            
         //将自己的名字牌和模型隐藏
         anim = GetComponentInChildren<Animator>();
         rb = GetComponent<Rigidbody>();
+        isStudent = PlayerPrefs.GetInt("IsStudent", 1) == 1;
+    }
+
+    protected virtual void Start()
+    {
     }
     
+    private void OnDestroy()
+    {
+        allPlayers.Remove(this);
+    }
+
     public void JoinRoom()
     {
+        IsStudent = PlayerPrefs.GetInt("IsStudent", 1) == 1;
         CurrentScene = ClassManager.instance.currentScene;
         EventHandler.Trigger(new PlayerJoinRoomEvent() { player = this });
 
         // 初始化时隐藏红点
         CreateRedDot();
         isShowingRedDot = false;
+
+        // 获取权限, 并同步给其他客户端
+        GetPermission();
+    }
+
+    private void GetPermission()
+    {
+        // 学生有聊天和红点的权限
+        if (isStudent)
+        {
+            permissionHolder.SetPermission(Permission.Chat | Permission.RedDot);
+        }
+        // 老师有所有权限
+        else
+        {
+            permissionHolder.SetAllPermission();
+        }
+        // 同步权限给其他客户端
+        photonView.RPC("SetPermission", RpcTarget.OthersBuffered, permissionHolder.GetPermission());
+    }
+
+    public bool HavePermission(Permission permission)
+    {
+        return permissionHolder.HasPermission(permission);
     }
 
     public void LeftRoom()
@@ -117,7 +167,7 @@ public class PlayerController : MonoBehaviourPunCallbacks
     {
         currentScene = sceneName;
 
-        if (sceneName != localPlayer.currentScene)
+        if (sceneName != ClassManager.instance.currentScene)
         {
             rb.isKinematic = true;
         }
@@ -125,5 +175,11 @@ public class PlayerController : MonoBehaviourPunCallbacks
         {
             rb.isKinematic = isSitting;
         }
+    }
+
+    [PunRPC]
+    public void SetPermission(int permission)
+    {
+        permissionHolder.SetPermission((Permission)permission);
     }
 }

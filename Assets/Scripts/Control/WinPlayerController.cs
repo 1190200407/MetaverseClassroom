@@ -96,21 +96,31 @@ public class WinPlayerController : PlayerController
         // 更新红点的位置
         if (redDot != null)
         {
-            // 检测右键按下和松开
-            if (Input.GetMouseButtonDown(1)) // 右键按下
+            // 没有权限时，隐藏红点
+            if (!HavePermission(Permission.RedDot) && isShowingRedDot)
             {
-                isShowingRedDot = true;
-            }
-
-            if (Input.GetMouseButtonUp(1)) // 右键松开
-            {
+                redDot.SetActive(false);
                 isShowingRedDot = false;
-                redDot.transform.position = Vector3.down * 10000f;
             }
-
-            if (isShowingRedDot)
+            
+            if (HavePermission(Permission.RedDot))
             {
-                UpdateRedDotPosition();
+                // 检测右键按下和松开
+                if (Input.GetMouseButtonDown(1)) // 右键按下
+                {
+                    isShowingRedDot = true;
+                }
+
+                if (Input.GetMouseButtonUp(1)) // 右键松开
+                {
+                    isShowingRedDot = false;
+                    redDot.transform.position = Vector3.down * 10000f;
+                }
+
+                if (isShowingRedDot)
+                {
+                    UpdateRedDotPosition();
+                }
             }
         }
     }

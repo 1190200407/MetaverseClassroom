@@ -17,6 +17,12 @@ public class StartPanel : BasePanel
     private Button startButton;
     private Button backButton;
     private Button enterButton;
+
+    private Image studentFrame;
+    private Button studentButton;
+    private Image teacherFrame;
+    private Button teacherButton;
+    
     private TMP_InputField nameInput;
 
     private Dictionary<string, Image> nameIconDict;
@@ -37,6 +43,14 @@ public class StartPanel : BasePanel
         enterButton = UIMethods.instance.GetOrAddComponentInChild<Button>(ActiveObj, "EnterButton");
         nameInput = UIMethods.instance.GetOrAddComponentInChild<TMP_InputField>(ActiveObj, "NameInputField");
         nameInput.text = PlayerPrefs.GetString("NickName", string.Empty);
+
+        studentFrame = UIMethods.instance.GetOrAddComponentInChild<Image>(ActiveObj, "Student");
+        teacherFrame = UIMethods.instance.GetOrAddComponentInChild<Image>(ActiveObj, "Teacher");
+        studentButton = UIMethods.instance.GetOrAddComponentInChild<Button>(ActiveObj, "StudentButton");
+        teacherButton = UIMethods.instance.GetOrAddComponentInChild<Button>(ActiveObj, "TeacherButton");
+        studentButton.onClick.AddListener(() => ChangeStatus(true));
+        teacherButton.onClick.AddListener(() => ChangeStatus(false));
+        ChangeStatus(PlayerPrefs.GetInt("IsStudent", 1) == 1);
 
         nameIconDict = new Dictionary<string, Image>();
         Transform content = ActiveObj.transform.Find("Room/SelectPanel/Scroll View/Viewport/Content");
@@ -162,5 +176,12 @@ public class StartPanel : BasePanel
             nameIconDict[chosenName].enabled = true;
         player.CharacterName = chosenName;
         PlayerPrefs.SetString("ChosenCharacter", chosenName);
+    }
+
+    public void ChangeStatus(bool isStudent)
+    {
+        teacherFrame.enabled = !isStudent;
+        studentFrame.enabled = isStudent;
+        PlayerPrefs.SetInt("IsStudent", isStudent ? 1 : 0);
     }
 }

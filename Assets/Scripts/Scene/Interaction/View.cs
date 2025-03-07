@@ -13,6 +13,9 @@ public class View : InteractionScript
     public override void OnSelectEnter()
     {
         base.OnSelectEnter();
-        whiteboard.ChangeSlide(1);
+        if (PlayerController.localPlayer.HavePermission(Permission.SwitchPPT))
+        {
+            whiteboard.ChangeSlide(1);
+        }
     }
 }

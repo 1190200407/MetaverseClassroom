@@ -54,11 +54,17 @@ public class PausePanel : BasePanel
 
     public void LastPage()
     {
-        EventHandler.Trigger(new ChangeSlideEvent{ changeNum = -1 });
+        if (PlayerController.localPlayer.HavePermission(Permission.SwitchPPT))
+        {
+            EventHandler.Trigger(new ChangeSlideEvent{ changeNum = -1 });
+        }
     }
 
     public void NextPage()
     {
-        EventHandler.Trigger(new ChangeSlideEvent{ changeNum = 1 });
+        if (PlayerController.localPlayer.HavePermission(Permission.SwitchPPT))
+        {
+            EventHandler.Trigger(new ChangeSlideEvent{ changeNum = 1 });
+        }
     }
 }

@@ -1,10 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using Photon.Pun;
+using System.IO;
 using UnityEngine;
 
 public class PlayerManager : MonoBehaviourPun
 {
+    private static string savePath => Path.Combine(Application.persistentDataPath, "playerData.json");
     public bool isControllable = false;
     public Animator animator;
 
@@ -38,6 +40,35 @@ public class PlayerManager : MonoBehaviourPun
         }
     }
 
+    /// <summary>
+    /// 保存用户数据
+    /// </summary>
+    /// <param name="data"></param>
+    public static void SaveData(PlayerData data)
+    {
+        string json = JsonUtility.ToJson(data, true);
+        File.WriteAllText(savePath, json);
+        Debug.Log("玩家数据已保存：" + savePath);
+    }
+    
+    /// <summary>
+    /// 加载用户数据
+    /// </summary>
+    /// <returns></returns>
+    public static PlayerData LoadData()
+    {
+        if (File.Exists(savePath))
+        {
+            string json = File.ReadAllText(savePath);
+            return JsonUtility.FromJson<PlayerData>(json);
+        }
+        else
+        {
+            Debug.LogWarning("未找到存档文件，使用默认数据");
+            return new PlayerData(); // 返回默认数据
+        }
+    }
+    
     void Awake()
     {
         animator = transform.Find("PlayerVisual").GetComponent<Animator>();

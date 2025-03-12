@@ -11,6 +11,8 @@ public class PlayerController : MonoBehaviourPunCallbacks
     public static List<PlayerController> allPlayers = new List<PlayerController>();
     public static PlayerController localPlayer;
 
+    protected static PlayerData playerData; //用户的基本参数
+    
     public Camera playerCamera = null;
     public Animator anim;
 
@@ -85,6 +87,32 @@ public class PlayerController : MonoBehaviourPunCallbacks
 
     protected virtual void Start()
     {
+        initialize();
+    }
+
+    public static PlayerData GetData()
+    {
+        return playerData;
+    }
+    /// <summary>
+    /// 初始化用户的基本参数
+    /// </summary>
+    protected virtual void initialize()
+    {
+        playerData = PlayerManager.LoadData();
+    }
+    /// <summary>
+    /// 修改当前读取的玩家参数
+    /// </summary>
+    /// <param name="data"></param>
+    protected void changePlayerData(PlayerChangeDataEvent @event)
+    {
+        changeData(@event.data);
+    }
+
+    protected virtual void changeData(PlayerData data)
+    {
+        playerData = data;
     }
     
     private void OnDestroy()
@@ -96,6 +124,7 @@ public class PlayerController : MonoBehaviourPunCallbacks
     {
         IsStudent = PlayerPrefs.GetInt("IsStudent", 1) == 1;
         CurrentScene = ClassManager.instance.currentScene;
+        EventHandler.Register<PlayerChangeDataEvent>(changePlayerData); //注册用户修改基本参数事件
         EventHandler.Trigger(new PlayerJoinRoomEvent() { player = this });
 
         // 初始化时隐藏红点
@@ -129,7 +158,9 @@ public class PlayerController : MonoBehaviourPunCallbacks
 
     public void LeftRoom()
     {
+        EventHandler.Unregister<PlayerChangeDataEvent>(changePlayerData); //注销用户修改基本参数事件
         EventHandler.Trigger(new PlayerLeftRoomEvent() { player = this });
+        PlayerManager.SaveData(playerData);
         DestroyRedDot();
     }
 

@@ -11,9 +11,9 @@ public class WinPlayerController : PlayerController
     public float minY = -60.0f;
     public float maxY = 60.0f;
 
-    public float sens = 500.0f;
+    public float cameraSensitivity;
 
-    public float speed = 5f;
+    public float moveSpeed;
 
     float rotationY = 0.0f;
     float rotationX = 0.0f;
@@ -42,6 +42,20 @@ public class WinPlayerController : PlayerController
         pause = false;
     }
 
+    protected override void initialize()
+    {
+        base.initialize();
+        cameraSensitivity = playerData.cameraSensitivity;
+        moveSpeed = playerData.moveSpeed;
+    }
+
+    protected override void changeData(PlayerData data)
+    {
+        base.changeData(data);
+        cameraSensitivity = data.cameraSensitivity;
+        moveSpeed = data.moveSpeed;
+    }
+    
     public override void OnEnable() {
         base.OnEnable();
         Cursor.visible = false;
@@ -75,8 +89,8 @@ public class WinPlayerController : PlayerController
             var y = Input.GetAxis("Mouse Y");
             if (x != 0 || y != 0)
             {
-                rotationX += x * sens * Time.deltaTime;
-                rotationY += y * sens * Time.deltaTime;
+                rotationX += x * cameraSensitivity * 5 * Time.deltaTime;
+                rotationY += y * cameraSensitivity * 5 * Time.deltaTime;
                 rotationY = Mathf.Clamp(rotationY, minY, maxY);
                 transform.localEulerAngles = new Vector3(0, rotationX, 0);
                 playerCamera.transform.localEulerAngles = new Vector3(-rotationY, 0, 0);
@@ -131,7 +145,7 @@ public class WinPlayerController : PlayerController
         if (!pause && !isSitting) {
             var x = Input.GetAxis("Horizontal");
             var y = Input.GetAxis("Vertical");
-            Vector3 move = (Vector3.right * x + Vector3.forward * y) * speed / 50;
+            Vector3 move = (Vector3.right * x + Vector3.forward * y) * moveSpeed / 500;
             rb.MovePosition(transform.position + transform.TransformDirection(move));
             anim.SetFloat("MoveX", x);
             anim.SetFloat("MoveY", y);

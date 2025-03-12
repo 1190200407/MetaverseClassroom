@@ -25,6 +25,10 @@ public struct PlayerLeftRoomEvent
     public PlayerController player;
 }
 
+public struct PlayerChangeDataEvent
+{
+    public PlayerData data;
+}
 public struct TransitionOpenEndEvent {}
 
 public struct TransitionCloseEndEvent {}

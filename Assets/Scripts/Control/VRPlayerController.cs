@@ -8,9 +8,9 @@ public class VRPlayerController : PlayerController
 {
     private XRInputSubsystem xrInputSubsystem;
     public Transform headTransform;
-    public float moveSpeed = 5f; // 移动速度
-    public float rotationSpeed = 90f; // 旋转速度
-
+    public float moveSpeed; // 移动速度
+    public float rotationSpeed; // 旋转速度
+    
     float moveHoldTimer = 0f;
     float moveHoldThreshold = 0.5f;
 
@@ -34,6 +34,19 @@ public class VRPlayerController : PlayerController
         }
     }
 
+    protected override void initialize()
+    {
+        base.initialize();
+        rotationSpeed = playerData.cameraSensitivity;
+        moveSpeed = playerData.moveSpeed;
+    }
+
+    protected override void changeData(PlayerData data)
+    {
+        base.changeData(data);
+        rotationSpeed = data.cameraSensitivity;
+        moveSpeed = data.moveSpeed;
+    }
     void Update()
     {
         if (!photonView.IsMine) return;
@@ -52,7 +65,7 @@ public class VRPlayerController : PlayerController
             if (!isSitting)
             {
                 Vector3 moveDirection = new Vector3(leftStickInput.x, 0, leftStickInput.y).normalized;
-                transform.Translate(moveDirection * moveSpeed * Time.deltaTime, Space.Self);
+                transform.Translate(moveDirection * moveSpeed / 10 * Time.deltaTime, Space.Self);
             }
             else
             {
@@ -73,7 +86,7 @@ public class VRPlayerController : PlayerController
         // 右摇杆控制旋转
         if (rightStickInput.x != 0)
         {
-            float rotateY = rightStickInput.x * rotationSpeed * Time.deltaTime;
+            float rotateY = rightStickInput.x * rotationSpeed * 2 * Time.deltaTime;
             transform.Rotate(0, rotateY, 0);
         }
     }

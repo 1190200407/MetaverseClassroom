@@ -18,10 +18,15 @@ public class InteractionManager : UnitySingleton<InteractionManager>
             if (element != target)  // 新的目标元素
             {
                 // 如果先前有目标对象，触发 `OnHoverExit` 事件
-                target?.OnHoverExit();
+                if (target != null)
+                {
+                    //Debug.Log("OnHoverExit" + " " + target.name + " Type:" + target.interactType);
+                    target.OnHoverExit();
+                }
                 target = element;
 
                 // 对新的目标对象，触发 `OnHoverEnter` 事件
+                //Debug.Log("OnHoverEnter" + " " + target.name + " Type:" + target.interactType);
                 target.OnHoverEnter();
             }
         }
@@ -30,6 +35,7 @@ public class InteractionManager : UnitySingleton<InteractionManager>
             // 没有命中对象时，触发 `OnHoverExit` 并重置目标
             if (target != null)
             {
+                //Debug.Log("OnHoverExit" + " " + target.name + " Type:" + target.interactType);
                 target.OnHoverExit();
                 target = null;
             }
@@ -39,11 +45,13 @@ public class InteractionManager : UnitySingleton<InteractionManager>
         if (Input.GetMouseButtonDown(0) && target != null)
         {
             // 左键点击，触发 `OnSelectEnter` 事件
+            //Debug.Log("OnSelectEnter" + " " + target.name + " Type:" + target.interactType);
             target.OnSelectEnter();
         }
         if (Input.GetMouseButtonUp(0) && target != null)
         {
             // 左键点击，触发 `OnSelectEnter` 事件
+            //Debug.Log("OnSelectExit" + " " + target.name + " Type:" + target.interactType);
             target.OnSelectExit();
         }
     }
@@ -54,7 +62,7 @@ public class InteractionManager : UnitySingleton<InteractionManager>
         if (RaycastClosed) return null;
 
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-        RaycastHit[] hits = Physics.RaycastAll(ray);
+        RaycastHit[] hits = Physics.RaycastAll(ray, 15f);
         
         float minDistance = float.MaxValue;
         GameObject closestHitObject = null;

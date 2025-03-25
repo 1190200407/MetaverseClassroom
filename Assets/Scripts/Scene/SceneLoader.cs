@@ -127,12 +127,13 @@ public class SceneLoader : UnitySingleton<SceneLoader>
                 sceneElement.transform.SetParent(SceneLoader.instance.IdToElement[xmlPath + parent_id].transform);
             else
                 sceneElement.transform.SetParent(newSceneObject.transform);
-            sceneElement.SetInteactionType(interactionType, interactionContent);
-            
+                
             elementObject.tag = tag;
             elementObject.transform.localPosition = position;
             elementObject.transform.eulerAngles = rotation;
             elementObject.transform.localScale = scale;
+            sceneElement.SetInteactionType(interactionType, interactionContent);
+            
         }
 
         ChangeSceneObject(newSceneObject);

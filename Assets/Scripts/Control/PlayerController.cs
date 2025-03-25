@@ -11,6 +11,8 @@ public class PlayerController : MonoBehaviourPunCallbacks
     public static List<PlayerController> allPlayers = new List<PlayerController>();
     public static PlayerController localPlayer;
 
+    public string playerName; //用户的名称（ID）
+    
     protected static PlayerData playerData; //用户的基本参数
     
     public Camera playerCamera = null;
@@ -40,6 +42,7 @@ public class PlayerController : MonoBehaviourPunCallbacks
         {
             if (photonView.IsMine)
             {
+                //其他客户端同步状态
                 photonView.RPC("SetCurrentScene", RpcTarget.OthersBuffered, value);
 
                 transform.position = SceneLoader.instance.PathToSceneObject[value].transform.position;
@@ -60,6 +63,12 @@ public class PlayerController : MonoBehaviourPunCallbacks
     }
     
     private bool isStudent;
+
+    public void ChangeCurrentScene()
+    {
+        ClassManager.instance.StartSceneTransition();
+    }
+    
     public bool IsStudent
     {
         get { return isStudent; }
@@ -77,8 +86,10 @@ public class PlayerController : MonoBehaviourPunCallbacks
     {
         if (photonView.IsMine)
             localPlayer = this;
+        
+        playerName = PlayerPrefs.GetString("NickName"); //标识用户姓名
         allPlayers.Add(this);
-            
+        
         //将自己的名字牌和模型隐藏
         anim = GetComponentInChildren<Animator>();
         rb = GetComponent<Rigidbody>();
@@ -94,13 +105,18 @@ public class PlayerController : MonoBehaviourPunCallbacks
     {
         return playerData;
     }
+    
     /// <summary>
     /// 初始化用户的基本参数
     /// </summary>
     protected virtual void initialize()
     {
-        playerData = PlayerManager.LoadData();
+        if (photonView.IsMine)
+        {
+            playerData = PlayerManager.LoadData();
+        }
     }
+    
     /// <summary>
     /// 修改当前读取的玩家参数
     /// </summary>
@@ -112,7 +128,8 @@ public class PlayerController : MonoBehaviourPunCallbacks
 
     protected virtual void changeData(PlayerData data)
     {
-        playerData = data;
+        if (photonView.IsMine)
+            playerData = data;
     }
     
     private void OnDestroy()

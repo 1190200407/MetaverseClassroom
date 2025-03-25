@@ -2,13 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Android;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 public class PausePanel : BasePanel
 {
-    private PlayerData playerData = new PlayerData();
-    private bool isSaved = false; //是否保存过
+    private PlayerData playerData = new PlayerData(50,50,50);
     
     private Button changeSceneButton;
     private Button lastPageButton;
@@ -123,13 +123,17 @@ public class PausePanel : BasePanel
 
     private void RestoreDefaults()
     {
-        EventHandler.Trigger(new PlayerChangeDataEvent() { data = new PlayerData() });
+        EventHandler.Trigger(new PlayerChangeDataEvent() { data = new PlayerData(50,50,50) });
         SetUi();
     }
-    
+
     public void ChangeScene()
     {
-        ClassManager.instance.StartSceneTransition();
+        if (PlayerController.localPlayer.HavePermission(Permission.ChangeScene))
+        {
+            UIManager.instance.Pop(false);
+            UIManager.instance.Push(new ChoosePlayerPanel(new UIType("Panels/ChoosePlayerPanel", "ChoosePlayerPanel")));
+        }
     }
 
     public void LastPage()

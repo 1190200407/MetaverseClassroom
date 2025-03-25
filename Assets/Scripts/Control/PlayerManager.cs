@@ -65,7 +65,7 @@ public class PlayerManager : MonoBehaviourPun
         else
         {
             Debug.LogWarning("未找到存档文件，使用默认数据");
-            return new PlayerData(); // 返回默认数据
+            return new PlayerData(50,50,50); // 返回默认数据
         }
     }
     

@@ -8,6 +8,7 @@ public enum Permission
     Chat = 2,       // 聊天
     RedDot = 4,     // 红点
     ControlChat = 8, // 控制聊天
+    ChangeScene = 16, // 控制场景切换
 }
 
 public class PermissionHolder

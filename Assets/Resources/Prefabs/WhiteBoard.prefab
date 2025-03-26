@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 4929667820996047443}
   m_Layer: 0
   m_Name: WhiteBoard
-  m_TagString: Untagged
+  m_TagString: Whiteboard
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -120,7 +120,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6a2e6b6405574f848924c75c32dafcfc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pptPath: PPTs/PPTDemo
   pptSlides: []
   screen: {fileID: 0}
 --- !u!1 &3006347818355864198

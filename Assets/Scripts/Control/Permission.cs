@@ -9,6 +9,7 @@ public enum Permission
     RedDot = 4,     // 红点
     ControlChat = 8, // 控制聊天
     ChangeScene = 16, // 控制场景切换
+    StartActivity = 32, // 开始活动
 }
 
 public class PermissionHolder

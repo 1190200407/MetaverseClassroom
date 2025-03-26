@@ -10,7 +10,7 @@ public class PausePanel : BasePanel
 {
     private PlayerData playerData = new PlayerData(50,50,50);
     
-    private Button changeSceneButton;
+    private Button activityButton;
     private Button lastPageButton;
     private Button nextPageButton;
     private Button saveButton;
@@ -34,8 +34,8 @@ public class PausePanel : BasePanel
     {
         base.OnStart();
         // 绑定按钮
-        changeSceneButton = UIMethods.instance.GetOrAddComponentInChild<Button>(ActiveObj, "ChangeSceneButton");
-        changeSceneButton.onClick.AddListener(ChangeScene);
+        activityButton = UIMethods.instance.GetOrAddComponentInChild<Button>(ActiveObj, "ActivityButton");
+        activityButton.onClick.AddListener(StartActivity);
         saveButton = UIMethods.instance.GetOrAddComponentInChild<Button>(ActiveObj, "SaveButton");
         saveButton.onClick.AddListener(SaveData);
         restoreButton = UIMethods.instance.GetOrAddComponentInChild<Button>(ActiveObj, "RestoreButton");
@@ -127,12 +127,12 @@ public class PausePanel : BasePanel
         SetUi();
     }
 
-    public void ChangeScene()
+    public void StartActivity()
     {
-        if (PlayerController.localPlayer.HavePermission(Permission.ChangeScene))
+        if (PlayerController.localPlayer.HavePermission(Permission.StartActivity))
         {
             UIManager.instance.Pop(false);
-            UIManager.instance.Push(new ChoosePlayerPanel(new UIType("Panels/ChoosePlayerPanel", "ChoosePlayerPanel")));
+            ClassManager.instance.StartActivity("EnglishTalking");
         }
     }
 

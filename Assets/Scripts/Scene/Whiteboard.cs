@@ -4,15 +4,110 @@ using Photon.Pun;
 using Photon.Realtime;
 using ExitGames.Client.Photon;
 using System.IO;
+
+public enum WhiteboardMode
+{
+    PPT,
+    Image,
+    Video,
+    Sound,
+    Monitor,
+}
+
 public class Whiteboard : MonoBehaviourPunCallbacks
 {
-    public Texture2D[] pptSlides;
     public Image screen;
-    private const byte SlideChangeEventCode = 1; // 事件代码
 
-    void Start()
+    [Header("PPT")]
+    public Texture2D[] pptSlides;
+
+    [Header("Monitor")]
+    public Camera monitorCamera;
+    public RenderTexture monitorTexture;
+    
+    // 用于监视器模式的可重用资源
+    private Texture2D monitorTexture2D;
+    private Sprite monitorSprite;   
+    
+    private WhiteboardMode currentMode;
+    public WhiteboardMode CurrentMode
     {
-        
+        get { return currentMode; }
+        set
+        {
+            currentMode = value;
+            switch (currentMode)
+            {
+                case WhiteboardMode.PPT:
+                    UpdateSlideTexture((int)PhotonNetwork.CurrentRoom.CustomProperties["CurrentSlideIndex"]);
+                    break;
+                case WhiteboardMode.Monitor:
+                    // 取消原监视器的RenderTexture
+                    if (monitorCamera != null)
+                        monitorCamera.targetTexture = null;
+
+                    // 获取监视器
+                    foreach (var player in PlayerController.allPlayers)
+                    {
+                        if (!player.IsStudent)
+                        {
+                            monitorCamera = player.transform.Find("Monitor").GetComponent<Camera>();
+                            break;
+                        }
+                    }
+
+                    // 设置监视器的RenderTexture
+                    monitorCamera.targetTexture = monitorTexture;
+                    break;
+            }
+
+            if (currentMode != WhiteboardMode.Monitor && monitorCamera != null)
+            {
+                monitorCamera.targetTexture = null;
+            }
+        }
+    }
+
+    private void Update()
+    {
+        if (currentMode == WhiteboardMode.Monitor)
+        {
+            // 如果还没有创建Texture2D，创建一个
+            if (monitorTexture2D == null || monitorTexture2D.width != monitorTexture.width || monitorTexture2D.height != monitorTexture.height)
+            {
+                if (monitorTexture2D != null)
+                {
+                    Destroy(monitorTexture2D);
+                }
+                monitorTexture2D = new Texture2D(monitorTexture.width, monitorTexture.height);
+            }
+
+            // 更新Texture2D
+            RenderTexture.active = monitorTexture;
+            monitorTexture2D.ReadPixels(new Rect(0, 0, monitorTexture.width, monitorTexture.height), 0, 0);
+            monitorTexture2D.Apply();
+
+            // 创建新的Sprite
+            if (monitorSprite != null)
+            {
+                Destroy(monitorSprite);
+            }
+            monitorSprite = Sprite.Create(monitorTexture2D, new Rect(0, 0, monitorTexture2D.width, monitorTexture2D.height), new Vector2(0.5f, 0.5f));
+            screen.sprite = monitorSprite;
+        }
+    }
+
+    private void OnDestroy()
+    {
+        // 清理资源
+        if (monitorTexture2D != null)
+        {
+            Destroy(monitorTexture2D);
+        }
+        if (monitorSprite != null)
+        {
+            Destroy(monitorSprite);
+        }
     }
 
     public override void OnJoinedRoom()
@@ -69,7 +164,7 @@ public class Whiteboard : MonoBehaviourPunCallbacks
     {
         // 创建事件内容
         object[] content = new object[] { newIndex };
-        PhotonNetwork.RaiseEvent(SlideChangeEventCode, content, RaiseEventOptions.Default, SendOptions.SendReliable);
+        PhotonNetwork.RaiseEvent(EventCodes.SlideChangeEventCode, content, RaiseEventOptions.Default, SendOptions.SendReliable);
     }
 
     public override void OnEnable()
@@ -90,7 +185,7 @@ public class Whiteboard : MonoBehaviourPunCallbacks
 
     private void OnEvent(EventData photonEvent)
     {
-        if (photonEvent.Code == SlideChangeEventCode)
+        if (photonEvent.Code == EventCodes.SlideChangeEventCode)
         {
             object[] data = (object[])photonEvent.CustomData;
             int newIndex = (int)data[0];

@@ -5,6 +5,7 @@ using Photon.Pun;
 using System;
 using Photon.Realtime;
 using Unity.VisualScripting;
+using ExitGames.Client.Photon;
 
 public class PlayerController : MonoBehaviourPunCallbacks
 {
@@ -63,11 +64,6 @@ public class PlayerController : MonoBehaviourPunCallbacks
     }
     
     private bool isStudent;
-
-    public void ChangeCurrentScene()
-    {
-        ClassManager.instance.StartSceneTransition();
-    }
     
     public bool IsStudent
     {
@@ -85,9 +81,15 @@ public class PlayerController : MonoBehaviourPunCallbacks
     private void Awake()
     {
         if (photonView.IsMine)
+        {
             localPlayer = this;
+            playerName = PlayerPrefs.GetString("NickName"); //标识用户姓名
+        }
+        else
+        {
+            playerName = photonView.Owner.NickName;
+        }
         
-        playerName = PlayerPrefs.GetString("NickName"); //标识用户姓名
         allPlayers.Add(this);
         
         //将自己的名字牌和模型隐藏
@@ -135,6 +137,8 @@ public class PlayerController : MonoBehaviourPunCallbacks
     private void OnDestroy()
     {
         allPlayers.Remove(this);
+        // 取消注册事件处理器
+        PhotonNetwork.NetworkingClient.EventReceived -= OnEvent;
     }
 
     public void JoinRoom()
@@ -150,6 +154,43 @@ public class PlayerController : MonoBehaviourPunCallbacks
 
         // 获取权限, 并同步给其他客户端
         GetPermission();
+        
+        // 注册事件处理器
+        PhotonNetwork.NetworkingClient.EventReceived += OnEvent;
+    }
+
+    public void LeftRoom()
+    {
+        EventHandler.Unregister<PlayerChangeDataEvent>(changePlayerData); //注销用户修改基本参数事件
+        EventHandler.Trigger(new PlayerLeftRoomEvent() { player = this });
+        PlayerManager.SaveData(playerData);
+        DestroyRedDot();
+
+        // 注销事件处理器
+        PhotonNetwork.NetworkingClient.EventReceived -= OnEvent;
+    }
+
+    private void OnEvent(EventData photonEvent)
+    {
+        // 收到其他客户端的场景切换请求
+        if (photonEvent.Code == EventCodes.ChangeSceneEventCode)
+        {
+            object[] data = (object[])photonEvent.CustomData;
+            int[] targetViewIDs = (int[])data[0];
+            string sceneName = (string)data[1];
+            Debug.Log("收到场景切换请求，场景名：" + sceneName);
+
+            // 检查当前玩家是否在目标列表中
+            foreach (int viewID in targetViewIDs)
+            {
+                if (photonView.ViewID == viewID)
+                {
+                    // 在当前客户端上主动调用ChangeScene
+                    ChangeScene(sceneName);
+                    break;
+                }
+            }
+        }
     }
 
     private void GetPermission()
@@ -171,14 +212,6 @@ public class PlayerController : MonoBehaviourPunCallbacks
     public bool HavePermission(Permission permission)
     {
         return permissionHolder.HasPermission(permission);
-    }
-
-    public void LeftRoom()
-    {
-        EventHandler.Unregister<PlayerChangeDataEvent>(changePlayerData); //注销用户修改基本参数事件
-        EventHandler.Trigger(new PlayerLeftRoomEvent() { player = this });
-        PlayerManager.SaveData(playerData);
-        DestroyRedDot();
     }
 
     private void CreateRedDot()
@@ -209,6 +242,14 @@ public class PlayerController : MonoBehaviourPunCallbacks
         anim.SetFloat("MoveY", 0);
     }
 
+    public void ChangeScene(string sceneName)
+    {
+        // 如果是本地玩家，直接调用场景切换
+        if (photonView.IsMine)
+        {
+            ClassManager.instance.StartSceneTransition(sceneName);
+        }
+    }
 
     [PunRPC]
     public void SetCurrentScene(string sceneName)

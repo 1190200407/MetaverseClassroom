@@ -985,7 +985,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\u5207\u6362\u573A\u666F"
+  m_text: "\u5F00\u59CB\u6D3B\u52A8"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: d273698b6e2289d4eab1eb1939b6bdd4, type: 2}
   m_sharedMaterial: {fileID: 9020894382102500418, guid: d273698b6e2289d4eab1eb1939b6bdd4, type: 2}
@@ -2617,7 +2617,7 @@ GameObject:
   - component: {fileID: 2994783223748683978}
   - component: {fileID: 8340899474378102573}
   m_Layer: 5
-  m_Name: ChangeSceneButton
+  m_Name: ActivityButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

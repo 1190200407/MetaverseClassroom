@@ -4,6 +4,9 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using Photon.Pun;
+using Photon.Realtime;
+using ExitGames.Client.Photon;
 
 public class ChoosePlayerPanel : BasePanel
 {
@@ -16,7 +19,7 @@ public class ChoosePlayerPanel : BasePanel
     private Button exitButton;
 
     private GameObject content;
-    
+
     public ChoosePlayerPanel(UIType uiType) : base(uiType)
     {
     }
@@ -64,11 +67,34 @@ public class ChoosePlayerPanel : BasePanel
     /// </summary>
     private void SaveChoice()
     {
-        UIManager.instance.Pop(false);
-        foreach (var player in ChosenPlayers)
+        if (ChosenPlayers.Count == 0)
         {
-            player.ChangeCurrentScene();
+            Debug.Log("没有选择任何学生");
+            return;
         }
+        
+        // 收集所有选中玩家的ViewID
+        int[] targetViewIDs = new int[ChosenPlayers.Count];
+        for (int i = 0; i < ChosenPlayers.Count; i++)
+        {
+            targetViewIDs[i] = ChosenPlayers[i].photonView.ViewID;
+        }
+
+        // 获取目标场景名
+        string sceneName = ClassManager.instance.isInClassroom ? 
+            ClassManager.instance.currentActivity.sceneName : "Classroom";
+        
+        // 创建事件内容，一次性发送所有信息
+        object[] content = new object[] { targetViewIDs, sceneName };
+        Debug.Log("发送场景切换请求，场景名：" + sceneName + "，目标ViewID：" + targetViewIDs[0]);
+        RaiseEventOptions raiseEventOptions = new RaiseEventOptions { Receivers = ReceiverGroup.All };
+        PhotonNetwork.RaiseEvent(EventCodes.ChangeSceneEventCode, content, raiseEventOptions, SendOptions.SendReliable);
+    
+        // 选好学生后，开始活动
+        ClassManager.instance.currentActivity.Start();
+
+        // 关闭选择面板
+        UIManager.instance.Pop(false);
     }
 
     /// <summary>

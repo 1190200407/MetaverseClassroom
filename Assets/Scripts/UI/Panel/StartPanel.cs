@@ -126,7 +126,8 @@ public class StartPanel : BasePanel
         PhotonNetwork.NickName = playerName;
         ExitGames.Client.Photon.Hashtable hashtable = new ExitGames.Client.Photon.Hashtable()
         {
-            {"CharacterName", chosenName}
+            {"CharacterName", chosenName},
+            {"IsStudent", PlayerPrefs.GetInt("IsStudent", 1) == 1}
         };
         PhotonNetwork.SetPlayerCustomProperties(hashtable);
         PlayerPrefs.SetString("NickName", playerName);

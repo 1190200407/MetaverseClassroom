@@ -44,7 +44,10 @@ public class Whiteboard : MonoBehaviourPunCallbacks
                 case WhiteboardMode.Monitor:
                     // 取消原监视器的RenderTexture
                     if (monitorCamera != null)
+                    {
                         monitorCamera.targetTexture = null;
+                        monitorCamera.enabled = false;
+                    }
 
                     // 获取监视器
                     foreach (var player in PlayerController.allPlayers)
@@ -58,6 +61,7 @@ public class Whiteboard : MonoBehaviourPunCallbacks
 
                     // 设置监视器的RenderTexture
                     monitorCamera.targetTexture = monitorTexture;
+                    monitorCamera.enabled = true;
                     break;
             }
 
@@ -141,6 +145,48 @@ public class Whiteboard : MonoBehaviourPunCallbacks
         }
     }
 
+    public override void OnEnable()
+    {
+        base.OnEnable();
+        // 注册事件处理器
+        PhotonNetwork.NetworkingClient.EventReceived += OnEvent;
+        EventHandler.Register<ChangeSlideEvent>(OnChangeSlideEvent);
+        EventHandler.Register<ChangeSceneEvent>(OnChangeSceneEvent);
+    }
+
+    public override void OnDisable()
+    {
+        base.OnDisable();
+        // 取消注册事件处理器
+        PhotonNetwork.NetworkingClient.EventReceived -= OnEvent;
+        EventHandler.Unregister<ChangeSlideEvent>(OnChangeSlideEvent);
+        EventHandler.Unregister<ChangeSceneEvent>(OnChangeSceneEvent);
+    }
+
+    private void OnEvent(EventData photonEvent)
+    {
+        if (photonEvent.Code == EventCodes.SlideChangeEventCode)
+        {
+            object[] data = (object[])photonEvent.CustomData;
+            int newIndex = (int)data[0];
+            UpdateSlideTexture(newIndex);
+        }
+    }
+
+    private void UpdateSlideTexture(int index)
+    {
+        if (pptSlides.Length > 0 && index < pptSlides.Length)
+        {
+            Texture2D texture = pptSlides[index];
+            screen.sprite = Sprite.Create(texture, new Rect(0, 0, texture.width, texture.height), new Vector2(0.5f, 0.5f));
+        }
+    }
+
+    private void UpdateSlideTexture()
+    {
+        UpdateSlideTexture((int)PhotonNetwork.CurrentRoom.CustomProperties["CurrentSlideIndex"]);
+    }
+
     public void OnChangeSlideEvent(ChangeSlideEvent @event)
     {
         ChangeSlide(@event.changeNum);
@@ -167,43 +213,20 @@ public class Whiteboard : MonoBehaviourPunCallbacks
         PhotonNetwork.RaiseEvent(EventCodes.SlideChangeEventCode, content, RaiseEventOptions.Default, SendOptions.SendReliable);
     }
 
-    public override void OnEnable()
+    private void OnChangeSceneEvent(ChangeSceneEvent @event)
     {
-        base.OnEnable();
-        // 注册事件处理器
-        PhotonNetwork.NetworkingClient.EventReceived += OnEvent;
-        EventHandler.Register<ChangeSlideEvent>(OnChangeSlideEvent);
-    }
-
-    public override void OnDisable()
-    {
-        base.OnDisable();
-        // 取消注册事件处理器
-        PhotonNetwork.NetworkingClient.EventReceived -= OnEvent;
-        EventHandler.Unregister<ChangeSlideEvent>(OnChangeSlideEvent);
-    }
-
-    private void OnEvent(EventData photonEvent)
-    {
-        if (photonEvent.Code == EventCodes.SlideChangeEventCode)
+        if (!@event.includePlayers.Contains(PlayerController.localPlayer.photonView.ViewID))
         {
-            object[] data = (object[])photonEvent.CustomData;
-            int newIndex = (int)data[0];
-            UpdateSlideTexture(newIndex);
+            if (@event.sceneName == "Classroom")
+            {
+                // 切换到白板模式
+                CurrentMode = WhiteboardMode.PPT;
+            }
+            else
+            {
+                // 切换到监视器模式
+                CurrentMode = WhiteboardMode.Monitor;
+            }
         }
-    }
-
-    private void UpdateSlideTexture(int index)
-    {
-        if (pptSlides.Length > 0 && index < pptSlides.Length)
-        {
-            Texture2D texture = pptSlides[index];
-            screen.sprite = Sprite.Create(texture, new Rect(0, 0, texture.width, texture.height), new Vector2(0.5f, 0.5f));
-        }
-    }
-
-    private void UpdateSlideTexture()
-    {
-        UpdateSlideTexture((int)PhotonNetwork.CurrentRoom.CustomProperties["CurrentSlideIndex"]);
     }
 }

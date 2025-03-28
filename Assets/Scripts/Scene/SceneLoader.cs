@@ -34,13 +34,13 @@ public class SceneLoader : UnitySingleton<SceneLoader>
         curActiveObject = newSceneObject;
     }
 
-    public void LoadSceneFromXml(string xmlPath) {
+    public void LoadSceneFromXml(string xmlPath, bool changeScene = true) {
         //如果已经加载过了就直接打开原来加载过的场景
         GameObject newSceneObject;
         if (PathToSceneObject.ContainsKey(xmlPath))
         {
             newSceneObject = PathToSceneObject[xmlPath];
-            ChangeSceneObject(newSceneObject);
+            if (changeScene) ChangeSceneObject(newSceneObject);
             return;
         }
         newSceneObject = new GameObject(xmlPath);
@@ -136,7 +136,7 @@ public class SceneLoader : UnitySingleton<SceneLoader>
             
         }
 
-        ChangeSceneObject(newSceneObject);
+        if (changeScene) ChangeSceneObject(newSceneObject);
     }
 
     public void SaveSceneAsXml(string xmlPath) {

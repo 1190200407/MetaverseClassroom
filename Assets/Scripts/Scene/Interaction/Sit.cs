@@ -8,8 +8,6 @@ public class Sit : InteractionScript
     public static Sit currentSitting;
     private bool isOccupied = false;
     private string chairKey;
-    
-    private const byte OccupyChairEventCode = 2; // 自定义事件代码
 
     public override void Init(SceneElement element)
     {
@@ -77,12 +75,12 @@ public class Sit : InteractionScript
         // 使用 RaiseEvent 立即通知其他玩家椅子被占用状态
         object[] content = new object[] { chairKey, occupied };
         RaiseEventOptions raiseEventOptions = new RaiseEventOptions { Receivers = ReceiverGroup.All };
-        PhotonNetwork.RaiseEvent(OccupyChairEventCode, content, raiseEventOptions, SendOptions.SendReliable);
+        PhotonNetwork.RaiseEvent(EventCodes.OccupyChairEventCode, content, raiseEventOptions, SendOptions.SendReliable);
     }
 
     public override void OnEvent(EventData photonEvent)
     {
-        if (photonEvent.Code == OccupyChairEventCode)
+        if (photonEvent.Code == EventCodes.OccupyChairEventCode)
         {
             object[] data = (object[])photonEvent.CustomData;
             string receivedChairKey = (string)data[0];

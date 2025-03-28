@@ -120,8 +120,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6a2e6b6405574f848924c75c32dafcfc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pptSlides: []
   screen: {fileID: 0}
+  pptSlides: []
+  monitorCamera: {fileID: 0}
+  monitorTexture: {fileID: 8400000, guid: 4db837694169f854bbf59dcc72d393ba, type: 2}
 --- !u!1 &3006347818355864198
 GameObject:
   m_ObjectHideFlags: 0

@@ -84,10 +84,12 @@ public class PlayerController : MonoBehaviourPunCallbacks
         {
             localPlayer = this;
             playerName = PlayerPrefs.GetString("NickName"); //标识用户姓名
+            isStudent = PlayerPrefs.GetInt("IsStudent", 1) == 1;
         }
         else
         {
             playerName = photonView.Owner.NickName;
+            isStudent = (bool)photonView.Owner.CustomProperties["IsStudent"];
         }
         
         allPlayers.Add(this);
@@ -95,7 +97,6 @@ public class PlayerController : MonoBehaviourPunCallbacks
         //将自己的名字牌和模型隐藏
         anim = GetComponentInChildren<Animator>();
         rb = GetComponent<Rigidbody>();
-        isStudent = PlayerPrefs.GetInt("IsStudent", 1) == 1;
     }
 
     protected virtual void Start()
@@ -143,7 +144,6 @@ public class PlayerController : MonoBehaviourPunCallbacks
 
     public void JoinRoom()
     {
-        IsStudent = PlayerPrefs.GetInt("IsStudent", 1) == 1;
         CurrentScene = ClassManager.instance.currentScene;
         EventHandler.Register<PlayerChangeDataEvent>(changePlayerData); //注册用户修改基本参数事件
         EventHandler.Trigger(new PlayerJoinRoomEvent() { player = this });
@@ -178,17 +178,19 @@ public class PlayerController : MonoBehaviourPunCallbacks
             object[] data = (object[])photonEvent.CustomData;
             int[] targetViewIDs = (int[])data[0];
             string sceneName = (string)data[1];
+            EventHandler.Trigger(new ChangeSceneEvent(){ includePlayers = targetViewIDs, sceneName = sceneName });
             Debug.Log("收到场景切换请求，场景名：" + sceneName);
 
             // 检查当前玩家是否在目标列表中
-            foreach (int viewID in targetViewIDs)
+            if (targetViewIDs.Contains(photonView.ViewID))
             {
-                if (photonView.ViewID == viewID)
-                {
-                    // 在当前客户端上主动调用ChangeScene
-                    ChangeScene(sceneName);
-                    break;
-                }
+                // 在当前客户端上主动调用ChangeScene
+                ChangeScene(sceneName);
+            }
+            // 如果不在目标列表中，也要加载另一边场景
+            else
+            {
+                SceneLoader.instance.LoadSceneFromXml(sceneName, false);
             }
         }
     }

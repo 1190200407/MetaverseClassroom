@@ -27,6 +27,14 @@ public class WinPlayerController : PlayerController
     public float fovMax = 90f;    // 最大视距
     public float fovSpeed = 10f;  // 滚动速度
 
+    public GameObject monitor;
+
+    private float targetRotationY = 0f;
+    private float currentRotationY = 0f;
+    public float rotationSmoothSpeed = 10f; // 调整这个值来控制平滑程度
+    private int currentFrameCount = 0;
+    public int syncFrameCount = 10; // 同步间隔的帧数
+
     protected override void Start()
     {
         base.Start();    
@@ -40,6 +48,8 @@ public class WinPlayerController : PlayerController
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
         pause = false;
+
+        monitor = GameObject.Find("Monitor");
     }
 
     protected override void initialize()
@@ -80,9 +90,8 @@ public class WinPlayerController : PlayerController
         Cursor.lockState = CursorLockMode.Locked;
     }
 
-    void Update()
+    private void Update()
     {
-        //if (!isLocalPlayer) { return; }
         if (!photonView.IsMine && PhotonNetwork.IsConnected) { return; }
         if(!pause) {
             var x = Input.GetAxis("Mouse X");
@@ -94,6 +103,14 @@ public class WinPlayerController : PlayerController
                 rotationY = Mathf.Clamp(rotationY, minY, maxY);
                 transform.localEulerAngles = new Vector3(0, rotationX, 0);
                 playerCamera.transform.localEulerAngles = new Vector3(-rotationY, 0, 0);
+                
+                // 更新网络同步的旋转值
+                currentFrameCount++;
+                if (currentFrameCount >= syncFrameCount)
+                {
+                    currentFrameCount = 0;
+                    photonView.RPC("SyncRotation", RpcTarget.Others, rotationY);
+                }
             }
 
             // 使用鼠标滚轮调整视距 (FOV)
@@ -135,6 +152,26 @@ public class WinPlayerController : PlayerController
                 {
                     UpdateRedDotPosition();
                 }
+            }
+        }
+    }
+
+    [PunRPC]
+    public void SyncRotation(float rotationY)
+    {
+        targetRotationY = rotationY;
+    }
+
+    private void LateUpdate()
+    {
+        if (!photonView.IsMine)
+        {
+            // 平滑插值到目标旋转值
+            currentRotationY = Mathf.Lerp(currentRotationY, targetRotationY, Time.deltaTime * rotationSmoothSpeed);
+            
+            if (monitor != null)
+            {
+                monitor.transform.localEulerAngles = new Vector3(-currentRotationY, 0, 0);
             }
         }
     }

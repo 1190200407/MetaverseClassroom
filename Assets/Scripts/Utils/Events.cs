@@ -12,6 +12,7 @@ public struct ChangeSlideEvent
 
 public struct ChangeSceneEvent
 {
+    public int[] includePlayers;
     public string sceneName;
 }
 

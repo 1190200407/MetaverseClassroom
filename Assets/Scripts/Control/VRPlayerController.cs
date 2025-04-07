@@ -1,5 +1,5 @@
 using UnityEngine;
-using Photon.Pun;
+using Mirror;
 using UnityEngine.XR;
 using UnityEngine.XR.Management;
 using System.Collections.Generic;
@@ -18,7 +18,7 @@ public class VRPlayerController : PlayerController
     {
         base.Start();
 
-        if (!photonView.IsMine) return;
+        if (!isLocalPlayer) return;
         GameObject XROrigin = GameObject.Find("XR Origin");
         XROrigin.transform.SetParent(transform);
         XROrigin.transform.localPosition = Vector3.zero;
@@ -49,7 +49,7 @@ public class VRPlayerController : PlayerController
     }
     void Update()
     {
-        if (!photonView.IsMine) return;
+        if (!isLocalPlayer) return;
 
         // 控制移动和旋转
         HandleMovement();

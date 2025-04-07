@@ -362,9 +362,9 @@ GameObject:
   - component: {fileID: 311914487905608346}
   - component: {fileID: 7272822389074934914}
   - component: {fileID: 6002056152009081235}
-  - component: {fileID: 9100866639920416934}
-  - component: {fileID: 3541346977685577444}
-  - component: {fileID: 3228941108993771873}
+  - component: {fileID: 2007682110063602019}
+  - component: {fileID: 3126109351826225938}
+  - component: {fileID: 1006256378646542908}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -456,7 +456,7 @@ MonoBehaviour:
   isControllable: 1
   animator: {fileID: 0}
   nameText: {fileID: 0}
---- !u!114 &9100866639920416934
+--- !u!114 &2007682110063602019
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -465,22 +465,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 5483027029427364886}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Script: {fileID: 11500000, guid: 9b91ecbcc199f4492b9a91e820070131, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ObservedComponentsFoldoutOpen: 1
-  Group: 0
-  prefixField: -1
-  Synchronization: 3
-  OwnershipTransfer: 0
-  observableSearch: 2
-  ObservedComponents:
-  - {fileID: 3541346977685577444}
-  - {fileID: 8715840171493855002}
-  sceneViewId: 0
-  InstantiationId: 0
-  isRuntimeInstantiated: 0
---- !u!114 &3541346977685577444
+  sceneId: 0
+  _assetId: 3091510657
+  serverOnly: 0
+  visibility: 0
+  hasSpawned: 0
+--- !u!114 &3126109351826225938
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -489,14 +482,32 @@ MonoBehaviour:
   m_GameObject: {fileID: 5483027029427364886}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 627855c7f81362d41938ffe0b1475957, type: 3}
+  m_Script: {fileID: 11500000, guid: 8ff3ba0becae47b8b9381191598957c8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_SynchronizePosition: 1
-  m_SynchronizeRotation: 1
-  m_SynchronizeScale: 0
-  m_UseLocal: 1
---- !u!114 &3228941108993771873
+  syncDirection: 1
+  syncMode: 0
+  syncInterval: 0
+  target: {fileID: 8466007182414110156}
+  syncPosition: 1
+  syncRotation: 1
+  syncScale: 0
+  onlySyncOnChange: 1
+  compressRotation: 1
+  interpolatePosition: 1
+  interpolateRotation: 1
+  interpolateScale: 1
+  coordinateSpace: 0
+  timelineOffset: 1
+  showGizmos: 0
+  showOverlay: 0
+  overlayColor: {r: 0, g: 0, b: 0, a: 0.5}
+  onlySyncOnChangeCorrectionMultiplier: 2
+  useFixedUpdate: 0
+  rotationSensitivity: 0.01
+  positionPrecision: 0.01
+  scalePrecision: 0.01
+--- !u!114 &1006256378646542908
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -505,9 +516,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 5483027029427364886}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 126494ae2a10a34499272ed97a6c9f5d, type: 3}
+  m_Script: {fileID: 11500000, guid: 7f6f3bf89aa97405989c802ba270f815, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  syncDirection: 1
+  syncMode: 0
+  syncInterval: 0
+  clientAuthority: 0
+  animator: {fileID: 981533739388918105}
 --- !u!1 &8661544048547955049
 GameObject:
   m_ObjectHideFlags: 0

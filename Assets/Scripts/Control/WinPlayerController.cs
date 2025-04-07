@@ -1,6 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
-using Photon.Pun;
+using Mirror;
 using UnityEngine;
 
 public class WinPlayerController : PlayerController
@@ -39,7 +39,7 @@ public class WinPlayerController : PlayerController
     {
         base.Start();    
 
-        if (!photonView.IsMine) return;
+        if (!isLocalPlayer) return;
         
         playerCamera = Camera.main;
         Camera.main.transform.SetParent(transform);
@@ -66,14 +66,12 @@ public class WinPlayerController : PlayerController
         moveSpeed = data.moveSpeed;
     }
     
-    public override void OnEnable() {
-        base.OnEnable();
+    public void OnEnable() {
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
     }
 
-    public override void OnDisable() {
-        base.OnDisable();
+    public void OnDisable() {
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.None;
     }
@@ -92,7 +90,7 @@ public class WinPlayerController : PlayerController
 
     private void Update()
     {
-        if (!photonView.IsMine && PhotonNetwork.IsConnected) { return; }
+        if (!isLocalPlayer) { return; }
         if(!pause) {
             var x = Input.GetAxis("Mouse X");
             var y = Input.GetAxis("Mouse Y");
@@ -109,7 +107,7 @@ public class WinPlayerController : PlayerController
                 if (currentFrameCount >= syncFrameCount)
                 {
                     currentFrameCount = 0;
-                    photonView.RPC("SyncRotation", RpcTarget.Others, rotationY);
+                    CmdSyncRotation(rotationY);
                 }
             }
 
@@ -156,15 +154,15 @@ public class WinPlayerController : PlayerController
         }
     }
 
-    [PunRPC]
-    public void SyncRotation(float rotationY)
+    [Command]
+    public void CmdSyncRotation(float rotationY)
     {
         targetRotationY = rotationY;
     }
 
     private void LateUpdate()
     {
-        if (!photonView.IsMine)
+        if (!isLocalPlayer)
         {
             // 平滑插值到目标旋转值
             currentRotationY = Mathf.Lerp(currentRotationY, targetRotationY, Time.deltaTime * rotationSmoothSpeed);
@@ -178,7 +176,7 @@ public class WinPlayerController : PlayerController
 
     void FixedUpdate()
     {
-        if (!photonView.IsMine && PhotonNetwork.IsConnected) { return; }
+        if (!isLocalPlayer) { return; }
         if (!pause && !isSitting) {
             var x = Input.GetAxis("Horizontal");
             var y = Input.GetAxis("Vertical");

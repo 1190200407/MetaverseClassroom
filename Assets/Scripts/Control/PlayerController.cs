@@ -1,13 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Photon.Pun;
 using System;
 using Photon.Realtime;
 using Unity.VisualScripting;
-using ExitGames.Client.Photon;
+using Mirror;
 
-public class PlayerController : MonoBehaviourPunCallbacks
+public class PlayerController : NetworkBehaviour
 {
     public static List<PlayerController> allPlayers = new List<PlayerController>();
     public static PlayerController localPlayer;
@@ -28,9 +27,9 @@ public class PlayerController : MonoBehaviourPunCallbacks
         get { return isSitting; }
         set
         {
-            if (photonView.IsMine)
+            if (isLocalPlayer)
             {
-                photonView.RPC("SetSittingState", RpcTarget.AllBuffered, value);
+                CmdSetSittingState(value);
             }
         }
     }
@@ -41,10 +40,10 @@ public class PlayerController : MonoBehaviourPunCallbacks
         get { return currentScene; }
         set
         {
-            if (photonView.IsMine)
+            if (isLocalPlayer)
             {
                 //其他客户端同步状态
-                photonView.RPC("SetCurrentScene", RpcTarget.OthersBuffered, value);
+                CmdSetCurrentScene(value);
 
                 transform.position = SceneLoader.instance.PathToSceneObject[value].transform.position;
                 //切换场景后，更新player的状态
@@ -80,7 +79,7 @@ public class PlayerController : MonoBehaviourPunCallbacks
 
     private void Awake()
     {
-        if (photonView.IsMine)
+        if (isLocalPlayer)
         {
             localPlayer = this;
             playerName = PlayerPrefs.GetString("NickName"); //标识用户姓名
@@ -88,8 +87,8 @@ public class PlayerController : MonoBehaviourPunCallbacks
         }
         else
         {
-            playerName = photonView.Owner.NickName;
-            isStudent = (bool)photonView.Owner.CustomProperties["IsStudent"];
+            playerName = "待定";
+            isStudent = false;
         }
         
         allPlayers.Add(this);
@@ -114,7 +113,7 @@ public class PlayerController : MonoBehaviourPunCallbacks
     /// </summary>
     protected virtual void initialize()
     {
-        if (photonView.IsMine)
+        if (isLocalPlayer)
         {
             playerData = PlayerManager.LoadData();
         }
@@ -131,7 +130,7 @@ public class PlayerController : MonoBehaviourPunCallbacks
 
     protected virtual void changeData(PlayerData data)
     {
-        if (photonView.IsMine)
+        if (isLocalPlayer)
             playerData = data;
     }
     
@@ -139,7 +138,7 @@ public class PlayerController : MonoBehaviourPunCallbacks
     {
         allPlayers.Remove(this);
         // 取消注册事件处理器
-        PhotonNetwork.NetworkingClient.EventReceived -= OnEvent;
+        //PhotonNetwork.NetworkingClient.EventReceived -= OnEvent;
     }
 
     public void JoinRoom()
@@ -156,7 +155,7 @@ public class PlayerController : MonoBehaviourPunCallbacks
         GetPermission();
         
         // 注册事件处理器
-        PhotonNetwork.NetworkingClient.EventReceived += OnEvent;
+        //PhotonNetwork.NetworkingClient.EventReceived += OnEvent;
     }
 
     public void LeftRoom()
@@ -167,33 +166,33 @@ public class PlayerController : MonoBehaviourPunCallbacks
         DestroyRedDot();
 
         // 注销事件处理器
-        PhotonNetwork.NetworkingClient.EventReceived -= OnEvent;
+        //PhotonNetwork.NetworkingClient.EventReceived -= OnEvent;
     }
 
-    private void OnEvent(EventData photonEvent)
-    {
-        // 收到其他客户端的场景切换请求
-        if (photonEvent.Code == EventCodes.ChangeSceneEventCode)
-        {
-            object[] data = (object[])photonEvent.CustomData;
-            int[] targetViewIDs = (int[])data[0];
-            string sceneName = (string)data[1];
-            EventHandler.Trigger(new ChangeSceneEvent(){ includePlayers = targetViewIDs, sceneName = sceneName });
-            Debug.Log("收到场景切换请求，场景名：" + sceneName);
+    // private void OnEvent(EventData photonEvent)
+    // {
+    //     // 收到其他客户端的场景切换请求
+    //     if (photonEvent.Code == EventCodes.ChangeSceneEventCode)
+    //     {
+    //         object[] data = (object[])photonEvent.CustomData;
+    //         int[] targetViewIDs = (int[])data[0];
+    //         string sceneName = (string)data[1];
+    //         EventHandler.Trigger(new ChangeSceneEvent(){ includePlayers = targetViewIDs, sceneName = sceneName });
+    //         Debug.Log("收到场景切换请求，场景名：" + sceneName);
 
-            // 检查当前玩家是否在目标列表中
-            if (targetViewIDs.Contains(photonView.ViewID))
-            {
-                // 在当前客户端上主动调用ChangeScene
-                ChangeScene(sceneName);
-            }
-            // 如果不在目标列表中，也要加载另一边场景
-            else
-            {
-                SceneLoader.instance.LoadSceneFromXml(sceneName, false);
-            }
-        }
-    }
+    //         // 检查当前玩家是否在目标列表中
+    //         if (targetViewIDs.Contains(photonView.ViewID))
+    //         {
+    //             // 在当前客户端上主动调用ChangeScene
+    //             ChangeScene(sceneName);
+    //         }
+    //         // 如果不在目标列表中，也要加载另一边场景
+    //         else
+    //         {
+    //             SceneLoader.instance.LoadSceneFromXml(sceneName, false);
+    //         }
+    //     }
+    // }
 
     private void GetPermission()
     {
@@ -208,7 +207,7 @@ public class PlayerController : MonoBehaviourPunCallbacks
             permissionHolder.SetAllPermission();
         }
         // 同步权限给其他客户端
-        photonView.RPC("SetPermission", RpcTarget.OthersBuffered, permissionHolder.GetPermission());
+        CmdSetPermission(permissionHolder.GetPermission());
     }
 
     public bool HavePermission(Permission permission)
@@ -218,10 +217,10 @@ public class PlayerController : MonoBehaviourPunCallbacks
 
     private void CreateRedDot()
     {
-        if (photonView.IsMine)
+        if (isLocalPlayer)
         {
-            // 使用 PhotonNetwork.Instantiate 来实例化红点
-            redDot = PhotonNetwork.Instantiate("RedDot", Vector3.down * 10000f, Quaternion.identity);
+            // // 使用 PhotonNetwork.Instantiate 来实例化红点
+            // redDot = PhotonNetwork.Instantiate("RedDot", Vector3.down * 10000f, Quaternion.identity);
         }
     }
 
@@ -229,13 +228,13 @@ public class PlayerController : MonoBehaviourPunCallbacks
     {
         if (redDot != null)
         {
-            PhotonNetwork.Destroy(redDot);
+            // PhotonNetwork.Destroy(redDot);
             redDot = null;
         }
     }
 
-    [PunRPC]
-    public void SetSittingState(bool sitting)
+    [Command]
+    public void CmdSetSittingState(bool sitting)
     {
         isSitting = sitting;
 
@@ -247,14 +246,14 @@ public class PlayerController : MonoBehaviourPunCallbacks
     public void ChangeScene(string sceneName)
     {
         // 如果是本地玩家，直接调用场景切换
-        if (photonView.IsMine)
+        if (isLocalPlayer)
         {
             ClassManager.instance.StartSceneTransition(sceneName);
         }
     }
 
-    [PunRPC]
-    public void SetCurrentScene(string sceneName)
+    [Command]
+    public void CmdSetCurrentScene(string sceneName)
     {
         currentScene = sceneName;
 
@@ -268,8 +267,8 @@ public class PlayerController : MonoBehaviourPunCallbacks
         }
     }
 
-    [PunRPC]
-    public void SetPermission(int permission)
+    [Command]
+    public void CmdSetPermission(int permission)
     {
         permissionHolder.SetPermission((Permission)permission);
     }

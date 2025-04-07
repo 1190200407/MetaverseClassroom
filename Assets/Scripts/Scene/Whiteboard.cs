@@ -1,9 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
-using Photon.Pun;
-using Photon.Realtime;
-using ExitGames.Client.Photon;
 using System.IO;
+using Mirror;
 
 public enum WhiteboardMode
 {
@@ -14,7 +12,7 @@ public enum WhiteboardMode
     Monitor,
 }
 
-public class Whiteboard : MonoBehaviourPunCallbacks
+public class Whiteboard : MonoBehaviour
 {
     public Image screen;
 
@@ -39,7 +37,7 @@ public class Whiteboard : MonoBehaviourPunCallbacks
             switch (currentMode)
             {
                 case WhiteboardMode.PPT:
-                    UpdateSlideTexture((int)PhotonNetwork.CurrentRoom.CustomProperties["CurrentSlideIndex"]);
+                    //UpdateSlideTexture((int)NetworkRoomManager.CurrentRoom.CustomProperties["CurrentSlideIndex"]);
                     break;
                 case WhiteboardMode.Monitor:
                     // 取消原监视器的RenderTexture
@@ -114,64 +112,64 @@ public class Whiteboard : MonoBehaviourPunCallbacks
         }
     }
 
-    public override void OnJoinedRoom()
+    public void OnJoinedRoom()
     {
-        string pptFilePath = ClassManager.instance.pptFilePath;
-        string pptFullPath = Path.Combine(Application.streamingAssetsPath, "PPTs/" + pptFilePath);
-        string outputDir = Path.Combine(Path.GetDirectoryName(pptFullPath), Path.GetFileNameWithoutExtension(pptFilePath) + "_Images"); //一个ppt对应一个文件夹
+        // string pptFilePath = ClassManager.instance.pptFilePath;
+        // string pptFullPath = Path.Combine(Application.streamingAssetsPath, "PPTs/" + pptFilePath);
+        // string outputDir = Path.Combine(Path.GetDirectoryName(pptFullPath), Path.GetFileNameWithoutExtension(pptFilePath) + "_Images"); //一个ppt对应一个文件夹
 
-        //获取ppt图片
-        pptSlides = PPTToImageConverter.instance.ConvertPPTToImage(pptFullPath, outputDir);
+        // //获取ppt图片
+        // pptSlides = PPTToImageConverter.instance.ConvertPPTToImage(pptFullPath, outputDir);
 
-        if (pptSlides.Length == 0)
-        {
-            Debug.Log("ppt的页数不正确");
-        }
-        screen = GetComponentInChildren<Image>();
+        // if (pptSlides.Length == 0)
+        // {
+        //     Debug.Log("ppt的页数不正确");
+        // }
+        // screen = GetComponentInChildren<Image>();
         
-        base.OnJoinedRoom();
+        // base.OnJoinedRoom();
 
-        // 如果有已经存在的页码，更新到这个页码
-        if (PhotonNetwork.CurrentRoom.CustomProperties.ContainsKey("CurrentSlideIndex"))
-        {
-            int currentIndex = (int)PhotonNetwork.CurrentRoom.CustomProperties["CurrentSlideIndex"];
-            UpdateSlideTexture(currentIndex);
-        }
-        else
-        {
-            Hashtable props = new Hashtable { { "CurrentSlideIndex", 0 } };
-            PhotonNetwork.CurrentRoom.SetCustomProperties(props);
-            UpdateSlideTexture(0); // 默认显示第一页
-        }
+        // // 如果有已经存在的页码，更新到这个页码
+        // if (PhotonNetwork.CurrentRoom.CustomProperties.ContainsKey("CurrentSlideIndex"))
+        // {
+        //     int currentIndex = (int)PhotonNetwork.CurrentRoom.CustomProperties["CurrentSlideIndex"];
+        //     UpdateSlideTexture(currentIndex);
+        // }
+        // else
+        // {
+        //     Hashtable props = new Hashtable { { "CurrentSlideIndex", 0 } };
+        //     PhotonNetwork.CurrentRoom.SetCustomProperties(props);
+        //     UpdateSlideTexture(0); // 默认显示第一页
+        // }
     }
 
-    public override void OnEnable()
+    public void OnEnable()
     {
-        base.OnEnable();
-        // 注册事件处理器
-        PhotonNetwork.NetworkingClient.EventReceived += OnEvent;
-        EventHandler.Register<ChangeSlideEvent>(OnChangeSlideEvent);
-        EventHandler.Register<ChangeSceneEvent>(OnChangeSceneEvent);
+        // base.OnEnable();
+        // // 注册事件处理器
+        // PhotonNetwork.NetworkingClient.EventReceived += OnEvent;
+        // EventHandler.Register<ChangeSlideEvent>(OnChangeSlideEvent);
+        // EventHandler.Register<ChangeSceneEvent>(OnChangeSceneEvent);
     }
 
-    public override void OnDisable()
+    public void OnDisable()
     {
-        base.OnDisable();
-        // 取消注册事件处理器
-        PhotonNetwork.NetworkingClient.EventReceived -= OnEvent;
-        EventHandler.Unregister<ChangeSlideEvent>(OnChangeSlideEvent);
-        EventHandler.Unregister<ChangeSceneEvent>(OnChangeSceneEvent);
+        // base.OnDisable();
+        // // 取消注册事件处理器
+        // PhotonNetwork.NetworkingClient.EventReceived -= OnEvent;
+        // EventHandler.Unregister<ChangeSlideEvent>(OnChangeSlideEvent);
+        // EventHandler.Unregister<ChangeSceneEvent>(OnChangeSceneEvent);
     }
 
-    private void OnEvent(EventData photonEvent)
-    {
-        if (photonEvent.Code == EventCodes.SlideChangeEventCode)
-        {
-            object[] data = (object[])photonEvent.CustomData;
-            int newIndex = (int)data[0];
-            UpdateSlideTexture(newIndex);
-        }
-    }
+    // private void OnEvent(EventData photonEvent)
+    // {
+    //     if (photonEvent.Code == EventCodes.SlideChangeEventCode)
+    //     {
+    //         object[] data = (object[])photonEvent.CustomData;
+    //         int newIndex = (int)data[0];
+    //         UpdateSlideTexture(newIndex);
+    //     }
+    // }
 
     private void UpdateSlideTexture(int index)
     {
@@ -184,7 +182,7 @@ public class Whiteboard : MonoBehaviourPunCallbacks
 
     private void UpdateSlideTexture()
     {
-        UpdateSlideTexture((int)PhotonNetwork.CurrentRoom.CustomProperties["CurrentSlideIndex"]);
+        // UpdateSlideTexture((int)PhotonNetwork.CurrentRoom.CustomProperties["CurrentSlideIndex"]);
     }
 
     public void OnChangeSlideEvent(ChangeSlideEvent @event)
@@ -194,39 +192,39 @@ public class Whiteboard : MonoBehaviourPunCallbacks
 
     public void ChangeSlide(int num)
     {
-        int currentIndex = (int)PhotonNetwork.CurrentRoom.CustomProperties["CurrentSlideIndex"];
-        currentIndex = (currentIndex + num + pptSlides.Length) % pptSlides.Length;
-        UpdateSlideTexture(currentIndex);
+        // int currentIndex = (int)PhotonNetwork.CurrentRoom.CustomProperties["CurrentSlideIndex"];
+        // currentIndex = (currentIndex + num + pptSlides.Length) % pptSlides.Length;
+        // UpdateSlideTexture(currentIndex);
 
-        // 更新房间属性，保存当前页码
-        Hashtable props = new Hashtable { { "CurrentSlideIndex", currentIndex } };
-        PhotonNetwork.CurrentRoom.SetCustomProperties(props);
+        // // 更新房间属性，保存当前页码
+        // Hashtable props = new Hashtable { { "CurrentSlideIndex", currentIndex } };
+        // PhotonNetwork.CurrentRoom.SetCustomProperties(props);
 
-        // 发送事件通知其他客户端
-        RaiseSlideChangeEvent(currentIndex);
+        // // 发送事件通知其他客户端
+        // RaiseSlideChangeEvent(currentIndex);
     }
 
     private void RaiseSlideChangeEvent(int newIndex)
     {
         // 创建事件内容
-        object[] content = new object[] { newIndex };
-        PhotonNetwork.RaiseEvent(EventCodes.SlideChangeEventCode, content, RaiseEventOptions.Default, SendOptions.SendReliable);
+        // object[] content = new object[] { newIndex };
+        // PhotonNetwork.RaiseEvent(EventCodes.SlideChangeEventCode, content, RaiseEventOptions.Default, SendOptions.SendReliable);
     }
 
     private void OnChangeSceneEvent(ChangeSceneEvent @event)
     {
-        if (!@event.includePlayers.Contains(PlayerController.localPlayer.photonView.ViewID))
-        {
-            if (@event.sceneName == "Classroom")
-            {
-                // 切换到白板模式
-                CurrentMode = WhiteboardMode.PPT;
-            }
-            else
-            {
-                // 切换到监视器模式
-                CurrentMode = WhiteboardMode.Monitor;
-            }
-        }
+        // if (!@event.includePlayers.Contains(PlayerController.localPlayer.GetComponent<NetworkIdentity>().netId))
+        // {
+        //     if (@event.sceneName == "Classroom")
+        //     {
+        //         // 切换到白板模式
+        //         CurrentMode = WhiteboardMode.PPT;
+        //     }
+        //     else
+        //     {
+        //         // 切换到监视器模式
+        //         CurrentMode = WhiteboardMode.Monitor;
+        //     }
+        // }
     }
 }

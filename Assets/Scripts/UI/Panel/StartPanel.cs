@@ -1,13 +1,10 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using ExitGames.Client.Photon;
-using ExitGames.Client.Photon.StructWrapping;
-using Photon.Pun;
 using TMPro;
-using Unity.XR.PXR;
 using UnityEngine;
 using UnityEngine.UI;
+using Mirror;
 
 public class StartPanel : BasePanel
 {
@@ -123,46 +120,49 @@ public class StartPanel : BasePanel
             return;
         }
 
-        PhotonNetwork.NickName = playerName;
-        ExitGames.Client.Photon.Hashtable hashtable = new ExitGames.Client.Photon.Hashtable()
-        {
-            {"CharacterName", chosenName},
-            {"IsStudent", PlayerPrefs.GetInt("IsStudent", 1) == 1}
-        };
-        PhotonNetwork.SetPlayerCustomProperties(hashtable);
-        PlayerPrefs.SetString("NickName", playerName);
-        NetworkManager.instance.Connect();
+        NetworkManagerClassroom.singleton.StartHost();
 
-        // 开始异步连接
-        UIManager.instance.StartCoroutine(ConnectToNetwork());
+        // PhotonNetwork.NickName = playerName;
+        // ExitGames.Client.Photon.Hashtable hashtable = new ExitGames.Client.Photon.Hashtable()
+        // {
+        //     {"CharacterName", chosenName},
+        //     {"IsStudent", PlayerPrefs.GetInt("IsStudent", 1) == 1}
+        // };
+        // PhotonNetwork.SetPlayerCustomProperties(hashtable);
+        // PlayerPrefs.SetString("NickName", playerName);
+        // NetworkManagerClassroom.singeleton.Connect();
+
+        // // 开始异步连接
+        // UIManager.instance.StartCoroutine(ConnectToNetwork());
     }
 
     private IEnumerator ConnectToNetwork()
     {
-        UIManager.instance.ShowMessage("连接中..", float.MaxValue);
-        UIManager.instance.DisableInteraction();
+        yield return null;
+        // UIManager.instance.ShowMessage("连接中..", float.MaxValue);
+        // UIManager.instance.DisableInteraction();
 
-        // 异步连接到网络
-        yield return new WaitUntil(() => NetworkManager.instance.Connection != ConnectResult.Connecting);
-        //yield return new WaitForSecondsRealtime(5f);
+        // // 异步连接到网络
+        // yield return new WaitUntil(() => NetworkManagerClassroom.singeleton.Connection != ConnectResult.Connecting);
+        // //yield return new WaitForSecondsRealtime(5f);
 
-        if (NetworkManager.instance.Connection == ConnectResult.Connected)
-        {
-            // 连接成功后执行以下逻辑
-            //加入房间
-            PhotonNetwork.JoinOrCreateRoom("Classroom", new Photon.Realtime.RoomOptions() { MaxPlayers = 4 }, default);
-            ClassManager.instance.StartCourse();
+        // if (NetworkManagerClassroom.singeleton.Connection == ConnectResult.Connected)
+        // {
+        //     // 连接成功后执行以下逻辑
+        //     //加入房间
+        //     PhotonNetwork.JoinOrCreateRoom("Classroom", new Photon.Realtime.RoomOptions() { MaxPlayers = 4 }, default);
+        //     ClassManager.instance.StartCourse();
             
-            UIManager.instance.ShowMessage("连接成功", 1f);
-            UIManager.instance.Pop(false);
-            if (!GameSettings.instance.isVR)
-                UIManager.instance.Push(new GamePanel(new UIType("Panels/GamePanel", "GamePanel")));
-        }
-        else
-        {
-            UIManager.instance.ShowMessage("连接失败", 1f);
-            UIManager.instance.EnableInteraction();
-        }
+        //     UIManager.instance.ShowMessage("连接成功", 1f);
+        //     UIManager.instance.Pop(false);
+        //     if (!GameSettings.instance.isVR)
+        //         UIManager.instance.Push(new GamePanel(new UIType("Panels/GamePanel", "GamePanel")));
+        // }
+        // else
+        // {
+        //     UIManager.instance.ShowMessage("连接失败", 1f);
+        //     UIManager.instance.EnableInteraction();
+        // }
     }
 
     public void Choose(string name)

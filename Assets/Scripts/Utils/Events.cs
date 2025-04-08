@@ -18,12 +18,12 @@ public struct ChangeSceneEvent
 
 public struct PlayerJoinRoomEvent
 {
-    public PlayerController player;
+    public PlayerManager player;
 }
 
 public struct PlayerLeftRoomEvent
 {
-    public PlayerController player;
+    public PlayerManager player;
 }
 
 public struct PlayerChangeDataEvent

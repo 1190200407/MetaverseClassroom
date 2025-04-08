@@ -1,7 +1,6 @@
-using ExitGames.Client.Photon;
-using Photon.Pun;
-using Photon.Realtime;
 using UnityEngine;
+using Mirror;
+using System.Collections.Generic;   
 
 public class Sit : InteractionScript
 {
@@ -9,19 +8,27 @@ public class Sit : InteractionScript
     private bool isOccupied = false;
     private string chairKey;
 
+    // 使用 SyncVar 来同步椅子状态
+    [SyncVar(hook = nameof(OnChairStateChanged))]
+    private bool syncedIsOccupied;
+
     public override void Init(SceneElement element)
     {
         base.Init(element);
         chairKey = element.name;
     }
 
-    public override void OnJoinRoom()
+    public override void OnStartClient()
     {
-        if (PhotonNetwork.CurrentRoom.CustomProperties.TryGetValue(chairKey, out object state))
-        {
-            isOccupied = (bool)state;
-            UpdateChairVisual(); // 更新椅子的外观
-        }
+        base.OnStartClient();
+        // 初始化时更新椅子状态
+        UpdateChairVisual();
+    }
+
+    private void OnChairStateChanged(bool oldValue, bool newValue)
+    {
+        isOccupied = newValue;
+        UpdateChairVisual();
     }
 
     public override void OnHoverEnter()
@@ -50,53 +57,32 @@ public class Sit : InteractionScript
         }
         
         // 获取玩家 Transform 并锁定位置
-        Transform player = PlayerController.localPlayer.transform;
-        PlayerController.localPlayer.IsSitting = true;
-        player.position = element.transform.position + new Vector3(0, 0.5f, 0); // 根据需求调整位置
+        Transform player = PlayerManager.localPlayer.playerController.transform;
+        PlayerManager.localPlayer.IsSitting = true;
+        player.position = element.transform.position + new Vector3(0, 0.5f, 0);
 
         // 更新椅子状态
         isOccupied = true;
         currentSitting = this;
-        SetChairOccupiedInRoomProperties(true);
-        RaiseChairOccupiedEvent(true); // 广播事件
-    }
-
-    private void SetChairOccupiedInRoomProperties(bool occupied)
-    {
-        Hashtable currentProps = new Hashtable
+        
+        // 如果是本地玩家，调用服务器命令来更新状态
+        if (isLocalPlayer)
         {
-            { chairKey, occupied }
-        };
-        PhotonNetwork.CurrentRoom.SetCustomProperties(currentProps);
-    }
-
-    private void RaiseChairOccupiedEvent(bool occupied)
-    {
-        // 使用 RaiseEvent 立即通知其他玩家椅子被占用状态
-        object[] content = new object[] { chairKey, occupied };
-        RaiseEventOptions raiseEventOptions = new RaiseEventOptions { Receivers = ReceiverGroup.All };
-        PhotonNetwork.RaiseEvent(EventCodes.OccupyChairEventCode, content, raiseEventOptions, SendOptions.SendReliable);
-    }
-
-    public override void OnEvent(EventData photonEvent)
-    {
-        if (photonEvent.Code == EventCodes.OccupyChairEventCode)
-        {
-            object[] data = (object[])photonEvent.CustomData;
-            string receivedChairKey = (string)data[0];
-            bool occupied = (bool)data[1];
-
-            if (receivedChairKey == chairKey)
-            {
-                isOccupied = occupied;
-                UpdateChairVisual(); // 更新椅子外观
-            }
+            CmdSetChairOccupied(true);
         }
+    }
+
+    [Command(requiresAuthority = false)]
+    private void CmdSetChairOccupied(bool occupied)
+    {
+        syncedIsOccupied = occupied;
     }
 
     private void UpdateChairVisual()
     {
         // 更新椅子的外观状态，比如颜色或材质，用于表示已被占用
+        // 例如：
+        // GetComponent<Renderer>().material.color = isOccupied ? Color.red : Color.white;
     }
     
     public void ResetSeat()
@@ -104,8 +90,12 @@ public class Sit : InteractionScript
         isOccupied = false;
         currentSitting = null;
         
-        PlayerController.localPlayer.IsSitting = false;
-        SetChairOccupiedInRoomProperties(false);
-        RaiseChairOccupiedEvent(false);
+        PlayerManager.localPlayer.IsSitting = false;
+        
+        // 如果是本地玩家，调用服务器命令来更新状态
+        if (isLocalPlayer)
+        {
+            CmdSetChairOccupied(false);
+        }
     }
 }

@@ -74,13 +74,13 @@ public class PausePanel : BasePanel
         SetUi();
         base.OnEnable();
         InteractionManager.instance.RaycastClosed = true;
-        PlayerController.localPlayer.enabled = false;
+        PlayerManager.localPlayer.playerController.enabled = false;
     }
 
     public override void OnDisable() {
         base.OnDisable();
         InteractionManager.instance.RaycastClosed = false;
-        PlayerController.localPlayer.enabled = true;
+        PlayerManager.localPlayer.playerController.enabled = true;
     }
     private void SetUi()
     {
@@ -129,7 +129,7 @@ public class PausePanel : BasePanel
 
     public void StartActivity()
     {
-        if (PlayerController.localPlayer.HavePermission(Permission.StartActivity))
+        if (PlayerManager.localPlayer.HavePermission(Permission.StartActivity))
         {
             UIManager.instance.Pop(false);
             ClassManager.instance.StartActivity("EnglishTalking");
@@ -138,7 +138,7 @@ public class PausePanel : BasePanel
 
     public void LastPage()
     {
-        if (PlayerController.localPlayer.HavePermission(Permission.SwitchPPT))
+        if (PlayerManager.localPlayer.HavePermission(Permission.SwitchPPT))
         {
             EventHandler.Trigger(new ChangeSlideEvent{ changeNum = -1 });
         }
@@ -146,7 +146,7 @@ public class PausePanel : BasePanel
 
     public void NextPage()
     {
-        if (PlayerController.localPlayer.HavePermission(Permission.SwitchPPT))
+        if (PlayerManager.localPlayer.HavePermission(Permission.SwitchPPT))
         {
             EventHandler.Trigger(new ChangeSlideEvent{ changeNum = 1 });
         }

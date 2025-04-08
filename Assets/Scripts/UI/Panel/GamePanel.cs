@@ -1,9 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
-using Photon.Pun;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using Mirror;
 
 public class GamePanel : BasePanel
 {
@@ -25,6 +25,7 @@ public class GamePanel : BasePanel
         {
             UIManager.instance.Push(new PausePanel(new UIType("Panels/PausePanel", "PausePanel")));
         }
-        pingTxt.text = $"Ping:{PhotonNetwork.GetPing()}ms";
+        // 获取ping值
+        pingTxt.text = $"Ping:{NetworkTime.rtt}ms";
     }
 }

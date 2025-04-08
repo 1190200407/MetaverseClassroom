@@ -1,12 +1,11 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using ExitGames.Client.Photon;
-using Photon.Pun;
 using UnityEngine;
+using Mirror;
 using UnityEngine.XR.Interaction.Toolkit;
 
-public class SceneElement : MonoBehaviourPunCallbacks
+public class SceneElement : NetworkBehaviour
 {
     [HideInInspector] public string id;
     public string path;
@@ -16,15 +15,13 @@ public class SceneElement : MonoBehaviourPunCallbacks
     public string interactType = string.Empty;
     public string interactionContent = string.Empty;
 
-    public override void OnEnable()
+    protected virtual void OnEnable()
     {
-        base.OnEnable();
         interactionScript?.OnEnable();
     }
 
-    public override void OnDisable()
+    protected virtual void OnDisable()
     {
-        base.OnDisable();
         interactionScript?.OnDisable();
     }
 
@@ -40,7 +37,7 @@ public class SceneElement : MonoBehaviourPunCallbacks
         Type t = Type.GetType(type);
         if (t != null)
         {
-            interactionScript =  Activator.CreateInstance(t) as InteractionScript;
+            interactionScript = Activator.CreateInstance(t) as InteractionScript;
             interactType = type;
             interactionContent = content;
             interactionScript.Init(this);
@@ -57,15 +54,18 @@ public class SceneElement : MonoBehaviourPunCallbacks
         }
     }
 
-    public override void OnJoinedRoom()
-    {
-        interactionScript?.OnJoinRoom();
-    }
-
     private void OnDestroy() {
         SceneLoader.instance.IdToElement.Remove(id);
     }
 
+    /// <summary>
+    /// 当客户端启动时响应的函数
+    /// </summary>
+    public override void OnStartClient()
+    {
+        base.OnStartClient();
+        interactionScript?.OnStartClient();
+    }
 
     /// <summary>
     /// 当射线射中时响应的函数
@@ -97,10 +97,5 @@ public class SceneElement : MonoBehaviourPunCallbacks
     public void OnSelectExit()
     {
         interactionScript?.OnSelectExit();
-    }
-
-    public void OnEvent(EventData data)
-    {
-        interactionScript?.OnEvent(data);
     }
 }

@@ -8,7 +8,7 @@ using Mirror;
 public class ChoosePlayerPanel : BasePanel
 {
     public GameObject PlayerSlot; //选择项的预制件
-    private List<PlayerController> ChosenPlayers = new List<PlayerController>(); //被选中的用户
+    private List<PlayerManager> ChosenPlayers = new List<PlayerManager>(); //被选中的用户
     private List<Toggle> PlayerToggles = new List<Toggle>();
     
     private Button saveButton;
@@ -50,13 +50,13 @@ public class ChoosePlayerPanel : BasePanel
     {
         base.OnEnable();
         InteractionManager.instance.RaycastClosed = true;
-        PlayerController.localPlayer.enabled = false;
+        PlayerManager.localPlayer.playerController.enabled = false;
     }
 
     public override void OnDisable() {
         base.OnDisable();
         InteractionManager.instance.RaycastClosed = false;
-        PlayerController.localPlayer.enabled = true;
+        PlayerManager.localPlayer.playerController.enabled = true;
     }
     
     /// <summary>
@@ -118,7 +118,7 @@ public class ChoosePlayerPanel : BasePanel
     /// </summary>
     /// <param name="isOn"></param>是否勾选
     /// <param name="name"></param>勾选学生的名称
-    void OnToggleValueChanged(bool isOn,PlayerController player)
+    void OnToggleValueChanged(bool isOn,PlayerManager player)
     {
         if (isOn)
         {
@@ -142,7 +142,7 @@ public class ChoosePlayerPanel : BasePanel
         }
 
         // 遍历所有玩家并创建 slot
-        foreach (PlayerController player in PlayerController.allPlayers)
+        foreach (PlayerManager player in PlayerManager.allPlayers)
         {
             // 实例化 slot 并设置为 content 的子物体
             GameObject newSlot = GameObject.Instantiate(PlayerSlot, content.transform);

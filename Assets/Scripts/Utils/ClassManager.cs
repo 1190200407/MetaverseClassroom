@@ -44,7 +44,7 @@ public class ClassManager : UnitySingleton<ClassManager>
     {
         SceneLoader.instance.LoadSceneFromXml(nextScene);
         currentScene = nextScene;
-        PlayerController.localPlayer.CurrentScene = nextScene;
+        PlayerManager.localPlayer.CurrentScene = nextScene;
         isInClassroom = !isInClassroom; // 切换场景后，教室状态取反, 之后可能出现一教室多场景情况，需要切换成别的判断方式
     }
 }

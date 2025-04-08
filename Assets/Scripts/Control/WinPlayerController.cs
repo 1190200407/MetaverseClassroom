@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using Mirror;
 using UnityEngine;
 
@@ -10,10 +11,6 @@ public class WinPlayerController : PlayerController
 
     public float minY = -60.0f;
     public float maxY = 60.0f;
-
-    public float cameraSensitivity;
-
-    public float moveSpeed;
 
     float rotationY = 0.0f;
     float rotationX = 0.0f;
@@ -35,11 +32,13 @@ public class WinPlayerController : PlayerController
     private int currentFrameCount = 0;
     public int syncFrameCount = 10; // 同步间隔的帧数
 
+    
+
     protected override void Start()
     {
         base.Start();    
 
-        if (!isLocalPlayer) return;
+        if (!playerManager.isLocalPlayer) return;
         
         playerCamera = Camera.main;
         Camera.main.transform.SetParent(transform);
@@ -55,25 +54,22 @@ public class WinPlayerController : PlayerController
     protected override void initialize()
     {
         base.initialize();
+        InitializeData();
         cameraSensitivity = playerData.cameraSensitivity;
         moveSpeed = playerData.moveSpeed;
-    }
-
-    protected override void changeData(PlayerData data)
-    {
-        base.changeData(data);
-        cameraSensitivity = data.cameraSensitivity;
-        moveSpeed = data.moveSpeed;
     }
     
     public void OnEnable() {
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
+        EventHandler.Register<PlayerChangeDataEvent>(changePlayerData); //注册用户修改基本参数事件
     }
 
     public void OnDisable() {
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.None;
+        EventHandler.Unregister<PlayerChangeDataEvent>(changePlayerData); //注销用户修改基本参数事件
+        SaveData(playerData);
     }
 
     void OnPause() {
@@ -90,7 +86,7 @@ public class WinPlayerController : PlayerController
 
     private void Update()
     {
-        if (!isLocalPlayer) { return; }
+        if (!playerManager.isLocalPlayer) { return; }
         if(!pause) {
             var x = Input.GetAxis("Mouse X");
             var y = Input.GetAxis("Mouse Y");
@@ -101,14 +97,6 @@ public class WinPlayerController : PlayerController
                 rotationY = Mathf.Clamp(rotationY, minY, maxY);
                 transform.localEulerAngles = new Vector3(0, rotationX, 0);
                 playerCamera.transform.localEulerAngles = new Vector3(-rotationY, 0, 0);
-                
-                // 更新网络同步的旋转值
-                currentFrameCount++;
-                if (currentFrameCount >= syncFrameCount)
-                {
-                    currentFrameCount = 0;
-                    CmdSyncRotation(rotationY);
-                }
             }
 
             // 使用鼠标滚轮调整视距 (FOV)
@@ -123,30 +111,30 @@ public class WinPlayerController : PlayerController
         }
 
         // 更新红点的位置
-        if (redDot != null)
+        if (playerManager.redDot != null)
         {
             // 没有权限时，隐藏红点
-            if (!HavePermission(Permission.RedDot) && isShowingRedDot)
+            if (!playerManager.HavePermission(Permission.RedDot) && playerManager.isShowingRedDot)
             {
-                redDot.SetActive(false);
-                isShowingRedDot = false;
+                playerManager.redDot.SetActive(false);
+                playerManager.isShowingRedDot = false;
             }
             
-            if (HavePermission(Permission.RedDot))
+            if (playerManager.HavePermission(Permission.RedDot))
             {
                 // 检测右键按下和松开
                 if (Input.GetMouseButtonDown(1)) // 右键按下
                 {
-                    isShowingRedDot = true;
+                    playerManager.isShowingRedDot = true;
                 }
 
                 if (Input.GetMouseButtonUp(1)) // 右键松开
                 {
-                    isShowingRedDot = false;
-                    redDot.transform.position = Vector3.down * 10000f;
+                    playerManager.isShowingRedDot = false;
+                    playerManager.redDot.transform.position = Vector3.down * 10000f;
                 }
 
-                if (isShowingRedDot)
+                if (playerManager.isShowingRedDot)
                 {
                     UpdateRedDotPosition();
                 }
@@ -154,15 +142,9 @@ public class WinPlayerController : PlayerController
         }
     }
 
-    [Command]
-    public void CmdSyncRotation(float rotationY)
-    {
-        targetRotationY = rotationY;
-    }
-
     private void LateUpdate()
     {
-        if (!isLocalPlayer)
+        if (!playerManager.isLocalPlayer)
         {
             // 平滑插值到目标旋转值
             currentRotationY = Mathf.Lerp(currentRotationY, targetRotationY, Time.deltaTime * rotationSmoothSpeed);
@@ -176,16 +158,16 @@ public class WinPlayerController : PlayerController
 
     void FixedUpdate()
     {
-        if (!isLocalPlayer) { return; }
-        if (!pause && !isSitting) {
+        if (!playerManager.isLocalPlayer) { return; }
+        if (!pause && !playerManager.IsSitting) {
             var x = Input.GetAxis("Horizontal");
             var y = Input.GetAxis("Vertical");
             Vector3 move = (Vector3.right * x + Vector3.forward * y) * moveSpeed / 500;
             rb.MovePosition(transform.position + transform.TransformDirection(move));
-            anim.SetFloat("MoveX", x);
-            anim.SetFloat("MoveY", y);
+            animator.SetFloat("MoveX", x);
+            animator.SetFloat("MoveY", y);
         }
-        if (!pause && isSitting)
+        if (!pause && playerManager.IsSitting)
         {
             var x = Input.GetAxis("Horizontal");
             var y = Input.GetAxis("Vertical");
@@ -196,7 +178,7 @@ public class WinPlayerController : PlayerController
                 {
                     moveHoldTimer = 0f;
                     Sit.currentSitting.ResetSeat();
-                    IsSitting = false;
+                    playerManager.IsSitting = false;
                 }
             }
             else
@@ -216,14 +198,14 @@ public class WinPlayerController : PlayerController
     
     private void UpdateRedDotPosition()
     {
-        if (playerCamera != null && redDot != null)
+        if (playerCamera != null && playerManager.redDot != null)
         {
             // 通过相机的正前方来设置红点位置
             Vector3 targetPosition = playerCamera.transform.position + playerCamera.transform.forward * 5f; // 5f 是红点距离相机的距离，可以根据需要调整
-            redDot.transform.position = targetPosition;
+            playerManager.redDot.transform.position = targetPosition;
         }
 
-        if (playerCamera != null && redDot != null)
+        if (playerCamera != null && playerManager.redDot != null)
         {
             RaycastHit hit;
             Ray ray = new Ray(playerCamera.transform.position, playerCamera.transform.forward); // 从摄像机出发，沿摄像机的正前方发射射线
@@ -231,16 +213,16 @@ public class WinPlayerController : PlayerController
             if (Physics.Raycast(ray, out hit))
             {
                 // 红点停留在碰撞点的位置
-                redDot.transform.position = hit.point;
+                playerManager.redDot.transform.position = hit.point;
 
                 // 旋转红点，使其与碰撞表面法线对齐
-                redDot.transform.rotation = Quaternion.FromToRotation(Vector3.up, hit.normal);
+                playerManager.redDot.transform.rotation = Quaternion.FromToRotation(Vector3.up, hit.normal);
             }
             else
             {
                 // 如果射线没有碰到物体，红点会停在射线的最大距离处
-                redDot.transform.position = ray.GetPoint(100f); // 100f 是射线的最大距离
-                redDot.transform.rotation = Quaternion.identity; // 保持默认的旋转
+                playerManager.redDot.transform.position = ray.GetPoint(100f); // 100f 是射线的最大距离
+                playerManager.redDot.transform.rotation = Quaternion.identity; // 保持默认的旋转
             }
         }
     }

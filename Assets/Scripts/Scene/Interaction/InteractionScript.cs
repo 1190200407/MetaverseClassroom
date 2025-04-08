@@ -1,22 +1,20 @@
-using ExitGames.Client.Photon;
 using UnityEngine;
 using UnityEngine.XR.Interaction.Toolkit;
+using Mirror;
 
 /// <summary>
 /// 所有可交互脚本的基类
 /// </summary>
-public class InteractionScript
+public class InteractionScript : NetworkBehaviour
 {
     public SceneElement element;
 
     public virtual void OnEnable()
     {
-
     }
 
     public virtual void OnDisable()
     {
-
     }
 
     /// <summary>
@@ -27,9 +25,9 @@ public class InteractionScript
         this.element = element;
     }
 
-    public virtual void OnJoinRoom()
+    public override void OnStartClient()
     {
-
+        base.OnStartClient();
     }
 
     /// <summary>
@@ -57,14 +55,6 @@ public class InteractionScript
     /// 当射线松开时响应的函数
     /// </summary>
     public virtual void OnSelectExit()
-    {
-    }
-
-    /// <summary>
-    /// 触发网络事件
-    /// </summary>
-    /// <param name="photonEvent"></param>
-    public virtual void OnEvent(EventData photonEvent)
     {
     }
 }

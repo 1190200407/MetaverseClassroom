@@ -48,7 +48,7 @@ public class Whiteboard : MonoBehaviour
                     }
 
                     // 获取监视器
-                    foreach (var player in PlayerController.allPlayers)
+                    foreach (var player in PlayerManager.allPlayers)
                     {
                         if (!player.IsStudent)
                         {

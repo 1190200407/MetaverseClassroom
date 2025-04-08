@@ -24,7 +24,7 @@ public class StartPanel : BasePanel
 
     private Dictionary<string, Image> nameIconDict;
     private string chosenName;
-    private PlayerManager player;
+    private PlayerModel player;
 
     public StartPanel(UIType uiType) : base(uiType)
     {   
@@ -60,7 +60,7 @@ public class StartPanel : BasePanel
                 Choose(child.name);
             });
         }
-        player = GameObject.Instantiate(Resources.Load<PlayerManager>("Prefabs/PlayerModel"), Vector3.one * 1000f, Quaternion.identity);
+        player = GameObject.Instantiate(Resources.Load<PlayerModel>("Prefabs/PlayerModel"), Vector3.one * 1000f, Quaternion.identity);
         Choose(PlayerPrefs.GetString("ChosenCharacter", content.GetChild(0).name));
         
         // 初始化界面状态
@@ -79,8 +79,8 @@ public class StartPanel : BasePanel
         backButton.onClick.AddListener(ShowMenu);
         enterButton.onClick.AddListener(EnterGame);
 
-        if (PlayerController.localPlayer != null)
-            PlayerController.localPlayer.enabled = false;
+        if (PlayerManager.localPlayer != null)
+            PlayerManager.localPlayer.playerController.enabled = false;
     }
 
     public override void OnDisable()
@@ -90,8 +90,8 @@ public class StartPanel : BasePanel
         backButton.onClick.RemoveListener(ShowMenu);
         enterButton.onClick.RemoveListener(EnterGame);
 
-        if (PlayerController.localPlayer != null)
-            PlayerController.localPlayer.enabled = true;
+        if (PlayerManager.localPlayer != null)
+            PlayerManager.localPlayer.playerController.enabled = true;
     }
 
     private void Show(bool showMenu)
@@ -120,7 +120,17 @@ public class StartPanel : BasePanel
             return;
         }
 
+        // 设置玩家名称
+        PlayerPrefs.SetString("NickName", playerName);
+        
+        // 开始课程
         NetworkManagerClassroom.singleton.StartHost();
+        ClassManager.instance.StartCourse();
+
+        // 切换到游戏界面
+        UIManager.instance.Pop(false);
+        if (!GameSettings.instance.isVR)
+            UIManager.instance.Push(new GamePanel(new UIType("Panels/GamePanel", "GamePanel")));
 
         // PhotonNetwork.NickName = playerName;
         // ExitGames.Client.Photon.Hashtable hashtable = new ExitGames.Client.Photon.Hashtable()

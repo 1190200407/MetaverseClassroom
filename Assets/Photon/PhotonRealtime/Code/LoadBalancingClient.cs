@@ -366,7 +366,7 @@ namespace Photon.Realtime
         public bool IsUsingNameServer { get; set; }
 
         /// <summary>Name Server Host Name for Photon Cloud. Without port and without any prefix.</summary>
-        public string NameServerHost = "ns.photonengine.io";
+        public string NameServerHost = "ns.photonengine.cn";
 
         /// <summary>Name Server Address for Photon Cloud (based on current protocol). You can use the default values and usually won't have to set this value.</summary>
         public string NameServerAddress { get { return this.GetNameServerAddress(); } }

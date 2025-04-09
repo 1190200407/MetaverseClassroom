@@ -58,6 +58,13 @@ public class WinPlayerController : PlayerController
         cameraSensitivity = playerData.cameraSensitivity;
         moveSpeed = playerData.moveSpeed;
     }
+
+    public override void ResetTransform(Transform sceneTransform)
+    {
+        base.ResetTransform(sceneTransform);
+        rotationX = 0;
+        rotationY = 0;
+    }
     
     public void OnEnable() {
         Cursor.visible = false;

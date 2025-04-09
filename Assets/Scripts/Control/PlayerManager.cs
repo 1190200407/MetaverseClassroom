@@ -76,7 +76,8 @@ public class PlayerManager : NetworkBehaviour
                 //其他客户端同步状态
                 CmdSetCurrentScene(value);
 
-                transform.position = SceneLoader.instance.PathToSceneObject[value].transform.position;
+                playerController.ResetTransform(SceneLoader.instance.PathToSceneObject[value].transform);
+                
                 //切换场景后，更新player的状态
                 foreach (var player in allPlayers)
                 {
@@ -273,14 +274,6 @@ public class PlayerManager : NetworkBehaviour
         animator.SetFloat("MoveY", 0);
     }
 
-    public void ChangeScene(string sceneName)
-    {
-        // 如果是本地玩家，直接调用场景切换
-        if (isLocalPlayer)
-        {
-            ClassManager.instance.StartSceneTransition(sceneName);
-        }
-    }
 
     [Command]
     public void CmdSetCurrentScene(string sceneName)

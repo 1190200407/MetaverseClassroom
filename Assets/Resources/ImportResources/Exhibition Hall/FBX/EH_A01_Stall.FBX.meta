@@ -1,0 +1,237 @@
+fileFormatVersion: 2
+guid: 4970911fbabf7e1499874537cd77a873
+ModelImporter:
+  serializedVersion: 23
+  fileIDToRecycleName:
+    100000: EH_A01_Chair
+    100002: EH_A01_Design
+    100004: EH_A01_Floor
+    100006: EH_A01_Room
+    100008: EH_A01_Screen_01
+    100010: EH_A01_Screen_02
+    100012: EH_A01_Screen_03
+    100014: //RootNode
+    100016: EH_A01_Table
+    100018: EH_A01_Screen_Base01
+    100020: EH_A01_Screen_Base02
+    100022: EH_A01_Screen_004
+    100024: EH_A01_Screen_005
+    100026: EH_A01_Screen_Base03
+    400000: EH_A01_Chair
+    400002: EH_A01_Design
+    400004: EH_A01_Floor
+    400006: EH_A01_Room
+    400008: EH_A01_Screen_01
+    400010: EH_A01_Screen_02
+    400012: EH_A01_Screen_03
+    400014: //RootNode
+    400016: EH_A01_Table
+    400018: EH_A01_Screen_Base01
+    400020: EH_A01_Screen_Base02
+    400022: EH_A01_Screen_004
+    400024: EH_A01_Screen_005
+    400026: EH_A01_Screen_Base03
+    2100000: EH_Chair_Chrome
+    2100002: EH_Chair_Wood
+    2100004: EH_Chair_Fabric
+    2100006: EH_A01_Floor_Rug
+    2100008: EH_A01_Floor_Lit
+    2100010: EH_A01_Design
+    2100012: EH_A01_Room_Paint
+    2100014: EH_A01_Room
+    2100016: 19 - Default
+    2100018: EH_A01_Room_Door
+    2100020: EH_A01_Room_Shelf
+    2100022: EH_A01_Screen_Base
+    2100024: EH_A01_Screen
+    2100026: EH_A01_Design_Lit
+    2300000: EH_A01_Chair
+    2300002: EH_A01_Design
+    2300004: EH_A01_Floor
+    2300006: EH_A01_Room
+    2300008: EH_A01_Screen_01
+    2300010: EH_A01_Screen_02
+    2300012: EH_A01_Screen_03
+    2300014: EH_A01_Table
+    2300016: EH_A01_Screen_Base01
+    2300018: EH_A01_Screen_Base02
+    2300020: EH_A01_Screen_004
+    2300022: EH_A01_Screen_005
+    2300024: EH_A01_Screen_Base03
+    3300000: EH_A01_Chair
+    3300002: EH_A01_Design
+    3300004: EH_A01_Floor
+    3300006: EH_A01_Room
+    3300008: EH_A01_Screen_01
+    3300010: EH_A01_Screen_02
+    3300012: EH_A01_Screen_03
+    3300014: EH_A01_Table
+    3300016: EH_A01_Screen_Base01
+    3300018: EH_A01_Screen_Base02
+    3300020: EH_A01_Screen_004
+    3300022: EH_A01_Screen_005
+    3300024: EH_A01_Screen_Base03
+    4300000: EH_A01_Chair
+    4300002: EH_A01_Floor
+    4300004: EH_A01_Table
+    4300006: EH_A01_Room
+    4300008: EH_A01_Screen_02
+    4300010: EH_A01_Design
+    4300012: EH_A01_Screen_01
+    4300014: EH_A01_Screen_03
+    4300016: EH_A01_Screen_Base02
+    4300018: EH_A01_Screen_Base01
+    4300020: EH_A01_Screen_004
+    4300022: EH_A01_Screen_005
+    4300024: EH_A01_Screen_Base03
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: EH_A01_Design
+    second: {fileID: 2100000, guid: e7fd034b2f2195a4bb12532bdc55a8b3, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: EH_A01_Design_Lit
+    second: {fileID: 2100000, guid: 6d2c235dddbff1f4ab0fc9397e22918c, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: EH_A01_Floor_Lit
+    second: {fileID: 2100000, guid: 63c90eb8419b80045890f2a7b5c44eb0, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: EH_A01_Floor_Rug
+    second: {fileID: 2100000, guid: 8f649ebc3ec8f3240ac2a7247727024c, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: EH_A01_Room
+    second: {fileID: 2100000, guid: e6e5dc49c26595442859dec42408ca26, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: EH_A01_Room_Door
+    second: {fileID: 2100000, guid: 54d5429f4d2d6324ab7fb5803e36c555, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: EH_A01_Room_Paint
+    second: {fileID: 2100000, guid: 4a9981e46497225419c6b05caebad20d, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: EH_A01_Room_Shelf
+    second: {fileID: 2100000, guid: 43a5262409ccea04bb9f1ae389186924, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: EH_A01_Screen
+    second: {fileID: 2100000, guid: d1c51612ee945c143ac31deb0c926296, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: EH_A01_Screen_Base
+    second: {fileID: 2100000, guid: 9850ec50b51446040ac4b680089f67b6, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: EH_Chair_Chrome
+    second: {fileID: 2100000, guid: c909659c0e9df4140ae41a4f94acb644, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: EH_Chair_Fabric
+    second: {fileID: 2100000, guid: c6fc750708c69cb4d90cbf3ed82ad0fe, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: EH_Chair_Wood
+    second: {fileID: 2100000, guid: 8a92716254122404a8c434250248ad56, type: 2}
+  materials:
+    importMaterials: 1
+    materialName: 1
+    materialSearch: 1
+    materialLocation: 0
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    useSRGBMaterialColor: 1
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+    previousCalculatedGlobalScale: 1
+    hasPreviousCalculatedGlobalScale: 0
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

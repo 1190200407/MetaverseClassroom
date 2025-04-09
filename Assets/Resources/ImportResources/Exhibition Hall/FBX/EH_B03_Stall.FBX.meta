@@ -1,0 +1,201 @@
+fileFormatVersion: 2
+guid: 09f782fe09366c542b63e34a4a9562f8
+ModelImporter:
+  serializedVersion: 23
+  fileIDToRecycleName:
+    100000: EH_B03_Chair
+    100002: EH_B03_Design
+    100004: EH_B03_Floor
+    100006: EH_B03_Plant01
+    100008: EH_B03_Plant02
+    100010: //RootNode
+    100012: EH_B03_Table
+    400000: EH_B03_Chair
+    400002: EH_B03_Design
+    400004: EH_B03_Floor
+    400006: EH_B03_Plant01
+    400008: EH_B03_Plant02
+    400010: //RootNode
+    400012: EH_B03_Table
+    2100000: EH_B03_Design_Wood
+    2100002: EH_B03_Design_Paint
+    2100004: EH_B03_Design_Wood2
+    2100006: EH_Metal_Chrome
+    2100008: EH_B03_Design_Info
+    2100010: EH_B03_Table_Paint
+    2100012: EH_B03_Table_Wood
+    2100014: EH_Chair_Chrome
+    2100016: EH_Chair_Wood
+    2100018: EH_Chair_Fabric
+    2100020: EH_B03_Plant
+    2100022: EH_B03_Floor_Lit
+    2100024: EH_B03_Floor_Rug
+    2300000: EH_B03_Chair
+    2300002: EH_B03_Design
+    2300004: EH_B03_Floor
+    2300006: EH_B03_Plant01
+    2300008: EH_B03_Plant02
+    2300010: EH_B03_Table
+    3300000: EH_B03_Chair
+    3300002: EH_B03_Design
+    3300004: EH_B03_Floor
+    3300006: EH_B03_Plant01
+    3300008: EH_B03_Plant02
+    3300010: EH_B03_Table
+    4300000: EH_B03_Design
+    4300002: EH_B03_Table
+    4300004: EH_B03_Chair
+    4300006: EH_B03_Plant01
+    4300008: EH_B03_Plant02
+    4300010: EH_B03_Floor
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: EH_B03_Design_Info
+    second: {fileID: 2100000, guid: b47a08966796f0b438f5fc463d7f55e0, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: EH_B03_Design_Paint
+    second: {fileID: 2100000, guid: 9de9728e91533f84ba6de1c4fb45061c, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: EH_B03_Design_Wood
+    second: {fileID: 2100000, guid: 6e27a666382fe9b4d9b691a558d9fcee, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: EH_B03_Design_Wood2
+    second: {fileID: 2100000, guid: 5a31f3c2d5534cf48ba59f61729e797f, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: EH_B03_Floor_Lit
+    second: {fileID: 2100000, guid: 0692074430d62074089b1987137568c5, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: EH_B03_Floor_Rug
+    second: {fileID: 2100000, guid: 2d685c262d2e45744a1dd1c54fbb2ce5, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: EH_B03_Plant
+    second: {fileID: 2100000, guid: 9cb67ecbe79cfb04194a63d605e48693, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: EH_B03_Table_Paint
+    second: {fileID: 2100000, guid: cc9fced4c9cc11e44bbc40da1cdb20b0, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: EH_B03_Table_Wood
+    second: {fileID: 2100000, guid: 6e27a666382fe9b4d9b691a558d9fcee, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: EH_Chair_Chrome
+    second: {fileID: 2100000, guid: c909659c0e9df4140ae41a4f94acb644, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: EH_Chair_Fabric
+    second: {fileID: 2100000, guid: 694c1ddcbeb785c48bd1ebcfe16beff7, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: EH_Chair_Wood
+    second: {fileID: 2100000, guid: 6e27a666382fe9b4d9b691a558d9fcee, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: EH_Metal_Chrome
+    second: {fileID: 2100000, guid: a43c77bc47705b145bee751717b04e54, type: 2}
+  materials:
+    importMaterials: 1
+    materialName: 1
+    materialSearch: 1
+    materialLocation: 0
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    useSRGBMaterialColor: 1
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+    previousCalculatedGlobalScale: 1
+    hasPreviousCalculatedGlobalScale: 0
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

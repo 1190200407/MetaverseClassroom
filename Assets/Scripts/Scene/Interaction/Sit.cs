@@ -8,26 +8,16 @@ public class Sit : InteractionScript
     private bool isOccupied = false;
     private string chairKey;
 
-    // 使用 SyncVar 来同步椅子状态
-    [SyncVar(hook = nameof(OnChairStateChanged))]
-    private bool syncedIsOccupied;
-
     public override void Init(SceneElement element)
     {
         base.Init(element);
         chairKey = element.name;
-    }
-
-    public override void OnStartClient()
-    {
-        base.OnStartClient();
-        // 初始化时更新椅子状态
-        UpdateChairVisual();
-    }
-
-    private void OnChairStateChanged(bool oldValue, bool newValue)
-    {
-        isOccupied = newValue;
+        // 初始化时从ClassManager获取椅子状态
+        object isOccupied = ClassManager.instance.GetRoomProperty(chairKey);
+        if (isOccupied != null && isOccupied is bool)
+        {
+            this.isOccupied = (bool)isOccupied;
+        }
         UpdateChairVisual();
     }
 
@@ -65,17 +55,9 @@ public class Sit : InteractionScript
         isOccupied = true;
         currentSitting = this;
         
-        // 如果是本地玩家，调用服务器命令来更新状态
-        if (isLocalPlayer)
-        {
-            CmdSetChairOccupied(true);
-        }
-    }
-
-    [Command(requiresAuthority = false)]
-    private void CmdSetChairOccupied(bool occupied)
-    {
-        syncedIsOccupied = occupied;
+        // 通过ClassManager更新房间属性
+        ClassManager.instance.SetRoomProperty(chairKey, true);
+        UpdateChairVisual();
     }
 
     private void UpdateChairVisual()
@@ -92,10 +74,8 @@ public class Sit : InteractionScript
         
         PlayerManager.localPlayer.IsSitting = false;
         
-        // 如果是本地玩家，调用服务器命令来更新状态
-        if (isLocalPlayer)
-        {
-            CmdSetChairOccupied(false);
-        }
+        // 通过ClassManager更新房间属性
+        ClassManager.instance.SetRoomProperty(chairKey, false);
+        UpdateChairVisual();
     }
 }

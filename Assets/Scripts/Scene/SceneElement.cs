@@ -5,7 +5,7 @@ using UnityEngine;
 using Mirror;
 using UnityEngine.XR.Interaction.Toolkit;
 
-public class SceneElement : NetworkBehaviour
+public class SceneElement : MonoBehaviour
 {
     [HideInInspector] public string id;
     public string path;
@@ -57,16 +57,7 @@ public class SceneElement : NetworkBehaviour
     private void OnDestroy() {
         SceneLoader.instance.IdToElement.Remove(id);
     }
-
-    /// <summary>
-    /// 当客户端启动时响应的函数
-    /// </summary>
-    public override void OnStartClient()
-    {
-        base.OnStartClient();
-        interactionScript?.OnStartClient();
-    }
-
+    
     /// <summary>
     /// 当射线射中时响应的函数
     /// </summary>

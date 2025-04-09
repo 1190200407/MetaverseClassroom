@@ -5,7 +5,7 @@ using Mirror;
 /// <summary>
 /// 所有可交互脚本的基类
 /// </summary>
-public class InteractionScript : NetworkBehaviour
+public class InteractionScript
 {
     public SceneElement element;
 
@@ -23,11 +23,6 @@ public class InteractionScript : NetworkBehaviour
     public virtual void Init(SceneElement element)
     {
         this.element = element;
-    }
-
-    public override void OnStartClient()
-    {
-        base.OnStartClient();
     }
 
     /// <summary>

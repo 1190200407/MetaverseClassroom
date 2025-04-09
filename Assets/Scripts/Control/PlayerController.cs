@@ -33,6 +33,12 @@ public class PlayerController : MonoBehaviour
     protected virtual void initialize()
     {
     }
+
+    public virtual void ResetTransform(Transform sceneTransform)
+    {
+        transform.position = sceneTransform.position;
+        transform.rotation = Quaternion.identity;
+    }
     
     #region 玩家数据
     

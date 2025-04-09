@@ -10,6 +10,7 @@ public class ActingActivity : BaseActivity
 
     public override void Start()
     {
+        ClassManager.instance.ChangeScene(sceneName);
     }
 
     public override void End()

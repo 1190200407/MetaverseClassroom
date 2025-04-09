@@ -1,0 +1,174 @@
+fileFormatVersion: 2
+guid: 5020801e1b922854bb0efff3eda29f70
+ModelImporter:
+  serializedVersion: 23
+  fileIDToRecycleName:
+    100000: //RootNode
+    100002: Your Logo Here_01
+    100004: Your Logo Here_02
+    100006: Your Logo Here_03
+    100008: Your Logo Here_04
+    100010: Your Logo Here_05
+    100012: Your Logo Here_06
+    100014: Your Logo Here_07
+    100016: Your Logo Here_08
+    100018: Your Logo Here_09
+    100020: Your Logo Here_10
+    100022: Your Logo Here_11
+    100024: Your Logo Here_12
+    100026: Your Logo Here_13
+    100028: Your Logo Here_14
+    100030: Your Logo Here_15
+    400000: //RootNode
+    400002: Your Logo Here_01
+    400004: Your Logo Here_02
+    400006: Your Logo Here_03
+    400008: Your Logo Here_04
+    400010: Your Logo Here_05
+    400012: Your Logo Here_06
+    400014: Your Logo Here_07
+    400016: Your Logo Here_08
+    400018: Your Logo Here_09
+    400020: Your Logo Here_10
+    400022: Your Logo Here_11
+    400024: Your Logo Here_12
+    400026: Your Logo Here_13
+    400028: Your Logo Here_14
+    400030: Your Logo Here_15
+    2100000: Your Logo Here
+    2300000: Your Logo Here_01
+    2300002: Your Logo Here_02
+    2300004: Your Logo Here_03
+    2300006: Your Logo Here_04
+    2300008: Your Logo Here_05
+    2300010: Your Logo Here_06
+    2300012: Your Logo Here_07
+    2300014: Your Logo Here_08
+    2300016: Your Logo Here_09
+    2300018: Your Logo Here_10
+    2300020: Your Logo Here_11
+    2300022: Your Logo Here_12
+    2300024: Your Logo Here_13
+    2300026: Your Logo Here_14
+    2300028: Your Logo Here_15
+    3300000: Your Logo Here_01
+    3300002: Your Logo Here_02
+    3300004: Your Logo Here_03
+    3300006: Your Logo Here_04
+    3300008: Your Logo Here_05
+    3300010: Your Logo Here_06
+    3300012: Your Logo Here_07
+    3300014: Your Logo Here_08
+    3300016: Your Logo Here_09
+    3300018: Your Logo Here_10
+    3300020: Your Logo Here_11
+    3300022: Your Logo Here_12
+    3300024: Your Logo Here_13
+    3300026: Your Logo Here_14
+    3300028: Your Logo Here_15
+    4300000: Your Logo Here_14
+    4300002: Your Logo Here_15
+    4300004: Your Logo Here_13
+    4300006: Your Logo Here_08
+    4300008: Your Logo Here_07
+    4300010: Your Logo Here_09
+    4300012: Your Logo Here_10
+    4300014: Your Logo Here_11
+    4300016: Your Logo Here_12
+    4300018: Your Logo Here_06
+    4300020: Your Logo Here_05
+    4300022: Your Logo Here_02
+    4300024: Your Logo Here_03
+    4300026: Your Logo Here_04
+    4300028: Your Logo Here_01
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Your Logo Here
+    second: {fileID: 2100000, guid: 2ba3b9aed89e2524eb65bda981223390, type: 2}
+  materials:
+    importMaterials: 1
+    materialName: 1
+    materialSearch: 1
+    materialLocation: 0
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    useSRGBMaterialColor: 1
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+    previousCalculatedGlobalScale: 1
+    hasPreviousCalculatedGlobalScale: 0
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

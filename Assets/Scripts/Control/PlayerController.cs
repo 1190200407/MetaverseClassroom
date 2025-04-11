@@ -53,10 +53,9 @@ public class PlayerController : MonoBehaviour
     /// <summary>
     /// 保存用户数据
     /// </summary>
-    /// <param name="data"></param>
-    public static void SaveData(PlayerData data)
+    public static void SaveData()
     {
-        string json = JsonUtility.ToJson(data, true);
+        string json = JsonUtility.ToJson(playerData, true);
         File.WriteAllText(savePath, json);
         Debug.Log("玩家数据已保存：" + savePath);
     }
@@ -87,6 +86,7 @@ public class PlayerController : MonoBehaviour
         if (playerManager.isLocalPlayer)
         {
             playerData = LoadData();
+            Debug.Log("玩家数据已加载：" + playerData.moveSpeed + " " + playerData.cameraSensitivity + " " + playerData.volume);
         }
     }
 
@@ -107,6 +107,7 @@ public class PlayerController : MonoBehaviour
             playerData = data;
             cameraSensitivity = data.cameraSensitivity;
             moveSpeed = data.moveSpeed;
+            Debug.Log("玩家数据已保存：" + playerData.moveSpeed + " " + playerData.cameraSensitivity + " " + playerData.volume);
         }
     }
     #endregion

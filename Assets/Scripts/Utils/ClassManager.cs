@@ -15,36 +15,56 @@ public class ClassManager : NetworkSingleton<ClassManager>
 
     #region 房间属性
     // 存储房间属性
-    private Dictionary<object, object> roomProperties = new Dictionary<object, object>();
+    private Dictionary<string, string> roomProperties = new Dictionary<string, string>();
+    public string propertyValue;
 
     // 服务器端设置属性
-    [Server]
-    public void SetRoomProperty(object key, object value)
+    [Command(requiresAuthority = false)]
+    public void CommandSetRoomProperty(string key, string value)
     {
         roomProperties[key] = value;
-        RpcUpdateRoomProperty(key, value);
+        RpcSetRoomProperty(key, value);
     }
 
-    // 客户端获取属性
-    public object GetRoomProperty(object key)
-    {
-        if (roomProperties.TryGetValue(key, out object value))
-        {
-            return value;
-        }
-        return null;
-    }
-
-    // 服务器广播属性更新
+    // 通知客户端属性变化
     [ClientRpc]
-    private void RpcUpdateRoomProperty(object key, object value)
+    private void RpcSetRoomProperty(string key, string value)
     {
-        roomProperties[key] = value;
+        EventHandler.Trigger(new RoomPropertyChangeEvent() { key = key, value = value });
+    }
+
+    // 查询房间属性（Command）
+    [Command(requiresAuthority = false)]
+    public void CmdGetRoomProperty(string key, NetworkConnectionToClient conn = null)
+    {
+        if (isServer && conn != null)
+        {
+            // 查询房间属性
+            if (roomProperties.ContainsKey(key))
+            {
+                // 只通过 TargetRpc 返回给调用者（特定客户端）
+                TargetReplyRoomProperty(conn, key, roomProperties[key]);
+            }
+            else
+            {
+                // 如果没有找到属性，可以返回空值或者错误信息
+                TargetReplyRoomProperty(conn, key, null);
+            }
+        }
+    }
+
+    [TargetRpc]
+    private void TargetReplyRoomProperty(NetworkConnectionToClient conn, string key, string value)
+    {
+        propertyValue = value;
     }
     #endregion
 
     public void StartCourse()
     {
+        // 暂时直接复制，之后需要从服务器获取
+        roomProperties = new Dictionary<string, string>();
+        pptFilePath = "PPT2.pptx";
         SceneLoader.instance.LoadSceneFromXml("Classroom");
         currentScene = "Classroom";
         isInClassroom = true;

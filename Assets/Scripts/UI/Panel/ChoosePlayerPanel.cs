@@ -146,11 +146,11 @@ public class ChoosePlayerPanel : BasePanel
         {
             // 实例化 slot 并设置为 content 的子物体
             GameObject newSlot = GameObject.Instantiate(PlayerSlot, content.transform);
-            newSlot.name = player.playerName;
+            newSlot.name = player.PlayerName;
 
             // 获取并设置玩家名称
             TextMeshProUGUI playerName = UIMethods.instance.GetOrAddComponentInChild<TextMeshProUGUI>(newSlot, "Name");
-            playerName.text = player.playerName;
+            playerName.text = player.PlayerName;
             
             //Toggle值改变监听函数,当被勾选时间，增加进列表中
             newSlot.GetComponent<Toggle>().onValueChanged.AddListener(isOn => OnToggleValueChanged(isOn, player));

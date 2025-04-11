@@ -1,6 +1,8 @@
 using Photon.Realtime;
 using UnityEngine;
 
+public struct StartLocalPlayerEvent {}
+
 public struct ResumeEvent {}
 
 public struct ReloadEvent {}
@@ -16,14 +18,10 @@ public struct ChangeSceneEvent
     public string sceneName;
 }
 
-public struct PlayerJoinRoomEvent
+public struct RoomPropertyChangeEvent
 {
-    public PlayerManager player;
-}
-
-public struct PlayerLeftRoomEvent
-{
-    public PlayerManager player;
+    public string key;
+    public string value;
 }
 
 public struct PlayerChangeDataEvent

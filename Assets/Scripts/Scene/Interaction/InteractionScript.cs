@@ -26,6 +26,13 @@ public class InteractionScript
     }
 
     /// <summary>
+    /// 当本地玩家开始时响应的函数
+    /// </summary>
+    public virtual void OnStartLocalPlayer()
+    {
+    }
+
+    /// <summary>
     /// 当射线射中时响应的函数
     /// </summary>
     public virtual void OnHoverEnter()

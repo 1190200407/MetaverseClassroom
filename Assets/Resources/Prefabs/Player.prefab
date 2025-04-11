@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 981533739395888817}
   - component: {fileID: 981533739388918105}
-  - component: {fileID: 8715840171493855002}
   m_Layer: 0
   m_Name: PlayerVisual
   m_TagString: Untagged
@@ -56,33 +55,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &8715840171493855002
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 981533739396311697}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9b8c4a61274f60b4ea5fb4299cfdbf14, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ShowLayerWeightsInspector: 1
-  ShowParameterInspector: 1
-  m_SynchronizeParameters:
-  - Type: 1
-    SynchronizeType: 2
-    Name: MoveX
-  - Type: 1
-    SynchronizeType: 2
-    Name: MoveY
-  - Type: 4
-    SynchronizeType: 0
-    Name: IsSit
-  m_SynchronizeLayers:
-  - SynchronizeType: 0
-    LayerIndex: 0
 --- !u!1 &1621024394873618547
 GameObject:
   m_ObjectHideFlags: 0
@@ -453,9 +425,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d6206724ce7b4b6469b8433c2400791f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isControllable: 1
+  syncDirection: 0
+  syncMode: 0
+  syncInterval: 0
+  playerController: {fileID: 0}
   animator: {fileID: 0}
+  rb: {fileID: 0}
   nameText: {fileID: 0}
+  redDot: {fileID: 0}
+  isShowingRedDot: 0
 --- !u!114 &2007682110063602019
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -522,7 +500,7 @@ MonoBehaviour:
   syncDirection: 1
   syncMode: 0
   syncInterval: 0
-  clientAuthority: 0
+  clientAuthority: 1
   animator: {fileID: 981533739388918105}
 --- !u!1 &8661544048547955049
 GameObject:

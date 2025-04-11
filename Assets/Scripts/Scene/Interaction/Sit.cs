@@ -5,19 +5,41 @@ using System.Collections.Generic;
 public class Sit : InteractionScript
 {
     public static Sit currentSitting;
-    private bool isOccupied = false;
     private string chairKey;
+    private bool isOccupied = false;
 
     public override void Init(SceneElement element)
     {
         base.Init(element);
-        chairKey = element.name;
-        // 初始化时从ClassManager获取椅子状态
-        object isOccupied = ClassManager.instance.GetRoomProperty(chairKey);
-        if (isOccupied != null && isOccupied is bool)
+        chairKey = "isOccupied_" + ClassManager.instance.currentScene + "_" + element.id;
+    }
+
+    public override void OnEnable()
+    {
+        base.OnEnable();
+        EventHandler.Register<RoomPropertyChangeEvent>(OnRoomPropertyChange);
+    }
+
+    public override void OnDisable()
+    {
+        base.OnDisable();
+        EventHandler.Unregister<RoomPropertyChangeEvent>(OnRoomPropertyChange);
+    }
+
+    private bool CheckOccupied()
+    {
+        ClassManager.instance.CmdGetRoomProperty(chairKey, PlayerManager.localPlayer.connectionToClient);
+        string isOccupied = ClassManager.instance.propertyValue;
+        if (isOccupied != null && isOccupied == "true")
         {
-            this.isOccupied = (bool)isOccupied;
+            return true;
         }
+        return false;
+    }
+
+    public override void OnStartLocalPlayer()
+    {
+        isOccupied = CheckOccupied();
         UpdateChairVisual();
     }
 
@@ -52,12 +74,11 @@ public class Sit : InteractionScript
         player.position = element.transform.position + new Vector3(0, 0.5f, 0);
 
         // 更新椅子状态
-        isOccupied = true;
         currentSitting = this;
+        UpdateChairVisual();
         
         // 通过ClassManager更新房间属性
-        ClassManager.instance.SetRoomProperty(chairKey, true);
-        UpdateChairVisual();
+        ClassManager.instance.CommandSetRoomProperty(chairKey, "true");
     }
 
     private void UpdateChairVisual()
@@ -75,7 +96,17 @@ public class Sit : InteractionScript
         PlayerManager.localPlayer.IsSitting = false;
         
         // 通过ClassManager更新房间属性
-        ClassManager.instance.SetRoomProperty(chairKey, false);
+        ClassManager.instance.CommandSetRoomProperty(chairKey, "false");
+        UpdateChairVisual();
+    }
+
+    public void OnRoomPropertyChange(RoomPropertyChangeEvent @event)
+    {
+        if (@event.key == chairKey)
+        {
+            isOccupied = @event.value == "true";
+            Debug.Log("OnRoomPropertyChange: " + isOccupied);
+        }
         UpdateChairVisual();
     }
 }

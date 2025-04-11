@@ -26,6 +26,7 @@
     "com.unity.xr.legacyinputhelpers": "2.1.11",
     "com.unity.xr.openxr": "1.13.1",
     "com.unity.xr.openxr.picoxr": "file:D:/PICO SDKs/PICO Unity OpenXR Integration SDK-1.3.0-20241011",
+    "com.veriorpies.parrelsync": "https://github.com/VeriorPies/ParrelSync.git?path=/ParrelSync",
     "com.unity.modules.ai": "1.0.0",
     "com.unity.modules.androidjni": "1.0.0",
     "com.unity.modules.animation": "1.0.0",

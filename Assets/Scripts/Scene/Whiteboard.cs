@@ -18,6 +18,7 @@ public class Whiteboard : MonoBehaviour
 
     [Header("PPT")]
     public Texture2D[] pptSlides;
+    public int currentSlideIndex;
 
     [Header("Monitor")]
     public Camera monitorCamera;
@@ -99,6 +100,20 @@ public class Whiteboard : MonoBehaviour
         }
     }
 
+    private void OnEnable()
+    {
+        EventHandler.Register<StartLocalPlayerEvent>(OnStartLocalPlayer);
+        EventHandler.Register<RoomPropertyChangeEvent>(OnRoomPropertyChange);
+        EventHandler.Register<ChangeSlideEvent>(OnChangeSlideEvent);
+    }
+
+    private void OnDisable()
+    {
+        EventHandler.Unregister<StartLocalPlayerEvent>(OnStartLocalPlayer);
+        EventHandler.Unregister<RoomPropertyChangeEvent>(OnRoomPropertyChange);
+        EventHandler.Unregister<ChangeSlideEvent>(OnChangeSlideEvent);
+    }
+
     private void OnDestroy()
     {
         // 清理资源
@@ -112,11 +127,20 @@ public class Whiteboard : MonoBehaviour
         }
     }
 
+
     private void Start()
     {
         // 初始化PPT
         string pptFilePath = ClassManager.instance.pptFilePath;
         string pptFullPath = Path.Combine(Application.streamingAssetsPath, "PPTs/" + pptFilePath);
+
+        // 如果pptFullPath不存在，则退出
+        if (!File.Exists(pptFullPath))
+        {
+            Debug.LogError("PPT文件不存在: " + pptFullPath);
+            return;
+        }
+
         string outputDir = Path.Combine(Path.GetDirectoryName(pptFullPath), Path.GetFileNameWithoutExtension(pptFilePath) + "_Images");
 
         // 获取ppt图片
@@ -127,17 +151,21 @@ public class Whiteboard : MonoBehaviour
             Debug.Log("ppt的页数不正确");
         }
         screen = GetComponentInChildren<Image>();
+    }
 
-        // 如果有已经存在的页码，更新到这个页码
+    public void OnStartLocalPlayer(StartLocalPlayerEvent @event)
+    {
         UpdateSlideTexture(GetCurrentSlideIndex());
     }
 
     public int GetCurrentSlideIndex()
     {
-        object currentSlideIndex = ClassManager.instance.GetRoomProperty("CurrentSlideIndex");
-        if (currentSlideIndex != null && currentSlideIndex is int)
+        ClassManager.instance.CmdGetRoomProperty("CurrentSlideIndex", PlayerManager.localPlayer.connectionToClient);
+        string value = ClassManager.instance.propertyValue;
+        if (value != null && int.TryParse(value, out int index))
         {
-            return (int)currentSlideIndex;
+            currentSlideIndex = index;
+            return index;
         }
         return 0;
     }
@@ -158,14 +186,22 @@ public class Whiteboard : MonoBehaviour
 
     public void ChangeSlide(int num)
     {
-        int currentIndex = GetCurrentSlideIndex();
-        currentIndex = (currentIndex + num + pptSlides.Length) % pptSlides.Length;
+        currentSlideIndex = (currentSlideIndex + num + pptSlides.Length) % pptSlides.Length;
         
         // 更新当前页码
-        ClassManager.instance.SetRoomProperty("CurrentSlideIndex", currentIndex);
+        ClassManager.instance.CommandSetRoomProperty("CurrentSlideIndex", currentSlideIndex.ToString());
         
         // 更新显示
-        UpdateSlideTexture(currentIndex);
+        UpdateSlideTexture(currentSlideIndex);
+    }
+
+    private void OnRoomPropertyChange(RoomPropertyChangeEvent @event)
+    {
+        if (@event.key == "CurrentSlideIndex")
+        {
+            currentSlideIndex = int.Parse(@event.value);
+            UpdateSlideTexture(currentSlideIndex);
+        }
     }
 
     private void OnChangeSceneEvent(ChangeSceneEvent @event)

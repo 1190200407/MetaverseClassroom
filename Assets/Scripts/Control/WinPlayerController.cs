@@ -76,7 +76,6 @@ public class WinPlayerController : PlayerController
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.None;
         EventHandler.Unregister<PlayerChangeDataEvent>(changePlayerData); //注销用户修改基本参数事件
-        SaveData(playerData);
     }
 
     void OnPause() {

@@ -18,11 +18,13 @@ public class SceneElement : MonoBehaviour
     protected virtual void OnEnable()
     {
         interactionScript?.OnEnable();
+        EventHandler.Register<StartLocalPlayerEvent>(OnStartLocalPlayer);
     }
 
     protected virtual void OnDisable()
     {
         interactionScript?.OnDisable();
+        EventHandler.Unregister<StartLocalPlayerEvent>(OnStartLocalPlayer);
     }
 
     public void LoadData(string id, string name, string path) {
@@ -88,5 +90,13 @@ public class SceneElement : MonoBehaviour
     public void OnSelectExit()
     {
         interactionScript?.OnSelectExit();
+    }
+
+    /// <summary>
+    /// 当本地玩家开始时响应的函数
+    /// </summary>
+    private void OnStartLocalPlayer(StartLocalPlayerEvent @event)
+    {
+        interactionScript?.OnStartLocalPlayer();
     }
 }

@@ -165,7 +165,7 @@ GameObject:
   - component: {fileID: 1663377978539015368}
   - component: {fileID: 1663377978539015369}
   m_Layer: 5
-  m_Name: PingText
+  m_Name: NetworkStatusText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

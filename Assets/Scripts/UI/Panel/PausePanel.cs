@@ -81,6 +81,7 @@ public class PausePanel : BasePanel
         base.OnDisable();
         InteractionManager.instance.RaycastClosed = false;
         PlayerManager.localPlayer.playerController.enabled = true;
+        PlayerController.SaveData();
     }
     private void SetUi()
     {

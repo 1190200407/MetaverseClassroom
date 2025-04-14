@@ -61,6 +61,7 @@ where T : Component {
                 if(_instance == null) {
                     GameObject obj = new GameObject();
                     _instance = (T)obj.AddComponent(typeof(T));
+                    obj.AddComponent<NetworkIdentity>();
                     obj.hideFlags = HideFlags.DontSave;
                     obj.name = typeof(T).Name;
                 }

@@ -12,6 +12,9 @@ public class NetworkManagerClassroom : NetworkManager
         GameObject player = Instantiate(playerPrefab, Vector3.zero, Quaternion.identity);
         NetworkServer.AddPlayerForConnection(conn, player);
 
+        GameObject classManager = Instantiate(spawnPrefabs.Find(prefab => prefab.name == "ClassManager"));
+        NetworkServer.Spawn(classManager);
+
         Debug.Log("Player added to server");
     }
 

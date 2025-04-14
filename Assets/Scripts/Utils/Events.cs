@@ -14,7 +14,7 @@ public struct ChangeSlideEvent
 
 public struct ChangeSceneEvent
 {
-    public int[] includePlayers;
+    public int[] includePlayers;// 目前没用
     public string sceneName;
 }
 

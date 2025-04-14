@@ -60,6 +60,24 @@ public class PlayerManager : NetworkBehaviour
     public override void OnStartLocalPlayer()
     {
         localPlayer = this;
+        StartCoroutine(StartLocalPlayer());
+    }
+
+    public override void OnStartClient()
+    {
+        base.OnStartClient();
+        NetworkClient.RegisterHandler<ChangeSceneMessage>(OnChangeScene);
+    }
+
+    public override void OnStopClient()
+    {
+        base.OnStopClient();
+        NetworkClient.UnregisterHandler<ChangeSceneMessage>();
+    }
+
+    private IEnumerator StartLocalPlayer()
+    {
+        yield return new WaitUntil(() => NetworkClient.ready);
         nameText.gameObject.SetActive(false);
 
         // 同步当前场景
@@ -252,6 +270,7 @@ public class PlayerManager : NetworkBehaviour
     {
         if (newValue != ClassManager.instance.currentScene && isLocalPlayer)
         {
+            ClassManager.instance.currentScene = newValue;
             playerController.ResetTransform(SceneLoader.instance.PathToSceneObject[newValue].transform);
             
             //切换场景后，更新player的状态
@@ -290,6 +309,13 @@ public class PlayerManager : NetworkBehaviour
         {
             permissionHolder.SetAllPermission();
         }
+    }
+    #endregion
+
+    #region 网络消息
+    public void OnChangeScene(ChangeSceneMessage message)
+    {
+        ClassManager.instance.ChangeScene(message.sceneName);
     }
     #endregion
 }

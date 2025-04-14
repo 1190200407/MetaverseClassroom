@@ -141,7 +141,6 @@ public class StartPanel : BasePanel
         
         // 开始课程
         NetworkManagerClassroom.singleton.StartHost();
-        ClassManager.instance.StartCourse();
 
         // 切换到游戏界面
         UIManager.instance.Pop(false);
@@ -179,7 +178,6 @@ public class StartPanel : BasePanel
 
         // 开始课程
         NetworkManagerClassroom.singleton.StartClient();
-        ClassManager.instance.StartCourse();
 
         // 切换到游戏界面
         UIManager.instance.Pop(false);

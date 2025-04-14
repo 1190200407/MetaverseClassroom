@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -82,6 +83,18 @@ public class UIManager : UnitySingleton<UIManager>
                 if(stack_ui.Count>0)
                     stack_ui.Peek().OnEnable();
             }
+        }
+    }
+
+    /// <summary>
+    /// 弹出直到满足条件
+    /// </summary>
+    /// <param name="condition">条件</param>
+    public void PopUntil(Func<bool> condition)
+    {
+        while (stack_ui.Count > 0 && !condition())
+        {
+            Pop(false);
         }
     }
 

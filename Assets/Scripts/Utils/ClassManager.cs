@@ -12,6 +12,7 @@ public class ClassManager : NetworkSingleton<ClassManager>
     public string nextScene;
 
     public BaseActivity currentActivity;
+    public bool isHavingActivity => currentActivity != null;
 
     #region 房间属性
     // 存储房间属性
@@ -60,6 +61,11 @@ public class ClassManager : NetworkSingleton<ClassManager>
     }
     #endregion
 
+    void Start()
+    {
+        StartCourse();
+    }
+
     public void StartCourse()
     {
         // 暂时直接复制，之后需要从服务器获取
@@ -77,8 +83,16 @@ public class ClassManager : NetworkSingleton<ClassManager>
         currentActivity.Start();
     }
 
+    public void EndActivity()
+    {
+        currentActivity.End();
+        currentActivity = null;
+    }
+
     public void ChangeScene(string sceneName)
     {
+        // 弹出直到只剩游戏UI
+        UIManager.instance.PopUntil(() => UIManager.instance.stack_ui.Peek().GetType() == typeof(GamePanel));
         UIManager.instance.Push(new TransitionPanel(new UIType("Panels/TransitionPanel", "TransitionPanel")));
         nextScene = sceneName;
     }
@@ -86,8 +100,8 @@ public class ClassManager : NetworkSingleton<ClassManager>
     public void OnSceneTransitionEnd()
     {
         SceneLoader.instance.LoadSceneFromXml(nextScene);
-        currentScene = nextScene;
         PlayerManager.localPlayer.CurrentScene = nextScene;
+        EventHandler.Trigger(new ChangeSceneEvent() { sceneName = nextScene });
         isInClassroom = !isInClassroom; // 切换场景后，教室状态取反, 之后可能出现一教室多场景情况，需要切换成别的判断方式
     }
 }

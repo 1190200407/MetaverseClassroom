@@ -85,6 +85,14 @@
         "com.unity.testtools.codecoverage": "1.2.4"
       }
     },
+    "com.unity.ide.cursor": {
+      "version": "file:D:/PICO SDKs/com.unity.ide.cursor-master",
+      "depth": 0,
+      "source": "local",
+      "dependencies": {
+        "com.unity.test-framework": "1.1.9"
+      }
+    },
     "com.unity.ide.rider": {
       "version": "3.0.34",
       "depth": 0,
@@ -252,7 +260,7 @@
       "url": "https://packages.unity.cn"
     },
     "com.unity.ugui": {
-      "version": "1.0.0",
+      "version": "2.0.0",
       "depth": 0,
       "source": "builtin",
       "dependencies": {
@@ -337,6 +345,13 @@
         "com.unity.xr.core-utils": "2.2.0",
         "com.unity.xr.openxr": "1.8.2"
       }
+    },
+    "com.veriorpies.parrelsync": {
+      "version": "https://github.com/VeriorPies/ParrelSync.git?path=/ParrelSync",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {},
+      "hash": "610157ad762084380380148ba8ce14e266a6da97"
     },
     "com.unity.modules.ai": {
       "version": "1.0.0",

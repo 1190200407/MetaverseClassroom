@@ -10,7 +10,8 @@ public class PausePanel : BasePanel
 {
     private PlayerData playerData = new PlayerData(50,50,50);
     
-    private Button activityButton;
+    private Button startActivityButton;
+    private Button endActivityButton;
     private Button lastPageButton;
     private Button nextPageButton;
     private Button saveButton;
@@ -34,8 +35,21 @@ public class PausePanel : BasePanel
     {
         base.OnStart();
         // 绑定按钮
-        activityButton = UIMethods.instance.GetOrAddComponentInChild<Button>(ActiveObj, "ActivityButton");
-        activityButton.onClick.AddListener(StartActivity);
+        startActivityButton = UIMethods.instance.GetOrAddComponentInChild<Button>(ActiveObj, "StartActivityButton");
+        startActivityButton.onClick.AddListener(StartActivity);
+        endActivityButton = UIMethods.instance.GetOrAddComponentInChild<Button>(ActiveObj, "EndActivityButton");
+        endActivityButton.onClick.AddListener(EndActivity);
+        if (ClassManager.instance.isHavingActivity)
+        {
+            startActivityButton.interactable = false;
+            endActivityButton.interactable = true;
+        }
+        else
+        {
+            startActivityButton.interactable = true;
+            endActivityButton.interactable = false;
+        }
+
         saveButton = UIMethods.instance.GetOrAddComponentInChild<Button>(ActiveObj, "SaveButton");
         saveButton.onClick.AddListener(SaveData);
         restoreButton = UIMethods.instance.GetOrAddComponentInChild<Button>(ActiveObj, "RestoreButton");
@@ -74,14 +88,16 @@ public class PausePanel : BasePanel
         SetUi();
         base.OnEnable();
         InteractionManager.instance.RaycastClosed = true;
-        PlayerController.localPlayer.enabled = false;
+        PlayerManager.localPlayer.playerController.enabled = false;
     }
 
     public override void OnDisable() {
         base.OnDisable();
         InteractionManager.instance.RaycastClosed = false;
-        PlayerController.localPlayer.enabled = true;
+        PlayerManager.localPlayer.playerController.enabled = true;
+        PlayerController.SaveData();
     }
+
     private void SetUi()
     {
         PlayerData data = PlayerController.GetData();
@@ -129,16 +145,25 @@ public class PausePanel : BasePanel
 
     public void StartActivity()
     {
-        if (PlayerController.localPlayer.HavePermission(Permission.StartActivity))
+        if (PlayerManager.localPlayer.HavePermission(Permission.Activity))
         {
             UIManager.instance.Pop(false);
             ClassManager.instance.StartActivity("EnglishTalking");
         }
     }
 
+    public void EndActivity()
+    {
+        if (PlayerManager.localPlayer.HavePermission(Permission.Activity))
+        {
+            UIManager.instance.Pop(false);
+            ClassManager.instance.EndActivity();
+        }
+    }
+
     public void LastPage()
     {
-        if (PlayerController.localPlayer.HavePermission(Permission.SwitchPPT))
+        if (PlayerManager.localPlayer.HavePermission(Permission.SwitchPPT))
         {
             EventHandler.Trigger(new ChangeSlideEvent{ changeNum = -1 });
         }
@@ -146,7 +171,7 @@ public class PausePanel : BasePanel
 
     public void NextPage()
     {
-        if (PlayerController.localPlayer.HavePermission(Permission.SwitchPPT))
+        if (PlayerManager.localPlayer.HavePermission(Permission.SwitchPPT))
         {
             EventHandler.Trigger(new ChangeSlideEvent{ changeNum = 1 });
         }

@@ -1,5 +1,5 @@
 using UnityEngine;
-using Photon.Pun;
+using Mirror;
 using UnityEngine.XR;
 using UnityEngine.XR.Management;
 using System.Collections.Generic;
@@ -7,8 +7,6 @@ using System.Collections.Generic;
 public class VRPlayerController : PlayerController
 {
     private XRInputSubsystem xrInputSubsystem;
-    public Transform headTransform;
-    public float moveSpeed; // 移动速度
     public float rotationSpeed; // 旋转速度
     
     float moveHoldTimer = 0f;
@@ -18,7 +16,7 @@ public class VRPlayerController : PlayerController
     {
         base.Start();
 
-        if (!photonView.IsMine) return;
+        if (!playerManager.isLocalPlayer) return;
         GameObject XROrigin = GameObject.Find("XR Origin");
         XROrigin.transform.SetParent(transform);
         XROrigin.transform.localPosition = Vector3.zero;
@@ -49,7 +47,7 @@ public class VRPlayerController : PlayerController
     }
     void Update()
     {
-        if (!photonView.IsMine) return;
+        if (!playerManager.isLocalPlayer) return;
 
         // 控制移动和旋转
         HandleMovement();
@@ -62,7 +60,7 @@ public class VRPlayerController : PlayerController
         // 左摇杆控制移动
         if (leftStickInput != Vector2.zero)
         {
-            if (!isSitting)
+            if (!playerManager.IsSitting)
             {
                 Vector3 moveDirection = new Vector3(leftStickInput.x, 0, leftStickInput.y).normalized;
                 transform.Translate(moveDirection * moveSpeed / 10 * Time.deltaTime, Space.Self);
@@ -74,7 +72,7 @@ public class VRPlayerController : PlayerController
                 {
                     moveHoldTimer = 0f;
                     Sit.currentSitting.ResetSeat();
-                    IsSitting = false;
+                    playerManager.IsSitting = false;
                 }
             }
         }

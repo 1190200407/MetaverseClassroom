@@ -4,14 +4,11 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
-using Photon.Pun;
-using Photon.Realtime;
-using ExitGames.Client.Photon;
-
+using Mirror;
 public class ChoosePlayerPanel : BasePanel
 {
     public GameObject PlayerSlot; //选择项的预制件
-    private List<PlayerController> ChosenPlayers = new List<PlayerController>(); //被选中的用户
+    private List<PlayerManager> ChosenPlayers = new List<PlayerManager>(); //被选中的用户
     private List<Toggle> PlayerToggles = new List<Toggle>();
     
     private Button saveButton;
@@ -53,13 +50,13 @@ public class ChoosePlayerPanel : BasePanel
     {
         base.OnEnable();
         InteractionManager.instance.RaycastClosed = true;
-        PlayerController.localPlayer.enabled = false;
+        PlayerManager.localPlayer.playerController.enabled = false;
     }
 
     public override void OnDisable() {
         base.OnDisable();
         InteractionManager.instance.RaycastClosed = false;
-        PlayerController.localPlayer.enabled = true;
+        PlayerManager.localPlayer.playerController.enabled = true;
     }
     
     /// <summary>
@@ -74,21 +71,21 @@ public class ChoosePlayerPanel : BasePanel
         }
         
         // 收集所有选中玩家的ViewID
-        int[] targetViewIDs = new int[ChosenPlayers.Count];
-        for (int i = 0; i < ChosenPlayers.Count; i++)
-        {
-            targetViewIDs[i] = ChosenPlayers[i].photonView.ViewID;
-        }
+        // int[] targetViewIDs = new int[ChosenPlayers.Count];
+        // for (int i = 0; i < ChosenPlayers.Count; i++)
+        // {
+        //     targetViewIDs[i] = ChosenPlayers[i].GetComponent<NetworkIdentity>().netId;
+        // }
 
-        // 获取目标场景名
-        string sceneName = ClassManager.instance.isInClassroom ? 
-            ClassManager.instance.currentActivity.sceneName : "Classroom";
+        // // 获取目标场景名
+        // string sceneName = ClassManager.instance.isInClassroom ? 
+        //     ClassManager.instance.currentActivity.sceneName : "Classroom";
         
-        // 创建事件内容，一次性发送所有信息
-        object[] content = new object[] { targetViewIDs, sceneName };
-        Debug.Log("发送场景切换请求，场景名：" + sceneName + "，目标ViewID：" + targetViewIDs[0]);
-        RaiseEventOptions raiseEventOptions = new RaiseEventOptions { Receivers = ReceiverGroup.All };
-        PhotonNetwork.RaiseEvent(EventCodes.ChangeSceneEventCode, content, raiseEventOptions, SendOptions.SendReliable);
+        // // 创建事件内容，一次性发送所有信息
+        // object[] content = new object[] { targetViewIDs, sceneName };
+        // Debug.Log("发送场景切换请求，场景名：" + sceneName + "，目标ViewID：" + targetViewIDs[0]);
+        // RaiseEventOptions raiseEventOptions = new RaiseEventOptions { Receivers = ReceiverGroup.All };
+        // PhotonNetwork.RaiseEvent(EventCodes.ChangeSceneEventCode, content, raiseEventOptions, SendOptions.SendReliable);
     
         // 选好学生后，开始活动
         ClassManager.instance.currentActivity.Start();
@@ -121,7 +118,7 @@ public class ChoosePlayerPanel : BasePanel
     /// </summary>
     /// <param name="isOn"></param>是否勾选
     /// <param name="name"></param>勾选学生的名称
-    void OnToggleValueChanged(bool isOn,PlayerController player)
+    void OnToggleValueChanged(bool isOn,PlayerManager player)
     {
         if (isOn)
         {
@@ -145,15 +142,15 @@ public class ChoosePlayerPanel : BasePanel
         }
 
         // 遍历所有玩家并创建 slot
-        foreach (PlayerController player in PlayerController.allPlayers)
+        foreach (PlayerManager player in PlayerManager.allPlayers)
         {
             // 实例化 slot 并设置为 content 的子物体
             GameObject newSlot = GameObject.Instantiate(PlayerSlot, content.transform);
-            newSlot.name = player.playerName;
+            newSlot.name = player.PlayerName;
 
             // 获取并设置玩家名称
             TextMeshProUGUI playerName = UIMethods.instance.GetOrAddComponentInChild<TextMeshProUGUI>(newSlot, "Name");
-            playerName.text = player.playerName;
+            playerName.text = player.PlayerName;
             
             //Toggle值改变监听函数,当被勾选时间，增加进列表中
             newSlot.GetComponent<Toggle>().onValueChanged.AddListener(isOn => OnToggleValueChanged(isOn, player));

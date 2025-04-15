@@ -9,7 +9,7 @@ public class SceneSaver : EditorWindow
 {
     private Dictionary<GameObject, int> gameObjectToId = new();
     // 创建一个字符串变量来保存输入的 XML 路径
-    private string xmlPath = "Assets/Resources/MyScene.xml";  // 默认路径
+    private string xmlPath = "Assets/Resources/SceneXmls/Cafe.xml";  // 默认路径
 
     [MenuItem("Tools/Save Scene As XML")]
     public static void ShowWindow()

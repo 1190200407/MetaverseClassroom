@@ -1,12 +1,11 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using ExitGames.Client.Photon;
-using Photon.Pun;
 using UnityEngine;
+using Mirror;
 using UnityEngine.XR.Interaction.Toolkit;
 
-public class SceneElement : MonoBehaviourPunCallbacks
+public class SceneElement : MonoBehaviour
 {
     [HideInInspector] public string id;
     public string path;
@@ -16,16 +15,16 @@ public class SceneElement : MonoBehaviourPunCallbacks
     public string interactType = string.Empty;
     public string interactionContent = string.Empty;
 
-    public override void OnEnable()
+    protected virtual void OnEnable()
     {
-        base.OnEnable();
         interactionScript?.OnEnable();
+        EventHandler.Register<StartLocalPlayerEvent>(OnStartLocalPlayer);
     }
 
-    public override void OnDisable()
+    protected virtual void OnDisable()
     {
-        base.OnDisable();
         interactionScript?.OnDisable();
+        EventHandler.Unregister<StartLocalPlayerEvent>(OnStartLocalPlayer);
     }
 
     public void LoadData(string id, string name, string path) {
@@ -40,7 +39,7 @@ public class SceneElement : MonoBehaviourPunCallbacks
         Type t = Type.GetType(type);
         if (t != null)
         {
-            interactionScript =  Activator.CreateInstance(t) as InteractionScript;
+            interactionScript = Activator.CreateInstance(t) as InteractionScript;
             interactType = type;
             interactionContent = content;
             interactionScript.Init(this);
@@ -57,16 +56,10 @@ public class SceneElement : MonoBehaviourPunCallbacks
         }
     }
 
-    public override void OnJoinedRoom()
-    {
-        interactionScript?.OnJoinRoom();
-    }
-
     private void OnDestroy() {
         SceneLoader.instance.IdToElement.Remove(id);
     }
-
-
+    
     /// <summary>
     /// 当射线射中时响应的函数
     /// </summary>
@@ -99,8 +92,11 @@ public class SceneElement : MonoBehaviourPunCallbacks
         interactionScript?.OnSelectExit();
     }
 
-    public void OnEvent(EventData data)
+    /// <summary>
+    /// 当本地玩家开始时响应的函数
+    /// </summary>
+    private void OnStartLocalPlayer(StartLocalPlayerEvent @event)
     {
-        interactionScript?.OnEvent(data);
+        interactionScript?.OnStartLocalPlayer();
     }
 }

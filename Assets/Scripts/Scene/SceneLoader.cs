@@ -48,7 +48,7 @@ public class SceneLoader : UnitySingleton<SceneLoader>
         newSceneObject.transform.position = Vector3.right * PathToSceneObject.Count * 10000;
         PathToSceneObject.Add(xmlPath, newSceneObject);
 
-        TextAsset xmlFile = Resources.Load<TextAsset>(xmlPath); //TODO 目前通过Resources.Load读取，后面换成在库中读取
+        TextAsset xmlFile = Resources.Load<TextAsset>("SceneXmls/" + xmlPath); //TODO 目前通过Resources.Load读取，后面换成在库中读取
         XmlDocument document = new XmlDocument(); 
         document.LoadXml(xmlFile.text);
 
@@ -137,90 +137,5 @@ public class SceneLoader : UnitySingleton<SceneLoader>
         }
 
         if (changeScene) ChangeSceneObject(newSceneObject);
-    }
-
-    public void SaveSceneAsXml(string xmlPath) {
-        // 在Edit Mode下将场景保存为xml（Play Mode应该也行）
-        // 方法比较土，就是提前把场景里的物体都挂上SceneElement脚本，然后填上path（id自动填充）
-        // 然后获取属性生成xml
-
-        // 创建XmlDocument并构建XML结构
-        int currentId = 1;
-        XmlDocument xml = new XmlDocument();
-        XmlDeclaration xmldecl = xml.CreateXmlDeclaration("1.0", "UTF-8", "");
-        XmlElement root = xml.CreateElement("Elements");
-
-        // 遍历场景中的所有SceneElement组件
-        foreach (var gameObject in GameObject.FindObjectsOfType<SceneElement>())
-        {
-            SceneElement element = gameObject.GetComponent<SceneElement>();
-            XmlElement info = xml.CreateElement("element");
-
-            // 自动递增id
-            element.id = currentId++.ToString();
-            info.SetAttribute("id", element.id.ToString());
-
-            // 添加name
-            XmlElement name = xml.CreateElement("name");
-            name.InnerText = element.name;
-            info.AppendChild(name);
-
-            // 添加path
-            XmlElement path = xml.CreateElement("path");
-            path.InnerText = element.path;
-            info.AppendChild(path);
-
-            // 添加position
-            XmlElement position = xml.CreateElement("position");
-            position.SetAttribute("x", element.transform.localPosition.x.ToString());
-            position.SetAttribute("y", element.transform.localPosition.y.ToString());
-            position.SetAttribute("z", element.transform.localPosition.z.ToString());
-            info.AppendChild(position);
-
-            // 添加rotation
-            XmlElement rotation = xml.CreateElement("rotation");
-            rotation.SetAttribute("x", element.transform.eulerAngles.x.ToString());
-            rotation.SetAttribute("y", element.transform.eulerAngles.y.ToString());
-            rotation.SetAttribute("z", element.transform.eulerAngles.z.ToString());
-            info.AppendChild(rotation);
-
-            // 添加scale
-            XmlElement scale = xml.CreateElement("scale");
-            scale.SetAttribute("x", element.transform.localScale.x.ToString());
-            scale.SetAttribute("y", element.transform.localScale.y.ToString());
-            scale.SetAttribute("z", element.transform.localScale.z.ToString());
-            info.AppendChild(scale);
-
-            // 添加parent_id
-            XmlElement parent_id = xml.CreateElement("parent_id");
-            if (element.transform.parent != null && element.transform.parent.TryGetComponent(out SceneElement parentElement))
-                parent_id.InnerText = parentElement.id.ToString();
-            else
-                parent_id.InnerText = "0";
-            info.AppendChild(parent_id);
-
-            // 添加tag
-            XmlElement tag = xml.CreateElement("tag");
-            tag.InnerText = element.gameObject.tag; // 获取GameObject的tag
-            info.AppendChild(tag);
-
-            // 添加interaction
-            if (element.interactionScript != null)
-            {
-                XmlElement interaction = xml.CreateElement("interaction");
-                interaction.SetAttribute("type", element.interactType);
-                interaction.InnerText = element.interactionContent;
-                info.AppendChild(interaction);
-            }
-
-            // 将该element添加到根节点
-            root.AppendChild(info);
-        }
-
-        // 将根节点添加到文档并保存
-        xml.AppendChild(root);
-        xml.Save(xmlPath);
-
-        Debug.Log("Scene saved as XML!");
     }
 }

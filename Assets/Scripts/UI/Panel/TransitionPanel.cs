@@ -15,20 +15,20 @@ public class TransitionPanel : BasePanel
         base.OnStart();
         anim = ActiveObj.GetComponent<Animator>();
         anim.Play("Open");
-        PlayerController.localPlayer.enabled = false;
+        PlayerManager.localPlayer.playerController.enabled = false;
     }
 
     public void OnCloseEnd(TransitionCloseEndEvent @event)
     {
         UIManager.instance.Pop(false);
-        PlayerController.localPlayer.enabled = true;
+        PlayerManager.localPlayer.playerController.enabled = true;
     }
 
     public void OnOpenEnd(TransitionOpenEndEvent @event)
     {
         //TODO开始换场景
         anim.Play("Close");
-        ClassManager.instance.ChangeScene();
+        ClassManager.instance.OnSceneTransitionEnd();
     }
 
     public override void OnEnable()

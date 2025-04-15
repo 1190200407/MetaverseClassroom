@@ -1,6 +1,6 @@
-using ExitGames.Client.Photon;
 using UnityEngine;
 using UnityEngine.XR.Interaction.Toolkit;
+using Mirror;
 
 /// <summary>
 /// 所有可交互脚本的基类
@@ -11,12 +11,10 @@ public class InteractionScript
 
     public virtual void OnEnable()
     {
-
     }
 
     public virtual void OnDisable()
     {
-
     }
 
     /// <summary>
@@ -27,9 +25,11 @@ public class InteractionScript
         this.element = element;
     }
 
-    public virtual void OnJoinRoom()
+    /// <summary>
+    /// 当本地玩家开始时响应的函数
+    /// </summary>
+    public virtual void OnStartLocalPlayer()
     {
-
     }
 
     /// <summary>
@@ -57,14 +57,6 @@ public class InteractionScript
     /// 当射线松开时响应的函数
     /// </summary>
     public virtual void OnSelectExit()
-    {
-    }
-
-    /// <summary>
-    /// 触发网络事件
-    /// </summary>
-    /// <param name="photonEvent"></param>
-    public virtual void OnEvent(EventData photonEvent)
     {
     }
 }

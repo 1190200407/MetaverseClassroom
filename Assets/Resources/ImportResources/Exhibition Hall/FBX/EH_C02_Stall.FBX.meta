@@ -1,0 +1,229 @@
+fileFormatVersion: 2
+guid: ef43c0e2c0930494ba653418b1acef57
+ModelImporter:
+  serializedVersion: 23
+  fileIDToRecycleName:
+    100000: EH_C02_Chair01
+    100002: EH_C02_Chair02
+    100004: EH_C02_Design
+    100006: EH_C02_Floor
+    100008: EH_C02_Plant01
+    100010: EH_C02_Sofa01
+    100012: EH_C02_Sofa02
+    100014: //RootNode
+    100016: EH_C02_Table
+    400000: EH_C02_Chair01
+    400002: EH_C02_Chair02
+    400004: EH_C02_Design
+    400006: EH_C02_Floor
+    400008: EH_C02_Plant01
+    400010: EH_C02_Sofa01
+    400012: EH_C02_Sofa02
+    400014: //RootNode
+    400016: EH_C02_Table
+    2100000: EH_C02_Design_Wood
+    2100002: EH_C02_Design_Paint
+    2100004: EH_C02_Design_Paint2
+    2100006: EH_Lit
+    2100008: EH_Metal_Chrome
+    2100010: EH_C02_Table_Paint
+    2100012: EH_C02_Table_Wood
+    2100014: EH_Chair_Chrome
+    2100016: EH_Chair_Wood
+    2100018: EH_Chair_Fabric
+    2100020: EH_Sofa_Fabric
+    2100022: EH_Sofa_Wood
+    2100024: EH_Sofa_Chrome
+    2100026: EH_B03_Plant
+    2100028: EH_C02_Floor_Lit
+    2100030: EH_C02_Floor_Rug
+    2300000: EH_C02_Chair01
+    2300002: EH_C02_Chair02
+    2300004: EH_C02_Design
+    2300006: EH_C02_Floor
+    2300008: EH_C02_Plant01
+    2300010: EH_C02_Sofa01
+    2300012: EH_C02_Sofa02
+    2300014: EH_C02_Table
+    3300000: EH_C02_Chair01
+    3300002: EH_C02_Chair02
+    3300004: EH_C02_Design
+    3300006: EH_C02_Floor
+    3300008: EH_C02_Plant01
+    3300010: EH_C02_Sofa01
+    3300012: EH_C02_Sofa02
+    3300014: EH_C02_Table
+    4300000: EH_C02_Design
+    4300002: EH_C02_Table
+    4300004: EH_C02_Chair01
+    4300006: EH_C02_Sofa01
+    4300008: EH_C02_Sofa02
+    4300010: EH_C02_Chair02
+    4300012: EH_C02_Plant01
+    4300014: EH_C02_Floor
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: EH_B03_Plant
+    second: {fileID: 2100000, guid: 9cb67ecbe79cfb04194a63d605e48693, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: EH_C02_Design_Paint
+    second: {fileID: 2100000, guid: 839410e629d902241ba851bfd03be79f, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: EH_C02_Design_Paint2
+    second: {fileID: 2100000, guid: 7af3240cb3d3ce14483cdb80ff199ca6, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: EH_C02_Design_Wood
+    second: {fileID: 2100000, guid: 5a31f3c2d5534cf48ba59f61729e797f, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: EH_C02_Floor_Lit
+    second: {fileID: 2100000, guid: 7d6a36b8aca34b84b88b586e9c93a3d9, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: EH_C02_Floor_Rug
+    second: {fileID: 2100000, guid: 058ba553e84cdb843a2a414354732e60, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: EH_C02_Table_Paint
+    second: {fileID: 2100000, guid: 0d1be36d5dc9a8347975b6375cc599e4, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: EH_C02_Table_Wood
+    second: {fileID: 2100000, guid: 5a31f3c2d5534cf48ba59f61729e797f, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: EH_Chair_Chrome
+    second: {fileID: 2100000, guid: c909659c0e9df4140ae41a4f94acb644, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: EH_Chair_Fabric
+    second: {fileID: 2100000, guid: 694c1ddcbeb785c48bd1ebcfe16beff7, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: EH_Chair_Wood
+    second: {fileID: 2100000, guid: 6e27a666382fe9b4d9b691a558d9fcee, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: EH_Lit
+    second: {fileID: 2100000, guid: b27fca1605d8a5346a39bc0552966dd2, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: EH_Metal_Chrome
+    second: {fileID: 2100000, guid: a43c77bc47705b145bee751717b04e54, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: EH_Sofa_Chrome
+    second: {fileID: 2100000, guid: 785a0cf6f2fba414eb445c0a71e6651d, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: EH_Sofa_Fabric
+    second: {fileID: 2100000, guid: 694c1ddcbeb785c48bd1ebcfe16beff7, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: EH_Sofa_Wood
+    second: {fileID: 2100000, guid: 6e27a666382fe9b4d9b691a558d9fcee, type: 2}
+  materials:
+    importMaterials: 1
+    materialName: 1
+    materialSearch: 1
+    materialLocation: 0
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    useSRGBMaterialColor: 1
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+    previousCalculatedGlobalScale: 1
+    hasPreviousCalculatedGlobalScale: 0
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

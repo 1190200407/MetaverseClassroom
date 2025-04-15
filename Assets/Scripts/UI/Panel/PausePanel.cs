@@ -12,8 +12,6 @@ public class PausePanel : BasePanel
     
     private Button startActivityButton;
     private Button endActivityButton;
-    private Button lastPageButton;
-    private Button nextPageButton;
     private Button saveButton;
     private Button restoreButton;
     
@@ -54,10 +52,6 @@ public class PausePanel : BasePanel
         saveButton.onClick.AddListener(SaveData);
         restoreButton = UIMethods.instance.GetOrAddComponentInChild<Button>(ActiveObj, "RestoreButton");
         restoreButton.onClick.AddListener(RestoreDefaults);
-        lastPageButton = UIMethods.instance.GetOrAddComponentInChild<Button>(ActiveObj, "LastPageButton");
-        lastPageButton.onClick.AddListener(LastPage);
-        nextPageButton = UIMethods.instance.GetOrAddComponentInChild<Button>(ActiveObj, "NextPageButton");
-        nextPageButton.onClick.AddListener(NextPage);
         
         // 绑定 Slider
         moveSpeedSlider = UIMethods.instance.GetOrAddComponentInChild<Slider>(ActiveObj, "MoveSpeedSlider");
@@ -160,20 +154,5 @@ public class PausePanel : BasePanel
             ClassManager.instance.EndActivity();
         }
     }
-
-    public void LastPage()
-    {
-        if (PlayerManager.localPlayer.HavePermission(Permission.SwitchPPT))
-        {
-            EventHandler.Trigger(new ChangeSlideEvent{ changeNum = -1 });
-        }
-    }
-
-    public void NextPage()
-    {
-        if (PlayerManager.localPlayer.HavePermission(Permission.SwitchPPT))
-        {
-            EventHandler.Trigger(new ChangeSlideEvent{ changeNum = 1 });
-        }
-    }
+    
 }

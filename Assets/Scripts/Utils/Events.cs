@@ -1,4 +1,3 @@
-using Photon.Realtime;
 using UnityEngine;
 
 public struct StartLocalPlayerEvent {}

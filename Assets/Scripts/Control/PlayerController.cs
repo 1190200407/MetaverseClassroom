@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System;
-using Photon.Realtime;
 using Unity.VisualScripting;
 using Mirror;
 using System.IO;

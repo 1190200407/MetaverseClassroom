@@ -156,10 +156,7 @@ public class ChoosePlayerPanel : BasePanel
             newSlot.GetComponent<Toggle>().onValueChanged.AddListener(isOn => OnToggleValueChanged(isOn, player));
 
             Toggle newToggle = newSlot.GetComponent<Toggle>();
-            if (newToggle == null)
-            {
-                Debug.LogError($"Toggle component missing on {newSlot.name}");
-            }
+            
             PlayerToggles.Add(newToggle);
         }
     }

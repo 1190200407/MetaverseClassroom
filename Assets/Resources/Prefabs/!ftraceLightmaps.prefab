@@ -1,0 +1,6018 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &2375092424889727087
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1623148115016421976}
+  - component: {fileID: 5561688099001469585}
+  m_Layer: 0
+  m_Name: '!ftraceLightmaps'
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1623148115016421976
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2375092424889727087}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 2.24, y: 0, z: 5.92}
+  m_LocalScale: {x: 1.4, y: 1.4, z: 1.4}
+  m_ConstrainProportionsScale: 1
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5561688099001469585
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2375092424889727087}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b7fa80e7116296f4eb4f49ec1544ee22, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  renderSettingsBounces: 5
+  renderSettingsGISamples: 16
+  renderSettingsGIBackFaceWeight: 0
+  renderSettingsTileSize: 512
+  renderSettingsPriority: 2
+  renderSettingsTexelsPerUnit: 20
+  renderSettingsForceRefresh: 1
+  renderSettingsForceRebuildGeometry: 1
+  renderSettingsPerformRendering: 1
+  renderSettingsUserRenderMode: 0
+  renderSettingsDistanceShadowmask: 1
+  renderSettingsSettingsMode: 2
+  renderSettingsFixSeams: 1
+  renderSettingsDenoise: 1
+  renderSettingsDenoise2x: 1
+  renderSettingsEncode: 1
+  renderSettingsEncodeMode: 0
+  renderSettingsOverwriteWarning: 0
+  renderSettingsAutoAtlas: 1
+  renderSettingsUnwrapUVs: 1
+  renderSettingsForceDisableUnwrapUVs: 0
+  renderSettingsMaxAutoResolution: 4096
+  renderSettingsMinAutoResolution: 16
+  renderSettingsUnloadScenes: 1
+  renderSettingsAdjustSamples: 1
+  renderSettingsGILODMode: 0
+  renderSettingsGILODModeEnabled: 0
+  renderSettingsCheckOverlaps: 0
+  renderSettingsSkipOutOfBoundsUVs: 1
+  renderSettingsHackEmissiveBoost: 1
+  renderSettingsHackIndirectBoost: 1
+  renderSettingsTempPath: 
+  renderSettingsOutPath: Exhibition Hall/Light Map
+  renderSettingsUseScenePath: 0
+  renderSettingsHackAOIntensity: 1
+  renderSettingsHackAOSamples: 16
+  renderSettingsHackAORadius: 1
+  renderSettingsShowAOSettings: 1
+  renderSettingsShowTasks: 1
+  renderSettingsShowTasks2: 0
+  renderSettingsShowPaths: 1
+  renderSettingsShowNet: 1
+  renderSettingsOcclusionProbes: 0
+  renderSettingsTexelsPerMap: 0
+  renderSettingsTexelsColor: 1
+  renderSettingsTexelsMask: 1
+  renderSettingsTexelsDir: 1
+  renderSettingsShowDirWarning: 1
+  renderSettingsRenderDirMode: 1
+  renderSettingsShowCheckerSettings: 0
+  renderSettingsSamplesWarning: 1
+  renderSettingsPrefabWarning: 1
+  renderSettingsSplitByScene: 0
+  renderSettingsUVPaddingMax: 0
+  renderSettingsPostPacking: 1
+  renderSettingsHoleFilling: 1
+  renderSettingsBeepOnFinish: 0
+  renderSettingsExportTerrainAsHeightmap: 0
+  renderSettingsRTXMode: 1
+  renderSettingsLightProbeMode: 1
+  renderSettingsClientMode: 0
+  renderSettingsServerAddress: 127.0.0.1
+  renderSettingsUnwrapper: 0
+  renderSettingsDenoiserType: 100
+  renderSettingsExportTerrainTrees: 0
+  renderSettingsShowPerf: 1
+  renderSettingsSampleDiv: 1
+  renderSettingsAtlasPacker: 1
+  renderSettingsBatchPoints: 0
+  renderSettingsCompressVolumes: 0
+  renderSettingsSector: {fileID: 0}
+  renderSettingsRTPVExport: 1
+  renderSettingsRTPVSceneView: 0
+  renderSettingsRTPVWidth: 640
+  renderSettingsRTPVHeight: 360
+  lastBakeTime: 4323
+  enlightenWarningShown: 0
+  enlightenWarningShown2: 0
+  lightUIDs: d2105f786ef79c3937c5f75f73ca7612dad5d7256ca3a744c485847374eeaeb33e3e87d8b73d1f17b4e340e91dfb072715210373b6f2f5193daa60e847254b009fc4df19b056fdd1ce6f69b90dfe24a1321eee84eb2344cac3f96f0629257ff28c64e0ac6d2cd5d4459bf20eebb99be9ff8c14e5ee95a3dd5085fd1c299f8a703aa837ab9bc1ceed11f7d9b356d4f84f021c30a28e053c473c46d1931ee251327a3541bee5ce31ff402ae5eebebffdb16212f8f4816e9f43b135f4925622d6ac044429e10536eec13b546a070f2c61bc480483118fe9d64942ebf90e9685ee32aef0969d3816f53ef3a98cd8ea6d4f618ca31be5839cf18ed5276f84f2d55747f5604ae2fe7fb28ef04ad5993894377c5736154fb661224d169a0f5c443e77e3cc2cfe427a20751b873e80ebfbb50c2124c1367a1b029f7d5133352aed1cdedce1ab4d9b48f085fc3693959b7fe06fd1e31e09616d069d3eb2322034980d273628847f080a609ce2bbe1e277a53d5acc8ed4bc0b3eb6efb476613760eae8d70c28b00b669cf7d51e8e94b1ba2e4958ffe6ce6cccebb549249974fdc56d6913ac364d2994958780ee21faaa3cf913584af51de3795fc7f8fc35b98fea2bac81e7160a0f6377f379a370282ca4315589013cde6ae3754234b7ba3cf2119aad66b3004573bf08b3ee666417cb02cb65fbd27328fe07b108d27fababa7db2b93c4b08689b5ee123b053d96d8c5d8cefcdc5ce8e3f88f7a76167e1320ad1cec9cbba027be403191cffff0167b51bd85b98e07a02cd4f3a3f50d9212a539d78cd84367de507b51cbb774e0749cd1ed2361d096aeee46e1353c6d7fbdbae10e9da190c00ad6680e208df3fcb4c135f28d9a9c72a546a5da38f79a054d9974eb776d64d4daa74b6c45e15dc8cbd77b3165cf02956e626a20431b89146f1e17a6303352a0e6bcf46c55a362de6907b468314cdb45c02e69985e05e461c2e2d4a2f988a490
+  lights:
+  - tform:
+      e00: 1
+      e01: 0
+      e02: 0
+      e03: -0.52
+      e10: 0
+      e11: -0.00000011920929
+      e12: -1.0000001
+      e13: 7.4900007
+      e20: 0
+      e21: 1.0000001
+      e22: -0.00000011920929
+      e23: -9.010001
+      e30: 0
+      e31: 0
+      e32: 0
+      e33: 1
+    color: {r: 1, g: 1, b: 1, a: 1}
+    intensity: 0.3
+    range: 56.17215
+    radius: 0
+    samples: 256
+    samples2: 0
+    bitmask: 0
+    bakeToIndirect: 1
+    selfShadow: 0
+    realisticFalloff: 0
+    projMode: 0
+    cookie: {fileID: 0}
+    angle: 30
+  - tform:
+      e00: 1
+      e01: 0
+      e02: 0
+      e03: -9.854
+      e10: 0
+      e11: -0.00000011920929
+      e12: -1.0000001
+      e13: 4.255999
+      e20: 0
+      e21: 1.0000001
+      e22: -0.00000011920929
+      e23: 8.863003
+      e30: 0
+      e31: 0
+      e32: 0
+      e33: 1
+    color: {r: 1, g: 1, b: 0.8117647, a: 1}
+    intensity: 15
+    range: 74.41848
+    radius: 0
+    samples: 256
+    samples2: 0
+    bitmask: 0
+    bakeToIndirect: 1
+    selfShadow: 0
+    realisticFalloff: 0
+    projMode: 0
+    cookie: {fileID: 0}
+    angle: 30
+  - tform:
+      e00: 1
+      e01: 0
+      e02: 0
+      e03: 13.369999
+      e10: 0
+      e11: -0.00000011920929
+      e12: -1.0000001
+      e13: 7.49
+      e20: 0
+      e21: 1.0000001
+      e22: -0.00000011920929
+      e23: -0.03
+      e30: 0
+      e31: 0
+      e32: 0
+      e33: 1
+    color: {r: 1, g: 1, b: 1, a: 1}
+    intensity: 0.3
+    range: 56.17215
+    radius: 0
+    samples: 256
+    samples2: 0
+    bitmask: 0
+    bakeToIndirect: 1
+    selfShadow: 0
+    realisticFalloff: 0
+    projMode: 0
+    cookie: {fileID: 0}
+    angle: 30
+  - tform:
+      e00: 1
+      e01: 0
+      e02: 0
+      e03: 3.457
+      e10: 0
+      e11: -0.00000011920929
+      e12: -1.0000001
+      e13: 4.255999
+      e20: 0
+      e21: 1.0000001
+      e22: -0.00000011920929
+      e23: 0.07100017
+      e30: 0
+      e31: 0
+      e32: 0
+      e33: 1
+    color: {r: 1, g: 1, b: 0.8117647, a: 1}
+    intensity: 15
+    range: 74.41848
+    radius: 0
+    samples: 256
+    samples2: 0
+    bitmask: 0
+    bakeToIndirect: 1
+    selfShadow: 0
+    realisticFalloff: 0
+    projMode: 0
+    cookie: {fileID: 0}
+    angle: 30
+  - tform:
+      e00: 1
+      e01: 0
+      e02: 0
+      e03: 9.75
+      e10: 0
+      e11: -0.00000011920929
+      e12: -1.0000001
+      e13: 4.255999
+      e20: 0
+      e21: 1.0000001
+      e22: -0.00000011920929
+      e23: -8.923002
+      e30: 0
+      e31: 0
+      e32: 0
+      e33: 1
+    color: {r: 1, g: 1, b: 0.8117647, a: 1}
+    intensity: 15
+    range: 74.41848
+    radius: 0
+    samples: 256
+    samples2: 0
+    bitmask: 0
+    bakeToIndirect: 1
+    selfShadow: 0
+    realisticFalloff: 0
+    projMode: 0
+    cookie: {fileID: 0}
+    angle: 30
+  - tform:
+      e00: 1
+      e01: 0
+      e02: 0
+      e03: 0.06999999
+      e10: 0
+      e11: 1.0000002
+      e12: 0
+      e13: 6.679999
+      e20: 0
+      e21: 0
+      e22: 1.0000002
+      e23: -14.620004
+      e30: 0
+      e31: 0
+      e32: 0
+      e33: 1
+    color: {r: 0.9204788, g: 0.9672036, b: 0.990566, a: 1}
+    intensity: 35
+    range: 402.70178
+    radius: 0
+    samples: 256
+    samples2: 0
+    bitmask: 0
+    bakeToIndirect: 1
+    selfShadow: 0
+    realisticFalloff: 0
+    projMode: 0
+    cookie: {fileID: 0}
+    angle: 30
+  - tform:
+      e00: 1
+      e01: 0
+      e02: 0
+      e03: -0.52
+      e10: 0
+      e11: -0.00000011920929
+      e12: -1.0000001
+      e13: 7.489999
+      e20: 0
+      e21: 1.0000001
+      e22: -0.00000011920929
+      e23: 8.950002
+      e30: 0
+      e31: 0
+      e32: 0
+      e33: 1
+    color: {r: 1, g: 1, b: 1, a: 1}
+    intensity: 0.3
+    range: 56.17215
+    radius: 0
+    samples: 256
+    samples2: 0
+    bitmask: 0
+    bakeToIndirect: 1
+    selfShadow: 0
+    realisticFalloff: 0
+    projMode: 0
+    cookie: {fileID: 0}
+    angle: 30
+  - tform:
+      e00: 1
+      e01: 0
+      e02: 0
+      e03: -16.796
+      e10: 0
+      e11: -0.00000011920929
+      e12: -1.0000001
+      e13: 4.255999
+      e20: 0
+      e21: 1.0000001
+      e22: -0.00000011920929
+      e23: 8.863003
+      e30: 0
+      e31: 0
+      e32: 0
+      e33: 1
+    color: {r: 1, g: 1, b: 0.8117647, a: 1}
+    intensity: 15
+    range: 74.41848
+    radius: 0
+    samples: 256
+    samples2: 0
+    bitmask: 0
+    bakeToIndirect: 1
+    selfShadow: 0
+    realisticFalloff: 0
+    projMode: 0
+    cookie: {fileID: 0}
+    angle: 30
+  - tform:
+      e00: 1
+      e01: 0
+      e02: 0
+      e03: 0.06999999
+      e10: 0
+      e11: -1.0000002
+      e12: 0.0000002384186
+      e13: 6.6799994
+      e20: 0
+      e21: -0.0000002384186
+      e22: -1.0000002
+      e23: 14.590007
+      e30: 0
+      e31: 0
+      e32: 0
+      e33: 1
+    color: {r: 0.9204788, g: 0.9672036, b: 0.990566, a: 1}
+    intensity: 35
+    range: 402.70178
+    radius: 0
+    samples: 256
+    samples2: 0
+    bitmask: 0
+    bakeToIndirect: 1
+    selfShadow: 0
+    realisticFalloff: 0
+    projMode: 0
+    cookie: {fileID: 0}
+    angle: 30
+  - tform:
+      e00: 1
+      e01: 0
+      e02: 0
+      e03: -16.796
+      e10: 0
+      e11: -0.00000011920929
+      e12: -1.0000001
+      e13: 4.255999
+      e20: 0
+      e21: 1.0000001
+      e22: -0.00000011920929
+      e23: 0.07100017
+      e30: 0
+      e31: 0
+      e32: 0
+      e33: 1
+    color: {r: 1, g: 1, b: 0.8117647, a: 1}
+    intensity: 15
+    range: 74.41848
+    radius: 0
+    samples: 256
+    samples2: 0
+    bitmask: 0
+    bakeToIndirect: 1
+    selfShadow: 0
+    realisticFalloff: 0
+    projMode: 0
+    cookie: {fileID: 0}
+    angle: 30
+  - tform:
+      e00: 1
+      e01: 0
+      e02: 0
+      e03: 13.279999
+      e10: 0
+      e11: 1.0000002
+      e12: 0
+      e13: 6.679999
+      e20: 0
+      e21: 0
+      e22: 1.0000002
+      e23: -14.620004
+      e30: 0
+      e31: 0
+      e32: 0
+      e33: 1
+    color: {r: 0.9204788, g: 0.9672036, b: 0.990566, a: 1}
+    intensity: 35
+    range: 402.70178
+    radius: 0
+    samples: 256
+    samples2: 0
+    bitmask: 0
+    bakeToIndirect: 1
+    selfShadow: 0
+    realisticFalloff: 0
+    projMode: 0
+    cookie: {fileID: 0}
+    angle: 30
+  - tform:
+      e00: 1
+      e01: 0
+      e02: 0
+      e03: -9.854
+      e10: 0
+      e11: -0.00000011920929
+      e12: -1.0000001
+      e13: 4.255999
+      e20: 0
+      e21: 1.0000001
+      e22: -0.00000011920929
+      e23: 0.07100017
+      e30: 0
+      e31: 0
+      e32: 0
+      e33: 1
+    color: {r: 1, g: 1, b: 0.8117647, a: 1}
+    intensity: 15
+    range: 74.41848
+    radius: 0
+    samples: 256
+    samples2: 0
+    bitmask: 0
+    bakeToIndirect: 1
+    selfShadow: 0
+    realisticFalloff: 0
+    projMode: 0
+    cookie: {fileID: 0}
+    angle: 30
+  - tform:
+      e00: 1
+      e01: 0
+      e02: 0
+      e03: -3.586
+      e10: 0
+      e11: -0.00000011920929
+      e12: -1.0000001
+      e13: 4.255999
+      e20: 0
+      e21: 1.0000001
+      e22: -0.00000011920929
+      e23: 0.07100017
+      e30: 0
+      e31: 0
+      e32: 0
+      e33: 1
+    color: {r: 1, g: 1, b: 0.8117647, a: 1}
+    intensity: 15
+    range: 74.41848
+    radius: 0
+    samples: 256
+    samples2: 0
+    bitmask: 0
+    bakeToIndirect: 1
+    selfShadow: 0
+    realisticFalloff: 0
+    projMode: 0
+    cookie: {fileID: 0}
+    angle: 30
+  - tform:
+      e00: 1
+      e01: 0
+      e02: 0
+      e03: -12.99
+      e10: 0
+      e11: -0.00000011920929
+      e12: -1.0000001
+      e13: 7.489999
+      e20: 0
+      e21: 1.0000001
+      e22: -0.00000011920929
+      e23: 8.950002
+      e30: 0
+      e31: 0
+      e32: 0
+      e33: 1
+    color: {r: 1, g: 1, b: 1, a: 1}
+    intensity: 0.3
+    range: 56.17215
+    radius: 0
+    samples: 256
+    samples2: 0
+    bitmask: 0
+    bakeToIndirect: 1
+    selfShadow: 0
+    realisticFalloff: 0
+    projMode: 0
+    cookie: {fileID: 0}
+    angle: 30
+  - tform:
+      e00: 1
+      e01: 0
+      e02: 0
+      e03: -13.220001
+      e10: 0
+      e11: -1.0000002
+      e12: 0.0000002384186
+      e13: 6.6799994
+      e20: 0
+      e21: -0.0000002384186
+      e22: -1.0000002
+      e23: 14.590007
+      e30: 0
+      e31: 0
+      e32: 0
+      e33: 1
+    color: {r: 0.9204788, g: 0.9672036, b: 0.990566, a: 1}
+    intensity: 35
+    range: 402.70178
+    radius: 0
+    samples: 256
+    samples2: 0
+    bitmask: 0
+    bakeToIndirect: 1
+    selfShadow: 0
+    realisticFalloff: 0
+    projMode: 0
+    cookie: {fileID: 0}
+    angle: 30
+  - tform:
+      e00: 1
+      e01: 0
+      e02: 0
+      e03: -16.17
+      e10: 0
+      e11: -0.00000011920929
+      e12: -1.0000001
+      e13: 4.255999
+      e20: 0
+      e21: 1.0000001
+      e22: -0.00000011920929
+      e23: -8.923002
+      e30: 0
+      e31: 0
+      e32: 0
+      e33: 1
+    color: {r: 1, g: 1, b: 0.8117647, a: 1}
+    intensity: 15
+    range: 74.41848
+    radius: 0
+    samples: 256
+    samples2: 0
+    bitmask: 0
+    bakeToIndirect: 1
+    selfShadow: 0
+    realisticFalloff: 0
+    projMode: 0
+    cookie: {fileID: 0}
+    angle: 30
+  - tform:
+      e00: 1
+      e01: 0
+      e02: 0
+      e03: 16.682999
+      e10: 0
+      e11: -0.00000011920929
+      e12: -1.0000001
+      e13: 4.255999
+      e20: 0
+      e21: 1.0000001
+      e22: -0.00000011920929
+      e23: -8.923002
+      e30: 0
+      e31: 0
+      e32: 0
+      e33: 1
+    color: {r: 1, g: 1, b: 0.8117647, a: 1}
+    intensity: 15
+    range: 74.41848
+    radius: 0
+    samples: 256
+    samples2: 0
+    bitmask: 0
+    bakeToIndirect: 1
+    selfShadow: 0
+    realisticFalloff: 0
+    projMode: 0
+    cookie: {fileID: 0}
+    angle: 30
+  - tform:
+      e00: 1
+      e01: 0
+      e02: 0
+      e03: 16.682999
+      e10: 0
+      e11: -0.00000011920929
+      e12: -1.0000001
+      e13: 4.2469993
+      e20: 0
+      e21: 1.0000001
+      e22: -0.00000011920929
+      e23: 0.07100017
+      e30: 0
+      e31: 0
+      e32: 0
+      e33: 1
+    color: {r: 1, g: 1, b: 0.8117647, a: 1}
+    intensity: 15
+    range: 74.41848
+    radius: 0
+    samples: 256
+    samples2: 0
+    bitmask: 0
+    bakeToIndirect: 1
+    selfShadow: 0
+    realisticFalloff: 0
+    projMode: 0
+    cookie: {fileID: 0}
+    angle: 30
+  - tform:
+      e00: 1
+      e01: 0
+      e02: 0
+      e03: 16.682999
+      e10: 0
+      e11: -0.00000011920929
+      e12: -1.0000001
+      e13: 4.255999
+      e20: 0
+      e21: 1.0000001
+      e22: -0.00000011920929
+      e23: 8.863003
+      e30: 0
+      e31: 0
+      e32: 0
+      e33: 1
+    color: {r: 1, g: 1, b: 0.8117647, a: 1}
+    intensity: 15
+    range: 74.41848
+    radius: 0
+    samples: 256
+    samples2: 0
+    bitmask: 0
+    bakeToIndirect: 1
+    selfShadow: 0
+    realisticFalloff: 0
+    projMode: 0
+    cookie: {fileID: 0}
+    angle: 30
+  - tform:
+      e00: 1
+      e01: 0
+      e02: 0
+      e03: 9.740999
+      e10: 0
+      e11: -0.00000011920929
+      e12: -1.0000001
+      e13: 4.228999
+      e20: 0
+      e21: 1.0000001
+      e22: -0.00000011920929
+      e23: 0.07100017
+      e30: 0
+      e31: 0
+      e32: 0
+      e33: 1
+    color: {r: 1, g: 1, b: 0.8117647, a: 1}
+    intensity: 15
+    range: 74.41848
+    radius: 0
+    samples: 256
+    samples2: 0
+    bitmask: 0
+    bakeToIndirect: 1
+    selfShadow: 0
+    realisticFalloff: 0
+    projMode: 0
+    cookie: {fileID: 0}
+    angle: 30
+  - tform:
+      e00: 1
+      e01: 0
+      e02: 0
+      e03: 9.740999
+      e10: 0
+      e11: -0.00000011920929
+      e12: -1.0000001
+      e13: 4.255999
+      e20: 0
+      e21: 1.0000001
+      e22: -0.00000011920929
+      e23: 8.863003
+      e30: 0
+      e31: 0
+      e32: 0
+      e33: 1
+    color: {r: 1, g: 1, b: 0.8117647, a: 1}
+    intensity: 15
+    range: 74.41848
+    radius: 0
+    samples: 256
+    samples2: 0
+    bitmask: 0
+    bakeToIndirect: 1
+    selfShadow: 0
+    realisticFalloff: 0
+    projMode: 0
+    cookie: {fileID: 0}
+    angle: 30
+  - tform:
+      e00: 1
+      e01: 0
+      e02: 0
+      e03: 13.279999
+      e10: 0
+      e11: -1.0000002
+      e12: 0.0000002384186
+      e13: 6.6799994
+      e20: 0
+      e21: -0.0000002384186
+      e22: -1.0000002
+      e23: 14.590005
+      e30: 0
+      e31: 0
+      e32: 0
+      e33: 1
+    color: {r: 0.9204788, g: 0.9672036, b: 0.990566, a: 1}
+    intensity: 35
+    range: 402.70178
+    radius: 0
+    samples: 256
+    samples2: 0
+    bitmask: 0
+    bakeToIndirect: 1
+    selfShadow: 0
+    realisticFalloff: 0
+    projMode: 0
+    cookie: {fileID: 0}
+    angle: 30
+  - tform:
+      e00: 1
+      e01: 0
+      e02: 0
+      e03: 3.424
+      e10: 0
+      e11: -0.00000011920929
+      e12: -1.0000001
+      e13: 4.255999
+      e20: 0
+      e21: 1.0000001
+      e22: -0.00000011920929
+      e23: 8.863003
+      e30: 0
+      e31: 0
+      e32: 0
+      e33: 1
+    color: {r: 1, g: 1, b: 0.8117647, a: 1}
+    intensity: 15
+    range: 74.41848
+    radius: 0
+    samples: 256
+    samples2: 0
+    bitmask: 0
+    bakeToIndirect: 1
+    selfShadow: 0
+    realisticFalloff: 0
+    projMode: 0
+    cookie: {fileID: 0}
+    angle: 30
+  - tform:
+      e00: 1
+      e01: 0
+      e02: 0
+      e03: 13.369999
+      e10: 0
+      e11: -0.00000011920929
+      e12: -1.0000001
+      e13: 7.4900007
+      e20: 0
+      e21: 1.0000001
+      e22: -0.00000011920929
+      e23: -9.010001
+      e30: 0
+      e31: 0
+      e32: 0
+      e33: 1
+    color: {r: 1, g: 1, b: 1, a: 1}
+    intensity: 0.3
+    range: 56.17215
+    radius: 0
+    samples: 256
+    samples2: 0
+    bitmask: 0
+    bakeToIndirect: 1
+    selfShadow: 0
+    realisticFalloff: 0
+    projMode: 0
+    cookie: {fileID: 0}
+    angle: 30
+  - tform:
+      e00: 1
+      e01: 0
+      e02: 0
+      e03: -0.52
+      e10: 0
+      e11: -0.00000011920929
+      e12: -1.0000001
+      e13: 7.49
+      e20: 0
+      e21: 1.0000001
+      e22: -0.00000011920929
+      e23: -0.03
+      e30: 0
+      e31: 0
+      e32: 0
+      e33: 1
+    color: {r: 1, g: 1, b: 1, a: 1}
+    intensity: 0.3
+    range: 56.17215
+    radius: 0
+    samples: 256
+    samples2: 0
+    bitmask: 0
+    bakeToIndirect: 1
+    selfShadow: 0
+    realisticFalloff: 0
+    projMode: 0
+    cookie: {fileID: 0}
+    angle: 30
+  - tform:
+      e00: 1
+      e01: 0
+      e02: 0
+      e03: 3.457
+      e10: 0
+      e11: -0.00000011920929
+      e12: -1.0000001
+      e13: 4.255999
+      e20: 0
+      e21: 1.0000001
+      e22: -0.00000011920929
+      e23: -8.923002
+      e30: 0
+      e31: 0
+      e32: 0
+      e33: 1
+    color: {r: 1, g: 1, b: 0.8117647, a: 1}
+    intensity: 15
+    range: 74.41848
+    radius: 0
+    samples: 256
+    samples2: 0
+    bitmask: 0
+    bakeToIndirect: 1
+    selfShadow: 0
+    realisticFalloff: 0
+    projMode: 0
+    cookie: {fileID: 0}
+    angle: 30
+  - tform:
+      e00: 1
+      e01: 0
+      e02: 0
+      e03: -3.507
+      e10: 0
+      e11: -0.00000011920929
+      e12: -1.0000001
+      e13: 4.255999
+      e20: 0
+      e21: 1.0000001
+      e22: -0.00000011920929
+      e23: -8.923002
+      e30: 0
+      e31: 0
+      e32: 0
+      e33: 1
+    color: {r: 1, g: 1, b: 0.8117647, a: 1}
+    intensity: 15
+    range: 74.41848
+    radius: 0
+    samples: 256
+    samples2: 0
+    bitmask: 0
+    bakeToIndirect: 1
+    selfShadow: 0
+    realisticFalloff: 0
+    projMode: 0
+    cookie: {fileID: 0}
+    angle: 30
+  - tform:
+      e00: 1
+      e01: 0
+      e02: 0
+      e03: -12.99
+      e10: 0
+      e11: -0.00000011920929
+      e12: -1.0000001
+      e13: 7.49
+      e20: 0
+      e21: 1.0000001
+      e22: -0.00000011920929
+      e23: -0.03
+      e30: 0
+      e31: 0
+      e32: 0
+      e33: 1
+    color: {r: 1, g: 1, b: 1, a: 1}
+    intensity: 0.3
+    range: 56.17215
+    radius: 0
+    samples: 256
+    samples2: 0
+    bitmask: 0
+    bakeToIndirect: 1
+    selfShadow: 0
+    realisticFalloff: 0
+    projMode: 0
+    cookie: {fileID: 0}
+    angle: 30
+  - tform:
+      e00: 1
+      e01: 0
+      e02: 0
+      e03: -10.68
+      e10: 0
+      e11: -0.00000011920929
+      e12: -1.0000001
+      e13: 4.255999
+      e20: 0
+      e21: 1.0000001
+      e22: -0.00000011920929
+      e23: -8.923002
+      e30: 0
+      e31: 0
+      e32: 0
+      e33: 1
+    color: {r: 1, g: 1, b: 0.8117647, a: 1}
+    intensity: 15
+    range: 74.41848
+    radius: 0
+    samples: 256
+    samples2: 0
+    bitmask: 0
+    bakeToIndirect: 1
+    selfShadow: 0
+    realisticFalloff: 0
+    projMode: 0
+    cookie: {fileID: 0}
+    angle: 30
+  - tform:
+      e00: 1
+      e01: 0
+      e02: 0
+      e03: -12.99
+      e10: 0
+      e11: -0.00000011920929
+      e12: -1.0000001
+      e13: 7.4900007
+      e20: 0
+      e21: 1.0000001
+      e22: -0.00000011920929
+      e23: -9.010002
+      e30: 0
+      e31: 0
+      e32: 0
+      e33: 1
+    color: {r: 1, g: 1, b: 1, a: 1}
+    intensity: 0.3
+    range: 56.17215
+    radius: 0
+    samples: 256
+    samples2: 0
+    bitmask: 0
+    bakeToIndirect: 1
+    selfShadow: 0
+    realisticFalloff: 0
+    projMode: 0
+    cookie: {fileID: 0}
+    angle: 30
+  - tform:
+      e00: 1
+      e01: 0
+      e02: 0
+      e03: -13.220001
+      e10: 0
+      e11: 1.0000002
+      e12: 0
+      e13: 6.679999
+      e20: 0
+      e21: 0
+      e22: 1.0000002
+      e23: -14.620004
+      e30: 0
+      e31: 0
+      e32: 0
+      e33: 1
+    color: {r: 0.9204788, g: 0.9672036, b: 0.990566, a: 1}
+    intensity: 35
+    range: 402.70178
+    radius: 0
+    samples: 256
+    samples2: 0
+    bitmask: 0
+    bakeToIndirect: 1
+    selfShadow: 0
+    realisticFalloff: 0
+    projMode: 0
+    cookie: {fileID: 0}
+    angle: 30
+  - tform:
+      e00: 1
+      e01: 0
+      e02: 0
+      e03: 13.369999
+      e10: 0
+      e11: -0.00000011920929
+      e12: -1.0000001
+      e13: 7.489999
+      e20: 0
+      e21: 1.0000001
+      e22: -0.00000011920929
+      e23: 8.950002
+      e30: 0
+      e31: 0
+      e32: 0
+      e33: 1
+    color: {r: 1, g: 1, b: 1, a: 1}
+    intensity: 0.3
+    range: 56.17215
+    radius: 0
+    samples: 256
+    samples2: 0
+    bitmask: 0
+    bakeToIndirect: 1
+    selfShadow: 0
+    realisticFalloff: 0
+    projMode: 0
+    cookie: {fileID: 0}
+    angle: 30
+  - tform:
+      e00: 1
+      e01: 0
+      e02: 0
+      e03: -3.5179992
+      e10: 0
+      e11: -0.00000011920929
+      e12: -1.0000001
+      e13: 4.255999
+      e20: 0
+      e21: 1.0000001
+      e22: -0.00000011920929
+      e23: 8.863003
+      e30: 0
+      e31: 0
+      e32: 0
+      e33: 1
+    color: {r: 1, g: 1, b: 0.8117647, a: 1}
+    intensity: 15
+    range: 74.41848
+    radius: 0
+    samples: 256
+    samples2: 0
+    bitmask: 0
+    bakeToIndirect: 1
+    selfShadow: 0
+    realisticFalloff: 0
+    projMode: 0
+    cookie: {fileID: 0}
+    angle: 30
+  - tform:
+      e00: 1
+      e01: 0
+      e02: 0
+      e03: 15.191999
+      e10: 0
+      e11: 0.7946699
+      e12: 0.607042
+      e13: 2.0869975
+      e20: 0
+      e21: -0.607042
+      e22: 0.7946699
+      e23: -8.707004
+      e30: 0
+      e31: 0
+      e32: 0
+      e33: 1
+    color: {r: 0.9700428, g: 0.9716981, b: 0.8479441, a: 1}
+    intensity: 90
+    range: 4
+    radius: 0.05
+    samples: 8
+    samples2: 0
+    bitmask: 0
+    bakeToIndirect: 0
+    selfShadow: 0
+    realisticFalloff: 0
+    projMode: 3
+    cookie: {fileID: 102900000, guid: c010c14ccb2c88f4ab11e51b803ed02d, type: 3}
+    angle: 30
+  - tform:
+      e00: 0.02562213
+      e01: 0.097635835
+      e02: -0.9948924
+      e03: -11.045
+      e10: 0.35847172
+      e11: 0.9281352
+      e12: 0.100316584
+      e13: 2.9979978
+      e20: 0.9331892
+      e21: -0.35921118
+      e22: -0.011218909
+      e23: 8.319007
+      e30: 0
+      e31: 0
+      e32: 0
+      e33: 1
+    color: {r: 0.9700428, g: 0.9716981, b: 0.8479441, a: 1}
+    intensity: 90
+    range: 4
+    radius: 0.05
+    samples: 8
+    samples2: 0
+    bitmask: 0
+    bakeToIndirect: 0
+    selfShadow: 0
+    realisticFalloff: 0
+    projMode: 3
+    cookie: {fileID: 102900000, guid: c010c14ccb2c88f4ab11e51b803ed02d, type: 3}
+    angle: 30
+  - tform:
+      e00: 0.9294385
+      e01: 0.36897716
+      e02: 0
+      e03: -21.778
+      e10: -0.3689772
+      e11: 0.9294387
+      e12: 0
+      e13: 3.9499974
+      e20: -0.000000043985505
+      e21: -0.00000000841159
+      e22: 1.0000002
+      e23: -9.842007
+      e30: 0
+      e31: 0
+      e32: 0
+      e33: 1
+    color: {r: 0.9700428, g: 0.9716981, b: 0.8479441, a: 1}
+    intensity: 90
+    range: 5.33
+    radius: 0.05
+    samples: 8
+    samples2: 0
+    bitmask: 0
+    bakeToIndirect: 0
+    selfShadow: 0
+    realisticFalloff: 0
+    projMode: 3
+    cookie: {fileID: 102900000, guid: c010c14ccb2c88f4ab11e51b803ed02d, type: 3}
+    angle: 30
+  - tform:
+      e00: 1
+      e01: 0
+      e02: 0
+      e03: 10.233999
+      e10: 0
+      e11: 0.77347076
+      e12: -0.63383216
+      e13: 2.0869994
+      e20: 0
+      e21: 0.63383216
+      e22: 0.77347076
+      e23: -8.813003
+      e30: 0
+      e31: 0
+      e32: 0
+      e33: 1
+    color: {r: 0.9700428, g: 0.9716981, b: 0.8479441, a: 1}
+    intensity: 90
+    range: 4
+    radius: 0.05
+    samples: 8
+    samples2: 0
+    bitmask: 0
+    bakeToIndirect: 0
+    selfShadow: 0
+    realisticFalloff: 0
+    projMode: 3
+    cookie: {fileID: 102900000, guid: c010c14ccb2c88f4ab11e51b803ed02d, type: 3}
+    angle: 30
+  - tform:
+      e00: 0.9430234
+      e01: 0.08922927
+      e02: 0.3205387
+      e03: 11.211
+      e10: -0.06887603
+      e11: 0.99485415
+      e12: -0.07430747
+      e13: 2.7879982
+      e20: -0.32551965
+      e21: 0.04799626
+      e22: 0.9443165
+      e23: -1.2329998
+      e30: 0
+      e31: 0
+      e32: 0
+      e33: 1
+    color: {r: 0.9700428, g: 0.9716981, b: 0.8479441, a: 1}
+    intensity: 90
+    range: 4
+    radius: 0.05
+    samples: 8
+    samples2: 0
+    bitmask: 0
+    bakeToIndirect: 0
+    selfShadow: 0
+    realisticFalloff: 0
+    projMode: 3
+    cookie: {fileID: 102900000, guid: c010c14ccb2c88f4ab11e51b803ed02d, type: 3}
+    angle: 30
+  - tform:
+      e00: 1
+      e01: 0
+      e02: 0
+      e03: -2.8600001
+      e10: 0
+      e11: 1.0000001
+      e12: 1.4210855e-14
+      e13: 2.3479986
+      e20: 0
+      e21: -1.4210855e-14
+      e22: 1.0000001
+      e23: -6.832003
+      e30: 0
+      e31: 0
+      e32: 0
+      e33: 1
+    color: {r: 0.9700428, g: 0.9716981, b: 0.8479441, a: 1}
+    intensity: 40
+    range: 4
+    radius: 0.05
+    samples: 8
+    samples2: 0
+    bitmask: 0
+    bakeToIndirect: 0
+    selfShadow: 0
+    realisticFalloff: 0
+    projMode: 3
+    cookie: {fileID: 102900000, guid: c010c14ccb2c88f4ab11e51b803ed02d, type: 3}
+    angle: 30
+  - tform:
+      e00: 1
+      e01: -0.000000029802322
+      e02: 0
+      e03: 14.431999
+      e10: 0.00000005960466
+      e11: 0.8660257
+      e12: 0.50000006
+      e13: 3.950001
+      e20: -0.000000051436086
+      e21: -0.50000006
+      e22: 0.8660257
+      e23: 13.1600065
+      e30: 0
+      e31: 0
+      e32: 0
+      e33: 1
+    color: {r: 0.9700428, g: 0.9716981, b: 0.8479441, a: 1}
+    intensity: 90
+    range: 5.33
+    radius: 0.05
+    samples: 8
+    samples2: 0
+    bitmask: 0
+    bakeToIndirect: 0
+    selfShadow: 0
+    realisticFalloff: 0
+    projMode: 3
+    cookie: {fileID: 102900000, guid: c010c14ccb2c88f4ab11e51b803ed02d, type: 3}
+    angle: 30
+  - tform:
+      e00: 1
+      e01: 0.000000059604645
+      e02: -0.000000007450581
+      e03: 6.353003
+      e10: 6.1316584e-15
+      e11: 0.9347564
+      e12: -0.35529009
+      e13: 3.9500005
+      e20: -0.000000051436086
+      e21: 0.3552901
+      e22: 0.93475634
+      e23: -13.480016
+      e30: 0
+      e31: 0
+      e32: 0
+      e33: 1
+    color: {r: 0.9700428, g: 0.9716981, b: 0.8479441, a: 1}
+    intensity: 90
+    range: 5.33
+    radius: 0.05
+    samples: 8
+    samples2: 0
+    bitmask: 0
+    bakeToIndirect: 0
+    selfShadow: 0
+    realisticFalloff: 0
+    projMode: 3
+    cookie: {fileID: 102900000, guid: c010c14ccb2c88f4ab11e51b803ed02d, type: 3}
+    angle: 30
+  - tform:
+      e00: 0.54321074
+      e01: -0.23798327
+      e02: -0.80516213
+      e03: 14.473
+      e10: -0.044471428
+      e11: 0.94948554
+      e12: -0.31064433
+      e13: 3.1679978
+      e20: 0.8384179
+      e21: 0.20455205
+      e22: 0.50518733
+      e23: -1.4069995
+      e30: 0
+      e31: 0
+      e32: 0
+      e33: 1
+    color: {r: 0.9700428, g: 0.9716981, b: 0.8479441, a: 1}
+    intensity: 90
+    range: 4
+    radius: 0.05
+    samples: 8
+    samples2: 0
+    bitmask: 0
+    bakeToIndirect: 0
+    selfShadow: 0
+    realisticFalloff: 0
+    projMode: 3
+    cookie: {fileID: 102900000, guid: c010c14ccb2c88f4ab11e51b803ed02d, type: 3}
+    angle: 30
+  - tform:
+      e00: 1
+      e01: 0
+      e02: 0
+      e03: 2.039
+      e10: 0
+      e11: 1.0000001
+      e12: 1.4210855e-14
+      e13: 2.1399984
+      e20: 0
+      e21: -1.4210855e-14
+      e22: 1.0000001
+      e23: -7.809004
+      e30: 0
+      e31: 0
+      e32: 0
+      e33: 1
+    color: {r: 0.9700428, g: 0.9716981, b: 0.8479441, a: 1}
+    intensity: 40
+    range: 4
+    radius: 0.05
+    samples: 8
+    samples2: 0
+    bitmask: 0
+    bakeToIndirect: 0
+    selfShadow: 0
+    realisticFalloff: 0
+    projMode: 3
+    cookie: {fileID: 102900000, guid: c010c14ccb2c88f4ab11e51b803ed02d, type: 3}
+    angle: 30
+  - tform:
+      e00: 0.53454995
+      e01: 0.10704443
+      e02: 0.8383304
+      e03: -1.8300004
+      e10: -0.22295134
+      e11: 0.9746689
+      e12: 0.017708775
+      e13: 3.237998
+      e20: -0.81519896
+      e21: -0.19637305
+      e22: 0.54487497
+      e23: 1.3110012
+      e30: 0
+      e31: 0
+      e32: 0
+      e33: 1
+    color: {r: 0.9700428, g: 0.9716981, b: 0.8479441, a: 1}
+    intensity: 90
+    range: 4
+    radius: 0.05
+    samples: 8
+    samples2: 0
+    bitmask: 0
+    bakeToIndirect: 0
+    selfShadow: 0
+    realisticFalloff: 0
+    projMode: 3
+    cookie: {fileID: 102900000, guid: c010c14ccb2c88f4ab11e51b803ed02d, type: 3}
+    angle: 30
+  - tform:
+      e00: 1
+      e01: 0.000000059604645
+      e02: -0.000000007450581
+      e03: 17.204002
+      e10: 6.1316584e-15
+      e11: 0.9347564
+      e12: -0.35529009
+      e13: 3.9500005
+      e20: -0.000000051436086
+      e21: 0.3552901
+      e22: 0.93475634
+      e23: -13.480016
+      e30: 0
+      e31: 0
+      e32: 0
+      e33: 1
+    color: {r: 0.9700428, g: 0.9716981, b: 0.8479441, a: 1}
+    intensity: 90
+    range: 5.33
+    radius: 0.05
+    samples: 8
+    samples2: 0
+    bitmask: 0
+    bakeToIndirect: 0
+    selfShadow: 0
+    realisticFalloff: 0
+    projMode: 3
+    cookie: {fileID: 102900000, guid: c010c14ccb2c88f4ab11e51b803ed02d, type: 3}
+    angle: 30
+  - tform:
+      e00: 1
+      e01: 0.000000059604645
+      e02: -0.000000007450581
+      e03: -14.775999
+      e10: 6.1316584e-15
+      e11: 0.9347564
+      e12: -0.35529009
+      e13: 3.9499998
+      e20: -0.000000051436086
+      e21: 0.3552901
+      e22: 0.93475634
+      e23: -13.480014
+      e30: 0
+      e31: 0
+      e32: 0
+      e33: 1
+    color: {r: 0.9700428, g: 0.9716981, b: 0.8479441, a: 1}
+    intensity: 90
+    range: 5.33
+    radius: 0.05
+    samples: 8
+    samples2: 0
+    bitmask: 0
+    bakeToIndirect: 0
+    selfShadow: 0
+    realisticFalloff: 0
+    projMode: 3
+    cookie: {fileID: 102900000, guid: c010c14ccb2c88f4ab11e51b803ed02d, type: 3}
+    angle: 30
+  - tform:
+      e00: 0.47402865
+      e01: 0.20711088
+      e02: -0.85580486
+      e03: 10.896999
+      e10: -0.45406255
+      e11: 0.89024
+      e12: -0.03605994
+      e13: 2.980997
+      e20: 0.75440335
+      e21: 0.40568238
+      e22: 0.5160405
+      e23: 7.880006
+      e30: 0
+      e31: 0
+      e32: 0
+      e33: 1
+    color: {r: 0.9700428, g: 0.9716981, b: 0.8479441, a: 1}
+    intensity: 70
+    range: 4
+    radius: 0.05
+    samples: 8
+    samples2: 0
+    bitmask: 0
+    bakeToIndirect: 0
+    selfShadow: 0
+    realisticFalloff: 0
+    projMode: 3
+    cookie: {fileID: 102900000, guid: c010c14ccb2c88f4ab11e51b803ed02d, type: 3}
+    angle: 30
+  - tform:
+      e00: 0.9294385
+      e01: 0.36897716
+      e02: 0
+      e03: -21.778
+      e10: -0.3689772
+      e11: 0.9294387
+      e12: 0
+      e13: 3.9499977
+      e20: -0.000000043985505
+      e21: -0.00000000841159
+      e22: 1.0000002
+      e23: 8.460003
+      e30: 0
+      e31: 0
+      e32: 0
+      e33: 1
+    color: {r: 0.9700428, g: 0.9716981, b: 0.8479441, a: 1}
+    intensity: 90
+    range: 5.33
+    radius: 0.05
+    samples: 8
+    samples2: 0
+    bitmask: 0
+    bakeToIndirect: 0
+    selfShadow: 0
+    realisticFalloff: 0
+    projMode: 3
+    cookie: {fileID: 102900000, guid: c010c14ccb2c88f4ab11e51b803ed02d, type: 3}
+    angle: 30
+  - tform:
+      e00: 0.025621831
+      e01: 0.09763544
+      e02: -0.99489254
+      e03: -13.715
+      e10: -0.41987818
+      e11: 0.9042293
+      e12: 0.07792485
+      e13: 2.9979978
+      e20: 0.9072192
+      e21: 0.4157369
+      e22: 0.06416297
+      e23: 8.200004
+      e30: 0
+      e31: 0
+      e32: 0
+      e33: 1
+    color: {r: 0.9700428, g: 0.9716981, b: 0.8479441, a: 1}
+    intensity: 45
+    range: 4
+    radius: 0.05
+    samples: 8
+    samples2: 0
+    bitmask: 0
+    bakeToIndirect: 0
+    selfShadow: 0
+    realisticFalloff: 0
+    projMode: 3
+    cookie: {fileID: 102900000, guid: c010c14ccb2c88f4ab11e51b803ed02d, type: 3}
+    angle: 30
+  - tform:
+      e00: 1
+      e01: 0
+      e02: 0
+      e03: -2.8600001
+      e10: 0
+      e11: 1.0000001
+      e12: 1.4210855e-14
+      e13: 2.3479977
+      e20: 0
+      e21: -1.4210855e-14
+      e22: 1.0000001
+      e23: -7.809004
+      e30: 0
+      e31: 0
+      e32: 0
+      e33: 1
+    color: {r: 0.9700428, g: 0.9716981, b: 0.8479441, a: 1}
+    intensity: 40
+    range: 4
+    radius: 0.05
+    samples: 8
+    samples2: 0
+    bitmask: 0
+    bakeToIndirect: 0
+    selfShadow: 0
+    realisticFalloff: 0
+    projMode: 3
+    cookie: {fileID: 102900000, guid: c010c14ccb2c88f4ab11e51b803ed02d, type: 3}
+    angle: 30
+  - tform:
+      e00: 0.594113
+      e01: -0.04416269
+      e02: 0.8031684
+      e03: 4.631
+      e10: 0.11017992
+      e11: 0.9935486
+      e12: -0.026870385
+      e13: 3.2379985
+      e20: -0.79680026
+      e21: 0.104457065
+      e22: 0.595146
+      e23: -1.1549996
+      e30: 0
+      e31: 0
+      e32: 0
+      e33: 1
+    color: {r: 0.9700428, g: 0.9716981, b: 0.8479441, a: 1}
+    intensity: 90
+    range: 4
+    radius: 0.05
+    samples: 8
+    samples2: 0
+    bitmask: 0
+    bakeToIndirect: 0
+    selfShadow: 0
+    realisticFalloff: 0
+    projMode: 3
+    cookie: {fileID: 102900000, guid: c010c14ccb2c88f4ab11e51b803ed02d, type: 3}
+    angle: 30
+  - tform:
+      e00: 0.594113
+      e01: -0.04416269
+      e02: 0.8031684
+      e03: 2.7280002
+      e10: 0.11017992
+      e11: 0.9935486
+      e12: -0.026870385
+      e13: 3.2379985
+      e20: -0.79680026
+      e21: 0.104457065
+      e22: 0.595146
+      e23: -1.1549996
+      e30: 0
+      e31: 0
+      e32: 0
+      e33: 1
+    color: {r: 0.9700428, g: 0.9716981, b: 0.8479441, a: 1}
+    intensity: 90
+    range: 4
+    radius: 0.05
+    samples: 8
+    samples2: 0
+    bitmask: 0
+    bakeToIndirect: 0
+    selfShadow: 0
+    realisticFalloff: 0
+    projMode: 3
+    cookie: {fileID: 102900000, guid: c010c14ccb2c88f4ab11e51b803ed02d, type: 3}
+    angle: 30
+  - tform:
+      e00: 0.59411263
+      e01: -0.04416263
+      e02: 0.80316865
+      e03: 0.26699972
+      e10: -0.3098094
+      e11: 0.9088984
+      e12: 0.27914563
+      e13: 3.237998
+      e20: -0.74232644
+      e21: -0.41467315
+      e22: 0.526306
+      e23: 1.3110012
+      e30: 0
+      e31: 0
+      e32: 0
+      e33: 1
+    color: {r: 0.9700428, g: 0.9716981, b: 0.8479441, a: 1}
+    intensity: 90
+    range: 4
+    radius: 0.05
+    samples: 8
+    samples2: 0
+    bitmask: 0
+    bakeToIndirect: 0
+    selfShadow: 0
+    realisticFalloff: 0
+    projMode: 3
+    cookie: {fileID: 102900000, guid: c010c14ccb2c88f4ab11e51b803ed02d, type: 3}
+    angle: 30
+  - tform:
+      e00: 1
+      e01: 0
+      e02: 0
+      e03: -14.09
+      e10: 0
+      e11: 0.9071829
+      e12: -0.42073685
+      e13: 3.5729978
+      e20: 0
+      e21: 0.42073685
+      e22: 0.9071829
+      e23: -6.710004
+      e30: 0
+      e31: 0
+      e32: 0
+      e33: 1
+    color: {r: 0.9700428, g: 0.9716981, b: 0.8479441, a: 1}
+    intensity: 70
+    range: 4
+    radius: 0.05
+    samples: 8
+    samples2: 0
+    bitmask: 0
+    bakeToIndirect: 0
+    selfShadow: 0
+    realisticFalloff: 0
+    projMode: 3
+    cookie: {fileID: 102900000, guid: c010c14ccb2c88f4ab11e51b803ed02d, type: 3}
+    angle: 30
+  - tform:
+      e00: 0.4159522
+      e01: -0.39249116
+      e02: -0.8203258
+      e03: -2.4220004
+      e10: 0.108070165
+      e11: 0.9170073
+      e12: -0.3839515
+      e13: 2.8979974
+      e20: 0.90294236
+      e21: 0.07105273
+      e22: 0.42384785
+      e23: 7.4280043
+      e30: 0
+      e31: 0
+      e32: 0
+      e33: 1
+    color: {r: 0.9700428, g: 0.9716981, b: 0.8479441, a: 1}
+    intensity: 90
+    range: 4
+    radius: 0.05
+    samples: 8
+    samples2: 0
+    bitmask: 0
+    bakeToIndirect: 0
+    selfShadow: 0
+    realisticFalloff: 0
+    projMode: 3
+    cookie: {fileID: 102900000, guid: c010c14ccb2c88f4ab11e51b803ed02d, type: 3}
+    angle: 30
+  - tform:
+      e00: 1
+      e01: -0.000000029802322
+      e02: 0
+      e03: -1.2569995
+      e10: 0.00000005960466
+      e11: 0.8660257
+      e12: 0.50000006
+      e13: 3.9500005
+      e20: -0.000000051436086
+      e21: -0.50000006
+      e22: 0.8660257
+      e23: 13.1600065
+      e30: 0
+      e31: 0
+      e32: 0
+      e33: 1
+    color: {r: 0.9700428, g: 0.9716981, b: 0.8479441, a: 1}
+    intensity: 90
+    range: 5.33
+    radius: 0.05
+    samples: 8
+    samples2: 0
+    bitmask: 0
+    bakeToIndirect: 0
+    selfShadow: 0
+    realisticFalloff: 0
+    projMode: 3
+    cookie: {fileID: 102900000, guid: c010c14ccb2c88f4ab11e51b803ed02d, type: 3}
+    angle: 30
+  - tform:
+      e00: 1
+      e01: 0.000000059604645
+      e02: -0.000000007450581
+      e03: -1.2569995
+      e10: 6.1316584e-15
+      e11: 0.9347564
+      e12: -0.35529009
+      e13: 3.950002
+      e20: -0.000000051436086
+      e21: 0.3552901
+      e22: 0.93475634
+      e23: -13.480014
+      e30: 0
+      e31: 0
+      e32: 0
+      e33: 1
+    color: {r: 0.9700428, g: 0.9716981, b: 0.8479441, a: 1}
+    intensity: 90
+    range: 5.33
+    radius: 0.05
+    samples: 8
+    samples2: 0
+    bitmask: 0
+    bakeToIndirect: 0
+    selfShadow: 0
+    realisticFalloff: 0
+    projMode: 3
+    cookie: {fileID: 102900000, guid: c010c14ccb2c88f4ab11e51b803ed02d, type: 3}
+    angle: 30
+  - tform:
+      e00: 1
+      e01: 0
+      e02: 0
+      e03: -1.2249999
+      e10: 0
+      e11: 1.0000001
+      e12: 1.4210855e-14
+      e13: 2.2859988
+      e20: 0
+      e21: -1.4210855e-14
+      e22: 1.0000001
+      e23: -9.700004
+      e30: 0
+      e31: 0
+      e32: 0
+      e33: 1
+    color: {r: 0.9700428, g: 0.9716981, b: 0.8479441, a: 1}
+    intensity: 40
+    range: 4
+    radius: 0.05
+    samples: 8
+    samples2: 0
+    bitmask: 0
+    bakeToIndirect: 0
+    selfShadow: 0
+    realisticFalloff: 0
+    projMode: 3
+    cookie: {fileID: 102900000, guid: c010c14ccb2c88f4ab11e51b803ed02d, type: 3}
+    angle: 30
+  - tform:
+      e00: 1
+      e01: 0
+      e02: 0
+      e03: 15.191999
+      e10: 0
+      e11: 0.7734709
+      e12: -0.6338321
+      e13: 2.0869985
+      e20: 0
+      e21: 0.6338321
+      e22: 0.7734709
+      e23: -8.8130045
+      e30: 0
+      e31: 0
+      e32: 0
+      e33: 1
+    color: {r: 0.9700428, g: 0.9716981, b: 0.8479441, a: 1}
+    intensity: 90
+    range: 4
+    radius: 0.05
+    samples: 8
+    samples2: 0
+    bitmask: 0
+    bakeToIndirect: 0
+    selfShadow: 0
+    realisticFalloff: 0
+    projMode: 3
+    cookie: {fileID: 102900000, guid: c010c14ccb2c88f4ab11e51b803ed02d, type: 3}
+    angle: 30
+  - tform:
+      e00: 0.9294385
+      e01: 0.36897716
+      e02: 0
+      e03: -21.778
+      e10: -0.3689772
+      e11: 0.9294387
+      e12: 0
+      e13: 3.9499974
+      e20: -0.000000043985505
+      e21: -0.00000000841159
+      e22: 1.0000002
+      e23: -4.7200055
+      e30: 0
+      e31: 0
+      e32: 0
+      e33: 1
+    color: {r: 0.9700428, g: 0.9716981, b: 0.8479441, a: 1}
+    intensity: 90
+    range: 5.33
+    radius: 0.05
+    samples: 8
+    samples2: 0
+    bitmask: 0
+    bakeToIndirect: 0
+    selfShadow: 0
+    realisticFalloff: 0
+    projMode: 3
+    cookie: {fileID: 102900000, guid: c010c14ccb2c88f4ab11e51b803ed02d, type: 3}
+    angle: 30
+  - tform:
+      e00: 0.9294385
+      e01: 0.36897716
+      e02: 0
+      e03: -21.778
+      e10: -0.3689772
+      e11: 0.9294387
+      e12: 0
+      e13: 3.9499974
+      e20: -0.000000043985505
+      e21: -0.00000000841159
+      e22: 1.0000002
+      e23: 5.8160005
+      e30: 0
+      e31: 0
+      e32: 0
+      e33: 1
+    color: {r: 0.9700428, g: 0.9716981, b: 0.8479441, a: 1}
+    intensity: 90
+    range: 5.33
+    radius: 0.05
+    samples: 8
+    samples2: 0
+    bitmask: 0
+    bakeToIndirect: 0
+    selfShadow: 0
+    realisticFalloff: 0
+    projMode: 3
+    cookie: {fileID: 102900000, guid: c010c14ccb2c88f4ab11e51b803ed02d, type: 3}
+    angle: 30
+  - tform:
+      e00: 1
+      e01: 0
+      e02: 0
+      e03: 11.469999
+      e10: 0
+      e11: 0.7946699
+      e12: 0.607042
+      e13: 2.0869975
+      e20: 0
+      e21: -0.607042
+      e22: 0.7946699
+      e23: -8.707004
+      e30: 0
+      e31: 0
+      e32: 0
+      e33: 1
+    color: {r: 0.9700428, g: 0.9716981, b: 0.8479441, a: 1}
+    intensity: 90
+    range: 4
+    radius: 0.05
+    samples: 8
+    samples2: 0
+    bitmask: 0
+    bakeToIndirect: 0
+    selfShadow: 0
+    realisticFalloff: 0
+    projMode: 3
+    cookie: {fileID: 102900000, guid: c010c14ccb2c88f4ab11e51b803ed02d, type: 3}
+    angle: 30
+  - tform:
+      e00: 1
+      e01: 0
+      e02: 0
+      e03: 13.954
+      e10: 0
+      e11: 0.7946699
+      e12: 0.607042
+      e13: 2.0869975
+      e20: 0
+      e21: -0.607042
+      e22: 0.7946699
+      e23: -8.707004
+      e30: 0
+      e31: 0
+      e32: 0
+      e33: 1
+    color: {r: 0.9700428, g: 0.9716981, b: 0.8479441, a: 1}
+    intensity: 90
+    range: 4
+    radius: 0.05
+    samples: 8
+    samples2: 0
+    bitmask: 0
+    bakeToIndirect: 0
+    selfShadow: 0
+    realisticFalloff: 0
+    projMode: 3
+    cookie: {fileID: 102900000, guid: c010c14ccb2c88f4ab11e51b803ed02d, type: 3}
+    angle: 30
+  - tform:
+      e00: 1
+      e01: 0.000000059604645
+      e02: -0.000000007450581
+      e03: 20.98
+      e10: 6.1316584e-15
+      e11: 0.9347564
+      e12: -0.35529009
+      e13: 3.9500015
+      e20: -0.000000051436086
+      e21: 0.3552901
+      e22: 0.93475634
+      e23: -13.480016
+      e30: 0
+      e31: 0
+      e32: 0
+      e33: 1
+    color: {r: 0.9700428, g: 0.9716981, b: 0.8479441, a: 1}
+    intensity: 90
+    range: 5.33
+    radius: 0.05
+    samples: 8
+    samples2: 0
+    bitmask: 0
+    bakeToIndirect: 0
+    selfShadow: 0
+    realisticFalloff: 0
+    projMode: 3
+    cookie: {fileID: 102900000, guid: c010c14ccb2c88f4ab11e51b803ed02d, type: 3}
+    angle: 30
+  - tform:
+      e00: 0.40623838
+      e01: 0.18070973
+      e02: -0.89572
+      e03: 2.7730002
+      e10: -0.1402368
+      e11: 0.9809668
+      e12: 0.13430606
+      e13: 3.1769986
+      e20: 0.90294194
+      e21: 0.07105265
+      e22: 0.42384854
+      e23: 8.962005
+      e30: 0
+      e31: 0
+      e32: 0
+      e33: 1
+    color: {r: 0.9700428, g: 0.9716981, b: 0.8479441, a: 1}
+    intensity: 90
+    range: 4
+    radius: 0.05
+    samples: 8
+    samples2: 0
+    bitmask: 0
+    bakeToIndirect: 0
+    selfShadow: 0
+    realisticFalloff: 0
+    projMode: 3
+    cookie: {fileID: 102900000, guid: c010c14ccb2c88f4ab11e51b803ed02d, type: 3}
+    angle: 30
+  - tform:
+      e00: 1
+      e01: 0.000000059604645
+      e02: -0.000000007450581
+      e03: 3.900002
+      e10: 6.1316584e-15
+      e11: 0.9347564
+      e12: -0.35529009
+      e13: 3.9500005
+      e20: -0.000000051436086
+      e21: 0.3552901
+      e22: 0.93475634
+      e23: -13.480016
+      e30: 0
+      e31: 0
+      e32: 0
+      e33: 1
+    color: {r: 0.9700428, g: 0.9716981, b: 0.8479441, a: 1}
+    intensity: 90
+    range: 5.33
+    radius: 0.05
+    samples: 8
+    samples2: 0
+    bitmask: 0
+    bakeToIndirect: 0
+    selfShadow: 0
+    realisticFalloff: 0
+    projMode: 3
+    cookie: {fileID: 102900000, guid: c010c14ccb2c88f4ab11e51b803ed02d, type: 3}
+    angle: 30
+  - tform:
+      e00: 1
+      e01: 0
+      e02: 0
+      e03: 3.6550002
+      e10: 0
+      e11: 1.0000001
+      e12: 1.4210855e-14
+      e13: 2.086999
+      e20: 0
+      e21: -1.4210855e-14
+      e22: 1.0000001
+      e23: -10.647004
+      e30: 0
+      e31: 0
+      e32: 0
+      e33: 1
+    color: {r: 0.9700428, g: 0.9716981, b: 0.8479441, a: 1}
+    intensity: 40
+    range: 4
+    radius: 0.05
+    samples: 8
+    samples2: 0
+    bitmask: 0
+    bakeToIndirect: 0
+    selfShadow: 0
+    realisticFalloff: 0
+    projMode: 3
+    cookie: {fileID: 102900000, guid: c010c14ccb2c88f4ab11e51b803ed02d, type: 3}
+    angle: 30
+  - tform:
+      e00: 0.59411263
+      e01: -0.04416263
+      e02: 0.80316865
+      e03: 4.631
+      e10: -0.3098094
+      e11: 0.9088984
+      e12: 0.27914563
+      e13: 3.237998
+      e20: -0.74232644
+      e21: -0.41467315
+      e22: 0.526306
+      e23: 1.3110012
+      e30: 0
+      e31: 0
+      e32: 0
+      e33: 1
+    color: {r: 0.9700428, g: 0.9716981, b: 0.8479441, a: 1}
+    intensity: 90
+    range: 4
+    radius: 0.05
+    samples: 8
+    samples2: 0
+    bitmask: 0
+    bakeToIndirect: 0
+    selfShadow: 0
+    realisticFalloff: 0
+    projMode: 3
+    cookie: {fileID: 102900000, guid: c010c14ccb2c88f4ab11e51b803ed02d, type: 3}
+    angle: 30
+  - tform:
+      e00: 1
+      e01: 0
+      e02: 0
+      e03: -12.27
+      e10: 0
+      e11: 0.9071829
+      e12: -0.42073685
+      e13: 3.5729978
+      e20: 0
+      e21: 0.42073685
+      e22: 0.9071829
+      e23: -6.710004
+      e30: 0
+      e31: 0
+      e32: 0
+      e33: 1
+    color: {r: 0.9700428, g: 0.9716981, b: 0.8479441, a: 1}
+    intensity: 70
+    range: 4
+    radius: 0.05
+    samples: 8
+    samples2: 0
+    bitmask: 0
+    bakeToIndirect: 0
+    selfShadow: 0
+    realisticFalloff: 0
+    projMode: 3
+    cookie: {fileID: 102900000, guid: c010c14ccb2c88f4ab11e51b803ed02d, type: 3}
+    angle: 30
+  - tform:
+      e00: 0.9804378
+      e01: 0.03370681
+      e02: 0.19392142
+      e03: -16.176
+      e10: -0.0393708
+      e11: 0.99890125
+      e12: 0.025427138
+      e13: 2.8489976
+      e20: -0.19285129
+      e21: -0.032564525
+      e22: 0.9806877
+      e23: 2.3720002
+      e30: 0
+      e31: 0
+      e32: 0
+      e33: 1
+    color: {r: 0.9700428, g: 0.9716981, b: 0.8479441, a: 1}
+    intensity: 90
+    range: 4
+    radius: 0.05
+    samples: 8
+    samples2: 0
+    bitmask: 0
+    bakeToIndirect: 0
+    selfShadow: 0
+    realisticFalloff: 0
+    projMode: 3
+    cookie: {fileID: 102900000, guid: c010c14ccb2c88f4ab11e51b803ed02d, type: 3}
+    angle: 30
+  - tform:
+      e00: 0.9804379
+      e01: 0.0337068
+      e02: 0.1939213
+      e03: -14.719
+      e10: -0.058493093
+      e11: 0.9906134
+      e12: 0.12354727
+      e13: 2.8489985
+      e20: -0.18793666
+      e21: -0.1324734
+      e22: 0.97320646
+      e23: -2.0760012
+      e30: 0
+      e31: 0
+      e32: 0
+      e33: 1
+    color: {r: 0.9700428, g: 0.9716981, b: 0.8479441, a: 1}
+    intensity: 90
+    range: 4
+    radius: 0.05
+    samples: 8
+    samples2: 0
+    bitmask: 0
+    bakeToIndirect: 0
+    selfShadow: 0
+    realisticFalloff: 0
+    projMode: 3
+    cookie: {fileID: 102900000, guid: c010c14ccb2c88f4ab11e51b803ed02d, type: 3}
+    angle: 30
+  - tform:
+      e00: 0.9335804
+      e01: -0.3583681
+      e02: -0.000000014900916
+      e03: 21.923
+      e10: 0.3583682
+      e11: 0.93358064
+      e12: 8.4853014e-11
+      e13: 3.9500017
+      e20: -0.000000024168763
+      e21: 0.000000018196666
+      e22: 1.0000002
+      e23: 8.460001
+      e30: 0
+      e31: 0
+      e32: 0
+      e33: 1
+    color: {r: 0.9700428, g: 0.9716981, b: 0.8479441, a: 1}
+    intensity: 90
+    range: 5.33
+    radius: 0.05
+    samples: 8
+    samples2: 0
+    bitmask: 0
+    bakeToIndirect: 0
+    selfShadow: 0
+    realisticFalloff: 0
+    projMode: 3
+    cookie: {fileID: 102900000, guid: c010c14ccb2c88f4ab11e51b803ed02d, type: 3}
+    angle: 30
+  - tform:
+      e00: 0.9804378
+      e01: 0.03370681
+      e02: 0.19392142
+      e03: -11.855
+      e10: -0.0393708
+      e11: 0.99890125
+      e12: 0.025427138
+      e13: 2.8489976
+      e20: -0.19285129
+      e21: -0.032564525
+      e22: 0.9806877
+      e23: 2.3720002
+      e30: 0
+      e31: 0
+      e32: 0
+      e33: 1
+    color: {r: 0.9700428, g: 0.9716981, b: 0.8479441, a: 1}
+    intensity: 90
+    range: 4
+    radius: 0.05
+    samples: 8
+    samples2: 0
+    bitmask: 0
+    bakeToIndirect: 0
+    selfShadow: 0
+    realisticFalloff: 0
+    projMode: 3
+    cookie: {fileID: 102900000, guid: c010c14ccb2c88f4ab11e51b803ed02d, type: 3}
+    angle: 30
+  - tform:
+      e00: 0.47402865
+      e01: 0.20711088
+      e02: -0.85580486
+      e03: 13.687
+      e10: -0.45406255
+      e11: 0.89024
+      e12: -0.03605994
+      e13: 2.980997
+      e20: 0.75440335
+      e21: 0.40568238
+      e22: 0.5160405
+      e23: 7.880006
+      e30: 0
+      e31: 0
+      e32: 0
+      e33: 1
+    color: {r: 0.9700428, g: 0.9716981, b: 0.8479441, a: 1}
+    intensity: 90
+    range: 4
+    radius: 0.05
+    samples: 8
+    samples2: 0
+    bitmask: 0
+    bakeToIndirect: 0
+    selfShadow: 0
+    realisticFalloff: 0
+    projMode: 3
+    cookie: {fileID: 102900000, guid: c010c14ccb2c88f4ab11e51b803ed02d, type: 3}
+    angle: 30
+  - tform:
+      e00: 1
+      e01: 0
+      e02: 0
+      e03: 13.954
+      e10: 0
+      e11: 0.7734709
+      e12: -0.6338321
+      e13: 2.0869985
+      e20: 0
+      e21: 0.6338321
+      e22: 0.7734709
+      e23: -8.8130045
+      e30: 0
+      e31: 0
+      e32: 0
+      e33: 1
+    color: {r: 0.9700428, g: 0.9716981, b: 0.8479441, a: 1}
+    intensity: 90
+    range: 4
+    radius: 0.05
+    samples: 8
+    samples2: 0
+    bitmask: 0
+    bakeToIndirect: 0
+    selfShadow: 0
+    realisticFalloff: 0
+    projMode: 3
+    cookie: {fileID: 102900000, guid: c010c14ccb2c88f4ab11e51b803ed02d, type: 3}
+    angle: 30
+  - tform:
+      e00: 0.9335804
+      e01: -0.3583681
+      e02: -0.000000014900916
+      e03: 21.923
+      e10: 0.3583682
+      e11: 0.93358064
+      e12: 8.4853014e-11
+      e13: 3.950001
+      e20: -0.000000024168763
+      e21: 0.000000018196666
+      e22: 1.0000002
+      e23: -1.9600067
+      e30: 0
+      e31: 0
+      e32: 0
+      e33: 1
+    color: {r: 0.9700428, g: 0.9716981, b: 0.8479441, a: 1}
+    intensity: 90
+    range: 5.33
+    radius: 0.05
+    samples: 8
+    samples2: 0
+    bitmask: 0
+    bakeToIndirect: 0
+    selfShadow: 0
+    realisticFalloff: 0
+    projMode: 3
+    cookie: {fileID: 102900000, guid: c010c14ccb2c88f4ab11e51b803ed02d, type: 3}
+    angle: 30
+  - tform:
+      e00: 1
+      e01: 0.000000059604645
+      e02: -0.000000007450581
+      e03: 8.220001
+      e10: 6.1316584e-15
+      e11: 0.9347564
+      e12: -0.35529009
+      e13: 3.9500015
+      e20: -0.000000051436086
+      e21: 0.3552901
+      e22: 0.93475634
+      e23: -13.480016
+      e30: 0
+      e31: 0
+      e32: 0
+      e33: 1
+    color: {r: 0.9700428, g: 0.9716981, b: 0.8479441, a: 1}
+    intensity: 90
+    range: 5.33
+    radius: 0.05
+    samples: 8
+    samples2: 0
+    bitmask: 0
+    bakeToIndirect: 0
+    selfShadow: 0
+    realisticFalloff: 0
+    projMode: 3
+    cookie: {fileID: 102900000, guid: c010c14ccb2c88f4ab11e51b803ed02d, type: 3}
+    angle: 30
+  - tform:
+      e00: 1
+      e01: 0
+      e02: 0
+      e03: -8.75
+      e10: 0
+      e11: 0.9071829
+      e12: -0.42073685
+      e13: 3.5729978
+      e20: 0
+      e21: 0.42073685
+      e22: 0.9071829
+      e23: -6.710004
+      e30: 0
+      e31: 0
+      e32: 0
+      e33: 1
+    color: {r: 0.9700428, g: 0.9716981, b: 0.8479441, a: 1}
+    intensity: 90
+    range: 4
+    radius: 0.05
+    samples: 8
+    samples2: 0
+    bitmask: 0
+    bakeToIndirect: 0
+    selfShadow: 0
+    realisticFalloff: 0
+    projMode: 3
+    cookie: {fileID: 102900000, guid: c010c14ccb2c88f4ab11e51b803ed02d, type: 3}
+    angle: 30
+  - tform:
+      e00: 1
+      e01: 0.000000059604645
+      e02: -0.000000007450581
+      e03: 14.431999
+      e10: 6.1316584e-15
+      e11: 0.9347564
+      e12: -0.35529009
+      e13: 3.9500015
+      e20: -0.000000051436086
+      e21: 0.3552901
+      e22: 0.93475634
+      e23: -13.480016
+      e30: 0
+      e31: 0
+      e32: 0
+      e33: 1
+    color: {r: 0.9700428, g: 0.9716981, b: 0.8479441, a: 1}
+    intensity: 90
+    range: 5.33
+    radius: 0.05
+    samples: 8
+    samples2: 0
+    bitmask: 0
+    bakeToIndirect: 0
+    selfShadow: 0
+    realisticFalloff: 0
+    projMode: 3
+    cookie: {fileID: 102900000, guid: c010c14ccb2c88f4ab11e51b803ed02d, type: 3}
+    angle: 30
+  - tform:
+      e00: 0.9294385
+      e01: 0.36897716
+      e02: 0
+      e03: -21.778
+      e10: -0.3689772
+      e11: 0.9294387
+      e12: 0
+      e13: 3.9499974
+      e20: -0.000000043985505
+      e21: -0.00000000841159
+      e22: 1.0000002
+      e23: -1.9600048
+      e30: 0
+      e31: 0
+      e32: 0
+      e33: 1
+    color: {r: 0.9700428, g: 0.9716981, b: 0.8479441, a: 1}
+    intensity: 90
+    range: 5.33
+    radius: 0.05
+    samples: 8
+    samples2: 0
+    bitmask: 0
+    bakeToIndirect: 0
+    selfShadow: 0
+    realisticFalloff: 0
+    projMode: 3
+    cookie: {fileID: 102900000, guid: c010c14ccb2c88f4ab11e51b803ed02d, type: 3}
+    angle: 30
+  - tform:
+      e00: 1
+      e01: 0
+      e02: 0
+      e03: 2.039
+      e10: 0
+      e11: 1.0000001
+      e12: 1.4210855e-14
+      e13: 2.1399984
+      e20: 0
+      e21: -1.4210855e-14
+      e22: 1.0000001
+      e23: -6.832003
+      e30: 0
+      e31: 0
+      e32: 0
+      e33: 1
+    color: {r: 0.9700428, g: 0.9716981, b: 0.8479441, a: 1}
+    intensity: 40
+    range: 4
+    radius: 0.05
+    samples: 8
+    samples2: 0
+    bitmask: 0
+    bakeToIndirect: 0
+    selfShadow: 0
+    realisticFalloff: 0
+    projMode: 3
+    cookie: {fileID: 102900000, guid: c010c14ccb2c88f4ab11e51b803ed02d, type: 3}
+    angle: 30
+  - tform:
+      e00: 0.9804379
+      e01: 0.0337068
+      e02: 0.1939213
+      e03: -17.684
+      e10: -0.058493093
+      e11: 0.9906134
+      e12: 0.12354727
+      e13: 2.848998
+      e20: -0.18793666
+      e21: -0.1324734
+      e22: 0.97320646
+      e23: 0.92700034
+      e30: 0
+      e31: 0
+      e32: 0
+      e33: 1
+    color: {r: 0.9700428, g: 0.9716981, b: 0.8479441, a: 1}
+    intensity: 90
+    range: 4
+    radius: 0.05
+    samples: 8
+    samples2: 0
+    bitmask: 0
+    bakeToIndirect: 0
+    selfShadow: 0
+    realisticFalloff: 0
+    projMode: 3
+    cookie: {fileID: 102900000, guid: c010c14ccb2c88f4ab11e51b803ed02d, type: 3}
+    angle: 30
+  - tform:
+      e00: 1
+      e01: 0
+      e02: 0
+      e03: 0.41000032
+      e10: 0
+      e11: 1.0000001
+      e12: 1.4210855e-14
+      e13: 2.225998
+      e20: 0
+      e21: -1.4210855e-14
+      e22: 1.0000001
+      e23: -10.647004
+      e30: 0
+      e31: 0
+      e32: 0
+      e33: 1
+    color: {r: 0.9700428, g: 0.9716981, b: 0.8479441, a: 1}
+    intensity: 40
+    range: 4
+    radius: 0.05
+    samples: 8
+    samples2: 0
+    bitmask: 0
+    bakeToIndirect: 0
+    selfShadow: 0
+    realisticFalloff: 0
+    projMode: 3
+    cookie: {fileID: 102900000, guid: c010c14ccb2c88f4ab11e51b803ed02d, type: 3}
+    angle: 30
+  - tform:
+      e00: 1
+      e01: 0
+      e02: 0
+      e03: -1.2249999
+      e10: 0
+      e11: 1.0000001
+      e12: 1.4210855e-14
+      e13: 2.2859993
+      e20: 0
+      e21: -1.4210855e-14
+      e22: 1.0000001
+      e23: -10.647004
+      e30: 0
+      e31: 0
+      e32: 0
+      e33: 1
+    color: {r: 0.9700428, g: 0.9716981, b: 0.8479441, a: 1}
+    intensity: 40
+    range: 4
+    radius: 0.05
+    samples: 8
+    samples2: 0
+    bitmask: 0
+    bakeToIndirect: 0
+    selfShadow: 0
+    realisticFalloff: 0
+    projMode: 3
+    cookie: {fileID: 102900000, guid: c010c14ccb2c88f4ab11e51b803ed02d, type: 3}
+    angle: 30
+  - tform:
+      e00: 0.53455025
+      e01: 0.10704431
+      e02: 0.83833027
+      e03: -4.188
+      e10: 0.2220131
+      e11: 0.93932235
+      e12: -0.26150346
+      e13: 3.2379985
+      e20: -0.81545484
+      e21: 0.32590705
+      e22: 0.47834975
+      e23: -1.1549996
+      e30: 0
+      e31: 0
+      e32: 0
+      e33: 1
+    color: {r: 0.9700428, g: 0.9716981, b: 0.8479441, a: 1}
+    intensity: 90
+    range: 4
+    radius: 0.05
+    samples: 8
+    samples2: 0
+    bitmask: 0
+    bakeToIndirect: 0
+    selfShadow: 0
+    realisticFalloff: 0
+    projMode: 3
+    cookie: {fileID: 102900000, guid: c010c14ccb2c88f4ab11e51b803ed02d, type: 3}
+    angle: 30
+  - tform:
+      e00: 0.5144137
+      e01: 0.03906335
+      e02: -0.85665196
+      e03: 9.876999
+      e10: -0.20887823
+      e11: 0.97458255
+      e12: -0.08098901
+      e13: 2.6969976
+      e20: 0.83171433
+      e21: 0.2205978
+      e22: 0.5094981
+      e23: 10.158006
+      e30: 0
+      e31: 0
+      e32: 0
+      e33: 1
+    color: {r: 0.9700428, g: 0.9716981, b: 0.8479441, a: 1}
+    intensity: 90
+    range: 4
+    radius: 0.05
+    samples: 8
+    samples2: 0
+    bitmask: 0
+    bakeToIndirect: 0
+    selfShadow: 0
+    realisticFalloff: 0
+    projMode: 3
+    cookie: {fileID: 102900000, guid: c010c14ccb2c88f4ab11e51b803ed02d, type: 3}
+    angle: 30
+  - tform:
+      e00: 0.5365398
+      e01: -0.23646723
+      e02: -0.8100668
+      e03: 14.473
+      e10: 0.120779075
+      e11: 0.97157264
+      e12: -0.20361571
+      e13: 3.1679978
+      e20: 0.8351872
+      e21: 0.011408773
+      e22: 0.5498477
+      e23: 0.11500186
+      e30: 0
+      e31: 0
+      e32: 0
+      e33: 1
+    color: {r: 0.9700428, g: 0.9716981, b: 0.8479441, a: 1}
+    intensity: 90
+    range: 4
+    radius: 0.05
+    samples: 8
+    samples2: 0
+    bitmask: 0
+    bakeToIndirect: 0
+    selfShadow: 0
+    realisticFalloff: 0
+    projMode: 3
+    cookie: {fileID: 102900000, guid: c010c14ccb2c88f4ab11e51b803ed02d, type: 3}
+    angle: 30
+  - tform:
+      e00: 0.9335804
+      e01: -0.3583681
+      e02: -0.000000014900916
+      e03: 21.923
+      e10: 0.3583682
+      e11: 0.93358064
+      e12: 8.4853014e-11
+      e13: 3.949999
+      e20: -0.000000024168763
+      e21: 0.000000018196666
+      e22: 1.0000002
+      e23: -9.842009
+      e30: 0
+      e31: 0
+      e32: 0
+      e33: 1
+    color: {r: 0.9700428, g: 0.9716981, b: 0.8479441, a: 1}
+    intensity: 90
+    range: 5.33
+    radius: 0.05
+    samples: 8
+    samples2: 0
+    bitmask: 0
+    bakeToIndirect: 0
+    selfShadow: 0
+    realisticFalloff: 0
+    projMode: 3
+    cookie: {fileID: 102900000, guid: c010c14ccb2c88f4ab11e51b803ed02d, type: 3}
+    angle: 30
+  - tform:
+      e00: 0.9294385
+      e01: 0.36897716
+      e02: 0
+      e03: -21.778
+      e10: -0.3689772
+      e11: 0.9294387
+      e12: 0
+      e13: 3.9499977
+      e20: -0.000000043985505
+      e21: -0.00000000841159
+      e22: 1.0000002
+      e23: -7.2610083
+      e30: 0
+      e31: 0
+      e32: 0
+      e33: 1
+    color: {r: 0.9700428, g: 0.9716981, b: 0.8479441, a: 1}
+    intensity: 90
+    range: 5.33
+    radius: 0.05
+    samples: 8
+    samples2: 0
+    bitmask: 0
+    bakeToIndirect: 0
+    selfShadow: 0
+    realisticFalloff: 0
+    projMode: 3
+    cookie: {fileID: 102900000, guid: c010c14ccb2c88f4ab11e51b803ed02d, type: 3}
+    angle: 30
+  - tform:
+      e00: 1
+      e01: -0.000000029802322
+      e02: 0
+      e03: -14.776001
+      e10: 0.00000005960466
+      e11: 0.8660257
+      e12: 0.50000006
+      e13: 3.9499998
+      e20: -0.000000051436086
+      e21: -0.50000006
+      e22: 0.8660257
+      e23: 13.160007
+      e30: 0
+      e31: 0
+      e32: 0
+      e33: 1
+    color: {r: 0.9700428, g: 0.9716981, b: 0.8479441, a: 1}
+    intensity: 90
+    range: 5.33
+    radius: 0.05
+    samples: 8
+    samples2: 0
+    bitmask: 0
+    bakeToIndirect: 0
+    selfShadow: 0
+    realisticFalloff: 0
+    projMode: 3
+    cookie: {fileID: 102900000, guid: c010c14ccb2c88f4ab11e51b803ed02d, type: 3}
+    angle: 30
+  - tform:
+      e00: 0.9804378
+      e01: 0.03370681
+      e02: 0.19392142
+      e03: -13.273001
+      e10: -0.0393708
+      e11: 0.99890125
+      e12: 0.025427138
+      e13: 2.8489976
+      e20: -0.19285129
+      e21: -0.032564525
+      e22: 0.9806877
+      e23: 2.3720002
+      e30: 0
+      e31: 0
+      e32: 0
+      e33: 1
+    color: {r: 0.9700428, g: 0.9716981, b: 0.8479441, a: 1}
+    intensity: 90
+    range: 4
+    radius: 0.05
+    samples: 8
+    samples2: 0
+    bitmask: 0
+    bakeToIndirect: 0
+    selfShadow: 0
+    realisticFalloff: 0
+    projMode: 3
+    cookie: {fileID: 102900000, guid: c010c14ccb2c88f4ab11e51b803ed02d, type: 3}
+    angle: 30
+  - tform:
+      e00: 0.9047158
+      e01: -0.25717226
+      e02: 0.33963475
+      e03: 12.274
+      e10: -0.03312027
+      e11: 0.75236267
+      e12: 0.65791637
+      e13: 2.9809966
+      e20: -0.4247263
+      e21: -0.6064761
+      e22: 0.67215675
+      e23: 9.537005
+      e30: 0
+      e31: 0
+      e32: 0
+      e33: 1
+    color: {r: 0.9700428, g: 0.9716981, b: 0.8479441, a: 1}
+    intensity: 90
+    range: 4
+    radius: 0.05
+    samples: 8
+    samples2: 0
+    bitmask: 0
+    bakeToIndirect: 0
+    selfShadow: 0
+    realisticFalloff: 0
+    projMode: 3
+    cookie: {fileID: 102900000, guid: c010c14ccb2c88f4ab11e51b803ed02d, type: 3}
+    angle: 30
+  - tform:
+      e00: 0.9335804
+      e01: -0.3583681
+      e02: -0.000000014900916
+      e03: 21.923
+      e10: 0.3583682
+      e11: 0.93358064
+      e12: 8.4853014e-11
+      e13: 3.9499993
+      e20: -0.000000024168763
+      e21: 0.000000018196666
+      e22: 1.0000002
+      e23: 11.215002
+      e30: 0
+      e31: 0
+      e32: 0
+      e33: 1
+    color: {r: 0.9700428, g: 0.9716981, b: 0.8479441, a: 1}
+    intensity: 90
+    range: 5.33
+    radius: 0.05
+    samples: 8
+    samples2: 0
+    bitmask: 0
+    bakeToIndirect: 0
+    selfShadow: 0
+    realisticFalloff: 0
+    projMode: 3
+    cookie: {fileID: 102900000, guid: c010c14ccb2c88f4ab11e51b803ed02d, type: 3}
+    angle: 30
+  - tform:
+      e00: 0.40623838
+      e01: 0.18070973
+      e02: -0.89572
+      e03: -2.657
+      e10: -0.1402368
+      e11: 0.9809668
+      e12: 0.13430606
+      e13: 3.1319976
+      e20: 0.90294194
+      e21: 0.07105265
+      e22: 0.42384854
+      e23: 8.651004
+      e30: 0
+      e31: 0
+      e32: 0
+      e33: 1
+    color: {r: 0.9700428, g: 0.9716981, b: 0.8479441, a: 1}
+    intensity: 90
+    range: 4
+    radius: 0.05
+    samples: 8
+    samples2: 0
+    bitmask: 0
+    bakeToIndirect: 0
+    selfShadow: 0
+    realisticFalloff: 0
+    projMode: 3
+    cookie: {fileID: 102900000, guid: c010c14ccb2c88f4ab11e51b803ed02d, type: 3}
+    angle: 30
+  - tform:
+      e00: 0.59411263
+      e01: -0.04416263
+      e02: 0.80316865
+      e03: 2.7280002
+      e10: -0.3098094
+      e11: 0.9088984
+      e12: 0.27914563
+      e13: 3.237998
+      e20: -0.74232644
+      e21: -0.41467315
+      e22: 0.526306
+      e23: 1.3110012
+      e30: 0
+      e31: 0
+      e32: 0
+      e33: 1
+    color: {r: 0.9700428, g: 0.9716981, b: 0.8479441, a: 1}
+    intensity: 90
+    range: 4
+    radius: 0.05
+    samples: 8
+    samples2: 0
+    bitmask: 0
+    bakeToIndirect: 0
+    selfShadow: 0
+    realisticFalloff: 0
+    projMode: 3
+    cookie: {fileID: 102900000, guid: c010c14ccb2c88f4ab11e51b803ed02d, type: 3}
+    angle: 30
+  - tform:
+      e00: 1
+      e01: 0
+      e02: 0
+      e03: 10.233999
+      e10: 0
+      e11: 0.7946699
+      e12: 0.607042
+      e13: 2.0869975
+      e20: 0
+      e21: -0.607042
+      e22: 0.7946699
+      e23: -8.707004
+      e30: 0
+      e31: 0
+      e32: 0
+      e33: 1
+    color: {r: 0.9700428, g: 0.9716981, b: 0.8479441, a: 1}
+    intensity: 90
+    range: 4
+    radius: 0.05
+    samples: 8
+    samples2: 0
+    bitmask: 0
+    bakeToIndirect: 0
+    selfShadow: 0
+    realisticFalloff: 0
+    projMode: 3
+    cookie: {fileID: 102900000, guid: c010c14ccb2c88f4ab11e51b803ed02d, type: 3}
+    angle: 30
+  - tform:
+      e00: 1
+      e01: -0.000000029802322
+      e02: 0
+      e03: -17.27
+      e10: 0.00000005960466
+      e11: 0.8660257
+      e12: 0.50000006
+      e13: 3.9499998
+      e20: -0.000000051436086
+      e21: -0.50000006
+      e22: 0.8660257
+      e23: 13.160007
+      e30: 0
+      e31: 0
+      e32: 0
+      e33: 1
+    color: {r: 0.9700428, g: 0.9716981, b: 0.8479441, a: 1}
+    intensity: 90
+    range: 5.33
+    radius: 0.05
+    samples: 8
+    samples2: 0
+    bitmask: 0
+    bakeToIndirect: 0
+    selfShadow: 0
+    realisticFalloff: 0
+    projMode: 3
+    cookie: {fileID: 102900000, guid: c010c14ccb2c88f4ab11e51b803ed02d, type: 3}
+    angle: 30
+  - tform:
+      e00: 1
+      e01: 0
+      e02: 0
+      e03: 3.6550002
+      e10: 0
+      e11: 1.0000001
+      e12: 1.4210855e-14
+      e13: 2.086998
+      e20: 0
+      e21: -1.4210855e-14
+      e22: 1.0000001
+      e23: -7.809004
+      e30: 0
+      e31: 0
+      e32: 0
+      e33: 1
+    color: {r: 0.9700428, g: 0.9716981, b: 0.8479441, a: 1}
+    intensity: 40
+    range: 4
+    radius: 0.05
+    samples: 8
+    samples2: 0
+    bitmask: 0
+    bakeToIndirect: 0
+    selfShadow: 0
+    realisticFalloff: 0
+    projMode: 3
+    cookie: {fileID: 102900000, guid: c010c14ccb2c88f4ab11e51b803ed02d, type: 3}
+    angle: 30
+  - tform:
+      e00: 0.9335804
+      e01: -0.3583681
+      e02: -0.000000014900916
+      e03: 21.923
+      e10: 0.3583682
+      e11: 0.93358064
+      e12: 8.4853014e-11
+      e13: 3.9500012
+      e20: -0.000000024168763
+      e21: 0.000000018196666
+      e22: 1.0000002
+      e23: 3.2139976
+      e30: 0
+      e31: 0
+      e32: 0
+      e33: 1
+    color: {r: 0.9700428, g: 0.9716981, b: 0.8479441, a: 1}
+    intensity: 90
+    range: 5.33
+    radius: 0.05
+    samples: 8
+    samples2: 0
+    bitmask: 0
+    bakeToIndirect: 0
+    selfShadow: 0
+    realisticFalloff: 0
+    projMode: 3
+    cookie: {fileID: 102900000, guid: c010c14ccb2c88f4ab11e51b803ed02d, type: 3}
+    angle: 30
+  - tform:
+      e00: 0.9335804
+      e01: -0.3583681
+      e02: -0.000000014900916
+      e03: 21.923
+      e10: 0.3583682
+      e11: 0.93358064
+      e12: 8.4853014e-11
+      e13: 3.9500012
+      e20: -0.000000024168763
+      e21: 0.000000018196666
+      e22: 1.0000002
+      e23: -4.7200074
+      e30: 0
+      e31: 0
+      e32: 0
+      e33: 1
+    color: {r: 0.9700428, g: 0.9716981, b: 0.8479441, a: 1}
+    intensity: 90
+    range: 5.33
+    radius: 0.05
+    samples: 8
+    samples2: 0
+    bitmask: 0
+    bakeToIndirect: 0
+    selfShadow: 0
+    realisticFalloff: 0
+    projMode: 3
+    cookie: {fileID: 102900000, guid: c010c14ccb2c88f4ab11e51b803ed02d, type: 3}
+    angle: 30
+  - tform:
+      e00: 0.9804379
+      e01: 0.0337068
+      e02: 0.1939213
+      e03: -13.281
+      e10: -0.058493093
+      e11: 0.9906134
+      e12: 0.12354727
+      e13: 2.8489985
+      e20: -0.18793666
+      e21: -0.1324734
+      e22: 0.97320646
+      e23: -2.0760012
+      e30: 0
+      e31: 0
+      e32: 0
+      e33: 1
+    color: {r: 0.9700428, g: 0.9716981, b: 0.8479441, a: 1}
+    intensity: 90
+    range: 4
+    radius: 0.05
+    samples: 8
+    samples2: 0
+    bitmask: 0
+    bakeToIndirect: 0
+    selfShadow: 0
+    realisticFalloff: 0
+    projMode: 3
+    cookie: {fileID: 102900000, guid: c010c14ccb2c88f4ab11e51b803ed02d, type: 3}
+    angle: 30
+  - tform:
+      e00: 0.9335804
+      e01: -0.3583681
+      e02: -0.000000014900916
+      e03: 21.923
+      e10: 0.3583682
+      e11: 0.93358064
+      e12: 8.4853014e-11
+      e13: 3.9499998
+      e20: -0.000000024168763
+      e21: 0.000000018196666
+      e22: 1.0000002
+      e23: -7.26101
+      e30: 0
+      e31: 0
+      e32: 0
+      e33: 1
+    color: {r: 0.9700428, g: 0.9716981, b: 0.8479441, a: 1}
+    intensity: 90
+    range: 5.33
+    radius: 0.05
+    samples: 8
+    samples2: 0
+    bitmask: 0
+    bakeToIndirect: 0
+    selfShadow: 0
+    realisticFalloff: 0
+    projMode: 3
+    cookie: {fileID: 102900000, guid: c010c14ccb2c88f4ab11e51b803ed02d, type: 3}
+    angle: 30
+  - tform:
+      e00: 1
+      e01: 0
+      e02: 0
+      e03: 3.6550002
+      e10: 0
+      e11: 1.0000001
+      e12: 1.4210855e-14
+      e13: 2.0869985
+      e20: 0
+      e21: -1.4210855e-14
+      e22: 1.0000001
+      e23: -8.739005
+      e30: 0
+      e31: 0
+      e32: 0
+      e33: 1
+    color: {r: 0.9700428, g: 0.9716981, b: 0.8479441, a: 1}
+    intensity: 40
+    range: 4
+    radius: 0.05
+    samples: 8
+    samples2: 0
+    bitmask: 0
+    bakeToIndirect: 0
+    selfShadow: 0
+    realisticFalloff: 0
+    projMode: 3
+    cookie: {fileID: 102900000, guid: c010c14ccb2c88f4ab11e51b803ed02d, type: 3}
+    angle: 30
+  - tform:
+      e00: 0.5760822
+      e01: -0.1777282
+      e02: 0.7978358
+      e03: -10.683001
+      e10: 0.3196624
+      e11: 0.947325
+      e12: -0.01978533
+      e13: 2.8489976
+      e20: -0.75229347
+      e21: 0.266436
+      e22: 0.6025501
+      e23: 2.3720002
+      e30: 0
+      e31: 0
+      e32: 0
+      e33: 1
+    color: {r: 0.9700428, g: 0.9716981, b: 0.8479441, a: 1}
+    intensity: 90
+    range: 4
+    radius: 0.05
+    samples: 8
+    samples2: 0
+    bitmask: 0
+    bakeToIndirect: 0
+    selfShadow: 0
+    realisticFalloff: 0
+    projMode: 3
+    cookie: {fileID: 102900000, guid: c010c14ccb2c88f4ab11e51b803ed02d, type: 3}
+    angle: 30
+  - tform:
+      e00: 1
+      e01: 0.000000059604645
+      e02: -0.000000007450581
+      e03: -6.8859973
+      e10: 6.1316584e-15
+      e11: 0.9347564
+      e12: -0.35529009
+      e13: 3.95
+      e20: -0.000000051436086
+      e21: 0.3552901
+      e22: 0.93475634
+      e23: -13.480014
+      e30: 0
+      e31: 0
+      e32: 0
+      e33: 1
+    color: {r: 0.9700428, g: 0.9716981, b: 0.8479441, a: 1}
+    intensity: 90
+    range: 5.33
+    radius: 0.05
+    samples: 8
+    samples2: 0
+    bitmask: 0
+    bakeToIndirect: 0
+    selfShadow: 0
+    realisticFalloff: 0
+    projMode: 3
+    cookie: {fileID: 102900000, guid: c010c14ccb2c88f4ab11e51b803ed02d, type: 3}
+    angle: 30
+  - tform:
+      e00: 0.5365399
+      e01: -0.23646694
+      e02: -0.8100668
+      e03: 14.473
+      e10: 0.40510347
+      e11: 0.91427
+      e12: 0.001431306
+      e13: 3.1679993
+      e20: 0.7402812
+      e21: -0.32892874
+      e22: 0.58633584
+      e23: 1.7300019
+      e30: 0
+      e31: 0
+      e32: 0
+      e33: 1
+    color: {r: 0.9700428, g: 0.9716981, b: 0.8479441, a: 1}
+    intensity: 90
+    range: 4
+    radius: 0.05
+    samples: 8
+    samples2: 0
+    bitmask: 0
+    bakeToIndirect: 0
+    selfShadow: 0
+    realisticFalloff: 0
+    projMode: 3
+    cookie: {fileID: 102900000, guid: c010c14ccb2c88f4ab11e51b803ed02d, type: 3}
+    angle: 30
+  - tform:
+      e00: 1
+      e01: 0
+      e02: 0
+      e03: 2.039
+      e10: 0
+      e11: 1.0000001
+      e12: 1.4210855e-14
+      e13: 2.139999
+      e20: 0
+      e21: -1.4210855e-14
+      e22: 1.0000001
+      e23: -9.700004
+      e30: 0
+      e31: 0
+      e32: 0
+      e33: 1
+    color: {r: 0.9700428, g: 0.9716981, b: 0.8479441, a: 1}
+    intensity: 40
+    range: 4
+    radius: 0.05
+    samples: 8
+    samples2: 0
+    bitmask: 0
+    bakeToIndirect: 0
+    selfShadow: 0
+    realisticFalloff: 0
+    projMode: 3
+    cookie: {fileID: 102900000, guid: c010c14ccb2c88f4ab11e51b803ed02d, type: 3}
+    angle: 30
+  - tform:
+      e00: 0.9335804
+      e01: -0.3583681
+      e02: -0.000000014900916
+      e03: 21.923
+      e10: 0.3583682
+      e11: 0.93358064
+      e12: 8.4853014e-11
+      e13: 3.9499998
+      e20: -0.000000024168763
+      e21: 0.000000018196666
+      e22: 1.0000002
+      e23: 0.4199966
+      e30: 0
+      e31: 0
+      e32: 0
+      e33: 1
+    color: {r: 0.9700428, g: 0.9716981, b: 0.8479441, a: 1}
+    intensity: 90
+    range: 5.33
+    radius: 0.05
+    samples: 8
+    samples2: 0
+    bitmask: 0
+    bakeToIndirect: 0
+    selfShadow: 0
+    realisticFalloff: 0
+    projMode: 3
+    cookie: {fileID: 102900000, guid: c010c14ccb2c88f4ab11e51b803ed02d, type: 3}
+    angle: 30
+  - tform:
+      e00: 1
+      e01: 0.000000059604645
+      e02: -0.000000007450581
+      e03: -17.27
+      e10: 6.1316584e-15
+      e11: 0.9347564
+      e12: -0.35529009
+      e13: 3.9499996
+      e20: -0.000000051436086
+      e21: 0.3552901
+      e22: 0.93475634
+      e23: -13.480014
+      e30: 0
+      e31: 0
+      e32: 0
+      e33: 1
+    color: {r: 0.9700428, g: 0.9716981, b: 0.8479441, a: 1}
+    intensity: 90
+    range: 5.33
+    radius: 0.05
+    samples: 8
+    samples2: 0
+    bitmask: 0
+    bakeToIndirect: 0
+    selfShadow: 0
+    realisticFalloff: 0
+    projMode: 3
+    cookie: {fileID: 102900000, guid: c010c14ccb2c88f4ab11e51b803ed02d, type: 3}
+    angle: 30
+  - tform:
+      e00: 0.9804378
+      e01: 0.03370681
+      e02: 0.19392142
+      e03: -17.598
+      e10: -0.0393708
+      e11: 0.99890125
+      e12: 0.025427138
+      e13: 2.8489976
+      e20: -0.19285129
+      e21: -0.032564525
+      e22: 0.9806877
+      e23: 2.3720002
+      e30: 0
+      e31: 0
+      e32: 0
+      e33: 1
+    color: {r: 0.9700428, g: 0.9716981, b: 0.8479441, a: 1}
+    intensity: 90
+    range: 4
+    radius: 0.05
+    samples: 8
+    samples2: 0
+    bitmask: 0
+    bakeToIndirect: 0
+    selfShadow: 0
+    realisticFalloff: 0
+    projMode: 3
+    cookie: {fileID: 102900000, guid: c010c14ccb2c88f4ab11e51b803ed02d, type: 3}
+    angle: 30
+  - tform:
+      e00: 0.5449778
+      e01: -0.008979857
+      e02: -0.83840245
+      e03: 16.528
+      e10: 0.00027575038
+      e11: 0.9999447
+      e12: -0.010530866
+      e13: 2.980997
+      e20: 0.8384507
+      e21: 0.005507857
+      e22: 0.54495007
+      e23: 7.6700068
+      e30: 0
+      e31: 0
+      e32: 0
+      e33: 1
+    color: {r: 0.9700428, g: 0.9716981, b: 0.8479441, a: 1}
+    intensity: 90
+    range: 4
+    radius: 0.05
+    samples: 8
+    samples2: 0
+    bitmask: 0
+    bakeToIndirect: 0
+    selfShadow: 0
+    realisticFalloff: 0
+    projMode: 3
+    cookie: {fileID: 102900000, guid: c010c14ccb2c88f4ab11e51b803ed02d, type: 3}
+    angle: 30
+  - tform:
+      e00: 1
+      e01: 0
+      e02: 0
+      e03: 3.6550002
+      e10: 0
+      e11: 1.0000001
+      e12: 1.4210855e-14
+      e13: 2.0869975
+      e20: 0
+      e21: -1.4210855e-14
+      e22: 1.0000001
+      e23: -9.700004
+      e30: 0
+      e31: 0
+      e32: 0
+      e33: 1
+    color: {r: 0.9700428, g: 0.9716981, b: 0.8479441, a: 1}
+    intensity: 40
+    range: 4
+    radius: 0.05
+    samples: 8
+    samples2: 0
+    bitmask: 0
+    bakeToIndirect: 0
+    selfShadow: 0
+    realisticFalloff: 0
+    projMode: 3
+    cookie: {fileID: 102900000, guid: c010c14ccb2c88f4ab11e51b803ed02d, type: 3}
+    angle: 30
+  - tform:
+      e00: 0.53454995
+      e01: 0.10704443
+      e02: 0.8383304
+      e03: -4.188
+      e10: -0.22295134
+      e11: 0.9746689
+      e12: 0.017708775
+      e13: 3.237998
+      e20: -0.81519896
+      e21: -0.19637305
+      e22: 0.54487497
+      e23: 1.3110012
+      e30: 0
+      e31: 0
+      e32: 0
+      e33: 1
+    color: {r: 0.9700428, g: 0.9716981, b: 0.8479441, a: 1}
+    intensity: 90
+    range: 4
+    radius: 0.05
+    samples: 8
+    samples2: 0
+    bitmask: 0
+    bakeToIndirect: 0
+    selfShadow: 0
+    realisticFalloff: 0
+    projMode: 3
+    cookie: {fileID: 102900000, guid: c010c14ccb2c88f4ab11e51b803ed02d, type: 3}
+    angle: 30
+  - tform:
+      e00: 0.98227847
+      e01: -0.16231707
+      e02: -0.093713805
+      e03: -3.8339972
+      e10: 0.18742768
+      e11: 0.85067827
+      e12: 0.49113935
+      e13: 3.95
+      e20: -0.000000071431785
+      e21: -0.5000001
+      e22: 0.86602557
+      e23: 13.160007
+      e30: 0
+      e31: 0
+      e32: 0
+      e33: 1
+    color: {r: 0.9700428, g: 0.9716981, b: 0.8479441, a: 1}
+    intensity: 90
+    range: 5.33
+    radius: 0.05
+    samples: 8
+    samples2: 0
+    bitmask: 0
+    bakeToIndirect: 0
+    selfShadow: 0
+    realisticFalloff: 0
+    projMode: 3
+    cookie: {fileID: 102900000, guid: c010c14ccb2c88f4ab11e51b803ed02d, type: 3}
+    angle: 30
+  - tform:
+      e00: 0.90471584
+      e01: -0.25717226
+      e02: 0.33963472
+      e03: 15.063999
+      e10: 0.048316732
+      e11: 0.8540331
+      e12: 0.51797044
+      e13: 2.9809966
+      e20: -0.42326695
+      e21: -0.45220605
+      e22: 0.785083
+      e23: 9.537005
+      e30: 0
+      e31: 0
+      e32: 0
+      e33: 1
+    color: {r: 0.9700428, g: 0.9716981, b: 0.8479441, a: 1}
+    intensity: 90
+    range: 4
+    radius: 0.05
+    samples: 8
+    samples2: 0
+    bitmask: 0
+    bakeToIndirect: 0
+    selfShadow: 0
+    realisticFalloff: 0
+    projMode: 3
+    cookie: {fileID: 102900000, guid: c010c14ccb2c88f4ab11e51b803ed02d, type: 3}
+    angle: 30
+  - tform:
+      e00: 1
+      e01: 0
+      e02: 0
+      e03: -2.8600001
+      e10: 0
+      e11: 1.0000001
+      e12: 1.4210855e-14
+      e13: 2.3479981
+      e20: 0
+      e21: -1.4210855e-14
+      e22: 1.0000001
+      e23: -8.739005
+      e30: 0
+      e31: 0
+      e32: 0
+      e33: 1
+    color: {r: 0.9700428, g: 0.9716981, b: 0.8479441, a: 1}
+    intensity: 40
+    range: 4
+    radius: 0.05
+    samples: 8
+    samples2: 0
+    bitmask: 0
+    bakeToIndirect: 0
+    selfShadow: 0
+    realisticFalloff: 0
+    projMode: 3
+    cookie: {fileID: 102900000, guid: c010c14ccb2c88f4ab11e51b803ed02d, type: 3}
+    angle: 30
+  - tform:
+      e00: 1
+      e01: 0
+      e02: 0
+      e03: -1.2249999
+      e10: 0
+      e11: 1.0000001
+      e12: 1.4210855e-14
+      e13: 2.2859983
+      e20: 0
+      e21: -1.4210855e-14
+      e22: 1.0000001
+      e23: -7.809004
+      e30: 0
+      e31: 0
+      e32: 0
+      e33: 1
+    color: {r: 0.9700428, g: 0.9716981, b: 0.8479441, a: 1}
+    intensity: 40
+    range: 4
+    radius: 0.05
+    samples: 8
+    samples2: 0
+    bitmask: 0
+    bakeToIndirect: 0
+    selfShadow: 0
+    realisticFalloff: 0
+    projMode: 3
+    cookie: {fileID: 102900000, guid: c010c14ccb2c88f4ab11e51b803ed02d, type: 3}
+    angle: 30
+  - tform:
+      e00: 0.27993762
+      e01: -0.18254513
+      e02: -0.9425032
+      e03: 2.7400002
+      e10: 0.3876556
+      e11: 0.91965055
+      e12: -0.062979415
+      e13: 2.9719982
+      e20: 0.8782702
+      e21: -0.3477363
+      e22: 0.32820943
+      e23: 10.158004
+      e30: 0
+      e31: 0
+      e32: 0
+      e33: 1
+    color: {r: 0.9700428, g: 0.9716981, b: 0.8479441, a: 1}
+    intensity: 90
+    range: 4
+    radius: 0.05
+    samples: 8
+    samples2: 0
+    bitmask: 0
+    bakeToIndirect: 0
+    selfShadow: 0
+    realisticFalloff: 0
+    projMode: 3
+    cookie: {fileID: 102900000, guid: c010c14ccb2c88f4ab11e51b803ed02d, type: 3}
+    angle: 30
+  - tform:
+      e00: 1
+      e01: 0
+      e02: 0
+      e03: 2.039
+      e10: 0
+      e11: 1.0000001
+      e12: 1.4210855e-14
+      e13: 2.1399994
+      e20: 0
+      e21: -1.4210855e-14
+      e22: 1.0000001
+      e23: -10.647004
+      e30: 0
+      e31: 0
+      e32: 0
+      e33: 1
+    color: {r: 0.9700428, g: 0.9716981, b: 0.8479441, a: 1}
+    intensity: 40
+    range: 4
+    radius: 0.05
+    samples: 8
+    samples2: 0
+    bitmask: 0
+    bakeToIndirect: 0
+    selfShadow: 0
+    realisticFalloff: 0
+    projMode: 3
+    cookie: {fileID: 102900000, guid: c010c14ccb2c88f4ab11e51b803ed02d, type: 3}
+    angle: 30
+  - tform:
+      e00: 0.02562213
+      e01: 0.097635865
+      e02: -0.9948924
+      e03: -13.715
+      e10: -0.022575827
+      e11: 0.99502194
+      e12: 0.097067215
+      e13: 2.9979978
+      e20: 0.999417
+      e21: 0.019973429
+      e22: 0.027698774
+      e23: 8.319007
+      e30: 0
+      e31: 0
+      e32: 0
+      e33: 1
+    color: {r: 0.9700428, g: 0.9716981, b: 0.8479441, a: 1}
+    intensity: 45
+    range: 4
+    radius: 0.05
+    samples: 8
+    samples2: 0
+    bitmask: 0
+    bakeToIndirect: 0
+    selfShadow: 0
+    realisticFalloff: 0
+    projMode: 3
+    cookie: {fileID: 102900000, guid: c010c14ccb2c88f4ab11e51b803ed02d, type: 3}
+    angle: 30
+  - tform:
+      e00: 0.9294385
+      e01: 0.36897716
+      e02: 0
+      e03: -21.778
+      e10: -0.3689772
+      e11: 0.9294387
+      e12: 0
+      e13: 3.9499974
+      e20: -0.000000043985505
+      e21: -0.00000000841159
+      e22: 1.0000002
+      e23: 11.215004
+      e30: 0
+      e31: 0
+      e32: 0
+      e33: 1
+    color: {r: 0.9700428, g: 0.9716981, b: 0.8479441, a: 1}
+    intensity: 90
+    range: 5.33
+    radius: 0.05
+    samples: 8
+    samples2: 0
+    bitmask: 0
+    bakeToIndirect: 0
+    selfShadow: 0
+    realisticFalloff: 0
+    projMode: 3
+    cookie: {fileID: 102900000, guid: c010c14ccb2c88f4ab11e51b803ed02d, type: 3}
+    angle: 30
+  - tform:
+      e00: 0.98227835
+      e01: -0.16231734
+      e02: -0.09371388
+      e03: -3.8339972
+      e10: 0.11843157
+      e11: 0.9250586
+      e12: -0.36088932
+      e13: 3.9499996
+      e20: 0.14526936
+      e21: 0.34339514
+      e22: 0.9278885
+      e23: -13.480014
+      e30: 0
+      e31: 0
+      e32: 0
+      e33: 1
+    color: {r: 0.9700428, g: 0.9716981, b: 0.8479441, a: 1}
+    intensity: 90
+    range: 5.33
+    radius: 0.05
+    samples: 8
+    samples2: 0
+    bitmask: 0
+    bakeToIndirect: 0
+    selfShadow: 0
+    realisticFalloff: 0
+    projMode: 3
+    cookie: {fileID: 102900000, guid: c010c14ccb2c88f4ab11e51b803ed02d, type: 3}
+    angle: 30
+  - tform:
+      e00: 1
+      e01: 0
+      e02: 0
+      e03: -2.8600001
+      e10: 0
+      e11: 1.0000001
+      e12: 1.4210855e-14
+      e13: 2.3479981
+      e20: 0
+      e21: -1.4210855e-14
+      e22: 1.0000001
+      e23: -9.700004
+      e30: 0
+      e31: 0
+      e32: 0
+      e33: 1
+    color: {r: 0.9700428, g: 0.9716981, b: 0.8479441, a: 1}
+    intensity: 40
+    range: 4
+    radius: 0.05
+    samples: 8
+    samples2: 0
+    bitmask: 0
+    bakeToIndirect: 0
+    selfShadow: 0
+    realisticFalloff: 0
+    projMode: 3
+    cookie: {fileID: 102900000, guid: c010c14ccb2c88f4ab11e51b803ed02d, type: 3}
+    angle: 30
+  - tform:
+      e00: 1
+      e01: 0.000000059604645
+      e02: -0.000000007450581
+      e03: -9.309999
+      e10: 6.1316584e-15
+      e11: 0.9347564
+      e12: -0.35529009
+      e13: 3.9499996
+      e20: -0.000000051436086
+      e21: 0.3552901
+      e22: 0.93475634
+      e23: -13.480014
+      e30: 0
+      e31: 0
+      e32: 0
+      e33: 1
+    color: {r: 0.9700428, g: 0.9716981, b: 0.8479441, a: 1}
+    intensity: 90
+    range: 5.33
+    radius: 0.05
+    samples: 8
+    samples2: 0
+    bitmask: 0
+    bakeToIndirect: 0
+    selfShadow: 0
+    realisticFalloff: 0
+    projMode: 3
+    cookie: {fileID: 102900000, guid: c010c14ccb2c88f4ab11e51b803ed02d, type: 3}
+    angle: 30
+  - tform:
+      e00: 0.53455025
+      e01: 0.10704431
+      e02: 0.83833027
+      e03: -1.8299994
+      e10: 0.2220131
+      e11: 0.93932235
+      e12: -0.26150346
+      e13: 3.2379985
+      e20: -0.81545484
+      e21: 0.32590705
+      e22: 0.47834975
+      e23: -1.1549996
+      e30: 0
+      e31: 0
+      e32: 0
+      e33: 1
+    color: {r: 0.9700428, g: 0.9716981, b: 0.8479441, a: 1}
+    intensity: 90
+    range: 4
+    radius: 0.05
+    samples: 8
+    samples2: 0
+    bitmask: 0
+    bakeToIndirect: 0
+    selfShadow: 0
+    realisticFalloff: 0
+    projMode: 3
+    cookie: {fileID: 102900000, guid: c010c14ccb2c88f4ab11e51b803ed02d, type: 3}
+    angle: 30
+  - tform:
+      e00: 1
+      e01: 0
+      e02: 0
+      e03: -15.880001
+      e10: 0
+      e11: 0.9071829
+      e12: -0.42073685
+      e13: 3.5729978
+      e20: 0
+      e21: 0.42073685
+      e22: 0.9071829
+      e23: -6.710004
+      e30: 0
+      e31: 0
+      e32: 0
+      e33: 1
+    color: {r: 0.9700428, g: 0.9716981, b: 0.8479441, a: 1}
+    intensity: 90
+    range: 4
+    radius: 0.05
+    samples: 8
+    samples2: 0
+    bitmask: 0
+    bakeToIndirect: 0
+    selfShadow: 0
+    realisticFalloff: 0
+    projMode: 3
+    cookie: {fileID: 102900000, guid: c010c14ccb2c88f4ab11e51b803ed02d, type: 3}
+    angle: 30
+  - tform:
+      e00: 0.5140031
+      e01: 0.32432026
+      e02: -0.7941142
+      e03: 11.635
+      e10: -0.1811125
+      e11: 0.94593155
+      e12: 0.26909536
+      e13: 2.9809976
+      e20: 0.8384507
+      e21: 0.0055081486
+      e22: 0.5449501
+      e23: 8.647006
+      e30: 0
+      e31: 0
+      e32: 0
+      e33: 1
+    color: {r: 0.9700428, g: 0.9716981, b: 0.8479441, a: 1}
+    intensity: 70
+    range: 4
+    radius: 0.05
+    samples: 8
+    samples2: 0
+    bitmask: 0
+    bakeToIndirect: 0
+    selfShadow: 0
+    realisticFalloff: 0
+    projMode: 3
+    cookie: {fileID: 102900000, guid: c010c14ccb2c88f4ab11e51b803ed02d, type: 3}
+    angle: 30
+  - tform:
+      e00: 0.4370057
+      e01: 0.30512744
+      e02: -0.84612256
+      e03: -2.909
+      e10: 0.19408198
+      e11: 0.88655347
+      e12: 0.4199473
+      e13: 3.2529979
+      e20: 0.8782702
+      e21: -0.34773657
+      e22: 0.3282092
+      e23: 9.865006
+      e30: 0
+      e31: 0
+      e32: 0
+      e33: 1
+    color: {r: 0.9700428, g: 0.9716981, b: 0.8479441, a: 1}
+    intensity: 90
+    range: 4
+    radius: 0.05
+    samples: 8
+    samples2: 0
+    bitmask: 0
+    bakeToIndirect: 0
+    selfShadow: 0
+    realisticFalloff: 0
+    projMode: 3
+    cookie: {fileID: 102900000, guid: c010c14ccb2c88f4ab11e51b803ed02d, type: 3}
+    angle: 30
+  - tform:
+      e00: 1
+      e01: 0
+      e02: 0
+      e03: 2.039
+      e10: 0
+      e11: 1.0000001
+      e12: 1.4210855e-14
+      e13: 2.139998
+      e20: 0
+      e21: -1.4210855e-14
+      e22: 1.0000001
+      e23: -8.739005
+      e30: 0
+      e31: 0
+      e32: 0
+      e33: 1
+    color: {r: 0.9700428, g: 0.9716981, b: 0.8479441, a: 1}
+    intensity: 40
+    range: 4
+    radius: 0.05
+    samples: 8
+    samples2: 0
+    bitmask: 0
+    bakeToIndirect: 0
+    selfShadow: 0
+    realisticFalloff: 0
+    projMode: 3
+    cookie: {fileID: 102900000, guid: c010c14ccb2c88f4ab11e51b803ed02d, type: 3}
+    angle: 30
+  - tform:
+      e00: 1
+      e01: 0
+      e02: 0
+      e03: 11.469999
+      e10: 0
+      e11: 0.7734709
+      e12: -0.6338321
+      e13: 2.0869985
+      e20: 0
+      e21: 0.6338321
+      e22: 0.7734709
+      e23: -8.8130045
+      e30: 0
+      e31: 0
+      e32: 0
+      e33: 1
+    color: {r: 0.9700428, g: 0.9716981, b: 0.8479441, a: 1}
+    intensity: 90
+    range: 4
+    radius: 0.05
+    samples: 8
+    samples2: 0
+    bitmask: 0
+    bakeToIndirect: 0
+    selfShadow: 0
+    realisticFalloff: 0
+    projMode: 3
+    cookie: {fileID: 102900000, guid: c010c14ccb2c88f4ab11e51b803ed02d, type: 3}
+    angle: 30
+  - tform:
+      e00: 1
+      e01: 0
+      e02: 0
+      e03: -1.2249999
+      e10: 0
+      e11: 1.0000001
+      e12: 1.4210855e-14
+      e13: 2.2859983
+      e20: 0
+      e21: -1.4210855e-14
+      e22: 1.0000001
+      e23: -6.8320036
+      e30: 0
+      e31: 0
+      e32: 0
+      e33: 1
+    color: {r: 0.9700428, g: 0.9716981, b: 0.8479441, a: 1}
+    intensity: 40
+    range: 4
+    radius: 0.05
+    samples: 8
+    samples2: 0
+    bitmask: 0
+    bakeToIndirect: 0
+    selfShadow: 0
+    realisticFalloff: 0
+    projMode: 3
+    cookie: {fileID: 102900000, guid: c010c14ccb2c88f4ab11e51b803ed02d, type: 3}
+    angle: 30
+  - tform:
+      e00: 1
+      e01: 0
+      e02: 0
+      e03: 0.41000032
+      e10: 0
+      e11: 1.0000001
+      e12: 1.4210855e-14
+      e13: 2.225998
+      e20: 0
+      e21: -1.4210855e-14
+      e22: 1.0000001
+      e23: -7.809004
+      e30: 0
+      e31: 0
+      e32: 0
+      e33: 1
+    color: {r: 0.9700428, g: 0.9716981, b: 0.8479441, a: 1}
+    intensity: 40
+    range: 4
+    radius: 0.05
+    samples: 8
+    samples2: 0
+    bitmask: 0
+    bakeToIndirect: 0
+    selfShadow: 0
+    realisticFalloff: 0
+    projMode: 3
+    cookie: {fileID: 102900000, guid: c010c14ccb2c88f4ab11e51b803ed02d, type: 3}
+    angle: 30
+  - tform:
+      e00: 0.9139089
+      e01: 0.40534613
+      e02: -0.02156517
+      e03: -8.33
+      e10: -0.4055035
+      e11: 0.9140877
+      e12: -0.0033093696
+      e13: 3.572998
+      e20: 0.01837097
+      e21: 0.011769137
+      e22: 0.9997622
+      e23: -8.000004
+      e30: 0
+      e31: 0
+      e32: 0
+      e33: 1
+    color: {r: 0.9700428, g: 0.9716981, b: 0.8479441, a: 1}
+    intensity: 90
+    range: 4
+    radius: 0.05
+    samples: 8
+    samples2: 0
+    bitmask: 0
+    bakeToIndirect: 0
+    selfShadow: 0
+    realisticFalloff: 0
+    projMode: 3
+    cookie: {fileID: 102900000, guid: c010c14ccb2c88f4ab11e51b803ed02d, type: 3}
+    angle: 30
+  - tform:
+      e00: 0.40623838
+      e01: 0.18070973
+      e02: -0.89572
+      e03: -0.21499968
+      e10: -0.1402368
+      e11: 0.9809668
+      e12: 0.13430606
+      e13: 2.7039962
+      e20: 0.90294194
+      e21: 0.07105265
+      e22: 0.42384854
+      e23: 8.638005
+      e30: 0
+      e31: 0
+      e32: 0
+      e33: 1
+    color: {r: 0.9700428, g: 0.9716981, b: 0.8479441, a: 1}
+    intensity: 90
+    range: 4
+    radius: 0.05
+    samples: 8
+    samples2: 0
+    bitmask: 0
+    bakeToIndirect: 0
+    selfShadow: 0
+    realisticFalloff: 0
+    projMode: 3
+    cookie: {fileID: 102900000, guid: c010c14ccb2c88f4ab11e51b803ed02d, type: 3}
+    angle: 30
+  - tform:
+      e00: 1
+      e01: 0
+      e02: 0
+      e03: -8.33
+      e10: 0
+      e11: 0.9883579
+      e12: -0.15214838
+      e13: 3.5729988
+      e20: 0
+      e21: 0.15214838
+      e22: 0.9883579
+      e23: -9.750004
+      e30: 0
+      e31: 0
+      e32: 0
+      e33: 1
+    color: {r: 0.9700428, g: 0.9716981, b: 0.8479441, a: 1}
+    intensity: 90
+    range: 4
+    radius: 0.05
+    samples: 8
+    samples2: 0
+    bitmask: 0
+    bakeToIndirect: 0
+    selfShadow: 0
+    realisticFalloff: 0
+    projMode: 3
+    cookie: {fileID: 102900000, guid: c010c14ccb2c88f4ab11e51b803ed02d, type: 3}
+    angle: 30
+  - tform:
+      e00: 1
+      e01: 0
+      e02: 0
+      e03: 0.41000032
+      e10: 0
+      e11: 1.0000001
+      e12: 1.4210855e-14
+      e13: 2.225998
+      e20: 0
+      e21: -1.4210855e-14
+      e22: 1.0000001
+      e23: -6.8320036
+      e30: 0
+      e31: 0
+      e32: 0
+      e33: 1
+    color: {r: 0.9700428, g: 0.9716981, b: 0.8479441, a: 1}
+    intensity: 40
+    range: 4
+    radius: 0.05
+    samples: 8
+    samples2: 0
+    bitmask: 0
+    bakeToIndirect: 0
+    selfShadow: 0
+    realisticFalloff: 0
+    projMode: 3
+    cookie: {fileID: 102900000, guid: c010c14ccb2c88f4ab11e51b803ed02d, type: 3}
+    angle: 30
+  - tform:
+      e00: 1
+      e01: -0.000000029802322
+      e02: 0
+      e03: 8.220001
+      e10: 0.00000005960466
+      e11: 0.8660257
+      e12: 0.50000006
+      e13: 3.950001
+      e20: -0.000000051436086
+      e21: -0.50000006
+      e22: 0.8660257
+      e23: 13.1600065
+      e30: 0
+      e31: 0
+      e32: 0
+      e33: 1
+    color: {r: 0.9700428, g: 0.9716981, b: 0.8479441, a: 1}
+    intensity: 90
+    range: 5.33
+    radius: 0.05
+    samples: 8
+    samples2: 0
+    bitmask: 0
+    bakeToIndirect: 0
+    selfShadow: 0
+    realisticFalloff: 0
+    projMode: 3
+    cookie: {fileID: 102900000, guid: c010c14ccb2c88f4ab11e51b803ed02d, type: 3}
+    angle: 30
+  - tform:
+      e00: 1
+      e01: 0
+      e02: 0
+      e03: -2.8600001
+      e10: 0
+      e11: 1.0000001
+      e12: 1.4210855e-14
+      e13: 2.3479986
+      e20: 0
+      e21: -1.4210855e-14
+      e22: 1.0000001
+      e23: -10.647004
+      e30: 0
+      e31: 0
+      e32: 0
+      e33: 1
+    color: {r: 0.9700428, g: 0.9716981, b: 0.8479441, a: 1}
+    intensity: 40
+    range: 4
+    radius: 0.05
+    samples: 8
+    samples2: 0
+    bitmask: 0
+    bakeToIndirect: 0
+    selfShadow: 0
+    realisticFalloff: 0
+    projMode: 3
+    cookie: {fileID: 102900000, guid: c010c14ccb2c88f4ab11e51b803ed02d, type: 3}
+    angle: 30
+  - tform:
+      e00: 0.6047012
+      e01: -0.05532384
+      e02: -0.79452866
+      e03: 11.048
+      e10: 0.095493026
+      e11: 0.9954246
+      e12: 0.0033656831
+      e13: 3.1679993
+      e20: 0.7907072
+      e21: -0.07790721
+      e22: 0.6072175
+      e23: 1.7300019
+      e30: 0
+      e31: 0
+      e32: 0
+      e33: 1
+    color: {r: 0.9700428, g: 0.9716981, b: 0.8479441, a: 1}
+    intensity: 90
+    range: 4
+    radius: 0.05
+    samples: 8
+    samples2: 0
+    bitmask: 0
+    bakeToIndirect: 0
+    selfShadow: 0
+    realisticFalloff: 0
+    projMode: 3
+    cookie: {fileID: 102900000, guid: c010c14ccb2c88f4ab11e51b803ed02d, type: 3}
+    angle: 30
+  - tform:
+      e00: 1
+      e01: 0
+      e02: 0
+      e03: 3.6550002
+      e10: 0
+      e11: 1.0000001
+      e12: 1.4210855e-14
+      e13: 2.086998
+      e20: 0
+      e21: -1.4210855e-14
+      e22: 1.0000001
+      e23: -6.8320036
+      e30: 0
+      e31: 0
+      e32: 0
+      e33: 1
+    color: {r: 0.9700428, g: 0.9716981, b: 0.8479441, a: 1}
+    intensity: 40
+    range: 4
+    radius: 0.05
+    samples: 8
+    samples2: 0
+    bitmask: 0
+    bakeToIndirect: 0
+    selfShadow: 0
+    realisticFalloff: 0
+    projMode: 3
+    cookie: {fileID: 102900000, guid: c010c14ccb2c88f4ab11e51b803ed02d, type: 3}
+    angle: 30
+  - tform:
+      e00: 1
+      e01: 0
+      e02: 0
+      e03: 0.41000032
+      e10: 0
+      e11: 1.0000001
+      e12: 1.4210855e-14
+      e13: 2.2259974
+      e20: 0
+      e21: -1.4210855e-14
+      e22: 1.0000001
+      e23: -9.700004
+      e30: 0
+      e31: 0
+      e32: 0
+      e33: 1
+    color: {r: 0.9700428, g: 0.9716981, b: 0.8479441, a: 1}
+    intensity: 40
+    range: 4
+    radius: 0.05
+    samples: 8
+    samples2: 0
+    bitmask: 0
+    bakeToIndirect: 0
+    selfShadow: 0
+    realisticFalloff: 0
+    projMode: 3
+    cookie: {fileID: 102900000, guid: c010c14ccb2c88f4ab11e51b803ed02d, type: 3}
+    angle: 30
+  - tform:
+      e00: 0.39136046
+      e01: 0.27155626
+      e02: -0.8792577
+      e03: -3.1249995
+      e10: -0.17757216
+      e11: 0.9597963
+      e12: 0.21739243
+      e13: 2.8979974
+      e20: 0.90294266
+      e21: 0.07105288
+      e22: 0.42384723
+      e23: 7.4280043
+      e30: 0
+      e31: 0
+      e32: 0
+      e33: 1
+    color: {r: 0.9700428, g: 0.9716981, b: 0.8479441, a: 1}
+    intensity: 90
+    range: 4
+    radius: 0.05
+    samples: 8
+    samples2: 0
+    bitmask: 0
+    bakeToIndirect: 0
+    selfShadow: 0
+    realisticFalloff: 0
+    projMode: 3
+    cookie: {fileID: 102900000, guid: c010c14ccb2c88f4ab11e51b803ed02d, type: 3}
+    angle: 30
+  - tform:
+      e00: 0.9804379
+      e01: 0.0337068
+      e02: 0.1939213
+      e03: -11.868
+      e10: -0.058493093
+      e11: 0.9906134
+      e12: 0.12354727
+      e13: 2.8489985
+      e20: -0.18793666
+      e21: -0.1324734
+      e22: 0.97320646
+      e23: -2.0760012
+      e30: 0
+      e31: 0
+      e32: 0
+      e33: 1
+    color: {r: 0.9700428, g: 0.9716981, b: 0.8479441, a: 1}
+    intensity: 90
+    range: 4
+    radius: 0.05
+    samples: 8
+    samples2: 0
+    bitmask: 0
+    bakeToIndirect: 0
+    selfShadow: 0
+    realisticFalloff: 0
+    projMode: 3
+    cookie: {fileID: 102900000, guid: c010c14ccb2c88f4ab11e51b803ed02d, type: 3}
+    angle: 30
+  - tform:
+      e00: 1
+      e01: 0
+      e02: 0
+      e03: 12.702999
+      e10: 0
+      e11: 0.7734709
+      e12: -0.6338321
+      e13: 2.0869985
+      e20: 0
+      e21: 0.6338321
+      e22: 0.7734709
+      e23: -8.8130045
+      e30: 0
+      e31: 0
+      e32: 0
+      e33: 1
+    color: {r: 0.9700428, g: 0.9716981, b: 0.8479441, a: 1}
+    intensity: 90
+    range: 4
+    radius: 0.05
+    samples: 8
+    samples2: 0
+    bitmask: 0
+    bakeToIndirect: 0
+    selfShadow: 0
+    realisticFalloff: 0
+    projMode: 3
+    cookie: {fileID: 102900000, guid: c010c14ccb2c88f4ab11e51b803ed02d, type: 3}
+    angle: 30
+  - tform:
+      e00: 1
+      e01: -0.000000029802322
+      e02: 0
+      e03: 20.98
+      e10: 0.00000005960466
+      e11: 0.8660257
+      e12: 0.50000006
+      e13: 3.950001
+      e20: -0.000000051436086
+      e21: -0.50000006
+      e22: 0.8660257
+      e23: 13.1600065
+      e30: 0
+      e31: 0
+      e32: 0
+      e33: 1
+    color: {r: 0.9700428, g: 0.9716981, b: 0.8479441, a: 1}
+    intensity: 90
+    range: 5.33
+    radius: 0.05
+    samples: 8
+    samples2: 0
+    bitmask: 0
+    bakeToIndirect: 0
+    selfShadow: 0
+    realisticFalloff: 0
+    projMode: 3
+    cookie: {fileID: 102900000, guid: c010c14ccb2c88f4ab11e51b803ed02d, type: 3}
+    angle: 30
+  - tform:
+      e00: 0.9335804
+      e01: -0.3583681
+      e02: -0.000000014900916
+      e03: 21.923
+      e10: 0.3583682
+      e11: 0.93358064
+      e12: 8.4853014e-11
+      e13: 3.949999
+      e20: -0.000000024168763
+      e21: 0.000000018196666
+      e22: 1.0000002
+      e23: 5.8159986
+      e30: 0
+      e31: 0
+      e32: 0
+      e33: 1
+    color: {r: 0.9700428, g: 0.9716981, b: 0.8479441, a: 1}
+    intensity: 90
+    range: 5.33
+    radius: 0.05
+    samples: 8
+    samples2: 0
+    bitmask: 0
+    bakeToIndirect: 0
+    selfShadow: 0
+    realisticFalloff: 0
+    projMode: 3
+    cookie: {fileID: 102900000, guid: c010c14ccb2c88f4ab11e51b803ed02d, type: 3}
+    angle: 30
+  - tform:
+      e00: 0.9782497
+      e01: 0.063320816
+      e02: 0.19752967
+      e03: -8.915001
+      e10: -0.0688885
+      e11: 0.9973941
+      e12: 0.021436457
+      e13: 2.8489985
+      e20: -0.1956576
+      e21: -0.03457776
+      e22: 0.9800626
+      e23: -2.0760012
+      e30: 0
+      e31: 0
+      e32: 0
+      e33: 1
+    color: {r: 0.9700428, g: 0.9716981, b: 0.8479441, a: 1}
+    intensity: 90
+    range: 4
+    radius: 0.05
+    samples: 8
+    samples2: 0
+    bitmask: 0
+    bakeToIndirect: 0
+    selfShadow: 0
+    realisticFalloff: 0
+    projMode: 3
+    cookie: {fileID: 102900000, guid: c010c14ccb2c88f4ab11e51b803ed02d, type: 3}
+    angle: 30
+  - tform:
+      e00: 0.9430234
+      e01: 0.08922927
+      e02: 0.3205387
+      e03: 9.021
+      e10: -0.06887603
+      e11: 0.99485415
+      e12: -0.07430747
+      e13: 2.7879982
+      e20: -0.32551965
+      e21: 0.04799626
+      e22: 0.9443165
+      e23: -1.2329998
+      e30: 0
+      e31: 0
+      e32: 0
+      e33: 1
+    color: {r: 0.9700428, g: 0.9716981, b: 0.8479441, a: 1}
+    intensity: 90
+    range: 4
+    radius: 0.05
+    samples: 8
+    samples2: 0
+    bitmask: 0
+    bakeToIndirect: 0
+    selfShadow: 0
+    realisticFalloff: 0
+    projMode: 3
+    cookie: {fileID: 102900000, guid: c010c14ccb2c88f4ab11e51b803ed02d, type: 3}
+    angle: 30
+  - tform:
+      e00: 0.97974885
+      e01: -0.09497574
+      e02: 0.17627196
+      e03: -16.188
+      e10: 0.06907962
+      e11: 0.9866259
+      e12: 0.14764036
+      e13: 2.8489985
+      e20: -0.18793672
+      e21: -0.13247369
+      e22: 0.97320646
+      e23: -2.0760012
+      e30: 0
+      e31: 0
+      e32: 0
+      e33: 1
+    color: {r: 0.9700428, g: 0.9716981, b: 0.8479441, a: 1}
+    intensity: 90
+    range: 4
+    radius: 0.05
+    samples: 8
+    samples2: 0
+    bitmask: 0
+    bakeToIndirect: 0
+    selfShadow: 0
+    realisticFalloff: 0
+    projMode: 3
+    cookie: {fileID: 102900000, guid: c010c14ccb2c88f4ab11e51b803ed02d, type: 3}
+    angle: 30
+  - tform:
+      e00: 1
+      e01: 0.000000059604645
+      e02: -0.000000007450581
+      e03: -11.956999
+      e10: 6.1316584e-15
+      e11: 0.9347564
+      e12: -0.35529009
+      e13: 3.9499993
+      e20: -0.000000051436086
+      e21: 0.3552901
+      e22: 0.93475634
+      e23: -13.480014
+      e30: 0
+      e31: 0
+      e32: 0
+      e33: 1
+    color: {r: 0.9700428, g: 0.9716981, b: 0.8479441, a: 1}
+    intensity: 90
+    range: 5.33
+    radius: 0.05
+    samples: 8
+    samples2: 0
+    bitmask: 0
+    bakeToIndirect: 0
+    selfShadow: 0
+    realisticFalloff: 0
+    projMode: 3
+    cookie: {fileID: 102900000, guid: c010c14ccb2c88f4ab11e51b803ed02d, type: 3}
+    angle: 30
+  - tform:
+      e00: 0.4370057
+      e01: 0.30512744
+      e02: -0.84612256
+      e03: -0.22800016
+      e10: 0.19408198
+      e11: 0.88655347
+      e12: 0.4199473
+      e13: 2.4379983
+      e20: 0.8782702
+      e21: -0.34773657
+      e22: 0.3282092
+      e23: 9.8720045
+      e30: 0
+      e31: 0
+      e32: 0
+      e33: 1
+    color: {r: 0.9700428, g: 0.9716981, b: 0.8479441, a: 1}
+    intensity: 90
+    range: 4
+    radius: 0.05
+    samples: 8
+    samples2: 0
+    bitmask: 0
+    bakeToIndirect: 0
+    selfShadow: 0
+    realisticFalloff: 0
+    projMode: 3
+    cookie: {fileID: 102900000, guid: c010c14ccb2c88f4ab11e51b803ed02d, type: 3}
+    angle: 30
+  - tform:
+      e00: 0.45785838
+      e01: -0.32401496
+      e02: -0.8278768
+      e03: -0.27599955
+      e10: -0.04703974
+      e11: 0.921085
+      e12: -0.38651028
+      e13: 2.803997
+      e20: 0.88778
+      e21: 0.21591006
+      e22: 0.40648487
+      e23: 7.559005
+      e30: 0
+      e31: 0
+      e32: 0
+      e33: 1
+    color: {r: 0.9700428, g: 0.9716981, b: 0.8479441, a: 1}
+    intensity: 90
+    range: 4
+    radius: 0.05
+    samples: 8
+    samples2: 0
+    bitmask: 0
+    bakeToIndirect: 0
+    selfShadow: 0
+    realisticFalloff: 0
+    projMode: 3
+    cookie: {fileID: 102900000, guid: c010c14ccb2c88f4ab11e51b803ed02d, type: 3}
+    angle: 30
+  - tform:
+      e00: 0.9804379
+      e01: 0.0337068
+      e02: 0.1939213
+      e03: -10.365
+      e10: -0.058493093
+      e11: 0.9906134
+      e12: 0.12354727
+      e13: 2.8489985
+      e20: -0.18793666
+      e21: -0.1324734
+      e22: 0.97320646
+      e23: -2.0760012
+      e30: 0
+      e31: 0
+      e32: 0
+      e33: 1
+    color: {r: 0.9700428, g: 0.9716981, b: 0.8479441, a: 1}
+    intensity: 90
+    range: 4
+    radius: 0.05
+    samples: 8
+    samples2: 0
+    bitmask: 0
+    bakeToIndirect: 0
+    selfShadow: 0
+    realisticFalloff: 0
+    projMode: 3
+    cookie: {fileID: 102900000, guid: c010c14ccb2c88f4ab11e51b803ed02d, type: 3}
+    angle: 30
+  - tform:
+      e00: 1
+      e01: -0.000000029802322
+      e02: 0
+      e03: 17.204002
+      e10: 0.00000005960466
+      e11: 0.8660257
+      e12: 0.50000006
+      e13: 3.950001
+      e20: -0.000000051436086
+      e21: -0.50000006
+      e22: 0.8660257
+      e23: 13.1600065
+      e30: 0
+      e31: 0
+      e32: 0
+      e33: 1
+    color: {r: 0.9700428, g: 0.9716981, b: 0.8479441, a: 1}
+    intensity: 90
+    range: 5.33
+    radius: 0.05
+    samples: 8
+    samples2: 0
+    bitmask: 0
+    bakeToIndirect: 0
+    selfShadow: 0
+    realisticFalloff: 0
+    projMode: 3
+    cookie: {fileID: 102900000, guid: c010c14ccb2c88f4ab11e51b803ed02d, type: 3}
+    angle: 30
+  - tform:
+      e00: 1
+      e01: 0
+      e02: 0
+      e03: -10.48
+      e10: 0
+      e11: 0.9071829
+      e12: -0.42073685
+      e13: 3.5729978
+      e20: 0
+      e21: 0.42073685
+      e22: 0.9071829
+      e23: -6.710004
+      e30: 0
+      e31: 0
+      e32: 0
+      e33: 1
+    color: {r: 0.9700428, g: 0.9716981, b: 0.8479441, a: 1}
+    intensity: 90
+    range: 4
+    radius: 0.05
+    samples: 8
+    samples2: 0
+    bitmask: 0
+    bakeToIndirect: 0
+    selfShadow: 0
+    realisticFalloff: 0
+    projMode: 3
+    cookie: {fileID: 102900000, guid: c010c14ccb2c88f4ab11e51b803ed02d, type: 3}
+    angle: 30
+  - tform:
+      e00: 0.6047012
+      e01: -0.05532384
+      e02: -0.79452866
+      e03: 8.876999
+      e10: 0.095493026
+      e11: 0.9954246
+      e12: 0.0033656831
+      e13: 3.1679978
+      e20: 0.7907072
+      e21: -0.07790721
+      e22: 0.6072175
+      e23: 1.5810018
+      e30: 0
+      e31: 0
+      e32: 0
+      e33: 1
+    color: {r: 0.9700428, g: 0.9716981, b: 0.8479441, a: 1}
+    intensity: 90
+    range: 4
+    radius: 0.05
+    samples: 8
+    samples2: 0
+    bitmask: 0
+    bakeToIndirect: 0
+    selfShadow: 0
+    realisticFalloff: 0
+    projMode: 3
+    cookie: {fileID: 102900000, guid: c010c14ccb2c88f4ab11e51b803ed02d, type: 3}
+    angle: 30
+  - tform:
+      e00: 0.5097299
+      e01: -0.36170352
+      e02: -0.78060615
+      e03: 14.424999
+      e10: 0.19281076
+      e11: 0.9322771
+      e12: -0.30607814
+      e13: 2.9809976
+      e20: 0.8384508
+      e21: 0.005507879
+      e22: 0.5449498
+      e23: 8.647006
+      e30: 0
+      e31: 0
+      e32: 0
+      e33: 1
+    color: {r: 0.9700428, g: 0.9716981, b: 0.8479441, a: 1}
+    intensity: 70
+    range: 4
+    radius: 0.05
+    samples: 8
+    samples2: 0
+    bitmask: 0
+    bakeToIndirect: 0
+    selfShadow: 0
+    realisticFalloff: 0
+    projMode: 3
+    cookie: {fileID: 102900000, guid: c010c14ccb2c88f4ab11e51b803ed02d, type: 3}
+    angle: 30
+  - tform:
+      e00: 1
+      e01: -0.000000029802322
+      e02: 0
+      e03: 3.900002
+      e10: 0.00000005960466
+      e11: 0.8660257
+      e12: 0.50000006
+      e13: 3.95
+      e20: -0.000000051436086
+      e21: -0.50000006
+      e22: 0.8660257
+      e23: 13.1600065
+      e30: 0
+      e31: 0
+      e32: 0
+      e33: 1
+    color: {r: 0.9700428, g: 0.9716981, b: 0.8479441, a: 1}
+    intensity: 90
+    range: 5.33
+    radius: 0.05
+    samples: 8
+    samples2: 0
+    bitmask: 0
+    bakeToIndirect: 0
+    selfShadow: 0
+    realisticFalloff: 0
+    projMode: 3
+    cookie: {fileID: 102900000, guid: c010c14ccb2c88f4ab11e51b803ed02d, type: 3}
+    angle: 30
+  - tform:
+      e00: 1
+      e01: 0.000000059604645
+      e02: -0.000000007450581
+      e03: 11.91
+      e10: 6.1316584e-15
+      e11: 0.9347564
+      e12: -0.35529009
+      e13: 3.9500005
+      e20: -0.000000051436086
+      e21: 0.3552901
+      e22: 0.93475634
+      e23: -13.480016
+      e30: 0
+      e31: 0
+      e32: 0
+      e33: 1
+    color: {r: 0.9700428, g: 0.9716981, b: 0.8479441, a: 1}
+    intensity: 90
+    range: 5.33
+    radius: 0.05
+    samples: 8
+    samples2: 0
+    bitmask: 0
+    bakeToIndirect: 0
+    selfShadow: 0
+    realisticFalloff: 0
+    projMode: 3
+    cookie: {fileID: 102900000, guid: c010c14ccb2c88f4ab11e51b803ed02d, type: 3}
+    angle: 30
+  - tform:
+      e00: 1
+      e01: -0.000000029802322
+      e02: 0
+      e03: 11.91
+      e10: 0.00000005960466
+      e11: 0.8660257
+      e12: 0.50000006
+      e13: 3.95
+      e20: -0.000000051436086
+      e21: -0.50000006
+      e22: 0.8660257
+      e23: 13.1600065
+      e30: 0
+      e31: 0
+      e32: 0
+      e33: 1
+    color: {r: 0.9700428, g: 0.9716981, b: 0.8479441, a: 1}
+    intensity: 90
+    range: 5.33
+    radius: 0.05
+    samples: 8
+    samples2: 0
+    bitmask: 0
+    bakeToIndirect: 0
+    selfShadow: 0
+    realisticFalloff: 0
+    projMode: 3
+    cookie: {fileID: 102900000, guid: c010c14ccb2c88f4ab11e51b803ed02d, type: 3}
+    angle: 30
+  - tform:
+      e00: 1
+      e01: -0.000000029802322
+      e02: 0
+      e03: -6.886
+      e10: 0.00000005960466
+      e11: 0.8660257
+      e12: 0.50000006
+      e13: 3.95
+      e20: -0.000000051436086
+      e21: -0.50000006
+      e22: 0.8660257
+      e23: 13.160007
+      e30: 0
+      e31: 0
+      e32: 0
+      e33: 1
+    color: {r: 0.9700428, g: 0.9716981, b: 0.8479441, a: 1}
+    intensity: 90
+    range: 5.33
+    radius: 0.05
+    samples: 8
+    samples2: 0
+    bitmask: 0
+    bakeToIndirect: 0
+    selfShadow: 0
+    realisticFalloff: 0
+    projMode: 3
+    cookie: {fileID: 102900000, guid: c010c14ccb2c88f4ab11e51b803ed02d, type: 3}
+    angle: 30
+  - tform:
+      e00: 1
+      e01: 0.000000059604645
+      e02: -0.000000007450581
+      e03: 1.3200002
+      e10: 6.1316584e-15
+      e11: 0.9347564
+      e12: -0.35529009
+      e13: 3.95
+      e20: -0.000000051436086
+      e21: 0.3552901
+      e22: 0.93475634
+      e23: -13.480016
+      e30: 0
+      e31: 0
+      e32: 0
+      e33: 1
+    color: {r: 0.9700428, g: 0.9716981, b: 0.8479441, a: 1}
+    intensity: 90
+    range: 5.33
+    radius: 0.05
+    samples: 8
+    samples2: 0
+    bitmask: 0
+    bakeToIndirect: 0
+    selfShadow: 0
+    realisticFalloff: 0
+    projMode: 3
+    cookie: {fileID: 102900000, guid: c010c14ccb2c88f4ab11e51b803ed02d, type: 3}
+    angle: 30
+  - tform:
+      e00: 0.4281448
+      e01: -0.06323975
+      e02: -0.9014947
+      e03: 2.915
+      e10: -0.037249617
+      e11: 0.995466
+      e12: -0.08752273
+      e13: 3.3539972
+      e20: 0.9029423
+      e21: 0.07105271
+      e22: 0.42384797
+      e23: 7.559005
+      e30: 0
+      e31: 0
+      e32: 0
+      e33: 1
+    color: {r: 0.9700428, g: 0.9716981, b: 0.8479441, a: 1}
+    intensity: 90
+    range: 4
+    radius: 0.05
+    samples: 8
+    samples2: 0
+    bitmask: 0
+    bakeToIndirect: 0
+    selfShadow: 0
+    realisticFalloff: 0
+    projMode: 3
+    cookie: {fileID: 102900000, guid: c010c14ccb2c88f4ab11e51b803ed02d, type: 3}
+    angle: 30
+  - tform:
+      e00: 1
+      e01: -0.000000029802322
+      e02: 0
+      e03: 1.3200002
+      e10: 0.00000005960466
+      e11: 0.8660257
+      e12: 0.50000006
+      e13: 3.9499996
+      e20: -0.000000051436086
+      e21: -0.50000006
+      e22: 0.8660257
+      e23: 13.1600065
+      e30: 0
+      e31: 0
+      e32: 0
+      e33: 1
+    color: {r: 0.9700428, g: 0.9716981, b: 0.8479441, a: 1}
+    intensity: 90
+    range: 5.33
+    radius: 0.05
+    samples: 8
+    samples2: 0
+    bitmask: 0
+    bakeToIndirect: 0
+    selfShadow: 0
+    realisticFalloff: 0
+    projMode: 3
+    cookie: {fileID: 102900000, guid: c010c14ccb2c88f4ab11e51b803ed02d, type: 3}
+    angle: 30
+  - tform:
+      e00: 1
+      e01: -0.000000029802322
+      e02: 0
+      e03: -11.957001
+      e10: 0.00000005960466
+      e11: 0.8660257
+      e12: 0.50000006
+      e13: 3.9499998
+      e20: -0.000000051436086
+      e21: -0.50000006
+      e22: 0.8660257
+      e23: 13.160007
+      e30: 0
+      e31: 0
+      e32: 0
+      e33: 1
+    color: {r: 0.9700428, g: 0.9716981, b: 0.8479441, a: 1}
+    intensity: 90
+    range: 5.33
+    radius: 0.05
+    samples: 8
+    samples2: 0
+    bitmask: 0
+    bakeToIndirect: 0
+    selfShadow: 0
+    realisticFalloff: 0
+    projMode: 3
+    cookie: {fileID: 102900000, guid: c010c14ccb2c88f4ab11e51b803ed02d, type: 3}
+    angle: 30
+  - tform:
+      e00: 0.4370057
+      e01: 0.30512744
+      e02: -0.84612256
+      e03: 2.435
+      e10: 0.19408198
+      e11: 0.88655347
+      e12: 0.4199473
+      e13: 2.9719982
+      e20: 0.8782702
+      e21: -0.34773657
+      e22: 0.3282092
+      e23: 10.158004
+      e30: 0
+      e31: 0
+      e32: 0
+      e33: 1
+    color: {r: 0.9700428, g: 0.9716981, b: 0.8479441, a: 1}
+    intensity: 90
+    range: 4
+    radius: 0.05
+    samples: 8
+    samples2: 0
+    bitmask: 0
+    bakeToIndirect: 0
+    selfShadow: 0
+    realisticFalloff: 0
+    projMode: 3
+    cookie: {fileID: 102900000, guid: c010c14ccb2c88f4ab11e51b803ed02d, type: 3}
+    angle: 30
+  - tform:
+      e00: 0.594113
+      e01: -0.04416269
+      e02: 0.8031684
+      e03: 0.26699972
+      e10: 0.11017992
+      e11: 0.9935486
+      e12: -0.026870385
+      e13: 3.2379985
+      e20: -0.79680026
+      e21: 0.104457065
+      e22: 0.595146
+      e23: -1.1549996
+      e30: 0
+      e31: 0
+      e32: 0
+      e33: 1
+    color: {r: 0.9700428, g: 0.9716981, b: 0.8479441, a: 1}
+    intensity: 90
+    range: 4
+    radius: 0.05
+    samples: 8
+    samples2: 0
+    bitmask: 0
+    bakeToIndirect: 0
+    selfShadow: 0
+    realisticFalloff: 0
+    projMode: 3
+    cookie: {fileID: 102900000, guid: c010c14ccb2c88f4ab11e51b803ed02d, type: 3}
+    angle: 30
+  - tform:
+      e00: 0.9804378
+      e01: 0.03370681
+      e02: 0.19392142
+      e03: -14.717001
+      e10: -0.0393708
+      e11: 0.99890125
+      e12: 0.025427138
+      e13: 2.8489976
+      e20: -0.19285129
+      e21: -0.032564525
+      e22: 0.9806877
+      e23: 2.3720002
+      e30: 0
+      e31: 0
+      e32: 0
+      e33: 1
+    color: {r: 0.9700428, g: 0.9716981, b: 0.8479441, a: 1}
+    intensity: 90
+    range: 4
+    radius: 0.05
+    samples: 8
+    samples2: 0
+    bitmask: 0
+    bakeToIndirect: 0
+    selfShadow: 0
+    realisticFalloff: 0
+    projMode: 3
+    cookie: {fileID: 102900000, guid: c010c14ccb2c88f4ab11e51b803ed02d, type: 3}
+    angle: 30
+  - tform:
+      e00: 0.025622189
+      e01: 0.09763588
+      e02: -0.99489254
+      e03: -16.659
+      e10: -0.1370006
+      e11: 0.9861721
+      e12: 0.0932519
+      e13: 2.9979978
+      e20: 0.99024
+      e21: 0.13391142
+      e22: 0.038644116
+      e23: 7.937005
+      e30: 0
+      e31: 0
+      e32: 0
+      e33: 1
+    color: {r: 0.9700428, g: 0.9716981, b: 0.8479441, a: 1}
+    intensity: 90
+    range: 4
+    radius: 0.05
+    samples: 8
+    samples2: 0
+    bitmask: 0
+    bakeToIndirect: 0
+    selfShadow: 0
+    realisticFalloff: 0
+    projMode: 3
+    cookie: {fileID: 102900000, guid: c010c14ccb2c88f4ab11e51b803ed02d, type: 3}
+    angle: 30
+  - tform:
+      e00: 1
+      e01: -0.000000029802322
+      e02: 0
+      e03: -9.310001
+      e10: 0.00000005960466
+      e11: 0.8660257
+      e12: 0.50000006
+      e13: 3.95
+      e20: -0.000000051436086
+      e21: -0.50000006
+      e22: 0.8660257
+      e23: 13.160007
+      e30: 0
+      e31: 0
+      e32: 0
+      e33: 1
+    color: {r: 0.9700428, g: 0.9716981, b: 0.8479441, a: 1}
+    intensity: 90
+    range: 5.33
+    radius: 0.05
+    samples: 8
+    samples2: 0
+    bitmask: 0
+    bakeToIndirect: 0
+    selfShadow: 0
+    realisticFalloff: 0
+    projMode: 3
+    cookie: {fileID: 102900000, guid: c010c14ccb2c88f4ab11e51b803ed02d, type: 3}
+    angle: 30
+  - tform:
+      e00: 1
+      e01: -0.000000029802322
+      e02: 0
+      e03: 6.353003
+      e10: 0.00000005960466
+      e11: 0.8660257
+      e12: 0.50000006
+      e13: 3.95
+      e20: -0.000000051436086
+      e21: -0.50000006
+      e22: 0.8660257
+      e23: 13.1600065
+      e30: 0
+      e31: 0
+      e32: 0
+      e33: 1
+    color: {r: 0.9700428, g: 0.9716981, b: 0.8479441, a: 1}
+    intensity: 90
+    range: 5.33
+    radius: 0.05
+    samples: 8
+    samples2: 0
+    bitmask: 0
+    bakeToIndirect: 0
+    selfShadow: 0
+    realisticFalloff: 0
+    projMode: 3
+    cookie: {fileID: 102900000, guid: c010c14ccb2c88f4ab11e51b803ed02d, type: 3}
+    angle: 30
+  - tform:
+      e00: 0.9294385
+      e01: 0.36897716
+      e02: 0
+      e03: -21.778
+      e10: -0.3689772
+      e11: 0.9294387
+      e12: 0
+      e13: 3.9499974
+      e20: -0.000000043985505
+      e21: -0.00000000841159
+      e22: 1.0000002
+      e23: 3.2139995
+      e30: 0
+      e31: 0
+      e32: 0
+      e33: 1
+    color: {r: 0.9700428, g: 0.9716981, b: 0.8479441, a: 1}
+    intensity: 90
+    range: 5.33
+    radius: 0.05
+    samples: 8
+    samples2: 0
+    bitmask: 0
+    bakeToIndirect: 0
+    selfShadow: 0
+    realisticFalloff: 0
+    projMode: 3
+    cookie: {fileID: 102900000, guid: c010c14ccb2c88f4ab11e51b803ed02d, type: 3}
+    angle: 30
+  - tform:
+      e00: 1
+      e01: 0
+      e02: 0
+      e03: -1.2249999
+      e10: 0
+      e11: 1.0000001
+      e12: 1.4210855e-14
+      e13: 2.2859979
+      e20: 0
+      e21: -1.4210855e-14
+      e22: 1.0000001
+      e23: -8.739005
+      e30: 0
+      e31: 0
+      e32: 0
+      e33: 1
+    color: {r: 0.9700428, g: 0.9716981, b: 0.8479441, a: 1}
+    intensity: 40
+    range: 4
+    radius: 0.05
+    samples: 8
+    samples2: 0
+    bitmask: 0
+    bakeToIndirect: 0
+    selfShadow: 0
+    realisticFalloff: 0
+    projMode: 3
+    cookie: {fileID: 102900000, guid: c010c14ccb2c88f4ab11e51b803ed02d, type: 3}
+    angle: 30
+  - tform:
+      e00: 1
+      e01: 0
+      e02: 0
+      e03: 12.702999
+      e10: 0
+      e11: 0.7946699
+      e12: 0.607042
+      e13: 2.0869975
+      e20: 0
+      e21: -0.607042
+      e22: 0.7946699
+      e23: -8.707004
+      e30: 0
+      e31: 0
+      e32: 0
+      e33: 1
+    color: {r: 0.9700428, g: 0.9716981, b: 0.8479441, a: 1}
+    intensity: 90
+    range: 4
+    radius: 0.05
+    samples: 8
+    samples2: 0
+    bitmask: 0
+    bakeToIndirect: 0
+    selfShadow: 0
+    realisticFalloff: 0
+    projMode: 3
+    cookie: {fileID: 102900000, guid: c010c14ccb2c88f4ab11e51b803ed02d, type: 3}
+    angle: 30
+  - tform:
+      e00: 0.9294385
+      e01: 0.36897716
+      e02: 0
+      e03: -21.778
+      e10: -0.3689772
+      e11: 0.9294387
+      e12: 0
+      e13: 3.9499977
+      e20: -0.000000043985505
+      e21: -0.00000000841159
+      e22: 1.0000002
+      e23: 0.4199985
+      e30: 0
+      e31: 0
+      e32: 0
+      e33: 1
+    color: {r: 0.9700428, g: 0.9716981, b: 0.8479441, a: 1}
+    intensity: 90
+    range: 5.33
+    radius: 0.05
+    samples: 8
+    samples2: 0
+    bitmask: 0
+    bakeToIndirect: 0
+    selfShadow: 0
+    realisticFalloff: 0
+    projMode: 3
+    cookie: {fileID: 102900000, guid: c010c14ccb2c88f4ab11e51b803ed02d, type: 3}
+    angle: 30
+  - tform:
+      e00: 1
+      e01: 0
+      e02: 0
+      e03: 0.41000032
+      e10: 0
+      e11: 1.0000001
+      e12: 1.4210855e-14
+      e13: 2.2259984
+      e20: 0
+      e21: -1.4210855e-14
+      e22: 1.0000001
+      e23: -8.739005
+      e30: 0
+      e31: 0
+      e32: 0
+      e33: 1
+    color: {r: 0.9700428, g: 0.9716981, b: 0.8479441, a: 1}
+    intensity: 40
+    range: 4
+    radius: 0.05
+    samples: 8
+    samples2: 0
+    bitmask: 0
+    bakeToIndirect: 0
+    selfShadow: 0
+    realisticFalloff: 0
+    projMode: 3
+    cookie: {fileID: 102900000, guid: c010c14ccb2c88f4ab11e51b803ed02d, type: 3}
+    angle: 30
+  implicitGroups:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  implicitGroupedObjects:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  bounds:
+  - m_Center: {x: 0.027664185, y: 4.676128, z: 0.0000019073486}
+    m_Extent: {x: 22.79528, y: 4.645687, z: 14.45491}
+  - m_Center: {x: -0.009056091, y: 4.3231387, z: 0.14364243}
+    m_Extent: {x: 22.8238, y: 4.30856, z: 14.291661}
+  - m_Center: {x: -0.009056091, y: 5.332105, z: 0.013874054}
+    m_Extent: {x: 22.823803, y: 5.2947083, z: 14.42143}
+  - m_Center: {x: -0.0000009536743, y: 5.3017635, z: 0.013874763}
+    m_Extent: {x: 22.832859, y: 5.301764, z: 14.421436}
+  - m_Center: {x: -0.00905323, y: 10.021629, z: 2.9027915}
+    m_Extent: {x: 22.823803, y: 0.31964973, z: 11.541773}
+  - m_Center: {x: -0.009056091, y: 1.7131158, z: 0.013874054}
+    m_Extent: {x: 21.913143, y: 1.718654, z: 13.880426}
+  - m_Center: {x: -0.009056091, y: 4.1930223, z: 0.013874054}
+    m_Extent: {x: 22.823803, y: 4.2128735, z: 14.42143}
+  - m_Center: {x: 0.008460999, y: 3.1141658, z: -0.16261387}
+    m_Extent: {x: 20.197506, y: 3.1177764, z: 11.0112705}
+  - m_Center: {x: -1.2736073, y: 3.7970903, z: 0.014716148}
+    m_Extent: {x: 17.319195, y: 3.8007011, z: 14.353119}
+  - m_Center: {x: -2.1724892, y: 1.9907748, z: 0.20713902}
+    m_Extent: {x: 20.598495, y: 1.9943855, z: 11.374433}
+  - m_Center: {x: 0.000020980835, y: 2.0909133, z: 0.09747124}
+    m_Extent: {x: 22.771006, y: 2.094524, z: 11.485191}
+  - m_Center: {x: -6.564556, y: 1.8282487, z: 4.436072}
+    m_Extent: {x: 11.898556, y: 1.8318596, z: 6.730439}
+  - m_Center: {x: 0.0000019073486, y: 4.2208395, z: 0.029173851}
+    m_Extent: {x: 18.5928, y: 4.22445, z: 11.19646}
+  - m_Center: {x: 0.47976875, y: 4.2361274, z: -0.033255577}
+    m_Extent: {x: 18.113035, y: 4.2397385, z: 9.723668}
+  - m_Center: {x: 0.0000038146973, y: 4.203552, z: 0.18823814}
+    m_Extent: {x: 20.041515, y: 4.2035527, z: 13.250769}
+  - m_Center: {x: 0, y: 0, z: 0}
+    m_Extent: {x: 5000, y: 5000, z: 5000}
+  hasEmissive: 010101010101010101010101010101
+  uvBuffOffsets: 
+  uvBuffLengths: 
+  uvSrcBuff: []
+  uvDestBuff: []
+  lmrIndicesOffsets: 
+  lmrIndicesLengths: 
+  lmrIndicesBuff: 
+  lmGroupLODResFlags: 
+  lmGroupMinLOD: 
+  lmGroupLODMatrix: 
+  serverGetFileList: []
+  lightmapHasColor: 01010101010101010101010101010101
+  lightmapHasMask: 00000000000000000000000000000000
+  lightmapHasDir: 00000000000000000000000000000000
+  lightmapHasRNM: 00000000000000000000000000000001
+  modifiedAssetPathList: []
+  modifiedAssets: []
+  maps:
+  - {fileID: 2800000, guid: 36fe59bec0fc8894ca455f804759f56f, type: 3}
+  - {fileID: 2800000, guid: a82e6bd201a9d1f49a6eb1aa29399bec, type: 3}
+  - {fileID: 2800000, guid: 90ab9048bdbb6b046be6ff85358d66c8, type: 3}
+  - {fileID: 2800000, guid: 0f17ab27ab4135d4888df55edb061f58, type: 3}
+  - {fileID: 2800000, guid: c362535b4e627c54baaad2fb9c7ceda2, type: 3}
+  - {fileID: 2800000, guid: 1633aeaca5f634d44bdf19990fdff2ab, type: 3}
+  - {fileID: 2800000, guid: 6e4ece97115a13448b54596357fd9908, type: 3}
+  - {fileID: 2800000, guid: f21e076ea0a723644bac23eedb18d6e6, type: 3}
+  - {fileID: 2800000, guid: 5d300cb1c7c4eae4e998579d9f247956, type: 3}
+  - {fileID: 2800000, guid: 718c0aeadaa0f2741a727e208fb08295, type: 3}
+  - {fileID: 2800000, guid: b179183a8e096e24f9f101939260d5fd, type: 3}
+  - {fileID: 2800000, guid: a6caf5007a37ca74d9588e29a7ce7990, type: 3}
+  - {fileID: 2800000, guid: 01990b154cfd40849b0bb8d8f24ad64b, type: 3}
+  - {fileID: 2800000, guid: 6dab37c9f26af1a40b2b6e81d52235ba, type: 3}
+  - {fileID: 2800000, guid: 4f17be37266ed6f4195887190a05cc98, type: 3}
+  masks: []
+  dirMaps: []
+  rnmMaps0: []
+  rnmMaps1: []
+  rnmMaps2: []
+  mapsMode: 
+  bakedRenderers:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  bakedIDs: 00000000000000000000000005000000010000000e0000000c00000001000000010000000e0000000100000006000000070000000100000001000000070000000b0000000100000001000000020000000a000000090000000a0000000a000000080000000300000001000000010000000c0000000a0000000100000000000000010000000700000009000000020000000e000000000000000e000000010000000a00000001000000010000000d00000000000000000000000b0000000b00000001000000010000000b000000090000000000000000000000010000000100000004000000010000000000000001000000090000000a0000000000000000000000020000000d0000000c0000000d0000000c0000000d000000070000000a00000001000000080000000b00000001000000010000000100000001000000010000000600000006000000000000000100000000000000000000000c000000070000000100000001000000050000000a0000000100000001000000000000000000000000000000080000000900000001000000
+  bakedScaleOffset:
+  - {x: 0.025749795, y: 0.02575975, z: 0.9064199, w: 0.1181101}
+  - {x: 0.025749795, y: 0.02575975, z: 0.77650535, w: 0.10150448}
+  - {x: 0.025749795, y: 0.02575975, z: 0.88004625, w: 0.1181101}
+  - {x: 1.6817138, y: 1.7552129, z: -0.005178067, w: -0.31051388}
+  - {x: 0.04036529, y: 0.040399633, z: 0.6026206, w: 0.82830876}
+  - {x: 0.8237415, y: 0.87347376, z: -0.0043379744, w: 0.51854044}
+  - {x: 0.8133382, y: 0.80528086, z: 0.19299443, w: -0.16386336}
+  - {x: 0.38208443, y: 0.37837026, z: -0.107600525, w: 0.8272322}
+  - {x: 0.38208494, y: 0.37837055, z: -0.014779381, w: 0.6934104}
+  - {x: 0.85524935, y: 0.90645474, z: 0.48301664, w: 0.031405207}
+  - {x: 0.38208467, y: 0.37837026, z: -0.20862933, w: 0.8272322}
+  - {x: 1.0027976, y: 1.0069464, z: -0.0009462053, w: -0.09756725}
+  - {x: 0.55675554, y: 0.5959936, z: 0.14569752, w: 0.46569034}
+  - {x: 0.07657706, y: 0.07625085, z: 0.65730804, w: 0.6631822}
+  - {x: 0.076577075, y: 0.07625085, z: 0.16695394, w: 0.664159}
+  - {x: 1.2823668, y: 1.3694268, z: -0.0010151016, w: 0.5753586}
+  - {x: 0.6009381, y: 0.4977607, z: 0.39973545, w: -0.0003922359}
+  - {x: 0.04036529, y: 0.040399633, z: 0.3164179, w: 0.82830876}
+  - {x: 0.04036535, y: 0.040399633, z: 0.7256975, w: 0.82830876}
+  - {x: 0.42744982, y: 0.4281718, z: 0.5722638, w: -0.107924275}
+  - {x: 0.15668996, y: 0.16315027, z: 0.84404576, w: 0.59265065}
+  - {x: 0.16112497, y: 0.1679627, z: 0.029927228, w: 0.22877835}
+  - {x: 0.15669002, y: 0.16315027, z: 0.69658935, w: 0.83721447}
+  - {x: 0.15669002, y: 0.16315027, z: 0.3947953, w: 0.41050687}
+  - {x: 0.4408111, y: 0.4427499, z: 0.7052963, w: 0.55729115}
+  - {x: 1.002708, y: 1.0050926, z: -0.0004886782, w: -0.002054354}
+  - {x: 0.04036529, y: 0.040399633, z: 0.3984692, w: 0.82830876}
+  - {x: 0.04036529, y: 0.040399633, z: 0.4805205, w: 0.82830876}
+  - {x: 0.913377, y: 0.90675324, z: -0.00051069155, w: 0.31212363}
+  - {x: 0.57086366, y: 0.5938533, z: 0.3499428, w: -0.00046984016}
+  - {x: 0.1185593, y: 0.11856021, z: 0.04779587, w: 0.57527196}
+  - {x: 0.07657706, y: 0.07625086, z: 0.46292466, w: 0.059519198}
+  - {x: 0.11855933, y: 0.11856021, z: 0.29297292, w: 0.4990815}
+  - {x: 0.5438691, y: 0.5815165, z: 0.71807855, w: 0.41350195}
+  - {x: 0.6143919, y: 0.6411786, z: 0.69571036, w: 0.4744951}
+  - {x: 1.0018513, y: 1.0015223, z: -0.00056031306, w: -0.0010941541}
+  - {x: 0.49103937, y: 0.51994365, z: -0.0004602012, w: -0.0001953158}
+  - {x: 1.0010414, y: 1.0009369, z: -0.000440033, w: -0.0003300445}
+  - {x: 0.47308555, y: 0.502122, z: 0.48958355, w: -0.0014089087}
+  - {x: 1.001183, y: 1.001258, z: -0.0004126349, w: -0.00082764385}
+  - {x: 0.62603736, y: 0.65127736, z: -0.00081494363, w: -0.00065437454}
+  - {x: 0.040365305, y: 0.040399633, z: 0.17185135, w: 0.82830876}
+  - {x: 0.076577075, y: 0.07625085, z: 0.16402353, w: 0.49907967}
+  - {x: 0.88856655, y: 0.7454052, z: 0.11226865, w: -0.12544721}
+  - {x: 0.07657709, y: 0.07625086, z: 0.30859008, w: 0.059519198}
+  - {x: 0.5267471, y: 0.52681667, z: 0.5869463, w: -0.14332345}
+  - {x: 0.9225071, y: 0.76416934, z: 0.51795584, w: 0.67976236}
+  - {x: 0.9271869, y: 0.76723605, z: -0.00641214, w: 0.83962846}
+  - {x: 0.04036529, y: 0.040399633, z: 0.212877, w: 0.82830876}
+  - {x: 0.04036529, y: 0.040399633, z: 0.56159496, w: 0.82830876}
+  - {x: 0.6474724, y: 0.53646696, z: -0.000420228, w: -0.00036832193}
+  - {x: 0.84013337, y: 0.8742809, z: 0.1603827, w: -0.17688942}
+  - {x: 0.07657706, y: 0.07625086, z: 0.6172592, w: 0.059519198}
+  - {x: 0.07657706, y: 0.07625086, z: 0.54009193, w: 0.059519198}
+  - {x: 0.11855929, y: 0.11856021, z: 0.53815, w: 0.4990815}
+  - {x: 0.11855929, y: 0.11856021, z: 0.53815, w: 0.57527196}
+  - {x: 1.0069103, y: 1.0020039, z: -0.0010069105, w: -0.001002004}
+  - {x: 0.11855929, y: 0.11856021, z: 0.37111703, w: 0.4990815}
+  - {x: 0.07657706, y: 0.07625086, z: 0.8946707, w: -0.0000656643}
+  - {x: 0.11855929, y: 0.11856021, z: 0.6162941, w: 0.4990815}
+  - {x: 0.6600202, y: 0.6884596, z: -0.0009947633, w: 0.31229162}
+  - {x: 0.6970153, y: 0.7267299, z: -0.00046376383, w: 0.5433377}
+  - {x: 0.04036529, y: 0.040399633, z: 0.6944399, w: 0.10156876}
+  - {x: 0.04036535, y: 0.040399633, z: 0.7354655, w: 0.10156876}
+  - {x: 1.3869308, y: 1.3872155, z: 0.55343944, w: -0.00038677844}
+  - {x: 1.21776, y: 1.022105, z: -0.6098379, w: -0.5122741}
+  - {x: 0.72496575, y: 0.7196541, z: -0.0024439017, w: 0.2806745}
+  - {x: 0.9047738, y: 0.7617504, z: -0.003050045, w: 0.8089228}
+  - {x: 0.72496575, y: 0.71965384, z: -0.0024439017, w: 0.28093854}
+  - {x: 0.9047738, y: 0.76175046, z: -0.003050045, w: 0.42854038}
+  - {x: 0.23908417, y: 0.25469697, z: 0.76062304, w: 0.57566345}
+  - {x: 0.76822704, y: 0.7945333, z: -0.17003551, w: 0.107739255}
+  - {x: 0.04036529, y: 0.040399633, z: 0.64364624, w: 0.82830876}
+  - {x: 0.8947782, y: 0.90134126, z: -0.0015563552, w: -0.34395432}
+  - {x: 0.97484004, y: 0.8081642, z: -0.0006389078, w: 0.5342769}
+  - {x: 0.07657707, y: 0.07625091, z: 0.07122744, w: 0.6944398}
+  - {x: 0.07657706, y: 0.07625085, z: 0.65535444, w: 0.49907967}
+  - {x: 0.07657706, y: 0.07625085, z: 0.412131, w: 0.664159}
+  - {x: 0.07657706, y: 0.07625085, z: 0.4101774, w: 0.49907967}
+  - {x: 0.118559316, y: 0.11856021, z: 0.12496315, w: 0.4990815}
+  - {x: 1.0006324, y: 1.0022243, z: -0.00018949335, w: -0.36836517}
+  - {x: 1.0000825, y: 1.0022185, z: -0.000037151935, w: -0.0021812392}
+  - {x: 0.11855929, y: 0.118560225, z: 0.8556104, w: -0.00006383131}
+  - {x: 0.11855929, y: 0.11856027, z: 0.53815, w: 0.66318405}
+  - {x: 0.07657707, y: 0.07625086, z: -0.000079036836, w: 0.059519198}
+  - {x: 0.07657706, y: 0.07625086, z: 0.23142281, w: 0.059519198}
+  - {x: 0.6854375, y: 0.6797998, z: -0.00053825637, w: -0.0015864404}
+  - {x: 1.0019389, y: 1.0682722, z: -0.0008484781, w: -0.49296245}
+  - {x: 0.04036532, y: 0.040399633, z: 0.35744354, w: 0.82830876}
+  - {x: 0.04036529, y: 0.040399633, z: 0.6846719, w: 0.82830876}
+  - {x: 1.008079, y: 1.0508121, z: -0.0041931616, w: -0.38720584}
+  - {x: 0.71782035, y: 0.7478563, z: 0.12747855, w: 0.354976}
+  - {x: 0.11855933, y: 0.11856021, z: 0.29297292, w: 0.57527196}
+  - {x: 0.1185593, y: 0.11856021, z: 0.04681907, w: 0.4990815}
+  - {x: 0.07657706, y: 0.07625086, z: 0.3857574, w: 0.059519198}
+  - {x: 0.07657707, y: 0.07625086, z: 0.077088244, w: 0.059519198}
+  - {x: 0.076577075, y: 0.07625086, z: 0.15425552, w: 0.059519198}
+  - {x: 0.94311935, y: 0.95000964, z: -0.042720474, w: 0.25331858}
+  - {x: 0.68658954, y: 0.715485, z: -0.00074488897, w: -0.0002686296}
+  - {x: 0.04036529, y: 0.040399633, z: 0.43949485, w: 0.82830876}
+  bakedVertexOffset: ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff
+  bakedVertexColorMesh:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  nonBakedRenderers: []
+  bakedLights: []
+  bakedLightChannels: 
+  bakedRenderersTerrain: []
+  bakedIDsTerrain: 
+  bakedScaleOffsetTerrain: []
+  assetList: []
+  uvOverlapAssetList: 
+  idremap: 000000000100000002000000030000000400000005000000060000000700000008000000090000000a0000000b0000000c0000000d0000000e000000
+  usesRealtimeGI: 0
+  emptyDirectionTex: {fileID: 0}
+  anyVolumes: 0
+  compressedVolumes: 0
+  sectors:
+  - name: $G
+    maps: []
+    masks: []
+    dirMaps: []
+    rnmMaps0: []
+    rnmMaps1: []
+    rnmMaps2: []
+    mapsMode: 
+    bakedRenderers: []
+    bakedRenderersTerrain: []
+    bakedIDs: 
+    bakedIDsTerrain: 
+    bakedScaleOffset: []
+    bakedScaleOffsetTerrain: []
+    bakedVertexColorMesh: []
+    nonBakedRenderers: []

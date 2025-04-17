@@ -25,6 +25,10 @@ public class GamePanel : BasePanel
         {
             UIManager.instance.Push(new PausePanel(new UIType("Panels/PausePanel", "PausePanel")));
         }
+        if (Input.GetMouseButtonDown(1))
+        {
+            UIManager.instance.Push(new PPTPanel(new UIType("Panels/PPTPanel", "PPTPanel")));
+        }
 
         // 获取网络状态
         if (!NetworkClient.isConnected && !NetworkServer.active)

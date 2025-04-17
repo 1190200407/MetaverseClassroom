@@ -34,9 +34,9 @@ public class PlayerManager : NetworkBehaviour
     #region 生命周期
     void Awake()
     {
-        animator = transform.Find("PlayerVisual").GetComponent<Animator>();
         nameText = GetComponentInChildren<NameText>();
         rb = GetComponent<Rigidbody>();
+        animator = transform.Find("PlayerVisual").GetComponent<Animator>();
 
         if (GameSettings.instance.isVR)
         {
@@ -217,7 +217,6 @@ public class PlayerManager : NetworkBehaviour
     private void CmdSetIsSitting(bool value)
     {
         isSitting = value;
-        animator.SetBool("IsSetting", value);
     }
 
     [Command]
@@ -247,9 +246,13 @@ public class PlayerManager : NetworkBehaviour
         for (int i = 0; i < playerVisual.childCount; i++)
         {
             Transform child = playerVisual.GetChild(i);
+
+            // 如果是本地玩家，则不显示角色
+            // 如果是其他玩家，则显示名字对应的角色
             if (!isLocalPlayer && child.name == newValue)
             {
                 child.gameObject.SetActive(true);
+                animator.avatar = child.GetComponent<Animator>().avatar;
                 child.SetAsFirstSibling();
                 animator.Rebind();
             }
@@ -263,7 +266,7 @@ public class PlayerManager : NetworkBehaviour
     private void OnIsSittingChanged(bool oldValue, bool newValue)
     {
         rb.isKinematic = newValue;
-        animator.SetFloat("Speed", 0);
+        animator.SetBool("IsSitting", newValue);
     }
 
     private void OnCurrentSceneChanged(string oldValue, string newValue)

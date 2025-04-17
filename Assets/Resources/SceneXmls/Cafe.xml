@@ -1499,7 +1499,7 @@
     <web_path>ImportResources/Cozy cafe - confectionery and bakery/Models/Prefab/Chair</web_path>
     <position x="0.004183531" y="0" z="-0.5034394" />
     <rotation x="0" y="17.81748" z="0" />
-    <scale x="1" y="1" z="1" />
+    <scale x="0.9" y="0.9" z="0.9" />
     <parent_id>166</parent_id>
     <tag>Chair</tag>
     <interaction type="Sit">
@@ -1519,7 +1519,7 @@
     <web_path>ImportResources/Cozy cafe - confectionery and bakery/Models/Prefab/Chair</web_path>
     <position x="-0.016" y="0" z="0.829" />
     <rotation x="0" y="173.8637" z="0" />
-    <scale x="1" y="1" z="1" />
+    <scale x="0.9" y="0.9" z="0.9" />
     <parent_id>166</parent_id>
     <tag>Chair</tag>
     <interaction type="Sit">
@@ -1602,7 +1602,7 @@
     <web_path>ImportResources/Cozy cafe - confectionery and bakery/Models/Prefab/Chair</web_path>
     <position x="0.003265858" y="0" z="-0.5031629" />
     <rotation x="0" y="15.98845" z="0" />
-    <scale x="1" y="1" z="1" />
+    <scale x="0.9" y="0.9" z="0.9" />
     <parent_id>177</parent_id>
     <tag>Chair</tag>
     <interaction type="Sit">
@@ -1622,7 +1622,7 @@
     <web_path>ImportResources/Cozy cafe - confectionery and bakery/Models/Prefab/Chair</web_path>
     <position x="0.119" y="0" z="0.67" />
     <rotation x="0" y="202.6428" z="0" />
-    <scale x="1" y="1" z="1" />
+    <scale x="0.9" y="0.9" z="0.9" />
     <parent_id>177</parent_id>
     <tag>Chair</tag>
     <interaction type="Sit">

@@ -1,0 +1,363 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Elements>
+  <element id="1">
+    <name>EH_Sky</name>
+    <web_path>ImportResources/Exhibition Hall/FBX/Prefab/EH_Sky</web_path>
+    <position x="2.24" y="0" z="8.56" />
+    <rotation x="0" y="0" z="0" />
+    <scale x="2.1" y="2.1" z="2.1" />
+    <parent_id>0</parent_id>
+    <tag>Untagged</tag>
+  </element>
+  <element id="2">
+    <name>EH_A01_Stall</name>
+    <web_path>ImportResources/Exhibition Hall/FBX/Prefab/EH_A01_Stall</web_path>
+    <position x="2.24" y="0" z="8.56" />
+    <rotation x="2.504478E-06" y="0" z="0" />
+    <scale x="2.1" y="2.1" z="2.1" />
+    <parent_id>0</parent_id>
+    <tag>Untagged</tag>
+  </element>
+  <element id="3">
+    <name>EH_A02_Stall</name>
+    <web_path>ImportResources/Exhibition Hall/FBX/Prefab/EH_A02_Stall</web_path>
+    <position x="2.24" y="0" z="8.56" />
+    <rotation x="2.504478E-06" y="0" z="0" />
+    <scale x="2.1" y="2.1" z="2.1" />
+    <parent_id>0</parent_id>
+    <tag>Untagged</tag>
+  </element>
+  <element id="4">
+    <name>EH_A03_Stall</name>
+    <web_path>ImportResources/Exhibition Hall/FBX/Prefab/EH_A03_Stall</web_path>
+    <position x="2.24" y="0" z="8.56" />
+    <rotation x="2.504478E-06" y="0" z="0" />
+    <scale x="2.1" y="2.1" z="2.1" />
+    <parent_id>0</parent_id>
+    <tag>Untagged</tag>
+  </element>
+  <element id="5">
+    <name>EH_AC_Duct</name>
+    <web_path>ImportResources/Exhibition Hall/FBX/Prefab/EH_AC_Duct</web_path>
+    <position x="2.24" y="0" z="8.56" />
+    <rotation x="2.504478E-06" y="0" z="0" />
+    <scale x="2.1" y="2.1" z="2.1" />
+    <parent_id>0</parent_id>
+    <tag>Untagged</tag>
+  </element>
+  <element id="6">
+    <name>EH_AC_System</name>
+    <web_path>ImportResources/Exhibition Hall/FBX/Prefab/EH_AC_System</web_path>
+    <position x="2.24" y="0" z="8.56" />
+    <rotation x="2.504478E-06" y="0" z="0" />
+    <scale x="2.1" y="2.1" z="2.1" />
+    <parent_id>0</parent_id>
+    <tag>Untagged</tag>
+  </element>
+  <element id="7">
+    <name>EH_B01_Stall</name>
+    <web_path>ImportResources/Exhibition Hall/FBX/Prefab/EH_B01_Stall</web_path>
+    <position x="2.24" y="0" z="8.56" />
+    <rotation x="2.504478E-06" y="0" z="0" />
+    <scale x="2.1" y="2.1" z="2.1" />
+    <parent_id>0</parent_id>
+    <tag>Untagged</tag>
+  </element>
+  <element id="8">
+    <name>EH_B02_Stall</name>
+    <web_path>ImportResources/Exhibition Hall/FBX/Prefab/EH_B02_Stall</web_path>
+    <position x="2.24" y="0" z="8.56" />
+    <rotation x="2.504478E-06" y="0" z="0" />
+    <scale x="2.1" y="2.1" z="2.1" />
+    <parent_id>0</parent_id>
+    <tag>Untagged</tag>
+  </element>
+  <element id="9">
+    <name>EH_B03_Stall</name>
+    <web_path>ImportResources/Exhibition Hall/FBX/Prefab/EH_B03_Stall</web_path>
+    <position x="2.24" y="0" z="8.56" />
+    <rotation x="2.504478E-06" y="0" z="0" />
+    <scale x="2.1" y="2.1" z="2.1" />
+    <parent_id>0</parent_id>
+    <tag>Untagged</tag>
+  </element>
+  <element id="10">
+    <name>EH_Banner</name>
+    <web_path>ImportResources/Exhibition Hall/FBX/Prefab/EH_Banner</web_path>
+    <position x="2.24" y="0" z="8.56" />
+    <rotation x="2.504478E-06" y="0" z="0" />
+    <scale x="2.1" y="2.1" z="2.1" />
+    <parent_id>0</parent_id>
+    <tag>Untagged</tag>
+  </element>
+  <element id="11">
+    <name>EH_Side_Light</name>
+    <web_path>ImportResources/Exhibition Hall/FBX/Prefab/EH_Side_Light</web_path>
+    <position x="2.24" y="0" z="8.56" />
+    <rotation x="2.504478E-06" y="0" z="0" />
+    <scale x="2.1" y="2.1" z="2.1" />
+    <parent_id>0</parent_id>
+    <tag>Untagged</tag>
+  </element>
+  <element id="12">
+    <name>EH_C01_Stall</name>
+    <web_path>ImportResources/Exhibition Hall/FBX/Prefab/EH_C01_Stall</web_path>
+    <position x="2.24" y="0" z="8.56" />
+    <rotation x="2.504478E-06" y="0" z="0" />
+    <scale x="2.1" y="2.1" z="2.1" />
+    <parent_id>0</parent_id>
+    <tag>Untagged</tag>
+  </element>
+  <element id="13">
+    <name>EH_C02_Stall</name>
+    <web_path>ImportResources/Exhibition Hall/FBX/Prefab/EH_C02_Stall</web_path>
+    <position x="2.24" y="0" z="8.56" />
+    <rotation x="2.504478E-06" y="0" z="0" />
+    <scale x="2.1" y="2.1" z="2.1" />
+    <parent_id>0</parent_id>
+    <tag>Untagged</tag>
+  </element>
+  <element id="14">
+    <name>EH_C03_Stall</name>
+    <web_path>ImportResources/Exhibition Hall/FBX/Prefab/EH_C03_Stall</web_path>
+    <position x="2.24" y="0" z="8.56" />
+    <rotation x="2.504478E-06" y="0" z="0" />
+    <scale x="2.1" y="2.1" z="2.1" />
+    <parent_id>0</parent_id>
+    <tag>Untagged</tag>
+  </element>
+  <element id="15">
+    <name>EH_Ceiling</name>
+    <web_path>ImportResources/Exhibition Hall/FBX/Prefab/EH_Ceiling</web_path>
+    <position x="2.24" y="0" z="8.56" />
+    <rotation x="2.504478E-06" y="0" z="0" />
+    <scale x="2.1" y="2.1" z="2.1" />
+    <parent_id>0</parent_id>
+    <tag>Untagged</tag>
+  </element>
+  <element id="16">
+    <name>EH_Carpet</name>
+    <web_path>ImportResources/Exhibition Hall/FBX/Prefab/EH_Carpet</web_path>
+    <position x="2.24" y="0" z="8.56" />
+    <rotation x="2.504478E-06" y="0" z="0" />
+    <scale x="2.1" y="2.1" z="2.1" />
+    <parent_id>0</parent_id>
+    <tag>Untagged</tag>
+  </element>
+  <element id="17">
+    <name>EH_Floor_Duct</name>
+    <web_path>ImportResources/Exhibition Hall/FBX/Prefab/EH_Floor_Duct</web_path>
+    <position x="2.24" y="0" z="8.56" />
+    <rotation x="2.504478E-06" y="0" z="0" />
+    <scale x="2.1" y="2.1" z="2.1" />
+    <parent_id>0</parent_id>
+    <tag>Untagged</tag>
+  </element>
+  <element id="18">
+    <name>EH_Ceiling_Lights</name>
+    <web_path>ImportResources/Exhibition Hall/FBX/Prefab/EH_Ceiling_Lights</web_path>
+    <position x="2.24" y="0" z="8.56" />
+    <rotation x="2.504478E-06" y="-1.001791E-05" z="0" />
+    <scale x="2.1" y="2.1" z="2.1" />
+    <parent_id>0</parent_id>
+    <tag>Untagged</tag>
+  </element>
+  <element id="19">
+    <name>EH_Information_Banners</name>
+    <web_path>ImportResources/Exhibition Hall/FBX/Prefab/EH_Information_Banners</web_path>
+    <position x="2.24" y="0" z="8.56" />
+    <rotation x="2.504478E-06" y="0" z="0" />
+    <scale x="2.1" y="2.1" z="2.1" />
+    <parent_id>0</parent_id>
+    <tag>Untagged</tag>
+  </element>
+  <element id="20">
+    <name>EH_Information_Panels</name>
+    <web_path>ImportResources/Exhibition Hall/FBX/Prefab/EH_Information_Panels</web_path>
+    <position x="2.24" y="0" z="8.56" />
+    <rotation x="2.504478E-06" y="0" z="0" />
+    <scale x="2.1" y="2.1" z="2.1" />
+    <parent_id>0</parent_id>
+    <tag>Untagged</tag>
+  </element>
+  <element id="21">
+    <name>EH_Metal_Pillar</name>
+    <web_path>ImportResources/Exhibition Hall/FBX/Prefab/EH_Metal_Pillar</web_path>
+    <position x="2.24" y="0" z="8.56" />
+    <rotation x="2.504478E-06" y="0" z="0" />
+    <scale x="2.1" y="2.1" z="2.1" />
+    <parent_id>0</parent_id>
+    <tag>Untagged</tag>
+  </element>
+  <element id="22">
+    <name>EH_Floor</name>
+    <web_path>ImportResources/Exhibition Hall/FBX/Prefab/EH_Floor</web_path>
+    <position x="2.24" y="0" z="8.56" />
+    <rotation x="2.504478E-06" y="0" z="0" />
+    <scale x="2.1" y="2.1" z="2.1" />
+    <parent_id>0</parent_id>
+    <tag>Untagged</tag>
+  </element>
+  <element id="23">
+    <name>EH_Wall</name>
+    <web_path>ImportResources/Exhibition Hall/FBX/Prefab/EH_Wall</web_path>
+    <position x="2.24" y="0" z="8.56" />
+    <rotation x="2.504478E-06" y="0" z="0" />
+    <scale x="2.1" y="2.1" z="2.1" />
+    <parent_id>0</parent_id>
+    <tag>Untagged</tag>
+  </element>
+  <element id="24">
+    <name>EH_Window_Glass</name>
+    <web_path>ImportResources/Exhibition Hall/FBX/Prefab/EH_Window_Glass</web_path>
+    <position x="2.24" y="0" z="8.56" />
+    <rotation x="2.504478E-06" y="0" z="0" />
+    <scale x="2.1" y="2.1" z="2.1" />
+    <parent_id>0</parent_id>
+    <tag>Untagged</tag>
+  </element>
+  <element id="25">
+    <name>EH_WindowFrame</name>
+    <web_path>ImportResources/Exhibition Hall/FBX/Prefab/EH_WindowFrame</web_path>
+    <position x="2.24" y="0" z="8.56" />
+    <rotation x="2.504478E-06" y="0" z="0" />
+    <scale x="2.1" y="2.1" z="2.1" />
+    <parent_id>0</parent_id>
+    <tag>Untagged</tag>
+  </element>
+  <element id="26">
+    <name>EH_Wood_Ceiling</name>
+    <web_path>ImportResources/Exhibition Hall/FBX/Prefab/EH_Wood_Ceiling</web_path>
+    <position x="2.24" y="0" z="8.56" />
+    <rotation x="2.504478E-06" y="0" z="0" />
+    <scale x="2.1" y="2.1" z="2.1" />
+    <parent_id>0</parent_id>
+    <tag>Untagged</tag>
+  </element>
+  <element id="27">
+    <name>EH_Doors</name>
+    <web_path>ImportResources/Exhibition Hall/FBX/Prefab/EH_Doors</web_path>
+    <position x="2.24" y="0" z="8.56" />
+    <rotation x="2.504478E-06" y="0" z="0" />
+    <scale x="2.1" y="2.1" z="2.1" />
+    <parent_id>0</parent_id>
+    <tag>Untagged</tag>
+  </element>
+  <element id="28">
+    <name>Your Logo Here</name>
+    <web_path>ImportResources/Exhibition Hall/FBX/Prefab/Your Logo Here</web_path>
+    <position x="2.24" y="0" z="8.56" />
+    <rotation x="2.504478E-06" y="0" z="0" />
+    <scale x="2.1" y="2.1" z="2.1" />
+    <parent_id>0</parent_id>
+    <tag>Untagged</tag>
+  </element>
+  <element id="29">
+    <name>Light Probe Group</name>
+    <web_path>null</web_path>
+    <position x="-1.193419" y="4.548366" z="5.900352" />
+    <rotation x="0" y="0" z="0" />
+    <scale x="2.1" y="2.1" z="2.1" />
+    <parent_id>0</parent_id>
+    <tag>Untagged</tag>
+  </element>
+  <element id="30">
+    <name>EH_Hall_Reflection Probe</name>
+    <web_path>null</web_path>
+    <position x="2.369748" y="0.07405485" z="0" />
+    <rotation x="0" y="0" z="0" />
+    <scale x="1" y="1" z="1" />
+    <parent_id>29</parent_id>
+    <tag>Untagged</tag>
+  </element>
+  <element id="31">
+    <name>EH_A01_Stall_Reflection Probe</name>
+    <web_path>null</web_path>
+    <position x="-6.971883" y="-2.319014" z="7.894083" />
+    <rotation x="0" y="0" z="0" />
+    <scale x="1" y="1" z="1" />
+    <parent_id>29</parent_id>
+    <tag>Untagged</tag>
+  </element>
+  <element id="32">
+    <name>EH_A02_Stall_Reflection Probe</name>
+    <web_path>null</web_path>
+    <position x="2.571806" y="-2.660769" z="8.457263" />
+    <rotation x="0" y="0" z="0" />
+    <scale x="1" y="1" z="1" />
+    <parent_id>29</parent_id>
+    <tag>Untagged</tag>
+  </element>
+  <element id="33">
+    <name>EH_A03_Stall_Reflection Probe</name>
+    <web_path>null</web_path>
+    <position x="12.24126" y="-2.532048" z="8.23006" />
+    <rotation x="0" y="0" z="0" />
+    <scale x="1" y="1" z="1" />
+    <parent_id>29</parent_id>
+    <tag>Untagged</tag>
+  </element>
+  <element id="34">
+    <name>EH_B01_Stall_Reflection Probe</name>
+    <web_path>null</web_path>
+    <position x="-6.971883" y="-2.253103" z="2.068375" />
+    <rotation x="0" y="0" z="0" />
+    <scale x="1" y="1" z="1" />
+    <parent_id>29</parent_id>
+    <tag>Untagged</tag>
+  </element>
+  <element id="35">
+    <name>EH_B02_Stall_Reflection Probe</name>
+    <web_path>null</web_path>
+    <position x="2.873871" y="-2.13116" z="1.855467" />
+    <rotation x="0" y="0" z="0" />
+    <scale x="1" y="1" z="1" />
+    <parent_id>29</parent_id>
+    <tag>Untagged</tag>
+  </element>
+  <element id="36">
+    <name>EH_B03_Stall_Reflection Probe</name>
+    <web_path>null</web_path>
+    <position x="11.02731" y="-2.660769" z="1.999594" />
+    <rotation x="0" y="0" z="0" />
+    <scale x="1" y="1" z="1" />
+    <parent_id>29</parent_id>
+    <tag>Untagged</tag>
+  </element>
+  <element id="37">
+    <name>EH_C01_Stall_Reflection Probe</name>
+    <web_path>null</web_path>
+    <position x="-6.314233" y="-2.23007" z="-4.550252" />
+    <rotation x="0" y="0" z="0" />
+    <scale x="1" y="1" z="1" />
+    <parent_id>29</parent_id>
+    <tag>Untagged</tag>
+  </element>
+  <element id="38">
+    <name>EH_C02_Stall_Reflection Probe</name>
+    <web_path>null</web_path>
+    <position x="2.789073" y="-2.660769" z="-4.550252" />
+    <rotation x="0" y="0" z="0" />
+    <scale x="1" y="1" z="1" />
+    <parent_id>29</parent_id>
+    <tag>Untagged</tag>
+  </element>
+  <element id="39">
+    <name>EH_C03_Stall_Reflection Probe</name>
+    <web_path>null</web_path>
+    <position x="12.19538" y="-2.660769" z="-4.550252" />
+    <rotation x="0" y="0" z="0" />
+    <scale x="1" y="1" z="1" />
+    <parent_id>29</parent_id>
+    <tag>Untagged</tag>
+  </element>
+  <element id="40">
+    <name>!ftraceLightmaps</name>
+    <web_path>Prefabs/!ftraceLightmaps</web_path>
+    <position x="2.24" y="0" z="8.56" />
+    <rotation x="0" y="0" z="0" />
+    <scale x="2.1" y="2.1" z="2.1" />
+    <parent_id>0</parent_id>
+    <tag>Untagged</tag>
+  </element>
+</Elements>

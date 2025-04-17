@@ -10,7 +10,7 @@ public class PlayerController : MonoBehaviour
 {
     public PlayerManager playerManager;
     public Camera playerCamera = null;
-    public Animator animator;
+    public Animator animator => playerManager.animator;
     public Rigidbody rb;
     public Transform headTransform;
 
@@ -20,7 +20,6 @@ public class PlayerController : MonoBehaviour
 
     private void Awake()
     {
-        animator = GetComponentInChildren<Animator>();
         rb = GetComponent<Rigidbody>();
     }
 

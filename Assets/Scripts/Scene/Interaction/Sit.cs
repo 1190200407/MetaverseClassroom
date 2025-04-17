@@ -71,7 +71,7 @@ public class Sit : InteractionScript
         // 获取玩家 Transform 并锁定位置
         Transform player = PlayerManager.localPlayer.playerController.transform;
         PlayerManager.localPlayer.IsSitting = true;
-        player.position = element.transform.position + new Vector3(0, 0.5f, 0);
+        player.position = element.transform.position + new Vector3(0, 0.1f, 0);
 
         // 更新椅子状态
         currentSitting = this;

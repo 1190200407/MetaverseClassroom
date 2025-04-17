@@ -38,16 +38,6 @@ public class BaseActivity
         }
     }
 
-    // 返回教室
-    public virtual void BackToClassroom()
-    {
-        // 向所有玩家发送切换场景的消息
-        foreach (var conn in NetworkServer.connections.Values)
-        {
-            conn.Send(new ChangeSceneMessage("Classroom"));
-        }
-    }
-
     public virtual void Start()
     {
 

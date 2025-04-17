@@ -11,12 +11,15 @@ public class ClassManager : NetworkSingleton<ClassManager>
     public string nextScene;
 
     public BaseActivity currentActivity;
+    // 可用的活动列表, 从服务器获取， 目前没有用
+    public List<BaseActivity> availableActivities = new List<BaseActivity>();
     public bool isHavingActivity => currentActivity != null;
 
     #region 房间属性
     // 存储房间属性
     private Dictionary<string, string> roomProperties = new Dictionary<string, string>();
     public string propertyValue;
+    public Whiteboard whiteboard;
 
     // 服务器端设置属性
     [Command(requiresAuthority = false)]
@@ -67,25 +70,41 @@ public class ClassManager : NetworkSingleton<ClassManager>
 
     public void StartCourse()
     {
-        // 暂时直接复制，之后需要从服务器获取
+        // TODO 暂时这些数据，之后需要从服务器获取
         roomProperties = new Dictionary<string, string>();
-        pptFilePath = "PPT2.pptx";
+        pptFilePath = "餐馆点餐.ppt";
         SceneLoader.instance.LoadSceneFromXml("Classroom");
+        whiteboard = GameObject.FindObjectOfType<Whiteboard>();
         currentScene = "Classroom";
         isInClassroom = true;
+
+        availableActivities = new List<BaseActivity>();
+        availableActivities.Add(new ActingActivity("ActingActivity_Dining", "英语情景——餐馆点餐", true, "Cafe"));
+        availableActivities.Add(new ActingActivity("ActingActivity_CheckIn", "英语情景——酒店入住", true, "Hotel"));
     }
 
-    public void StartActivity(string activityName)
+    public void StartActivity(BaseActivity activity)
     {
-        // 暂时以这个为例子
-        currentActivity = new ActingActivity(activityName, "英语情景", true, "Cafe");
+        if (currentActivity != null)
+        {
+            EndActivity();
+        }
+        currentActivity = activity;
         currentActivity.Start();
     }
 
-    public void EndActivity()
+    public void EndActivity(bool backToClassroom = true)
     {
         currentActivity.End();
         currentActivity = null;
+        if (backToClassroom)
+        {
+            // 向所有玩家发送切换场景的消息
+            foreach (var conn in NetworkServer.connections.Values)
+            {
+                conn.Send(new ChangeSceneMessage("Classroom"));
+            }
+        }
     }
 
     public void ChangeScene(string sceneName)

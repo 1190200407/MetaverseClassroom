@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class PlayerModel : MonoBehaviour
 {
-    public Animator animator;
     public Rigidbody rb;
     public NameText nameText;
 
@@ -25,8 +24,6 @@ public class PlayerModel : MonoBehaviour
                 if (child.name == characterName)
                 {
                     child.gameObject.SetActive(true);
-                    child.SetAsFirstSibling();
-                    animator.Rebind();
                 }
                 else
                 {
@@ -38,7 +35,6 @@ public class PlayerModel : MonoBehaviour
     
     void Awake()
     {
-        animator = transform.Find("PlayerVisual").GetComponent<Animator>();
         nameText = GetComponentInChildren<NameText>();
         rb = GetComponent<Rigidbody>();
     }

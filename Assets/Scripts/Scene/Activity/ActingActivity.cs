@@ -15,7 +15,6 @@ public class ActingActivity : BaseActivity
 
     public override void End()
     {
-        BackToClassroom();
     }
 }
 

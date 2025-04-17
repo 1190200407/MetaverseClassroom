@@ -10,7 +10,7 @@ public class PausePanel : BasePanel
 {
     private PlayerData playerData = new PlayerData(50,50,50);
     
-    private Button startActivityButton;
+    private Button chooseActivityButton;
     private Button endActivityButton;
     private Button saveButton;
     private Button restoreButton;
@@ -33,20 +33,8 @@ public class PausePanel : BasePanel
     {
         base.OnStart();
         // 绑定按钮
-        startActivityButton = UIMethods.instance.GetOrAddComponentInChild<Button>(ActiveObj, "StartActivityButton");
-        startActivityButton.onClick.AddListener(StartActivity);
-        endActivityButton = UIMethods.instance.GetOrAddComponentInChild<Button>(ActiveObj, "EndActivityButton");
-        endActivityButton.onClick.AddListener(EndActivity);
-        if (ClassManager.instance.isHavingActivity)
-        {
-            startActivityButton.interactable = false;
-            endActivityButton.interactable = true;
-        }
-        else
-        {
-            startActivityButton.interactable = true;
-            endActivityButton.interactable = false;
-        }
+        chooseActivityButton = UIMethods.instance.GetOrAddComponentInChild<Button>(ActiveObj, "ChooseActivityButton");
+        chooseActivityButton.onClick.AddListener(ChooseActivity);
 
         saveButton = UIMethods.instance.GetOrAddComponentInChild<Button>(ActiveObj, "SaveButton");
         saveButton.onClick.AddListener(SaveData);
@@ -137,22 +125,11 @@ public class PausePanel : BasePanel
         SetUi();
     }
 
-    public void StartActivity()
+    public void ChooseActivity()
     {
         if (PlayerManager.localPlayer.HavePermission(Permission.Activity))
         {
-            UIManager.instance.Pop(false);
-            ClassManager.instance.StartActivity("EnglishTalking");
+            UIManager.instance.Push(new ChooseActivityPanel(new UIType("Panels/ChooseActivityPanel", "ChooseActivityPanel")));
         }
     }
-
-    public void EndActivity()
-    {
-        if (PlayerManager.localPlayer.HavePermission(Permission.Activity))
-        {
-            UIManager.instance.Pop(false);
-            ClassManager.instance.EndActivity();
-        }
-    }
-    
 }

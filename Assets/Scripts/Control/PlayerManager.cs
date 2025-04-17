@@ -217,6 +217,7 @@ public class PlayerManager : NetworkBehaviour
     private void CmdSetIsSitting(bool value)
     {
         isSitting = value;
+        animator.SetBool("IsSetting", value);
     }
 
     [Command]
@@ -262,8 +263,7 @@ public class PlayerManager : NetworkBehaviour
     private void OnIsSittingChanged(bool oldValue, bool newValue)
     {
         rb.isKinematic = newValue;
-        animator.SetFloat("MoveX", 0);
-        animator.SetFloat("MoveY", 0);
+        animator.SetFloat("Speed", 0);
     }
 
     private void OnCurrentSceneChanged(string oldValue, string newValue)

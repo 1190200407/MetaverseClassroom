@@ -170,8 +170,7 @@ public class WinPlayerController : PlayerController
             var y = Input.GetAxis("Vertical");
             Vector3 move = (Vector3.right * x + Vector3.forward * y) * moveSpeed / 500;
             rb.MovePosition(transform.position + transform.TransformDirection(move));
-            animator.SetFloat("MoveX", x);
-            animator.SetFloat("MoveY", y);
+            animator.SetFloat("Speed", move.magnitude);
         }
         if (!pause && playerManager.IsSitting)
         {

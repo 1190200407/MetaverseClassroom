@@ -180,7 +180,14 @@ public class PlayerManager : NetworkBehaviour
         {
             if (isLocalPlayer)
             {
-                CmdSetCurrentScene(value);
+                if (value != currentScene)
+                {
+                    if (Sit.currentSitting != null)
+                    {
+                        Sit.currentSitting.ResetSeat();
+                    }
+                    CmdSetCurrentScene(value);
+                }
             }
         }
     }

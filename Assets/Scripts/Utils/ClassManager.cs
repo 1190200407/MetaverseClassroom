@@ -95,14 +95,17 @@ public class ClassManager : NetworkSingleton<ClassManager>
 
     public void EndActivity(bool backToClassroom = true)
     {
-        currentActivity.End();
-        currentActivity = null;
-        if (backToClassroom)
+        if (currentActivity != null)
         {
-            // 向所有玩家发送切换场景的消息
-            foreach (var conn in NetworkServer.connections.Values)
+            currentActivity.End();
+            currentActivity = null;
+            if (backToClassroom)
             {
-                conn.Send(new ChangeSceneMessage("Classroom"));
+                // 向所有玩家发送切换场景的消息
+                foreach (var conn in NetworkServer.connections.Values)
+                {
+                    conn.Send(new ChangeSceneMessage("Classroom"));
+                }
             }
         }
     }

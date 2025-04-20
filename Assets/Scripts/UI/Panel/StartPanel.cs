@@ -73,6 +73,8 @@ public class StartPanel : BasePanel
         // 获取连接UI
         ipInput = UIMethods.instance.GetOrAddComponentInChild<TMP_InputField>(ActiveObj, "IPInputField");
         portInput = UIMethods.instance.GetOrAddComponentInChild<TMP_InputField>(ActiveObj, "PortInputField");
+        ipInput.text = PlayerPrefs.GetString("IP", "localhost");
+        portInput.text = PlayerPrefs.GetString("Port", "7777");
         clientButton = UIMethods.instance.GetOrAddComponentInChild<Button>(ActiveObj, "ClientButton");
         
         // 初始化界面状态
@@ -170,12 +172,25 @@ public class StartPanel : BasePanel
             UIManager.instance.ShowMessage("请输入IP和端口", 1f);
             return;
         }
+        
+        // 获取输入框中的名称
+        string playerName = nameInput.text;
+        if (playerName.Length < 2)
+        {
+            UIManager.instance.ShowMessage("名字必须不少于2个字符", 1.5f);
+            return;
+        }
+
+        // 设置玩家名称
+        PlayerPrefs.SetString("NickName", playerName);
 
         // 设置IP和端口
+        PlayerPrefs.SetString("IP", ip);
+        PlayerPrefs.SetString("Port", port);
         NetworkManagerClassroom.singleton.networkAddress = ip;
         if (ushort.TryParse(port, out ushort portNumber) && Transport.active is PortTransport portTransport)
             portTransport.Port = portNumber;
-
+            
         // 开始课程
         NetworkManagerClassroom.singleton.StartClient();
 

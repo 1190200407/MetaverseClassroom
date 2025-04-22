@@ -5,6 +5,7 @@ using System.Collections.Generic;
 public class Sit : InteractionScript
 {
     public static Sit currentSitting;
+    private OutlineObject outline;
     private string chairKey;
     private bool isOccupied = false;
 
@@ -12,6 +13,8 @@ public class Sit : InteractionScript
     {
         base.Init(element);
         chairKey = "isOccupied_" + ClassManager.instance.currentScene + "_" + element.id;
+        outline = element.gameObject.AddComponent<OutlineObject>();
+        outline.enabled = false;
     }
 
     public override void OnEnable()
@@ -48,6 +51,7 @@ public class Sit : InteractionScript
         if (!isOccupied)
         {
             base.OnHoverEnter();
+            outline.enabled = true;
         }
     }
 
@@ -56,6 +60,7 @@ public class Sit : InteractionScript
         if (!isOccupied)
         {
             base.OnHoverExit();
+            outline.enabled = false;
         }
     }
 

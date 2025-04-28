@@ -25,7 +25,7 @@ public class GamePanel : BasePanel
         {
             UIManager.instance.Push(new PausePanel(new UIType("Panels/PausePanel", "PausePanel")));
         }
-        if (Input.GetMouseButtonDown(1))
+        if (Input.GetKeyDown(KeyCode.Tab))
         {
             UIManager.instance.Push(new PPTPanel(new UIType("Panels/PPTPanel", "PPTPanel")));
         }

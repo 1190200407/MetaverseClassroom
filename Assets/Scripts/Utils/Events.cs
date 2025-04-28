@@ -11,6 +11,11 @@ public struct ChangeSlideEvent
     public int changeNum;
 }
 
+public struct BeforeChangeSceneEvent
+{
+    public string sceneName;
+}
+
 public struct ChangeSceneEvent
 {
     public int[] includePlayers;// 目前没用
@@ -30,3 +35,5 @@ public struct PlayerChangeDataEvent
 public struct TransitionOpenEndEvent {}
 
 public struct TransitionCloseEndEvent {}
+
+public struct GrabResetEvent {}

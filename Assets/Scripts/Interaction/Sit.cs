@@ -12,7 +12,7 @@ public class Sit : InteractionScript
     public override void Init(SceneElement element)
     {
         base.Init(element);
-        chairKey = "isOccupied_" + ClassManager.instance.currentScene + "_" + element.id;
+        chairKey = string.Concat("isOccupied_", ClassManager.instance.currentScene, "_", element.id);
         outline = element.gameObject.AddComponent<OutlineObject>();
         outline.enabled = false;
     }
@@ -21,12 +21,14 @@ public class Sit : InteractionScript
     {
         base.OnEnable();
         EventHandler.Register<RoomPropertyChangeEvent>(OnRoomPropertyChange);
+        EventHandler.Register<BeforeChangeSceneEvent>(OnBeforeChangeScene);
     }
 
     public override void OnDisable()
     {
         base.OnDisable();
         EventHandler.Unregister<RoomPropertyChangeEvent>(OnRoomPropertyChange);
+        EventHandler.Unregister<BeforeChangeSceneEvent>(OnBeforeChangeScene);
     }
 
     private bool CheckOccupied()
@@ -74,13 +76,12 @@ public class Sit : InteractionScript
         }
         
         // 获取玩家 Transform 并锁定位置
-        Transform player = PlayerManager.localPlayer.playerController.transform;
+        Transform player = PlayerManager.localPlayer.transform;
         PlayerManager.localPlayer.IsSitting = true;
         player.position = element.transform.position + new Vector3(0, 0.1f, 0);
 
         // 更新椅子状态
         currentSitting = this;
-        UpdateChairVisual();
         
         // 通过ClassManager更新房间属性
         ClassManager.instance.CommandSetRoomProperty(chairKey, "true");
@@ -102,7 +103,6 @@ public class Sit : InteractionScript
         
         // 通过ClassManager更新房间属性
         ClassManager.instance.CommandSetRoomProperty(chairKey, "false");
-        UpdateChairVisual();
     }
 
     public void OnRoomPropertyChange(RoomPropertyChangeEvent @event)
@@ -110,8 +110,16 @@ public class Sit : InteractionScript
         if (@event.key == chairKey)
         {
             isOccupied = @event.value == "true";
-            Debug.Log("OnRoomPropertyChange: " + isOccupied);
+            //Debug.Log("OnRoomPropertyChange: " + isOccupied);
         }
         UpdateChairVisual();
+    }
+
+    public void OnBeforeChangeScene(BeforeChangeSceneEvent @event)
+    {
+        if (currentSitting != this && @event.sceneName != ClassManager.instance.currentScene)
+        {
+            ResetSeat();
+        }
     }
 }

@@ -22,7 +22,6 @@ public class VRPlayerController : PlayerController
         XROrigin.transform.localPosition = Vector3.zero;
 
         // 设定VR相机的位置
-        headTransform = Camera.main.transform;
         transform.GetChild(0).gameObject.SetActive(false);
 
         // 获取当前激活的 XRInputSubsystem 实例

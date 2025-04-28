@@ -27,7 +27,7 @@ public class PPTPanel : BasePanel
             UIManager.instance.Pop(false);
             UIManager.instance.Push(new PausePanel(new UIType("Panels/PausePanel", "PausePanel")));
         }
-        else if (Input.GetMouseButtonUp(1))
+        else if (Input.GetKeyUp(KeyCode.Tab))
         {
             UIManager.instance.Pop(false);
         }

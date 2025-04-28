@@ -24,16 +24,6 @@ public class WinPlayerController : PlayerController
     public float fovMax = 90f;    // 最大视距
     public float fovSpeed = 10f;  // 滚动速度
 
-    public GameObject monitor;
-
-    private float targetRotationY = 0f;
-    private float currentRotationY = 0f;
-    public float rotationSmoothSpeed = 10f; // 调整这个值来控制平滑程度
-    private int currentFrameCount = 0;
-    public int syncFrameCount = 10; // 同步间隔的帧数
-
-    
-
     protected override void Start()
     {
         base.Start();    
@@ -47,8 +37,6 @@ public class WinPlayerController : PlayerController
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
         pause = false;
-
-        monitor = GameObject.Find("Monitor");
     }
 
     protected override void initialize()
@@ -114,6 +102,13 @@ public class WinPlayerController : PlayerController
                 fov = Mathf.Clamp(fov, fovMin, fovMax); // 限制 FOV 在 min 和 max 之间
                 playerCamera.fieldOfView = fov; // 应用新的 FOV
             }
+            
+            // 按下F键，重置当前玩家持有的物体
+
+            if (Input.GetKeyDown(KeyCode.F))
+            {
+                EventHandler.Trigger(new GrabResetEvent());
+            }
         }
 
         // 更新红点的位置
@@ -144,20 +139,6 @@ public class WinPlayerController : PlayerController
                 {
                     UpdateRedDotPosition();
                 }
-            }
-        }
-    }
-
-    private void LateUpdate()
-    {
-        if (!playerManager.isLocalPlayer)
-        {
-            // 平滑插值到目标旋转值
-            currentRotationY = Mathf.Lerp(currentRotationY, targetRotationY, Time.deltaTime * rotationSmoothSpeed);
-            
-            if (monitor != null)
-            {
-                monitor.transform.localEulerAngles = new Vector3(-currentRotationY, 0, 0);
             }
         }
     }

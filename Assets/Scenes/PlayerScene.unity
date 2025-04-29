@@ -1055,6 +1055,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: af338f2e690ecd947a894304174079f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dissonanceComms: {fileID: 0}
   voiceBroadcastTrigger: {fileID: 778228762}
   voiceReceiptTrigger: {fileID: 778228765}
 --- !u!4 &4152723890859284228

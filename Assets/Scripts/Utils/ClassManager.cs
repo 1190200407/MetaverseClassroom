@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Net.Http.Headers;
 using UnityEngine;
 using Mirror;
 
@@ -17,10 +18,10 @@ public class ClassManager : NetworkSingleton<ClassManager>
 
     #region 房间属性
     // 存储房间属性
-    private Dictionary<string, string> roomProperties = new Dictionary<string, string>();
+    public Dictionary<string, string> roomProperties = new Dictionary<string, string>();
     public string propertyValue;
     public Whiteboard whiteboard;
-
+    
     // 服务器端设置属性
     [Command(requiresAuthority = false)]
     public void CommandSetRoomProperty(string key, string value)
@@ -47,6 +48,7 @@ public class ClassManager : NetworkSingleton<ClassManager>
             {
                 // 只通过 TargetRpc 返回给调用者（特定客户端）
                 TargetReplyRoomProperty(conn, key, roomProperties[key]);
+                
             }
             else
             {

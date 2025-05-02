@@ -5,7 +5,7 @@ using Mirror;
 /// <summary>
 /// 所有可交互脚本的基类
 /// </summary>
-public class InteractionScript
+public class InteractionScript 
 {
     public SceneElement element;
 

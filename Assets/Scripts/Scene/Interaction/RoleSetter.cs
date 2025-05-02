@@ -1,20 +1,26 @@
+using System;
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
-using Mirror;
-using System.Collections.Generic;   
 
-public class Sit : InteractionScript
+public class RoleSetter : InteractionScript
 {
-    public static Sit currentSitting;
+    
+    public static RoleSetter currentPlayer;
+    
+    public List<string> roleList; //exercise包含的所有角色
+    
     private OutlineObject outline;
-    private string chairKey;
+    private string setterKey;
     private bool isOccupied = false;
 
     public override void Init(SceneElement element)
     {
         base.Init(element);
-        chairKey = "isOccupied_" + ClassManager.instance.currentScene + "_" + element.id;
+        setterKey = "isOccupied_" + ClassManager.instance.currentScene + "_" + element.id;
         outline = element.gameObject.AddComponent<OutlineObject>();
         outline.enabled = false;
+        Debug.Log("Setter 成功");
     }
 
     public override void OnEnable()
@@ -32,24 +38,22 @@ public class Sit : InteractionScript
     private bool CheckOccupied()
     {
         string isOccupied = null;
-        
-        ClassManager.instance.CmdGetRoomProperty(chairKey, PlayerManager.localPlayer.connectionToClient);
-        if (ClassManager.instance.roomProperties.ContainsKey(chairKey))
+        ClassManager.instance.CmdGetRoomProperty(setterKey, PlayerManager.localPlayer.connectionToClient);
+        if (ClassManager.instance.roomProperties.ContainsKey(setterKey))
         {
-            isOccupied = ClassManager.instance.roomProperties[chairKey];
+            isOccupied = ClassManager.instance.roomProperties[setterKey];
         }
-
         if (isOccupied != null && isOccupied == "true")
         {
             return true;
         }
         return false;
     }
-
+    
     public override void OnStartLocalPlayer()
     {
         isOccupied = CheckOccupied();
-        UpdateChairVisual();
+        UpdateSetterVisual();
     }
 
     public override void OnHoverEnter()
@@ -69,55 +73,55 @@ public class Sit : InteractionScript
             outline.enabled = false;
         }
     }
-
+    /// <summary>
+    /// 确保角色设置器每次只被一个玩家使用
+    /// </summary>
     public override void OnSelectEnter()
     {
         if (isOccupied) return;
 
-        if (currentSitting != null && currentSitting != this)
+        if (currentPlayer != null && currentPlayer != this)
         {
-            currentSitting.ResetSeat();
+            currentPlayer.ResetSetter();
         }
         
-        // 获取玩家 Transform 并锁定位置
-        Transform player = PlayerManager.localPlayer.playerController.transform;
-        PlayerManager.localPlayer.IsSitting = true;
-        player.position = element.transform.position + new Vector3(0, 0.1f, 0);
-
-        // 更新椅子状态
-        currentSitting = this;
-        UpdateChairVisual();
+        //弹出选角UI
+        ChooseRolePanel panel = (ChooseRolePanel)UIManager.instance.Push(new ChooseRolePanel(new UIType("Panels/ChooseRolePanel", "ChooseRolePanel")));
+        //初始化Panel的角色列表
+        panel.InitializeSlots(setterKey,roleList);
+        
+        // 更新角色选择器状态
+        currentPlayer = this;
+        UpdateSetterVisual();
         
         // 通过ClassManager更新房间属性
-        ClassManager.instance.CommandSetRoomProperty(chairKey, "true");
+        ClassManager.instance.CommandSetRoomProperty(setterKey, "true");
     }
 
-    private void UpdateChairVisual()
+    private void UpdateSetterVisual()
     {
-        // 更新椅子的外观状态，比如颜色或材质，用于表示已被占用
+        // 更新角色选择器的外观状态，比如颜色或材质，用于表示已被占用
         // 例如：
         // GetComponent<Renderer>().material.color = isOccupied ? Color.red : Color.white;
     }
     
-    public void ResetSeat()
+    public void ResetSetter()
     {
         isOccupied = false;
-        currentSitting = null;
-        
-        PlayerManager.localPlayer.IsSitting = false;
+        currentPlayer = null;
         
         // 通过ClassManager更新房间属性
-        ClassManager.instance.CommandSetRoomProperty(chairKey, "false");
-        UpdateChairVisual();
+        ClassManager.instance.CommandSetRoomProperty(setterKey, "false");
+        UpdateSetterVisual();
     }
 
     public void OnRoomPropertyChange(RoomPropertyChangeEvent @event)
     {
-        if (@event.key == chairKey)
+        if (@event.key == setterKey)
         {
             isOccupied = @event.value == "true";
-            Debug.Log("OnRoomPropertyChange: " + isOccupied);
+            Debug.LogError("OnRoomPropertyChange: " + isOccupied);
         }
-        UpdateChairVisual();
+        UpdateSetterVisual();
     }
 }

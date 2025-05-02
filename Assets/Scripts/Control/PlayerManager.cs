@@ -20,6 +20,7 @@ public class PlayerManager : NetworkBehaviour
 
     #region 玩家UI
     public NameText nameText;
+    public RoleText roleText;
     #endregion
 
     #region 玩家权限
@@ -35,6 +36,7 @@ public class PlayerManager : NetworkBehaviour
     void Awake()
     {
         nameText = GetComponentInChildren<NameText>();
+        roleText = GetComponentInChildren<RoleText>();
         rb = GetComponent<Rigidbody>();
         animator = transform.Find("PlayerVisual").GetComponent<Animator>();
 
@@ -78,7 +80,8 @@ public class PlayerManager : NetworkBehaviour
     private IEnumerator StartLocalPlayer()
     {
         yield return new WaitUntil(() => NetworkClient.ready);
-        nameText.gameObject.SetActive(false);
+        nameText.gameObject.SetActive(true);
+        roleText.gameObject.SetActive(true);
 
         // 同步当前场景
         CurrentScene = ClassManager.instance.currentScene;
@@ -142,7 +145,21 @@ public class PlayerManager : NetworkBehaviour
             }
         }
     }
+    [SyncVar(hook = nameof(OnRoleNameChanged))]
+    private string roleName;
 
+    public string RoleName
+    {
+        get { return roleName; }
+        set
+        {
+            if (isLocalPlayer)
+            {
+                CmdSetRoleName(value);
+            }
+        }
+    }
+    
     [SyncVar(hook = nameof(OnCharacterNameChanged))]
     private string characterName;
     public string CharacterName
@@ -213,7 +230,11 @@ public class PlayerManager : NetworkBehaviour
     {
         playerName = value;
     }
-
+    [Command]
+    private void CmdSetRoleName(string value)
+    {
+        roleName = value;
+    }
     [Command]
     private void CmdSetCharacterName(string value)
     {
@@ -247,6 +268,10 @@ public class PlayerManager : NetworkBehaviour
         }
     }
 
+    private void OnRoleNameChanged(string oldValue, string newValue)
+    {
+        roleText.SetRole(newValue);
+    }
     private void OnCharacterNameChanged(string oldValue, string newValue)
     {
         Transform playerVisual = transform.Find("PlayerVisual");

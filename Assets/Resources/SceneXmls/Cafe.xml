@@ -3960,12 +3960,14 @@
     <tag>Untagged</tag>
   </element>
   <element id="440">
-    <name>GameObject</name>
-    <web_path>null</web_path>
-    <position x="0" y="0" z="0" />
+    <name>ExerciseTest</name>
+    <web_path>Prefabs/ExerciseTest</web_path>
+    <position x="4.8709" y="0.43" z="-1.423666" />
     <rotation x="0" y="0" z="0" />
     <scale x="1" y="1" z="1" />
     <parent_id>0</parent_id>
     <tag>Untagged</tag>
+    <interaction type="RoleSetter">
+    </interaction>
   </element>
 </Elements>

@@ -325,7 +325,7 @@ public class ftLightmaps {
         if (directionalMode >= 0) LightmapSettings.lightmapsMode =  directionalMode==1 ? LightmapsMode.CombinedDirectional : LightmapsMode.NonDirectional;
     }
 
-    static void OnSceneChangedPlay(Scene prev, Scene next) {
+    static void OnSceneChangedPlay(UnityEngine.SceneManagement.Scene prev, UnityEngine.SceneManagement.Scene next) {
         //if (Lightmapping.lightingDataAsset == null) {
             SetDirectionalMode();
         //}
@@ -375,7 +375,7 @@ public class ftLightmaps {
         SceneManager.SetActiveScene(activeScene);
     }
 
-    public static GameObject FindInScene(string nm, Scene scn)
+    public static GameObject FindInScene(string nm, UnityEngine.SceneManagement.Scene scn)
     {
         var objs = scn.GetRootGameObjects();
         for(int i=0; i<objs.Length; i++)
@@ -403,7 +403,7 @@ public class ftLightmaps {
         return storage.emptyDirectionTex;
     }
 
-    public static void RefreshScene(Scene scene, ftLightmapsStorage storage = null, bool updateNonBaked = false) {
+    public static void RefreshScene(UnityEngine.SceneManagement.Scene scene, ftLightmapsStorage storage = null, bool updateNonBaked = false) {
         var sceneCount = SceneManager.sceneCount;
 
         if (globalMapsAdditional == null) globalMapsAdditional = new List<LightmapAdditionalData>();
@@ -898,7 +898,7 @@ public class ftLightmaps {
         if (existingLmaps != null) LightmapSettings.lightmaps = existingLmaps;
     }
 
-    public static void RefreshScene2(Scene scene, ftLightmapsStorage storage)
+    public static void RefreshScene2(UnityEngine.SceneManagement.Scene scene, ftLightmapsStorage storage)
     {
         Renderer r;
         int id;

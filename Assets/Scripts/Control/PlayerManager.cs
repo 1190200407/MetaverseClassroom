@@ -16,6 +16,7 @@ public class PlayerManager : NetworkBehaviour
     public PlayerController playerController;
     public Animator animator;
     public Rigidbody rb;
+    public Transform handTransform;
     #endregion
 
     #region 玩家UI
@@ -199,10 +200,6 @@ public class PlayerManager : NetworkBehaviour
             {
                 if (value != currentScene)
                 {
-                    if (Sit.currentSitting != null)
-                    {
-                        Sit.currentSitting.ResetSeat();
-                    }
                     CmdSetCurrentScene(value);
                 }
             }
@@ -287,6 +284,7 @@ public class PlayerManager : NetworkBehaviour
                 animator.avatar = child.GetComponent<Animator>().avatar;
                 child.SetAsFirstSibling();
                 animator.Rebind();
+                handTransform = child.GetComponent<Animator>().GetBoneTransform(HumanBodyBones.RightHand);
             }
             else
             {

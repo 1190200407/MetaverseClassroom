@@ -118,6 +118,7 @@ public class ClassManager : NetworkSingleton<ClassManager>
         UIManager.instance.PopUntil(() => UIManager.instance.stack_ui.Peek().GetType() == typeof(GamePanel));
         UIManager.instance.Push(new TransitionPanel(new UIType("Panels/TransitionPanel", "TransitionPanel")));
         nextScene = sceneName;
+        EventHandler.Trigger(new BeforeChangeSceneEvent() { sceneName = nextScene });
     }
 
     public void OnSceneTransitionEnd()
@@ -125,6 +126,6 @@ public class ClassManager : NetworkSingleton<ClassManager>
         SceneLoader.instance.LoadSceneFromXml(nextScene);
         PlayerManager.localPlayer.CurrentScene = nextScene;
         EventHandler.Trigger(new ChangeSceneEvent() { sceneName = nextScene });
-        isInClassroom = !isInClassroom; // 切换场景后，教室状态取反, 之后可能出现一教室多场景情况，需要切换成别的判断方式
+        isInClassroom = nextScene == "Classroom"; // 切换场景后，判断是否在教室,之后换成其他判断方式
     }
 }

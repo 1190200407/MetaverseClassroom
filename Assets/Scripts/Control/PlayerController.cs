@@ -12,7 +12,6 @@ public class PlayerController : MonoBehaviour
     public Camera playerCamera = null;
     public Animator animator => playerManager.animator;
     public Rigidbody rb;
-    public Transform headTransform;
 
     public float cameraSensitivity;
 

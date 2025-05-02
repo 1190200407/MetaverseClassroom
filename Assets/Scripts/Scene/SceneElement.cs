@@ -43,6 +43,7 @@ public class SceneElement : MonoBehaviour
             interactType = type;
             interactionContent = content;
             interactionScript.Init(this);
+            interactionScript.OnEnable();
 
             // VR环境挂载XRSimpleInteractable
             if (GameSettings.instance.isVR)

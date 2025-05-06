@@ -26,13 +26,13 @@ public class LoadPanel : BasePanel
     {
         base.OnEnable();
         UpdateLoadingProgress(0);
-        Time.timeScale = 0;
+        PlayerManager.localPlayer.playerController.enabled = false;
     }
 
     public override void OnDisable()
     {
         base.OnDisable();
-        Time.timeScale = 1;
+        PlayerManager.localPlayer.playerController.enabled = true;
     }
 
     public override void OnUpdate()

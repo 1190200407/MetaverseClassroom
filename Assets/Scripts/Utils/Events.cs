@@ -6,6 +6,8 @@ public struct ResumeEvent {}
 
 public struct ReloadEvent {}
 
+public struct SceneLoadedEvent {}
+
 public struct ChangeSlideEvent
 {
     public int changeNum;

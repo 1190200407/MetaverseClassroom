@@ -146,8 +146,6 @@ public class StartPanel : BasePanel
 
         // 切换到游戏界面
         UIManager.instance.Pop(false);
-        if (!GameSettings.instance.isVR)
-            UIManager.instance.Push(new GamePanel(new UIType("Panels/GamePanel", "GamePanel")));
     }
 
     public void StartClient()
@@ -183,8 +181,6 @@ public class StartPanel : BasePanel
 
         // 切换到游戏界面
         UIManager.instance.Pop(false);
-        if (!GameSettings.instance.isVR)
-            UIManager.instance.Push(new GamePanel(new UIType("Panels/GamePanel", "GamePanel")));
     }
 
     // private IEnumerator ConnectToNetwork()

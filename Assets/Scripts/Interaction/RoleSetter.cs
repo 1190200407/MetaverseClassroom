@@ -9,8 +9,6 @@ public class RoleSetter : InteractionScript
     public static RoleSetter currentPlayer;
     
     public List<string> roleList; //exercise包含的所有角色
-    
-    private OutlineObject outline;
     private string setterKey;
     private bool isOccupied = false;
 
@@ -18,8 +16,6 @@ public class RoleSetter : InteractionScript
     {
         base.Init(element);
         setterKey = "RoleSetter_" + ClassManager.instance.currentScene + "_" + element.id;
-        outline = element.gameObject.AddComponent<OutlineObject>();
-        outline.enabled = false;
         Debug.Log("Setter 成功");
     }
 
@@ -55,24 +51,7 @@ public class RoleSetter : InteractionScript
         isOccupied = CheckOccupied();
         UpdateSetterVisual();
     }
-
-    public override void OnHoverEnter()
-    {
-        if (!isOccupied)
-        {
-            base.OnHoverEnter();
-            outline.enabled = true;
-        }
-    }
-
-    public override void OnHoverExit()
-    {
-        if (!isOccupied)
-        {
-            base.OnHoverExit();
-            outline.enabled = false;
-        }
-    }
+    
     /// <summary>
     /// 确保角色设置器每次只被一个玩家使用
     /// </summary>

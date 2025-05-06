@@ -102,16 +102,16 @@ public class Whiteboard : MonoBehaviour
 
     private void OnEnable()
     {
-        EventHandler.Register<StartLocalPlayerEvent>(OnStartLocalPlayer);
         EventHandler.Register<RoomPropertyChangeEvent>(OnRoomPropertyChange);
         EventHandler.Register<ChangeSlideEvent>(OnChangeSlideEvent);
+        EventHandler.Register<SceneLoadedEvent>(OnSceneLoaded);
     }
 
     private void OnDisable()
     {
-        EventHandler.Unregister<StartLocalPlayerEvent>(OnStartLocalPlayer);
         EventHandler.Unregister<RoomPropertyChangeEvent>(OnRoomPropertyChange);
         EventHandler.Unregister<ChangeSlideEvent>(OnChangeSlideEvent);
+        EventHandler.Unregister<SceneLoadedEvent>(OnSceneLoaded);
     }
 
     private void OnDestroy()
@@ -127,8 +127,7 @@ public class Whiteboard : MonoBehaviour
         }
     }
 
-
-    private void Start()
+    private void OnSceneLoaded(SceneLoadedEvent @event)
     {
         // 初始化PPT
         string pptFilePath = ClassManager.instance.pptFilePath;
@@ -151,10 +150,6 @@ public class Whiteboard : MonoBehaviour
             Debug.Log("ppt的页数不正确");
         }
         screen = GetComponentInChildren<Image>();
-    }
-
-    public void OnStartLocalPlayer(StartLocalPlayerEvent @event)
-    {
         UpdateSlideTexture(GetCurrentSlideIndex());
     }
 

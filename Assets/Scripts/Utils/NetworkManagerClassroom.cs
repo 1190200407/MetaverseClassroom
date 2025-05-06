@@ -9,7 +9,7 @@ public class NetworkManagerClassroom : NetworkManager
     public override void OnServerAddPlayer(NetworkConnectionToClient conn)
     {
         // 生成玩家
-        GameObject player = Instantiate(playerPrefab, Vector3.zero, Quaternion.identity);
+        GameObject player = Instantiate(playerPrefab, new Vector3(0, -1000, 0), Quaternion.identity);
         NetworkServer.AddPlayerForConnection(conn, player);
 
         // 生成ClassManager

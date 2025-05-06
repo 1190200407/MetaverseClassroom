@@ -84,8 +84,6 @@ public class PlayerManager : NetworkBehaviour
         nameText.gameObject.SetActive(true);
         roleText.gameObject.SetActive(true);
 
-        // 同步当前场景
-        CurrentScene = ClassManager.instance.currentScene;
         // 同步名字
         PlayerName = PlayerPrefs.GetString("NickName");
         // 同步角色
@@ -336,6 +334,7 @@ public class PlayerManager : NetworkBehaviour
         if (newValue != ClassManager.instance.currentScene && isLocalPlayer)
         {
             ClassManager.instance.currentScene = newValue;
+            Debug.Log("OnCurrentSceneChanged: " + newValue);
             playerController.ResetTransform(SceneLoader.instance.PathToSceneObject[newValue].transform);
             
             //切换场景后，更新player的状态

@@ -1502,8 +1502,6 @@
     <scale x="0.9" y="0.9" z="0.9" />
     <parent_id>166</parent_id>
     <tag>Chair</tag>
-    <interaction type="Sit">
-    </interaction>
   </element>
   <element id="168">
     <name>Table (1)</name>
@@ -1522,8 +1520,6 @@
     <scale x="0.9" y="0.9" z="0.9" />
     <parent_id>166</parent_id>
     <tag>Chair</tag>
-    <interaction type="Sit">
-    </interaction>
   </element>
   <element id="170">
     <name>Desert_Plate</name>
@@ -1605,8 +1601,6 @@
     <scale x="0.9" y="0.9" z="0.9" />
     <parent_id>177</parent_id>
     <tag>Chair</tag>
-    <interaction type="Sit">
-    </interaction>
   </element>
   <element id="179">
     <name>Table (1)</name>
@@ -1625,8 +1619,6 @@
     <scale x="0.9" y="0.9" z="0.9" />
     <parent_id>177</parent_id>
     <tag>Chair</tag>
-    <interaction type="Sit">
-    </interaction>
   </element>
   <element id="181">
     <name>Dessert_Spoon</name>
@@ -3960,9 +3952,9 @@
     <tag>Untagged</tag>
   </element>
   <element id="440">
-    <name>ExerciseTest</name>
-    <web_path>Prefabs/ExerciseTest</web_path>
-    <position x="4.8709" y="0.43" z="-1.423666" />
+    <name>RoleSetter</name>
+    <web_path>Prefabs/RoleSetter</web_path>
+    <position x="6.117801" y="1.105" z="-0.386" />
     <rotation x="0" y="0" z="0" />
     <scale x="1" y="1" z="1" />
     <parent_id>0</parent_id>

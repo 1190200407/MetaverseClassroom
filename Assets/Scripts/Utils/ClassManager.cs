@@ -73,7 +73,7 @@ public class ClassManager : NetworkSingleton<ClassManager>
 
     void Start()
     {
-        StartCourse();
+        StartCoroutine(StartCourseCoroutine());
     }
 
     void Update()
@@ -84,31 +84,28 @@ public class ClassManager : NetworkSingleton<ClassManager>
         }
     }
 
-    public void StartCourse()
+    public IEnumerator StartCourseCoroutine()
     {
+        yield return null;
+
         // TODO 暂时这些数据，之后需要从服务器获取
         roomProperties = new Dictionary<string, string>();
         pptFilePath = "餐馆点餐.ppt";
-        whiteboard = GameObject.FindObjectOfType<Whiteboard>();
 
         // 初始化活动列表
         availableActivities = new List<BaseActivity>();
         availableActivities.Add(new ActingActivity("ActingActivity_Dining", "英语情景——餐馆点餐", true, "Cafe"));
         availableActivities.Add(new ActingActivity("ActingActivity_CheckIn", "英语情景——酒店入住", true, "Hotel"));
 
-        // 根据活动列表加载场景
-        StartCoroutine(LoadSceneCoroutine());
-        currentScene = "Classroom";
-        isInClassroom = true;
-    }
-
-    private IEnumerator LoadSceneCoroutine()
-    {
         // 显示加载界面
         UIManager.instance.Push(new LoadPanel(new UIType("Panels/LoadPanel", "LoadPanel")));
-
+        
+        // 加载教室场景
         SceneLoader.instance.LoadSceneFromXml("Classroom");
         yield return new WaitUntil(() => !SceneLoader.instance.isLoading);
+        whiteboard = GameObject.FindObjectOfType<Whiteboard>();
+
+        // 加载活动场景
         foreach (var activity in availableActivities)
         {
             SceneLoader.instance.LoadSceneFromXml(activity.sceneName, false);
@@ -117,6 +114,12 @@ public class ClassManager : NetworkSingleton<ClassManager>
 
         // 隐藏加载界面
         UIManager.instance.Pop(false);
+        UIManager.instance.Push(new GamePanel(new UIType("Panels/GamePanel", "GamePanel")));
+
+        // 触发场景加载完成事件
+        PlayerManager.localPlayer.CurrentScene = "Classroom";
+        isInClassroom = true;
+        EventHandler.Trigger(new SceneLoadedEvent());
     }
 
     public void StartActivity(BaseActivity activity)

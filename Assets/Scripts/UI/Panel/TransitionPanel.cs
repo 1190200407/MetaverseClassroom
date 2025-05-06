@@ -16,12 +16,14 @@ public class TransitionPanel : BasePanel
         anim = ActiveObj.GetComponent<Animator>();
         anim.Play("Open");
         PlayerManager.localPlayer.playerController.enabled = false;
+        InteractionManager.instance.RaycastClosed = true;
     }
 
     public void OnCloseEnd(TransitionCloseEndEvent @event)
     {
         UIManager.instance.Pop(false);
         PlayerManager.localPlayer.playerController.enabled = true;
+        InteractionManager.instance.RaycastClosed = false;
     }
 
     public void OnOpenEnd(TransitionOpenEndEvent @event)

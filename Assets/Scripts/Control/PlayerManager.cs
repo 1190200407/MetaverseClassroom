@@ -244,6 +244,15 @@ public class PlayerManager : NetworkBehaviour
         }
     }
 
+    private void SetLayer(GameObject gameObject, int layer)
+    {
+        gameObject.layer = layer;
+        foreach (Transform child in gameObject.transform)
+        {
+            SetLayer(child.gameObject, layer);
+        }
+    }
+
     private void OnCharacterNameChanged(string oldValue, string newValue)
     {
         Transform playerVisual = transform.Find("PlayerVisual");
@@ -253,13 +262,23 @@ public class PlayerManager : NetworkBehaviour
 
             // 如果是本地玩家，则不显示角色
             // 如果是其他玩家，则显示名字对应的角色
-            if (!isLocalPlayer && child.name == newValue)
+            if (child.name == newValue)
             {
                 child.gameObject.SetActive(true);
                 animator.avatar = child.GetComponent<Animator>().avatar;
                 child.SetAsFirstSibling();
                 animator.Rebind();
-                handTransform = child.GetComponent<Animator>().GetBoneTransform(HumanBodyBones.RightHand);
+
+                if (isLocalPlayer)
+                {
+                    // 不被摄像机渲染
+                    SetLayer(gameObject, LayerMask.NameToLayer("LocalPlayer"));
+                }
+                else
+                {
+                    // 需要设置手的位置
+                    handTransform = child.GetComponent<Animator>().GetBoneTransform(HumanBodyBones.RightHand);
+                }
             }
             else
             {

@@ -19,7 +19,9 @@ public class ActingActivity : BaseActivity
         ClassManager.instance.roleList.Add("role1", "服务员");
         ClassManager.instance.roleList.Add("role2", "顾客1");
         ClassManager.instance.roleList.Add("role3", "顾客2");
-        
+        ClassManager.instance.roleOccupied.Clear();
+        ClassManager.instance.leftRoleCount = 3;
+
         actionTree = new ActionTree();
 
         ActionTreeCompositeNode node1 = new ActionTreeCompositeNode();
@@ -89,7 +91,7 @@ public class ActingActivity : BaseActivity
         base.OnUpdate();
 
         //当所有玩家都选好角色后，开始表演
-        if (!isActionTreeExecuting && actionTree.root != null)
+        if (!isActionTreeExecuting && actionTree.root != null && ClassManager.instance.leftRoleCount == 2)
         {
             isActionTreeExecuting = true;
             ClassManager.instance.StartCoroutine(actionTree.root.ExecuteCoroutine());

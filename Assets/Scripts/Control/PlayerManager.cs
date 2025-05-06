@@ -264,6 +264,23 @@ public class PlayerManager : NetworkBehaviour
             nameText.SetName(newValue);
         }
     }
+    
+    private void OnRoleNameChanged(string oldValue, string newValue)
+    {
+        roleText.SetRole(ClassManager.instance.roleList[newValue]);
+
+        //通知ClassManager，当前玩家已经选好角色
+        if (!string.IsNullOrEmpty(oldValue))
+        {
+            ClassManager.instance.roleOccupied[oldValue] = 0;
+            ClassManager.instance.leftRoleCount++;
+        }
+        if (!ClassManager.instance.roleOccupied.ContainsKey(newValue) || ClassManager.instance.roleOccupied[newValue] != netId)
+        {
+            ClassManager.instance.roleOccupied[newValue] = netId;
+            ClassManager.instance.leftRoleCount--;
+        }
+    }
 
     private void SetLayer(GameObject gameObject, int layer)
     {
@@ -272,11 +289,6 @@ public class PlayerManager : NetworkBehaviour
         {
             SetLayer(child.gameObject, layer);
         }
-    }
-    
-     private void OnRoleNameChanged(string oldValue, string newValue)
-    {
-        roleText.SetRole(newValue);
     }
 
     private void OnCharacterNameChanged(string oldValue, string newValue)
@@ -369,6 +381,11 @@ public class PlayerManager : NetworkBehaviour
     public void OnChangeScene(ChangeSceneMessage message)
     {
         ClassManager.instance.ChangeScene(message.sceneName);
+    }
+
+    public void OnEndActivity(EndActivityMessage message)
+    {
+        RoleName = string.Empty;
     }
     #endregion
 }

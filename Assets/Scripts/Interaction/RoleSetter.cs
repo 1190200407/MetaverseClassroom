@@ -85,6 +85,7 @@ public class RoleSetter : InteractionScript
             currentPlayer.ResetSetter();
         }
         
+        currentPlayer = this;
         //弹出选角UI
         ChooseRolePanel panel = (ChooseRolePanel)UIManager.instance.Push(new ChooseRolePanel(new UIType("Panels/ChooseRolePanel", "ChooseRolePanel")));
         //初始化Panel的角色列表

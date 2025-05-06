@@ -23,6 +23,5 @@ public class RoleText : MonoBehaviour
     public void SetRole(string role)
     {
         txt.text = role;
-        Debug.Log("角色名为" + role);
     }
 }

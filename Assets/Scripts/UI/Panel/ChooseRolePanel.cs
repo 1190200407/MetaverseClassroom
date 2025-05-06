@@ -77,26 +77,30 @@ public class ChooseRolePanel : BasePanel
     private void Exit()
     {
         UIManager.instance.Pop(false);
+        if (RoleSetter.currentPlayer != null)
+        {
+            RoleSetter.currentPlayer.ResetSetter();
+        }
     }
     
     /// <summary>
     /// 当被勾选后，改变全局参数
     /// </summary>
     /// <param name="isOn"></param>是否勾选
-    /// <param name="name"></param>勾选角色的名称
-    void OnToggleValueChanged(bool isOn,String roleName)
+    /// <param name="roleId"></param>勾选角色的Id
+    void OnToggleValueChanged(bool isOn,String roleId)
     {
         if (isOn)
         {
             //若被选中，改变RoomProperty,相关key改为已占用
-            ClassManager.instance.CommandSetRoomProperty(setterKey + roleName, "true");
+            ClassManager.instance.CommandSetRoomProperty(setterKey + roleId, "true");
             //设置当前玩家的角色名
-            PlayerManager.localPlayer.RoleName = roleName;
+            PlayerManager.localPlayer.RoleName = roleId;
         }
         else
         {
             //若取消选中，改变RoomProperty,相关key改为未占用
-            ClassManager.instance.CommandSetRoomProperty(setterKey + roleName, "flase");
+            ClassManager.instance.CommandSetRoomProperty(setterKey + roleId, "flase");
         }
     }
     
@@ -117,7 +121,7 @@ public class ChooseRolePanel : BasePanel
         {
             // 实例化 slot 并设置为 content 的子物体
             GameObject newSlot = GameObject.Instantiate(roleSlot, content.transform);
-            newSlot.name = role.Value;
+            newSlot.name = role.Key;
 
             // 获取并设置玩家名称
             TextMeshProUGUI Name = UIMethods.instance.GetOrAddComponentInChild<TextMeshProUGUI>(newSlot, "Name");
@@ -127,12 +131,12 @@ public class ChooseRolePanel : BasePanel
             //设置ToggleGroup，保证同时只有一个toggle被勾选
             newToggle.group = content.GetComponent<ToggleGroup>();
             //Toggle值改变监听函数,当被勾选时，全局改变是否被勾选
-            newToggle.onValueChanged.AddListener(isOn => OnToggleValueChanged(isOn, role.Value));
+            newToggle.onValueChanged.AddListener(isOn => OnToggleValueChanged(isOn, role.Key));
             
             //如果该角色已被占用
-            if (CheckRoleOccupied(role.Value))
+            if (CheckRoleOccupied(role.Key))
             {
-                if (PlayerManager.localPlayer.RoleName != role.Value)
+                if (PlayerManager.localPlayer.RoleName != role.Key)
                 {
                     newToggle.interactable = false;
                 }

@@ -12,6 +12,8 @@ public class SceneLoader : UnitySingleton<SceneLoader>
     public Dictionary<string, SceneElement> IdToElement {get; private set;} = new();
     public Dictionary<string, GameObject> PathToSceneObject {get; private set;} = new();
     private GameObject curActiveObject = null;
+    public bool isLoading = false;
+    public float loadingProgress = 0;
 
     private void OnEnable() 
     {
@@ -34,15 +36,24 @@ public class SceneLoader : UnitySingleton<SceneLoader>
         curActiveObject = newSceneObject;
     }
 
-    public void LoadSceneFromXml(string xmlPath, bool changeScene = true) {
-        //如果已经加载过了就直接打开原来加载过的场景
-        GameObject newSceneObject;
+    public void LoadSceneFromXml(string xmlPath, bool changeScene = true)
+    {
         if (PathToSceneObject.ContainsKey(xmlPath))
         {
-            newSceneObject = PathToSceneObject[xmlPath];
+            GameObject newSceneObject = PathToSceneObject[xmlPath];
             if (changeScene) ChangeSceneObject(newSceneObject);
             return;
         }
+        else
+        {
+            StartCoroutine(LoadSceneFromXmlAsync(xmlPath, changeScene));
+        }
+    }
+
+    public IEnumerator LoadSceneFromXmlAsync(string xmlPath, bool changeScene = true) {
+        isLoading = true;
+        //如果已经加载过了就直接打开原来加载过的场景
+        GameObject newSceneObject;
         newSceneObject = new GameObject(xmlPath);
         //将多个场景错开来
         newSceneObject.transform.position = Vector3.right * PathToSceneObject.Count * 10000;
@@ -114,12 +125,15 @@ public class SceneLoader : UnitySingleton<SceneLoader>
 
             GameObject elementObject = null;
             
-             // 创建物体
-            if(path != "" && path != "null")
+            // 创建物体
+            if(path != "" && path != "null") {
                 //TODO 目前阶段直接通过Resources.Load读取，后面会换成读取网络路径
-                elementObject = GameObject.Instantiate(Resources.Load<GameObject>(path)); 
-            else
+                ResourceRequest request = Resources.LoadAsync<GameObject>(path);
+                yield return request;
+                elementObject = GameObject.Instantiate(request.asset as GameObject);
+            } else {
                 elementObject = new GameObject();
+            }
                 
             SceneElement sceneElement = elementObject.AddComponent<SceneElement>();
             sceneElement.LoadData(xmlPath + id, name, path);
@@ -133,9 +147,16 @@ public class SceneLoader : UnitySingleton<SceneLoader>
             elementObject.transform.eulerAngles = rotation;
             elementObject.transform.localScale = scale;
             sceneElement.SetInteactionType(interactionType, interactionContent);
-            
+
+            // 每加载10个物体让出一帧，避免卡顿
+            if (i % 10 == 0) {
+                yield return null;
+            }
+
+            loadingProgress = (float)i / nodeList.Count;
         }
 
         if (changeScene) ChangeSceneObject(newSceneObject);
+        isLoading = false;
     }
 }

@@ -148,19 +148,6 @@ public class StartPanel : BasePanel
         UIManager.instance.Pop(false);
         if (!GameSettings.instance.isVR)
             UIManager.instance.Push(new GamePanel(new UIType("Panels/GamePanel", "GamePanel")));
-
-        // PhotonNetwork.NickName = playerName;
-        // ExitGames.Client.Photon.Hashtable hashtable = new ExitGames.Client.Photon.Hashtable()
-        // {
-        //     {"CharacterName", chosenName},
-        //     {"IsStudent", PlayerPrefs.GetInt("IsStudent", 1) == 1}
-        // };
-        // PhotonNetwork.SetPlayerCustomProperties(hashtable);
-        // PlayerPrefs.SetString("NickName", playerName);
-        // NetworkManagerClassroom.singeleton.Connect();
-
-        // // 开始异步连接
-        // UIManager.instance.StartCoroutine(ConnectToNetwork());
     }
 
     public void StartClient()

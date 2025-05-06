@@ -12,3 +12,8 @@ public struct ChangeSceneMessage : NetworkMessage
         this.sceneName = sceneName;
     }
 }
+
+public struct EndActivityMessage : NetworkMessage
+{
+}
+

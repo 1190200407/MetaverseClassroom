@@ -67,6 +67,8 @@ public class ClassManager : NetworkSingleton<ClassManager>
 
     #region 选角
     public Dictionary<string, string> roleList = new Dictionary<string, string>();
+    public Dictionary<string, uint> roleOccupied = new Dictionary<string, uint>();
+    public int leftRoleCount = 0;
     #endregion
 
     void Start()
@@ -95,13 +97,26 @@ public class ClassManager : NetworkSingleton<ClassManager>
         availableActivities.Add(new ActingActivity("ActingActivity_CheckIn", "英语情景——酒店入住", true, "Hotel"));
 
         // 根据活动列表加载场景
+        StartCoroutine(LoadSceneCoroutine());
+        currentScene = "Classroom";
+        isInClassroom = true;
+    }
+
+    private IEnumerator LoadSceneCoroutine()
+    {
+        // 显示加载界面
+        UIManager.instance.Push(new LoadPanel(new UIType("Panels/LoadPanel", "LoadPanel")));
+
         SceneLoader.instance.LoadSceneFromXml("Classroom");
+        yield return new WaitUntil(() => !SceneLoader.instance.isLoading);
         foreach (var activity in availableActivities)
         {
             SceneLoader.instance.LoadSceneFromXml(activity.sceneName, false);
+            yield return new WaitUntil(() => !SceneLoader.instance.isLoading);
         }
-        currentScene = "Classroom";
-        isInClassroom = true;
+
+        // 隐藏加载界面
+        UIManager.instance.Pop(false);
     }
 
     public void StartActivity(BaseActivity activity)

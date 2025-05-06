@@ -103,7 +103,7 @@ public class ChooseRolePanel : BasePanel
     /// <summary>
     /// 初始化角色的slots
     /// </summary>
-    public void InitializeSlots(String setterKey,List<String> roleList)
+    public void InitializeSlots(String setterKey)
     {
         this.setterKey = setterKey;
         // 先清空 content 下的所有子物体
@@ -113,26 +113,26 @@ public class ChooseRolePanel : BasePanel
         }
 
         // 遍历所有玩家并创建 slot
-        foreach (String roleName in roleList)
+        foreach (var role in ClassManager.instance.roleList)
         {
             // 实例化 slot 并设置为 content 的子物体
             GameObject newSlot = GameObject.Instantiate(roleSlot, content.transform);
-            newSlot.name = roleName;
+            newSlot.name = role.Value;
 
             // 获取并设置玩家名称
             TextMeshProUGUI Name = UIMethods.instance.GetOrAddComponentInChild<TextMeshProUGUI>(newSlot, "Name");
-            Name.text = roleName;
+            Name.text = role.Value;
             
             Toggle newToggle = newSlot.GetComponent<Toggle>();
             //设置ToggleGroup，保证同时只有一个toggle被勾选
             newToggle.group = content.GetComponent<ToggleGroup>();
             //Toggle值改变监听函数,当被勾选时，全局改变是否被勾选
-            newToggle.onValueChanged.AddListener(isOn => OnToggleValueChanged(isOn, roleName));
+            newToggle.onValueChanged.AddListener(isOn => OnToggleValueChanged(isOn, role.Value));
             
             //如果该角色已被占用
-            if (CheckRoleOccupied(roleName))
+            if (CheckRoleOccupied(role.Value))
             {
-                if (PlayerManager.localPlayer.RoleName != roleName)
+                if (PlayerManager.localPlayer.RoleName != role.Value)
                 {
                     newToggle.interactable = false;
                 }

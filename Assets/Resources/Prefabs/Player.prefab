@@ -432,6 +432,7 @@ MonoBehaviour:
   playerController: {fileID: 0}
   animator: {fileID: 0}
   rb: {fileID: 0}
+  handTransform: {fileID: 0}
   nameText: {fileID: 0}
   roleText: {fileID: 0}
   redDot: {fileID: 0}
@@ -513,7 +514,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6091405450125887253}
-  - component: {fileID: 2646799410671363568}
+  - component: {fileID: 3697275662812958167}
   - component: {fileID: 8676795451229917706}
   - component: {fileID: 6907506757846455467}
   m_Layer: 0
@@ -542,7 +543,7 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 2.591}
   m_SizeDelta: {x: 20, y: 5}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &2646799410671363568
+--- !u!114 &3697275662812958167
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -551,7 +552,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 6292558374968425260}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 60c01c9de34d481ba9ca5e0efa8a2901, type: 3}
+  m_Script: {fileID: 11500000, guid: 66903f67aaf9040459371c4e057cbb3a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!23 &8676795451229917706
@@ -830,7 +831,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6974521556414156316, guid: be3f2b3e6e6cda444ab4b99e08a962b0, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6974521556414156317, guid: be3f2b3e6e6cda444ab4b99e08a962b0, type: 3}
       propertyPath: m_Enabled

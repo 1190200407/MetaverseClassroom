@@ -17,7 +17,7 @@ public class RoleSetter : InteractionScript
     public override void Init(SceneElement element)
     {
         base.Init(element);
-        setterKey = "isOccupied_" + ClassManager.instance.currentScene + "_" + element.id;
+        setterKey = "RoleSetter_" + ClassManager.instance.currentScene + "_" + element.id;
         outline = element.gameObject.AddComponent<OutlineObject>();
         outline.enabled = false;
         Debug.Log("Setter 成功");
@@ -88,7 +88,7 @@ public class RoleSetter : InteractionScript
         //弹出选角UI
         ChooseRolePanel panel = (ChooseRolePanel)UIManager.instance.Push(new ChooseRolePanel(new UIType("Panels/ChooseRolePanel", "ChooseRolePanel")));
         //初始化Panel的角色列表
-        panel.InitializeSlots(setterKey,roleList);
+        panel.InitializeSlots(setterKey);
         
         // 更新角色选择器状态
         currentPlayer = this;
@@ -120,7 +120,7 @@ public class RoleSetter : InteractionScript
         if (@event.key == setterKey)
         {
             isOccupied = @event.value == "true";
-            Debug.LogError("OnRoomPropertyChange: " + isOccupied);
+            Debug.Log("OnRoomPropertyChange: " + isOccupied);
         }
         UpdateSetterVisual();
     }

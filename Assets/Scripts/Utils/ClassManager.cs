@@ -65,9 +65,21 @@ public class ClassManager : NetworkSingleton<ClassManager>
     }
     #endregion
 
+    #region 选角
+    public Dictionary<string, string> roleList = new Dictionary<string, string>();
+    #endregion
+
     void Start()
     {
         StartCourse();
+    }
+
+    void Update()
+    {
+        if (currentActivity != null)
+        {
+            currentActivity.OnUpdate();
+        }
     }
 
     public void StartCourse()
@@ -75,14 +87,21 @@ public class ClassManager : NetworkSingleton<ClassManager>
         // TODO 暂时这些数据，之后需要从服务器获取
         roomProperties = new Dictionary<string, string>();
         pptFilePath = "餐馆点餐.ppt";
-        SceneLoader.instance.LoadSceneFromXml("Classroom");
         whiteboard = GameObject.FindObjectOfType<Whiteboard>();
-        currentScene = "Classroom";
-        isInClassroom = true;
 
+        // 初始化活动列表
         availableActivities = new List<BaseActivity>();
         availableActivities.Add(new ActingActivity("ActingActivity_Dining", "英语情景——餐馆点餐", true, "Cafe"));
         availableActivities.Add(new ActingActivity("ActingActivity_CheckIn", "英语情景——酒店入住", true, "Hotel"));
+
+        // 根据活动列表加载场景
+        SceneLoader.instance.LoadSceneFromXml("Classroom");
+        foreach (var activity in availableActivities)
+        {
+            SceneLoader.instance.LoadSceneFromXml(activity.sceneName, false);
+        }
+        currentScene = "Classroom";
+        isInClassroom = true;
     }
 
     public void StartActivity(BaseActivity activity)

@@ -42,6 +42,11 @@ public class GamePanel : BasePanel
             UpdateMuteState();
         }
 
+        if (Input.GetKeyDown(KeyCode.M))
+        {
+            UIManager.instance.Push(new GoalPanel(new UIType("Panels/GoalPanel", "GoalPanel")) );
+        }
+
         // 获取网络状态
         if (!NetworkClient.isConnected && !NetworkServer.active)
         {

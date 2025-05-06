@@ -46,7 +46,7 @@ public class UIManager : UnitySingleton<UIManager>
         return gameObject;
     }
 
-    public void Push(BasePanel basePanel_push){
+    public BasePanel Push(BasePanel basePanel_push){
         if(stack_ui.Count>0){
             stack_ui.Peek().OnDisable();
         }
@@ -63,10 +63,11 @@ public class UIManager : UnitySingleton<UIManager>
                 stack_ui.Push(basePanel_push);
             }
         }
-
+        
         basePanel_push.OnStart();
         basePanel_push.OnEnable();
         EnableInteraction();
+        return basePanel_push;
     }
     public void Pop(bool isLoad){
         if(stack_ui.Count>0){

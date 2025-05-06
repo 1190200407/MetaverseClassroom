@@ -33,8 +33,14 @@ public class Sit : InteractionScript
 
     private bool CheckOccupied()
     {
+        string isOccupied = null;
+        
         ClassManager.instance.CmdGetRoomProperty(chairKey, PlayerManager.localPlayer.connectionToClient);
-        string isOccupied = ClassManager.instance.propertyValue;
+        if (ClassManager.instance.roomProperties.ContainsKey(chairKey))
+        {
+            isOccupied = ClassManager.instance.roomProperties[chairKey];
+        }
+
         if (isOccupied != null && isOccupied == "true")
         {
             return true;

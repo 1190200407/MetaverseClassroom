@@ -7,12 +7,16 @@ using UnityEngine.UI;
 using Mirror;
 public class ChooseRolePanel : BasePanel
 {
-    private GameObject roleSlot; //选择项的预制件
+    private GameObject roleSlot; //角色预制件
+    private GameObject playerSlot; //用户预制件
+    
+    private String currentRole; //当下选择的角色
     private String setterKey; //对应的角色设置器的key
 
     private Button exitButton;
 
-    private GameObject content;
+    private GameObject content_A; //角色列表区域
+    private GameObject content_B; //用户列表区域
 
     public ChooseRolePanel(UIType uiType) : base(uiType)
     {
@@ -27,14 +31,24 @@ public class ChooseRolePanel : BasePanel
             Debug.LogError("RoleSlot prefab not found in Resources/Panels/RoleSlot");
         }
         
+        playerSlot = Resources.Load<GameObject>("Panels/PlayerSlot");
+        if (playerSlot == null)
+        {
+            Debug.LogError("PlayerSlot prefab not found in Resources/Panels/PlayerSlot");
+        }
+        
         //绑定按钮
         exitButton = UIMethods.instance.GetOrAddComponentInChild<Button>(ActiveObj, "ExitButton");
         exitButton.onClick.AddListener(Exit);
         
         //寻找content
-        GameObject ScrollView = UIMethods.instance.FindObjectInChild(ActiveObj, "Scroll View");
-        GameObject Viewport = UIMethods.instance.FindObjectInChild(ScrollView, "Viewport");
-        content = UIMethods.instance.FindObjectInChild(Viewport, "Content");
+        GameObject ScrollView_A = UIMethods.instance.FindObjectInChild(ActiveObj, "Scroll View1");
+        GameObject Viewport_A = UIMethods.instance.FindObjectInChild(ScrollView_A, "Viewport");
+        content_A = UIMethods.instance.FindObjectInChild(Viewport_A, "Content");
+        
+        GameObject ScrollView_B = UIMethods.instance.FindObjectInChild(ActiveObj, "Scroll View2");
+        GameObject Viewport_B = UIMethods.instance.FindObjectInChild(ScrollView_B, "Viewport");
+        content_B = UIMethods.instance.FindObjectInChild(Viewport_B, "Content");
     }
     
     public override void OnEnable()
@@ -43,7 +57,6 @@ public class ChooseRolePanel : BasePanel
         InteractionManager.instance.RaycastClosed = true;
         PlayerManager.localPlayer.playerController.enabled = false;
     }
-
     public override void OnDisable() {
         base.OnDisable();
         InteractionManager.instance.RaycastClosed = false;
@@ -53,23 +66,17 @@ public class ChooseRolePanel : BasePanel
     /// <summary>
     /// 检查对应角色是否被选择
     /// </summary>
-    /// <param name="RoleName"></param> 角色名
+    /// <param name="RoleName"></param> 玩家名
     /// <returns></returns> 被占用返回true，否则返回false
-    private bool CheckRoleOccupied(String RoleName)
+    private bool CheckRoleOccupied(String playerName)
     {
-        String roleKey = setterKey + RoleName; //角色的key等于setterKey+角色名
-        string isOccupied = null;
-        ClassManager.instance.CmdGetRoomProperty(roleKey, PlayerManager.localPlayer.connectionToClient);
-        if (ClassManager.instance.roomProperties.ContainsKey(roleKey))
+        if (ClassManager.instance.roleOccupied.ContainsKey(currentRole))
         {
-            isOccupied = ClassManager.instance.roomProperties[roleKey];
-        }
-        if (isOccupied != null && isOccupied == "true")
-        {
-            return true;
+            return ClassManager.instance.roleOccupied[currentRole] == playerName;
         }
         return false;
     }
+    
     
     /// <summary>
     /// 返回
@@ -84,43 +91,67 @@ public class ChooseRolePanel : BasePanel
     }
     
     /// <summary>
-    /// 当被勾选后，改变全局参数
+    /// 当角色被勾选后，初始化用户列表
     /// </summary>
     /// <param name="isOn"></param>是否勾选
-    /// <param name="roleId"></param>勾选角色的Id
-    void OnToggleValueChanged(bool isOn,String roleId)
+    /// <param name="roleId"></param>勾选角色名
+    void OnRoleToggleValueChanged(bool isOn,String roleName)
     {
         if (isOn)
         {
-            //若被选中，改变RoomProperty,相关key改为已占用
-            ClassManager.instance.CommandSetRoomProperty(setterKey + roleId, "true");
-            //设置当前玩家的角色名
-            PlayerManager.localPlayer.RoleName = roleId;
+            currentRole = roleName;
+            InitializePlayerSlots(roleName);
+        }
+    }
+
+    /// <summary>
+    /// 当用户被勾选后，添加角色至已选列表中
+    /// </summary>
+    /// <param name="isOn"></param>是否勾选
+    /// <param name="PlayerName"></param>勾选用户名
+    void OnPlayerToggleValueChanged(bool isOn, string playerName)
+    {
+        if (isOn)
+        {
+            ClassManager.instance.roleOccupied[currentRole] = playerName;
+            foreach (var player in PlayerManager.allPlayers)
+            {
+                if (player.PlayerName == playerName)
+                {
+                    player.RoleName = currentRole;
+                }
+            }
         }
         else
         {
-            //若取消选中，改变RoomProperty,相关key改为未占用
-            ClassManager.instance.CommandSetRoomProperty(setterKey + roleId, "flase");
+            ClassManager.instance.roleOccupied.Remove(currentRole);
+            foreach (var player in PlayerManager.allPlayers)
+            {
+                if (player.PlayerName == playerName)
+                {
+                    player.RoleName = "";
+                }
+            }
         }
     }
     
     /// <summary>
     /// 初始化角色的slots
     /// </summary>
-    public void InitializeSlots(String setterKey)
+    public void InitializeRoleSlots(String setterKey)
     {
         this.setterKey = setterKey;
         // 先清空 content 下的所有子物体
-        foreach (Transform child in content.transform)
+        foreach (Transform child in content_A.transform)
         {
             GameObject.Destroy(child.gameObject);
         }
 
-        // 遍历所有玩家并创建 slot
+        // 遍历所有角色并创建 slot
         foreach (var role in ClassManager.instance.roleList)
         {
             // 实例化 slot 并设置为 content 的子物体
-            GameObject newSlot = GameObject.Instantiate(roleSlot, content.transform);
+            GameObject newSlot = GameObject.Instantiate(roleSlot, content_A.transform);
             newSlot.name = role.Key;
 
             // 获取并设置玩家名称
@@ -129,22 +160,75 @@ public class ChooseRolePanel : BasePanel
             
             Toggle newToggle = newSlot.GetComponent<Toggle>();
             //设置ToggleGroup，保证同时只有一个toggle被勾选
-            newToggle.group = content.GetComponent<ToggleGroup>();
-            //Toggle值改变监听函数,当被勾选时，全局改变是否被勾选
-            newToggle.onValueChanged.AddListener(isOn => OnToggleValueChanged(isOn, role.Key));
+            newToggle.group = content_A.GetComponent<ToggleGroup>();
+            //Toggle值改变监听函数,当被勾选时，初始化选择用户的列表
+            newToggle.onValueChanged.AddListener(isOn => OnRoleToggleValueChanged(isOn, role.Value));
+            
+        }
+    }
+
+    /// <summary>
+    /// 根据角色名称初始化选择用户的slots
+    /// </summary>
+    /// <param name="RoleName"></param>
+    public void InitializePlayerSlots(String RoleName)
+    {
+        // 先清空 content 下的所有子物体
+        foreach (Transform child in content_B.transform)
+        {
+            GameObject.Destroy(child.gameObject);
+        }
+
+        // 遍历所有用户并创建 slot
+        foreach (var player in PlayerManager.allPlayers)
+        {
+            string playerName = player.PlayerName;
+            // 实例化 slot 并设置为 content 的子物体
+            GameObject newSlot = GameObject.Instantiate(playerSlot, content_B.transform);
+            newSlot.name = playerName;
+
+            // 获取并设置玩家名称
+            TextMeshProUGUI Name = UIMethods.instance.GetOrAddComponentInChild<TextMeshProUGUI>(newSlot, "Name");
+            Name.text = playerName;
+
+            Toggle newToggle = newSlot.GetComponent<Toggle>();
+            //设置ToggleGroup，保证同时只有一个toggle被勾选
+            newToggle.group = content_B.GetComponent<ToggleGroup>();
+            //Toggle值改变监听函数,当被勾选时，初始化选择用户的列表
+            newToggle.onValueChanged.AddListener(isOn => OnPlayerToggleValueChanged(isOn, playerName));
             
             //如果该角色已被占用
-            if (CheckRoleOccupied(role.Key))
+            if (CheckRoleOccupied(playerName))
+            { 
+                newToggle.isOn = true;
+            }
+            else if(!String.IsNullOrEmpty(player.RoleName))
             {
-                if (PlayerManager.localPlayer.RoleName != role.Key)
-                {
-                    newToggle.interactable = false;
-                }
-                else
-                {
-                    newToggle.isOn = true;
-                }
+                newToggle.interactable = false;
             }
         }
+
+        #region NPC
+        // 实例化 slot 并设置为 content 的子物体
+        GameObject npcSlot = GameObject.Instantiate(playerSlot, content_B.transform);
+        npcSlot.name = "NPC";
+
+        // 获取并设置玩家名称
+        TextMeshProUGUI npcName = UIMethods.instance.GetOrAddComponentInChild<TextMeshProUGUI>(npcSlot, "Name");
+        npcName.text = "NPC";
+
+        Toggle npcToggle = npcSlot.GetComponent<Toggle>();
+        //设置ToggleGroup，保证同时只有一个toggle被勾选
+        npcToggle.group = content_B.GetComponent<ToggleGroup>();
+        //Toggle值改变监听函数,当被勾选时，初始化选择用户的列表
+        npcToggle.onValueChanged.AddListener(isOn => OnPlayerToggleValueChanged(isOn, "NPC"));
+
+        //如果该角色已被占用
+        if (CheckRoleOccupied("NPC"))
+        { 
+            npcToggle.isOn = true;
+        }
+        #endregion
+        
     }
 }

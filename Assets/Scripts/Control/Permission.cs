@@ -10,6 +10,7 @@ public enum Permission
     ControlChat = 8, // 控制聊天
     ChangeScene = 16, // 控制场景切换
     Activity = 32, // 开始活动
+    SelctRoles = 64,
 }
 
 public class PermissionHolder

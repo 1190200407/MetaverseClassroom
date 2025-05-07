@@ -58,6 +58,8 @@ public class RoleSetter : InteractionScript
     public override void OnSelectEnter()
     {
         if (isOccupied) return;
+        
+        if(!PlayerManager.localPlayer.HavePermission(Permission.SelctRoles)) return;
 
         if (currentPlayer != null && currentPlayer != this)
         {
@@ -68,7 +70,7 @@ public class RoleSetter : InteractionScript
         //弹出选角UI
         ChooseRolePanel panel = (ChooseRolePanel)UIManager.instance.Push(new ChooseRolePanel(new UIType("Panels/ChooseRolePanel", "ChooseRolePanel")));
         //初始化Panel的角色列表
-        panel.InitializeSlots(setterKey);
+        panel.InitializeRoleSlots(setterKey);
         
         // 更新角色选择器状态
         currentPlayer = this;

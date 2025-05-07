@@ -67,7 +67,7 @@ public class ClassManager : NetworkSingleton<ClassManager>
 
     #region 选角
     public Dictionary<string, string> roleList = new Dictionary<string, string>();
-    public Dictionary<string, uint> roleOccupied = new Dictionary<string, uint>();
+    public Dictionary<string, string> roleOccupied = new Dictionary<string, string>();
     public int leftRoleCount = 0;
     #endregion
 

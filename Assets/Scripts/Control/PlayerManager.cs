@@ -265,19 +265,20 @@ public class PlayerManager : NetworkBehaviour
     
     private void OnRoleNameChanged(string oldValue, string newValue)
     {
-        roleText.SetRole(ClassManager.instance.roleList[newValue]);
-
+        roleText.SetRole(newValue);
+        /*
         //通知ClassManager，当前玩家已经选好角色
         if (!string.IsNullOrEmpty(oldValue))
         {
-            ClassManager.instance.roleOccupied[oldValue] = 0;
+            ClassManager.instance.roleOccupied.Remove(oldValue);
             ClassManager.instance.leftRoleCount++;
         }
-        if (!ClassManager.instance.roleOccupied.ContainsKey(newValue) || ClassManager.instance.roleOccupied[newValue] != netId)
+        if (!ClassManager.instance.roleOccupied.ContainsKey(newValue) || ClassManager.instance.roleOccupied[newValue] != localPlayer.playerName)
         {
-            ClassManager.instance.roleOccupied[newValue] = netId;
+            ClassManager.instance.roleOccupied[newValue] = localPlayer.playerName;
             ClassManager.instance.leftRoleCount--;
         }
+        */
     }
 
     private void SetLayer(GameObject gameObject, int layer)

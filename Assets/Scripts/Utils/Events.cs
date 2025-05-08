@@ -30,6 +30,13 @@ public struct RoomPropertyChangeEvent
     public string value;
 }
 
+public struct RoleOccupiedChangeEvent
+{
+    public string roleId;
+    public string roleName;
+    public int netId;
+}
+
 public struct PlayerChangeDataEvent
 {
     public PlayerData data;

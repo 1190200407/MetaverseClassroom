@@ -13,6 +13,10 @@ public struct ChangeSceneMessage : NetworkMessage
     }
 }
 
+public struct StartActionTreeMessage : NetworkMessage
+{
+}
+
 public struct EndActivityMessage : NetworkMessage
 {
 }

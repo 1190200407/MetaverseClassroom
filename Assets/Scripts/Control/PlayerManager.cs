@@ -52,6 +52,16 @@ public class PlayerManager : NetworkBehaviour
         playerController.playerManager = this;
         allPlayers.Add(this);
     }
+
+    private void OnEnable()
+    {
+        EventHandler.Register<RoleOccupiedChangeEvent>(OnRoleOccupiedChange);
+    }
+
+    private void OnDisable()
+    {
+        EventHandler.Unregister<RoleOccupiedChangeEvent>(OnRoleOccupiedChange);
+    }
     
     private void OnDestroy()
     {
@@ -266,19 +276,6 @@ public class PlayerManager : NetworkBehaviour
     private void OnRoleNameChanged(string oldValue, string newValue)
     {
         roleText.SetRole(newValue);
-        /*
-        //通知ClassManager，当前玩家已经选好角色
-        if (!string.IsNullOrEmpty(oldValue))
-        {
-            ClassManager.instance.roleOccupied.Remove(oldValue);
-            ClassManager.instance.leftRoleCount++;
-        }
-        if (!ClassManager.instance.roleOccupied.ContainsKey(newValue) || ClassManager.instance.roleOccupied[newValue] != localPlayer.playerName)
-        {
-            ClassManager.instance.roleOccupied[newValue] = localPlayer.playerName;
-            ClassManager.instance.leftRoleCount--;
-        }
-        */
     }
 
     private void SetLayer(GameObject gameObject, int layer)
@@ -373,6 +370,16 @@ public class PlayerManager : NetworkBehaviour
         else
         {
             permissionHolder.SetAllPermission();
+        }
+    }
+    #endregion
+
+    #region 事件
+    public void OnRoleOccupiedChange(RoleOccupiedChangeEvent @event)
+    {
+        if (@event.netId == netId)
+        {
+            RoleName = @event.roleName;
         }
     }
     #endregion

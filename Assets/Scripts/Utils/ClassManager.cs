@@ -66,9 +66,60 @@ public class ClassManager : NetworkSingleton<ClassManager>
     #endregion
 
     #region 选角
+    // 角色列表, Key为角色Id，Value为角色名
     public Dictionary<string, string> roleList = new Dictionary<string, string>();
-    public Dictionary<string, string> roleOccupied = new Dictionary<string, string>();
-    public int leftRoleCount = 0;
+    // 角色占用情况, Key为角色Id，Value为玩家ID(0表示未占用， -1表示NPC)
+    public Dictionary<string, int> roleOccupied = new Dictionary<string, int>();
+    
+    // 服务器端设置属性
+    [Command(requiresAuthority = false)]
+    public void CommandSetRoleOccupied(string roleId, int netId)
+    {
+        roleOccupied[roleId] = netId;
+        RpcSetRoleOccupied(roleId, netId);
+    }
+
+    // 通知客户端属性变化
+    [ClientRpc]
+    private void RpcSetRoleOccupied(string roleId, int netId)
+    {
+        if (roleOccupied.ContainsKey(roleId))
+        {
+            EventHandler.Trigger(new RoleOccupiedChangeEvent() { roleId = roleId, roleName = roleList[roleId], netId = netId });
+        }
+        else
+        {
+            Debug.LogError("没有找到角色 " + roleId);
+            EventHandler.Trigger(new RoleOccupiedChangeEvent() { roleId = roleId, roleName = "", netId = netId });
+        }
+    }
+
+    // 查询角色占用情况（Command）
+    [Command(requiresAuthority = false)]
+    public void CmdGetRoleOccupied(string roleId, NetworkConnectionToClient conn = null)
+    {
+        if (isServer && conn != null)
+        {
+            // 查询角色占用情况
+            if (roleOccupied.ContainsKey(roleId))
+            {
+                // 只通过 TargetRpc 返回给调用者（特定客户端）
+                TargetReplyRoleOccupied(conn, roleId, roleOccupied[roleId]);
+                
+            }
+            else
+            {
+                // 如果没有找到属性，可以返回空值或者错误信息
+                TargetReplyRoleOccupied(conn, roleId, -1);
+            }
+        }
+    }
+
+    [TargetRpc]
+    private void TargetReplyRoleOccupied(NetworkConnectionToClient conn, string roleId, int netId)
+    {
+        roleOccupied[roleId] = netId;
+    }
     #endregion
 
     void Start()

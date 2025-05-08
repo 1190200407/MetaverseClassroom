@@ -9,7 +9,8 @@ public class ChooseRolePanel : BasePanel
 {
     private GameObject roleSlot; //角色预制件
     private GameObject playerSlot; //用户预制件
-    
+
+    // TODO currentRold 改成 roleID    
     private String currentRole; //当下选择的角色
     private String setterKey; //对应的角色设置器的key
 
@@ -72,7 +73,8 @@ public class ChooseRolePanel : BasePanel
     {
         if (ClassManager.instance.roleOccupied.ContainsKey(currentRole))
         {
-            return ClassManager.instance.roleOccupied[currentRole] == playerName;
+            //TODO 改成netID
+            //return ClassManager.instance.roleOccupied[currentRole] == playerName;
         }
         return false;
     }
@@ -113,23 +115,29 @@ public class ChooseRolePanel : BasePanel
     {
         if (isOn)
         {
-            ClassManager.instance.roleOccupied[currentRole] = playerName;
-            foreach (var player in PlayerManager.allPlayers)
+            if (playerName == "NPC")
             {
-                if (player.PlayerName == playerName)
+                ClassManager.instance.CommandSetRoleOccupied(currentRole, -1);
+            }
+            else
+            {
+                foreach (var player in PlayerManager.allPlayers)
                 {
-                    player.RoleName = currentRole;
+                    if (player.PlayerName == playerName)
+                    {
+                        // 修改角色占用情况, 玩家监听后会自动更新角色名
+                        ClassManager.instance.CommandSetRoleOccupied(currentRole, (int)player.netId);
+                    }
                 }
             }
         }
         else
         {
-            ClassManager.instance.roleOccupied.Remove(currentRole);
             foreach (var player in PlayerManager.allPlayers)
             {
                 if (player.PlayerName == playerName)
                 {
-                    player.RoleName = "";
+                    ClassManager.instance.CommandSetRoleOccupied(currentRole, 0);
                 }
             }
         }

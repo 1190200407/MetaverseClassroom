@@ -41,6 +41,12 @@ public struct PlayerChangeDataEvent
 {
     public PlayerData data;
 }
+
+public struct UIHighLightEvent
+{
+    public string id;
+    public bool isHighlighted;
+}
 public struct TransitionOpenEndEvent {}
 
 public struct TransitionCloseEndEvent {}

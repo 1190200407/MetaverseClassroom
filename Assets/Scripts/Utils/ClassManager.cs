@@ -75,14 +75,18 @@ public class ClassManager : NetworkSingleton<ClassManager>
     [Command(requiresAuthority = false)]
     public void CommandSetRoleOccupied(string roleId, int netId)
     {
+        RpcSetRoleOccupied(roleId, netId,roleOccupied[roleId]);
         roleOccupied[roleId] = netId;
-        RpcSetRoleOccupied(roleId, netId);
     }
 
     // 通知客户端属性变化
     [ClientRpc]
-    private void RpcSetRoleOccupied(string roleId, int netId)
+    private void RpcSetRoleOccupied(string roleId, int netId,int oldNetId)
     {
+        if (netId == 0 || netId == -1)
+        {
+            EventHandler.Trigger(new RoleOccupiedChangeEvent() { roleId = roleId, roleName = "", netId = oldNetId });
+        }
         if (roleOccupied.ContainsKey(roleId))
         {
             EventHandler.Trigger(new RoleOccupiedChangeEvent() { roleId = roleId, roleName = roleList[roleId], netId = netId });

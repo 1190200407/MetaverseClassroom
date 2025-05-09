@@ -7,14 +7,16 @@ using UnityEngine.UI;
 using Mirror;
 public class ChooseRolePanel : BasePanel
 {
+    private int count = 0;
     private GameObject roleSlot; //角色预制件
     private GameObject playerSlot; //用户预制件
 
     // TODO currentRold 改成 roleID    
-    private String currentRole; //当下选择的角色
+    private String currentRoleID; //当下选择的角色
     private String setterKey; //对应的角色设置器的key
 
     private Button exitButton;
+    private Button confirmButton;
 
     private GameObject content_A; //角色列表区域
     private GameObject content_B; //用户列表区域
@@ -41,6 +43,8 @@ public class ChooseRolePanel : BasePanel
         //绑定按钮
         exitButton = UIMethods.instance.GetOrAddComponentInChild<Button>(ActiveObj, "ExitButton");
         exitButton.onClick.AddListener(Exit);
+        confirmButton = UIMethods.instance.GetOrAddComponentInChild<Button>(ActiveObj, "ConfirmButton");
+        confirmButton.onClick.AddListener(Confirm);
         
         //寻找content
         GameObject ScrollView_A = UIMethods.instance.FindObjectInChild(ActiveObj, "Scroll View1");
@@ -57,6 +61,7 @@ public class ChooseRolePanel : BasePanel
         base.OnEnable();
         InteractionManager.instance.RaycastClosed = true;
         PlayerManager.localPlayer.playerController.enabled = false;
+        count = 0;
     }
     public override void OnDisable() {
         base.OnDisable();
@@ -71,14 +76,33 @@ public class ChooseRolePanel : BasePanel
     /// <returns></returns> 被占用返回true，否则返回false
     private bool CheckRoleOccupied(String playerName)
     {
-        if (ClassManager.instance.roleOccupied.ContainsKey(currentRole))
+        if (ClassManager.instance.roleOccupied.ContainsKey(currentRoleID))
         {
-            //TODO 改成netID
-            //return ClassManager.instance.roleOccupied[currentRole] == playerName;
+            if (playerName == "NPC")
+            {
+                return ClassManager.instance.roleOccupied[currentRoleID] == -1;
+            }
+            
+            foreach (var player in PlayerManager.allPlayers) 
+            {
+                if (player.PlayerName == playerName)
+                {
+                    return ClassManager.instance.roleOccupied[currentRoleID] == (int)player.netId;
+                }
+            }
+            
         }
         return false;
     }
-    
+
+    /// <summary>
+    /// 是否完成选角
+    /// </summary>
+    /// <returns></returns>
+    private bool IsDone()
+    {
+        return count == ClassManager.instance.roleList.Count;
+    }
     
     /// <summary>
     /// 返回
@@ -91,18 +115,23 @@ public class ChooseRolePanel : BasePanel
             RoleSetter.currentPlayer.ResetSetter();
         }
     }
+
+    private void Confirm()
+    {
+        //TODO 开启Event
+    }    
     
     /// <summary>
     /// 当角色被勾选后，初始化用户列表
     /// </summary>
     /// <param name="isOn"></param>是否勾选
     /// <param name="roleId"></param>勾选角色名
-    void OnRoleToggleValueChanged(bool isOn,String roleName)
+    void OnRoleToggleValueChanged(bool isOn,String roleID)
     {
         if (isOn)
         {
-            currentRole = roleName;
-            InitializePlayerSlots(roleName);
+            currentRoleID = roleID;
+            InitializePlayerSlots();
         }
     }
 
@@ -113,11 +142,12 @@ public class ChooseRolePanel : BasePanel
     /// <param name="PlayerName"></param>勾选用户名
     void OnPlayerToggleValueChanged(bool isOn, string playerName)
     {
+        EventHandler.Trigger(new UIHighLightEvent() { id = currentRoleID,isHighlighted = isOn});
         if (isOn)
         {
             if (playerName == "NPC")
             {
-                ClassManager.instance.CommandSetRoleOccupied(currentRole, -1);
+                ClassManager.instance.CommandSetRoleOccupied(currentRoleID, -1);
             }
             else
             {
@@ -126,21 +156,18 @@ public class ChooseRolePanel : BasePanel
                     if (player.PlayerName == playerName)
                     {
                         // 修改角色占用情况, 玩家监听后会自动更新角色名
-                        ClassManager.instance.CommandSetRoleOccupied(currentRole, (int)player.netId);
+                        ClassManager.instance.CommandSetRoleOccupied(currentRoleID, (int)player.netId);
                     }
                 }
             }
+            count += 1;
         }
         else
         {
-            foreach (var player in PlayerManager.allPlayers)
-            {
-                if (player.PlayerName == playerName)
-                {
-                    ClassManager.instance.CommandSetRoleOccupied(currentRole, 0);
-                }
-            }
+            ClassManager.instance.CommandSetRoleOccupied(currentRoleID, 0);
+            count -= 1;
         }
+        confirmButton.interactable = IsDone();
     }
     
     /// <summary>
@@ -160,6 +187,20 @@ public class ChooseRolePanel : BasePanel
         {
             // 实例化 slot 并设置为 content 的子物体
             GameObject newSlot = GameObject.Instantiate(roleSlot, content_A.transform);
+            //HighLight的id修改成角色id
+            UIHighlight highlightComponent = newSlot.GetComponent<UIHighlight>();
+            highlightComponent.id = role.Key;
+            
+            if (!ClassManager.instance.roleOccupied.ContainsKey(role.Key))
+            {
+                ClassManager.instance.roleOccupied.Add(role.Key, 0);
+            }
+            if (ClassManager.instance.roleOccupied[role.Key] != 0)
+            {
+                highlightComponent.IsHighlight = true;
+                count += 1;
+            }
+            
             newSlot.name = role.Key;
 
             // 获取并设置玩家名称
@@ -170,16 +211,17 @@ public class ChooseRolePanel : BasePanel
             //设置ToggleGroup，保证同时只有一个toggle被勾选
             newToggle.group = content_A.GetComponent<ToggleGroup>();
             //Toggle值改变监听函数,当被勾选时，初始化选择用户的列表
-            newToggle.onValueChanged.AddListener(isOn => OnRoleToggleValueChanged(isOn, role.Value));
-            
+            newToggle.onValueChanged.AddListener(isOn => OnRoleToggleValueChanged(isOn, role.Key));
         }
+
+        confirmButton.interactable = IsDone();
     }
 
     /// <summary>
     /// 根据角色名称初始化选择用户的slots
     /// </summary>
     /// <param name="RoleName"></param>
-    public void InitializePlayerSlots(String RoleName)
+    public void InitializePlayerSlots()
     {
         // 先清空 content 下的所有子物体
         foreach (Transform child in content_B.transform)
@@ -202,9 +244,6 @@ public class ChooseRolePanel : BasePanel
             Toggle newToggle = newSlot.GetComponent<Toggle>();
             //设置ToggleGroup，保证同时只有一个toggle被勾选
             newToggle.group = content_B.GetComponent<ToggleGroup>();
-            //Toggle值改变监听函数,当被勾选时，初始化选择用户的列表
-            newToggle.onValueChanged.AddListener(isOn => OnPlayerToggleValueChanged(isOn, playerName));
-            
             //如果该角色已被占用
             if (CheckRoleOccupied(playerName))
             { 
@@ -214,6 +253,8 @@ public class ChooseRolePanel : BasePanel
             {
                 newToggle.interactable = false;
             }
+            //Toggle值改变监听函数,当被勾选时，初始化选择用户的列表
+            newToggle.onValueChanged.AddListener(isOn => OnPlayerToggleValueChanged(isOn, playerName));
         }
 
         #region NPC
@@ -228,14 +269,13 @@ public class ChooseRolePanel : BasePanel
         Toggle npcToggle = npcSlot.GetComponent<Toggle>();
         //设置ToggleGroup，保证同时只有一个toggle被勾选
         npcToggle.group = content_B.GetComponent<ToggleGroup>();
-        //Toggle值改变监听函数,当被勾选时，初始化选择用户的列表
-        npcToggle.onValueChanged.AddListener(isOn => OnPlayerToggleValueChanged(isOn, "NPC"));
-
         //如果该角色已被占用
         if (CheckRoleOccupied("NPC"))
         { 
             npcToggle.isOn = true;
         }
+        //Toggle值改变监听函数,当被勾选时，初始化选择用户的列表
+        npcToggle.onValueChanged.AddListener(isOn => OnPlayerToggleValueChanged(isOn, "NPC"));
         #endregion
         
     }

@@ -3,11 +3,19 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
-using Action;
+using Actions;
 
-public struct ActionTree
+public class ActionTree
 {
     public IActionTreeNode root;
+
+    // 记录所有叶子节点，用于在执行过程中查找
+    public Dictionary<int, ActionTreeLeafNode> leafNodes;
+
+    public IEnumerator Execute()
+    {
+        yield return root.ExecuteCoroutine();
+    }
 }
 
 public interface IActionTreeNode
@@ -19,7 +27,7 @@ public interface IActionTreeNode
 }
 
 // 组合节点，用于表示子节点是顺序或者并行执行的顺序
-public struct ActionTreeCompositeNode : IActionTreeNode
+public class ActionTreeCompositeNode : IActionTreeNode
 {
     public int id { get; set; }
     public List<IActionTreeNode> children;
@@ -69,7 +77,7 @@ public enum ActionTreeCompositeType
 }
 
 // 叶子节点，用于表示一个具体的动作
-public struct ActionTreeLeafNode : IActionTreeNode
+public class ActionTreeLeafNode : IActionTreeNode
 {
     public int id { get; set; }
     public bool isExecuting { get; set; }
@@ -78,12 +86,15 @@ public struct ActionTreeLeafNode : IActionTreeNode
     public string actionMethodName;
     public Dictionary<string, object> actionParams;
 
+    // 用于同步行为树，指定角色执行完该节点后，通知其他角色该节点执行完成
+    public bool accomplished;
+
     public IEnumerator ExecuteCoroutine()
     {
         isExecuting = true;
 
         // 获取actionMethodName对应的ActionMethod
-        Type actionMethodType = Type.GetType("Action." + actionMethodName);
+        Type actionMethodType = Type.GetType("Actions." + actionMethodName);
 
         if (actionMethodType == null)
         {
@@ -101,7 +112,7 @@ public struct ActionTreeLeafNode : IActionTreeNode
 
         BaseActionMethod actionMethod = (BaseActionMethod)Activator.CreateInstance(actionMethodType);
         actionMethod.actionNode = this;
-        actionMethod.ParseParams(actionParams);
+        actionMethod.Initialize();
 
         yield return actionMethod.ExecuteCoroutine();
 

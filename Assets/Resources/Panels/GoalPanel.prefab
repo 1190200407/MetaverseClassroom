@@ -277,7 +277,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\u786E\u8BA4\u5B8C\u6210"
+  m_text: "\u786E\u8BA4\u5B8C\u6210(E)"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: d273698b6e2289d4eab1eb1939b6bdd4, type: 2}
   m_sharedMaterial: {fileID: 9020894382102500418, guid: d273698b6e2289d4eab1eb1939b6bdd4, type: 2}
@@ -457,8 +457,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 175.55606, y: 0}
-  m_SizeDelta: {x: 117.0879, y: 30}
+  m_AnchoredPosition: {x: 152.6647, y: 0}
+  m_SizeDelta: {x: 162.8706, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &3764735964203925568
 CanvasRenderer:

@@ -76,18 +76,6 @@ public class PlayerManager : NetworkBehaviour
         StartCoroutine(StartLocalPlayer());
     }
 
-    public override void OnStartClient()
-    {
-        base.OnStartClient();
-        NetworkClient.RegisterHandler<ChangeSceneMessage>(OnChangeScene);
-    }
-
-    public override void OnStopClient()
-    {
-        base.OnStopClient();
-        NetworkClient.UnregisterHandler<ChangeSceneMessage>();
-    }
-
     private IEnumerator StartLocalPlayer()
     {
         yield return new WaitUntil(() => NetworkClient.ready);
@@ -154,17 +142,17 @@ public class PlayerManager : NetworkBehaviour
             }
         }
     }
-    [SyncVar(hook = nameof(OnRoleNameChanged))]
-    private string roleName;
+    [SyncVar(hook = nameof(OnRoleIdChanged))]
+    private string roleId;
 
-    public string RoleName
+    public string RoleId
     {
-        get { return roleName; }
+        get { return roleId; }
         set
         {
             if (isLocalPlayer)
             {
-                CmdSetRoleName(value);
+                CmdSetRoleId(value);
             }
         }
     }
@@ -236,9 +224,9 @@ public class PlayerManager : NetworkBehaviour
         playerName = value;
     }
     [Command]
-    private void CmdSetRoleName(string value)
+    private void CmdSetRoleId(string value)
     {
-        roleName = value;
+        roleId = value;
     }
     [Command]
     private void CmdSetCharacterName(string value)
@@ -273,9 +261,16 @@ public class PlayerManager : NetworkBehaviour
         }
     }
     
-    private void OnRoleNameChanged(string oldValue, string newValue)
+    private void OnRoleIdChanged(string oldValue, string newValue)
     {
-        roleText.SetRole(newValue);
+        if (string.IsNullOrEmpty(newValue))
+        {
+            roleText.SetRole(string.Empty);
+        }
+        else
+        {
+            roleText.SetRole(ClassManager.instance.roleList[newValue]);
+        }
     }
 
     private void SetLayer(GameObject gameObject, int layer)
@@ -379,20 +374,13 @@ public class PlayerManager : NetworkBehaviour
     {
         if (@event.netId == netId)
         {
-            RoleName = @event.roleName;
+            RoleId = @event.roleId;
         }
-    }
-    #endregion
-
-    #region 网络消息
-    public void OnChangeScene(ChangeSceneMessage message)
-    {
-        ClassManager.instance.ChangeScene(message.sceneName);
-    }
-
-    public void OnEndActivity(EndActivityMessage message)
-    {
-        RoleName = string.Empty;
+        // 如果自己现在的角色ID对应的playerID被修改，说明自己被替换
+        else if (@event.roleId == RoleId)
+        {
+            RoleId = string.Empty;
+        }
     }
     #endregion
 }

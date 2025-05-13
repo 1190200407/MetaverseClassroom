@@ -118,7 +118,11 @@ public class ChooseRolePanel : BasePanel
 
     private void Confirm()
     {
-        //TODO 开启Event
+        //关闭当前面板
+        UIManager.instance.Pop(false);
+
+        //通知所有玩家选角完成
+        NetworkMessageHandler.instance.BroadcastMessage(NetworkMessageType.StartActionTree);
     }    
     
     /// <summary>
@@ -249,7 +253,7 @@ public class ChooseRolePanel : BasePanel
             { 
                 newToggle.isOn = true;
             }
-            else if(!String.IsNullOrEmpty(player.RoleName))
+            else if(!String.IsNullOrEmpty(player.RoleId))
             {
                 newToggle.interactable = false;
             }

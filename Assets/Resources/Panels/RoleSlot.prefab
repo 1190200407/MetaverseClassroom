@@ -87,7 +87,7 @@ GameObject:
   - component: {fileID: 1683530733694592969}
   - component: {fileID: 682035741239647552}
   - component: {fileID: 5860855445597701133}
-  - component: {fileID: 4261556445607973539}
+  - component: {fileID: 5692522787997459175}
   m_Layer: 5
   m_Name: RoleSlot
   m_TagString: Untagged
@@ -203,7 +203,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_IsOn: 0
---- !u!114 &4261556445607973539
+--- !u!114 &5692522787997459175
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -212,7 +212,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 5346014028585510771}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 023bb2c3ef18460485c95767b0036ee4, type: 3}
+  m_Script: {fileID: 11500000, guid: 22b708f2086b57b4282fc0cde78839d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   id: 

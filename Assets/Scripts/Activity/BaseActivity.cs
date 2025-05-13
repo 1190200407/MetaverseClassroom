@@ -16,6 +16,7 @@ public class BaseActivity
     public string sceneName;
 
     // 活动的行为树
+    public bool isActionTreeExecuting = false;
     public ActionTree actionTree;
     
     private String jsonFilePath; //Json文件存储路径
@@ -41,11 +42,7 @@ public class BaseActivity
     // 切换场景
     public virtual void GoToScene()
     {
-        // 向所有玩家发送切换场景的消息
-        foreach (var conn in NetworkServer.connections.Values)
-        {
-            conn.Send(new ChangeSceneMessage(sceneName));
-        }
+        ClassManager.instance.ChangeScene(sceneName);
     }
 
     public virtual void Start()

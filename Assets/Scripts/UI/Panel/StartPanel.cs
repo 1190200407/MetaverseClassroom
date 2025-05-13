@@ -142,6 +142,7 @@ public class StartPanel : BasePanel
         PlayerPrefs.SetString("NickName", playerName);
         
         // 开始课程
+        NetworkManagerClassroom.singleton.StopHost();
         NetworkManagerClassroom.singleton.StartHost();
 
         // 切换到游戏界面

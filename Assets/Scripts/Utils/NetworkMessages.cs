@@ -2,22 +2,33 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Mirror;
+using System;
 
-public struct ChangeSceneMessage : NetworkMessage
+public enum NetworkMessageType
 {
-    public string sceneName;
-
-    public ChangeSceneMessage(string sceneName)
-    {
-        this.sceneName = sceneName;
-    }
+    StartActivity,
+    EndActivity,
+    StartActionTree,
+    TaskComplete,
 }
 
-public struct StartActionTreeMessage : NetworkMessage
+public struct NetworkMessageClassroom : NetworkMessage
 {
+    public NetworkMessageType messageType;
+    // 以json格式传输数据
+    public string messageJson;
 }
 
-public struct EndActivityMessage : NetworkMessage
+[Serializable]
+public struct StartActivityMessageData
 {
+    public int activityIndex;
+}
+
+[Serializable]
+public struct TaskCompleteMessageData
+{
+    public int actionNodeId;
+    public uint netId;
 }
 

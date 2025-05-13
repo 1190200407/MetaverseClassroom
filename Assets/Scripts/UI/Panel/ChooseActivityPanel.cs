@@ -70,11 +70,11 @@ public class ChooseActivityPanel : BasePanel
     {
         if (selectedIndex == 0)
         {
-            ClassManager.instance.EndActivity();
+            NetworkMessageHandler.instance.BroadcastMessage(NetworkMessageType.EndActivity);
         }
         else
         {
-            ClassManager.instance.StartActivity(ClassManager.instance.availableActivities[selectedIndex - 1]);
+            NetworkMessageHandler.instance.BroadcastMessage(NetworkMessageType.StartActivity, new StartActivityMessageData() { activityIndex = selectedIndex - 1 });
         }
     }
 

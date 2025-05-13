@@ -204,7 +204,7 @@ MonoBehaviour:
   m_BlockingObjects: 0
   m_BlockingMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 119
 --- !u!114 &224969513
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -386,7 +386,7 @@ MonoBehaviour:
   m_BlockingObjects: 0
   m_BlockingMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 119
 --- !u!114 &268409508
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -690,6 +690,7 @@ MonoBehaviour:
   spawnPrefabs:
   - {fileID: 3007562923417097555, guid: 942215e6373232b43b49f9ca7ee5b491, type: 3}
   - {fileID: 7208998394423677863, guid: 3d4ce365c6f288e409492359bced7c0a, type: 3}
+  - {fileID: 5280621223508725021, guid: 21cd8aac2c8c95e4895004a04d0e508d, type: 3}
   exceptionsDisconnect: 1
   snapshotSettings:
     bufferTimeMultiplier: 2

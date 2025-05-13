@@ -11,6 +11,27 @@ public class GamePanel : BasePanel
     private Button muteBtn;
     private Button unmuteBtn;
 
+
+    #region 任务相关
+    private int actionNodeId; //任务目标的id
+    private ActionTreeLeafNode actionNode;
+    
+    private TextMeshProUGUI goalText;
+    private Button confirmButton;
+    private GameObject goalPanel;
+    public bool isGoalPanelOpen
+    {
+        get
+        {
+            return goalPanel.activeSelf;
+        }
+        set
+        {
+            goalPanel.SetActive(value);
+        }
+    }
+    #endregion
+
     public GamePanel(UIType uiType) : base(uiType)
     {
     }
@@ -24,27 +45,52 @@ public class GamePanel : BasePanel
         muteBtn.onClick.AddListener(OnMuteBtnClick);
         unmuteBtn.onClick.AddListener(OnUnmuteBtnClick);
         UpdateMuteState();
+        
+        goalPanel = ActiveObj.transform.Find("GoalPanel").gameObject;
+        confirmButton = UIMethods.instance.GetOrAddComponentInChild<Button>(goalPanel, "ConfirmButton");
+        goalText = UIMethods.instance.GetOrAddComponentInChild<TextMeshProUGUI>(goalPanel, "GoalText");
+        CloseGoal();
+
+        confirmButton.onClick.AddListener(ForceTaskComplete);
+    }
+    
+    public override void OnEnable()
+    {
+        base.OnEnable();
+        EventHandler.Register<NewTaskEvent>(OnNewTask);
+        EventHandler.Register<TaskCompleteEvent>(OnTaskComplete);
+    }
+    
+    public override void OnDestroy()
+    {
+        base.OnDestroy();
+        EventHandler.Unregister<NewTaskEvent>(OnNewTask);
+        EventHandler.Unregister<TaskCompleteEvent>(OnTaskComplete);
     }
 
     public override void OnUpdate()
     {
+        // 暂停
         if (Input.GetKeyDown(KeyCode.P) || Input.GetKeyDown(KeyCode.Escape))
         {
             UIManager.instance.Push(new PausePanel(new UIType("Panels/PausePanel", "PausePanel")));
         }
+        // 打开PPT
         if (Input.GetKeyDown(KeyCode.Tab))
         {
             UIManager.instance.Push(new PPTPanel(new UIType("Panels/PPTPanel", "PPTPanel")));
         }
+        // 静音
         if (Input.GetKeyDown(KeyCode.M))
         {
             VoiceManager.instance.IsSelfMute = !VoiceManager.instance.IsSelfMute;
             UpdateMuteState();
         }
 
-        if (Input.GetKeyDown(KeyCode.M))
+        // 强制完成任务
+        if (actionNodeId != -1 && Input.GetKeyDown(KeyCode.E))
         {
-            UIManager.instance.Push(new GoalPanel(new UIType("Panels/GoalPanel", "GoalPanel")) );
+            ForceTaskComplete();
         }
 
         // 获取网络状态
@@ -94,4 +140,47 @@ public class GamePanel : BasePanel
             unmuteBtn.gameObject.SetActive(false);
         }
     }
+
+    #region 任务相关
+    private void OnNewTask(NewTaskEvent @event)
+    {
+        if (@event.netId == PlayerManager.localPlayer.netId)
+        {
+            actionNodeId = @event.actionNodeId;
+            actionNode = ClassManager.instance.currentActivity.actionTree.leafNodes[actionNodeId];
+            SetGoal(@event.taskDescription);
+        }
+    }
+
+    private void OnTaskComplete(TaskCompleteEvent @event)
+    {
+        if (@event.netId == PlayerManager.localPlayer.netId)
+        {
+            actionNodeId = -1;
+            CloseGoal();
+        }
+    }
+    private void ForceTaskComplete()
+    {
+        EventHandler.Trigger(new TaskCompleteEvent() { netId = PlayerManager.localPlayer.netId, actionNodeId = actionNodeId });
+    }
+
+    /// <summary>
+    /// 设置任务目标
+    /// </summary>
+    /// <param name="text"></param>任务目标描述
+    public void SetGoal(string text)
+    {
+        goalText.text = "任务目标：" + text;
+        goalPanel.SetActive(true);
+    }
+
+    /// <summary>
+    /// 关闭任务目标
+    /// </summary>
+    public void CloseGoal()
+    {
+        goalPanel.SetActive(false);
+    }
+    #endregion
 }

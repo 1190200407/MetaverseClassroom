@@ -33,7 +33,6 @@ public struct RoomPropertyChangeEvent
 public struct RoleOccupiedChangeEvent
 {
     public string roleId;
-    public string roleName;
     public int netId;
 }
 
@@ -52,3 +51,19 @@ public struct TransitionOpenEndEvent {}
 public struct TransitionCloseEndEvent {}
 
 public struct GrabResetEvent {}
+
+public struct EndActivityEvent {}
+
+public struct NewTaskEvent
+{
+    public uint netId;
+    public string taskDescription;
+    public int actionNodeId;
+}
+
+public struct TaskCompleteEvent
+{
+    public uint netId;
+    public int actionNodeId;
+}
+

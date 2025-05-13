@@ -4,8 +4,6 @@ using Mirror;
 // 表演活动，需要玩家进行表演，并根据表演的完成度进行评分
 public class ActingActivity : BaseActivity
 {
-    private bool isActionTreeExecuting = false;
-
     public ActingActivity(string activityName, string activityDescription, bool needToChangeScene, string sceneName) : base(activityName, activityDescription, needToChangeScene, sceneName)
     {
     }
@@ -15,6 +13,7 @@ public class ActingActivity : BaseActivity
         base.Start();
 
         //TODO 读取JSON
+        Debug.Log("开始表演活动");
         ClassManager.instance.roleList.Clear();
         ClassManager.instance.roleList.Add("role1", "服务员");
         ClassManager.instance.roleList.Add("role2", "顾客1");
@@ -83,11 +82,19 @@ public class ActingActivity : BaseActivity
         node1.children.Add(node3);
 
         actionTree.root = node1;
+        actionTree.leafNodes = new Dictionary<int, ActionTreeLeafNode>
+        {
+            { 4, node4 },
+            { 5, node5 },
+            { 6, node6 },
+            { 7, node7 }
+        };
     }
 
     public override void End()
     {
         isActionTreeExecuting = false;
+        EventHandler.Trigger(new EndActivityEvent());
     }
 }
 

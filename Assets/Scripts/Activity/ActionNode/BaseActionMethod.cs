@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Action
+namespace Actions
 {
     public class BaseActionMethod
     {
@@ -10,14 +10,42 @@ namespace Action
         public string actionDescription;
         public ActionTreeLeafNode actionNode;
 
-        public virtual void ParseParams(Dictionary<string, object> @params)
+        public int playerId;
+        public GameObject player;
+        public bool isLocalAction;
+        public string role;
+
+        /// <summary>
+        /// 初始化，一般包括解析参数，修改任务UI或者触发事件等等
+        /// </summary>
+        public virtual void Initialize()
         {
+            string roleId = actionNode.role;
+            role = ClassManager.instance.roleList[roleId];
+            playerId = ClassManager.instance.roleOccupied[roleId];
+            isLocalAction = playerId == -1 || playerId == PlayerManager.localPlayer.netId;
+            
+            // 如果playerId为-1，则通过名称获取GameObject
+            if (playerId == -1)
+            {
+                player = GameObject.Find("NPC" + roleId);
+            }
+            // 如果playerId大于0，则通过netId获取GameObject
+            else if (playerId > 0)
+            {
+                player = Mirror.Utils.GetSpawnedInServerOrClient((uint)playerId).gameObject;
+            }
         }
 
         public virtual IEnumerator ExecuteCoroutine()
         {
             Debug.Log($"ExecuteCoroutine {actionName}");
-            yield return new WaitForSeconds(1f);
+            // 默认动作：等待改节点执行完成，如果其他玩家没有执行完成，则等待1秒
+            float startTime = Time.time;
+            while (!actionNode.accomplished && Time.time - startTime < 1f)
+            {
+                yield return null;
+            }
         }
     }
 }

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Net.Http.Headers;
 using UnityEngine;
 using Mirror;
+using System;
 
 public class ClassManager : NetworkSingleton<ClassManager>
 {
@@ -75,73 +76,35 @@ public class ClassManager : NetworkSingleton<ClassManager>
     [Command(requiresAuthority = false)]
     public void CommandSetRoleOccupied(string roleId, int netId)
     {
-        RpcSetRoleOccupied(roleId, netId,roleOccupied[roleId]);
         roleOccupied[roleId] = netId;
+        RpcSetRoleOccupied(roleId, netId);
     }
 
     // 通知客户端属性变化
     [ClientRpc]
-    private void RpcSetRoleOccupied(string roleId, int netId,int oldNetId)
+    private void RpcSetRoleOccupied(string roleId, int netId)
     {
-        if (netId == 0 || netId == -1)
-        {
-            EventHandler.Trigger(new RoleOccupiedChangeEvent() { roleId = roleId, roleName = "", netId = oldNetId });
-        }
-        if (roleOccupied.ContainsKey(roleId))
-        {
-            EventHandler.Trigger(new RoleOccupiedChangeEvent() { roleId = roleId, roleName = roleList[roleId], netId = netId });
-        }
-        else
+        if (!roleList.ContainsKey(roleId))
         {
             Debug.LogError("没有找到角色 " + roleId);
-            EventHandler.Trigger(new RoleOccupiedChangeEvent() { roleId = roleId, roleName = "", netId = netId });
+            return;
         }
-    }
-
-    // 查询角色占用情况（Command）
-    [Command(requiresAuthority = false)]
-    public void CmdGetRoleOccupied(string roleId, NetworkConnectionToClient conn = null)
-    {
-        if (isServer && conn != null)
-        {
-            // 查询角色占用情况
-            if (roleOccupied.ContainsKey(roleId))
-            {
-                // 只通过 TargetRpc 返回给调用者（特定客户端）
-                TargetReplyRoleOccupied(conn, roleId, roleOccupied[roleId]);
-                
-            }
-            else
-            {
-                // 如果没有找到属性，可以返回空值或者错误信息
-                TargetReplyRoleOccupied(conn, roleId, -1);
-            }
-        }
-    }
-
-    [TargetRpc]
-    private void TargetReplyRoleOccupied(NetworkConnectionToClient conn, string roleId, int netId)
-    {
+        
         roleOccupied[roleId] = netId;
+        EventHandler.Trigger(new RoleOccupiedChangeEvent() { roleId = roleId, netId = netId});
     }
     #endregion
 
+    #region 生命周期
     void Start()
     {
         StartCoroutine(StartCourseCoroutine());
     }
 
-    void Update()
-    {
-        if (currentActivity != null)
-        {
-            currentActivity.OnUpdate();
-        }
-    }
-
     public IEnumerator StartCourseCoroutine()
     {
-        yield return null;
+        // 等待本地玩家初始化
+        yield return new WaitUntil(() => PlayerManager.localPlayer != null);
 
         // TODO 暂时这些数据，之后需要从服务器获取
         roomProperties = new Dictionary<string, string>();
@@ -176,6 +139,76 @@ public class ClassManager : NetworkSingleton<ClassManager>
         isInClassroom = true;
         EventHandler.Trigger(new SceneLoadedEvent());
     }
+    
+
+    void Update()
+    {
+        if (currentActivity != null)
+        {
+            currentActivity.OnUpdate();
+        }
+    }
+
+    void OnEnable()
+    {
+        EventHandler.Register<TaskCompleteEvent>(OnTaskComplete);
+    }
+
+    void OnDisable()
+    {
+        EventHandler.Unregister<TaskCompleteEvent>(OnTaskComplete);
+    }
+
+    private Delegate onEndActivity;
+    private Delegate onStartActionTree;
+    private Delegate onStartActivity;
+    private Delegate onTaskComplete;
+
+    public override void OnStartClient()
+    {
+        base.OnStartClient();
+        Debug.Log("StartClient");
+
+        onTaskComplete = new Action<TaskCompleteMessageData>(OnTaskCompleteMessage);
+        onStartActivity = new Action<StartActivityMessageData>(OnStartActivity);
+        onEndActivity = new Action(OnEndActivity);
+        onStartActionTree = new Action(OnStartActionTree);
+
+        NetworkMessageHandler.instance.RegisterHandler(NetworkMessageType.TaskComplete, onTaskComplete);
+        NetworkMessageHandler.instance.RegisterHandler(NetworkMessageType.StartActivity, onStartActivity);
+        NetworkMessageHandler.instance.RegisterHandler(NetworkMessageType.EndActivity, onEndActivity);
+        NetworkMessageHandler.instance.RegisterHandler(NetworkMessageType.StartActionTree, onStartActionTree);
+    }
+
+    public override void OnStopClient()
+    {
+        base.OnStopClient();
+        NetworkMessageHandler.instance.UnregisterHandler(NetworkMessageType.TaskComplete, onTaskComplete);
+        NetworkMessageHandler.instance.UnregisterHandler(NetworkMessageType.StartActivity, onStartActivity);
+        NetworkMessageHandler.instance.UnregisterHandler(NetworkMessageType.EndActivity, onEndActivity);
+        NetworkMessageHandler.instance.UnregisterHandler(NetworkMessageType.StartActionTree, onStartActionTree);
+    }
+    #endregion
+
+    #region 活动
+    public void OnStartActivity(StartActivityMessageData data)
+    {
+        StartActivity(availableActivities[data.activityIndex]);
+    }
+
+    public void OnEndActivity()
+    {
+        EndActivity();
+    }
+
+    public void OnStartActionTree()
+    {
+        if (currentActivity != null)
+        {
+            currentActivity.isActionTreeExecuting = true;
+            StartCoroutine(currentActivity.actionTree.Execute());
+        }
+    }
 
     public void StartActivity(BaseActivity activity)
     {
@@ -191,19 +224,26 @@ public class ClassManager : NetworkSingleton<ClassManager>
     {
         if (currentActivity != null)
         {
+            // 服务器取消选角
+            if (NetworkServer.active)
+            {
+                foreach (var role in roleList)
+                {
+                    CommandSetRoleOccupied(role.Key, 0);
+                }
+            }
+
             currentActivity.End();
             currentActivity = null;
+
             if (backToClassroom)
             {
                 // 向所有玩家发送切换场景的消息
-                foreach (var conn in NetworkServer.connections.Values)
-                {
-                    conn.Send(new ChangeSceneMessage("Classroom"));
-                }
+                ChangeScene("Classroom");
             }
         }
     }
-
+    
     public void ChangeScene(string sceneName)
     {
         // 弹出直到只剩游戏UI
@@ -220,4 +260,24 @@ public class ClassManager : NetworkSingleton<ClassManager>
         EventHandler.Trigger(new ChangeSceneEvent() { sceneName = nextScene });
         isInClassroom = nextScene == "Classroom"; // 切换场景后，判断是否在教室,之后换成其他判断方式
     }
+
+    // 在本地完成任务后，会触发本地的任务完成事件，然后会向客户端全体发送任务完成消息
+    public void OnTaskComplete(TaskCompleteEvent @event)
+    {
+        if (currentActivity != null)
+        {
+            NetworkMessageHandler.instance.BroadcastMessage(NetworkMessageType.TaskComplete, new TaskCompleteMessageData() { actionNodeId = @event.actionNodeId, netId = @event.netId });
+        }
+    }
+
+    // 处理从网络中获得的任务完成消息，将任务完成状态设置为true
+    public void OnTaskCompleteMessage(TaskCompleteMessageData data)
+    {
+        if (currentActivity != null && currentActivity.actionTree.leafNodes != null && currentActivity.actionTree.leafNodes.ContainsKey(@data.actionNodeId))
+        {
+            ActionTreeLeafNode node = currentActivity.actionTree.leafNodes[@data.actionNodeId];
+            node.accomplished = true;
+        }
+    }
+    #endregion
 }

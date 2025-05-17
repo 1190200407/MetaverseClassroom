@@ -3962,4 +3962,14 @@
     <interaction type="RoleSetter">
     </interaction>
   </element>
+  <element id="441">
+    <name>PickUpItem</name>
+    <web_path>Prefabs/PickUpItem</web_path>
+    <position x="-1.981666" y="0.082" z="-0.8659042" />
+    <rotation x="0" y="0" z="0" />
+    <scale x="0.5" y="0.5" z="0.5" />
+    <parent_id>0</parent_id>
+    <tag>Untagged</tag>
+    <interaction type="Pick">测试方块</interaction>
+  </element>
 </Elements>

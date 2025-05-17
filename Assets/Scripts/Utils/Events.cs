@@ -51,7 +51,6 @@ public struct TransitionOpenEndEvent {}
 public struct TransitionCloseEndEvent {}
 
 public struct GrabResetEvent {}
-
 public struct EndActivityEvent {}
 
 public struct NewTaskEvent
@@ -67,3 +66,39 @@ public struct TaskCompleteEvent
     public int actionNodeId;
 }
 
+#region 拾取物品相关
+public struct ResetItemEvent
+{
+    public uint holderId;
+}
+public struct PickItemEvent
+{
+    public uint holderId;
+    public string itemKey;
+}   
+public struct DropItemEvent
+{
+    public uint holderId;
+    public Vector3 position;
+}
+
+public struct ResetItemCallback
+{
+    public uint holderId;
+}
+public struct PickItemCallback
+{
+    public uint holderId;
+    public string itemKey;
+}   
+public struct DropItemCallback
+{
+    public uint holderId;
+    public Vector3 position;
+}
+
+public struct UIChangeEvent
+{
+    public string text;
+}
+#endregion

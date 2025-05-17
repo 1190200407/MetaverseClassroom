@@ -126,7 +126,6 @@ public class PlayerManager : NetworkBehaviour
         }
     }
     #endregion
-
     
     #region 同步属性
     [SyncVar(hook = nameof(OnPlayerNameChanged))]
@@ -255,10 +254,7 @@ public class PlayerManager : NetworkBehaviour
     // 属性变更回调
     private void OnPlayerNameChanged(string oldValue, string newValue)
     {
-        if (!isLocalPlayer)
-        {
-            nameText.SetName(newValue);
-        }
+        nameText.SetName(newValue);
     }
     
     private void OnRoleIdChanged(string oldValue, string newValue)

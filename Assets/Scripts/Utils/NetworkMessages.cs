@@ -10,6 +10,9 @@ public enum NetworkMessageType
     EndActivity,
     StartActionTree,
     TaskComplete,
+    ItemPickup,
+    ItemDrop,
+    ItemReset
 }
 
 public struct NetworkMessageClassroom : NetworkMessage
@@ -30,5 +33,25 @@ public struct TaskCompleteMessageData
 {
     public int actionNodeId;
     public uint netId;
+}
+
+[Serializable]
+public struct ItemPickMessageData
+{
+    public uint holderId;
+    public string itemKey;
+}
+
+[Serializable]
+public struct ItemDropMessageData
+{
+    public uint holderId;
+    public Vector3 position;
+}
+
+[Serializable]
+public struct ItemResetMessageData
+{
+    public uint holderId;
 }
 

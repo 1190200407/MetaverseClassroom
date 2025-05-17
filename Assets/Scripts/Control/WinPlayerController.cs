@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
@@ -109,6 +110,22 @@ public class WinPlayerController : PlayerController
             {
                 EventHandler.Trigger(new GrabResetEvent());
             }
+            
+            // 按下R键，重置当前玩家持有的物体
+            if (Input.GetKeyDown(KeyCode.R))
+            {
+                EventHandler.Trigger(new ResetItemEvent(){holderId = PlayerManager.localPlayer.netId});
+            }
+
+            // 按下空格键，放置玩家持有的物体
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                Vector3? pos = GetRayHitPos();
+                if (pos.HasValue)
+                {
+                    EventHandler.Trigger(new DropItemEvent(){holderId = PlayerManager.localPlayer.netId,position = pos.Value});
+                }
+            }
         }
 
         // 更新红点的位置
@@ -181,6 +198,21 @@ public class WinPlayerController : PlayerController
         transform.localEulerAngles = new Vector3(0, rotationX, 0);
         if (playerCamera != null)
             playerCamera.transform.localEulerAngles = new Vector3(-rotationY, 0, 0);
+    }
+
+    private Vector3? GetRayHitPos()
+    {
+        if (playerCamera != null)
+        {
+            RaycastHit hit;
+            Ray ray = new Ray(playerCamera.transform.position, playerCamera.transform.forward); // 从摄像机出发，沿摄像机的正前方发射射线
+
+            if (Physics.Raycast(ray, out hit))
+            {
+                return hit.point;
+            }
+        }
+        return null;
     }
     
     private void UpdateRedDotPosition()

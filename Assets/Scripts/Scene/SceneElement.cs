@@ -84,7 +84,7 @@ public class SceneElement : MonoBehaviour
     {
         interactionScript?.OnSelectEnter();
     }
-
+    
     /// <summary>
     /// 当射线松开时响应的函数
     /// </summary>

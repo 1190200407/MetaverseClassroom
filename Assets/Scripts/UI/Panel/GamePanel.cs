@@ -10,7 +10,7 @@ public class GamePanel : BasePanel
     private Text networkStatusTxt;
     private Button muteBtn;
     private Button unmuteBtn;
-
+    private TextMeshProUGUI itemText;
 
     #region 任务相关
     private int actionNodeId; //任务目标的id
@@ -42,6 +42,8 @@ public class GamePanel : BasePanel
         networkStatusTxt = UIMethods.instance.GetOrAddComponentInChild<Text>(ActiveObj, "NetworkStatusText");
         muteBtn = UIMethods.instance.GetOrAddComponentInChild<Button>(ActiveObj, "MuteButton");
         unmuteBtn = UIMethods.instance.GetOrAddComponentInChild<Button>(ActiveObj, "UnmuteButton");
+        itemText = UIMethods.instance.GetOrAddComponentInChild<TextMeshProUGUI>(ActiveObj, "HoldingItem");
+        
         muteBtn.onClick.AddListener(OnMuteBtnClick);
         unmuteBtn.onClick.AddListener(OnUnmuteBtnClick);
         UpdateMuteState();
@@ -59,6 +61,7 @@ public class GamePanel : BasePanel
         base.OnEnable();
         EventHandler.Register<NewTaskEvent>(OnNewTask);
         EventHandler.Register<TaskCompleteEvent>(OnTaskComplete);
+        EventHandler.Register<UIChangeEvent>(UpdateItemText);
     }
     
     public override void OnDestroy()
@@ -66,6 +69,7 @@ public class GamePanel : BasePanel
         base.OnDestroy();
         EventHandler.Unregister<NewTaskEvent>(OnNewTask);
         EventHandler.Unregister<TaskCompleteEvent>(OnTaskComplete);
+        EventHandler.Unregister<UIChangeEvent>(UpdateItemText);
     }
 
     public override void OnUpdate()
@@ -181,6 +185,14 @@ public class GamePanel : BasePanel
     public void CloseGoal()
     {
         goalPanel.SetActive(false);
+    }
+    #endregion
+    
+    #region 拾取物品相关
+
+    public void UpdateItemText(UIChangeEvent @event)
+    {
+        itemText.text = @event.text;
     }
     #endregion
 }

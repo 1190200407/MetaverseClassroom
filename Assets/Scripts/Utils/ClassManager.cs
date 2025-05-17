@@ -152,17 +152,30 @@ public class ClassManager : NetworkSingleton<ClassManager>
     void OnEnable()
     {
         EventHandler.Register<TaskCompleteEvent>(OnTaskComplete);
+        
+        EventHandler.Register<PickItemEvent>(SendPickItemNetMessage);
+        EventHandler.Register<ResetItemEvent>(SendResetItemNetMessage);
+        EventHandler.Register<DropItemEvent>(SendDropItemNetMessage);
     }
 
     void OnDisable()
     {
         EventHandler.Unregister<TaskCompleteEvent>(OnTaskComplete);
+        
+        EventHandler.Unregister<PickItemEvent>(SendPickItemNetMessage);
+        EventHandler.Unregister<ResetItemEvent>(SendResetItemNetMessage);
+        EventHandler.Unregister<DropItemEvent>(SendDropItemNetMessage);
     }
 
     private Delegate onEndActivity;
     private Delegate onStartActionTree;
     private Delegate onStartActivity;
     private Delegate onTaskComplete;
+    
+    private Delegate onItemPick;
+    private Delegate onItemReset;
+    private Delegate onItemDrop;
+    
 
     public override void OnStartClient()
     {
@@ -173,11 +186,22 @@ public class ClassManager : NetworkSingleton<ClassManager>
         onStartActivity = new Action<StartActivityMessageData>(OnStartActivity);
         onEndActivity = new Action(OnEndActivity);
         onStartActionTree = new Action(OnStartActionTree);
+        
 
         NetworkMessageHandler.instance.RegisterHandler(NetworkMessageType.TaskComplete, onTaskComplete);
         NetworkMessageHandler.instance.RegisterHandler(NetworkMessageType.StartActivity, onStartActivity);
         NetworkMessageHandler.instance.RegisterHandler(NetworkMessageType.EndActivity, onEndActivity);
         NetworkMessageHandler.instance.RegisterHandler(NetworkMessageType.StartActionTree, onStartActionTree);
+        
+        #region 物品拾取 网络事件监听
+        onItemPick = new Action<ItemPickMessageData>(SendPickItemCallback);
+        onItemReset = new Action<ItemResetMessageData>(SendResetItemCallback);
+        onItemDrop = new Action<ItemDropMessageData>(SendDropItemCallback);
+        
+        NetworkMessageHandler.instance.RegisterHandler(NetworkMessageType.ItemPickup, onItemPick);
+        NetworkMessageHandler.instance.RegisterHandler(NetworkMessageType.ItemReset, onItemReset);
+        NetworkMessageHandler.instance.RegisterHandler(NetworkMessageType.ItemDrop, onItemDrop);
+        #endregion 
     }
 
     public override void OnStopClient()
@@ -187,6 +211,12 @@ public class ClassManager : NetworkSingleton<ClassManager>
         NetworkMessageHandler.instance.UnregisterHandler(NetworkMessageType.StartActivity, onStartActivity);
         NetworkMessageHandler.instance.UnregisterHandler(NetworkMessageType.EndActivity, onEndActivity);
         NetworkMessageHandler.instance.UnregisterHandler(NetworkMessageType.StartActionTree, onStartActionTree);
+        
+        #region 物品拾取 网络事件取消监听
+        NetworkMessageHandler.instance.UnregisterHandler(NetworkMessageType.ItemPickup, onItemPick);
+        NetworkMessageHandler.instance.UnregisterHandler(NetworkMessageType.ItemReset, onItemReset);
+        NetworkMessageHandler.instance.UnregisterHandler(NetworkMessageType.ItemDrop, onItemDrop);
+        #endregion
     }
     #endregion
 
@@ -278,6 +308,37 @@ public class ClassManager : NetworkSingleton<ClassManager>
             ActionTreeLeafNode node = currentActivity.actionTree.leafNodes[@data.actionNodeId];
             node.accomplished = true;
         }
+    }
+    #endregion
+
+    #region 拾取物品
+
+    public void SendPickItemNetMessage(PickItemEvent @event)
+    {
+        NetworkMessageHandler.instance.BroadcastMessage(NetworkMessageType.ItemPickup,new ItemPickMessageData(){holderId = @event.holderId,itemKey = @event.itemKey});
+    }
+
+    public void SendResetItemNetMessage(ResetItemEvent @event)
+    {
+        NetworkMessageHandler.instance.BroadcastMessage(NetworkMessageType.ItemReset,new ItemResetMessageData(){holderId = @event.holderId});
+    }
+
+    public void SendDropItemNetMessage(DropItemEvent @event)
+    {
+        NetworkMessageHandler.instance.BroadcastMessage(NetworkMessageType.ItemDrop,new ItemDropMessageData(){holderId = @event.holderId,position = @event.position});
+    }
+    
+    public void SendPickItemCallback(ItemPickMessageData data)
+    {
+        EventHandler.Trigger(new PickItemCallback(){holderId = data.holderId,itemKey = data.itemKey});
+    }
+    public void SendResetItemCallback(ItemResetMessageData data)
+    {
+        EventHandler.Trigger(new ResetItemCallback(){holderId = data.holderId});
+    }
+    public void SendDropItemCallback(ItemDropMessageData data)
+    {
+        EventHandler.Trigger(new DropItemCallback(){holderId = data.holderId,position = data.position});
     }
     #endregion
 }

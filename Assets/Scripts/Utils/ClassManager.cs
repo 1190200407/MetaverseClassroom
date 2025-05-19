@@ -112,8 +112,8 @@ public class ClassManager : NetworkSingleton<ClassManager>
 
         // 初始化活动列表
         availableActivities = new List<BaseActivity>();
-        availableActivities.Add(new ActingActivity("ActingActivity_Dining", "英语情景——餐馆点餐", true, "Cafe"));
-        availableActivities.Add(new ActingActivity("ActingActivity_CheckIn", "英语情景——酒店入住", true, "Hotel"));
+        availableActivities.Add(new ActingActivity("ActingActivity_Dining", "英语情景——餐馆点餐", true, "Cafe", "CourseJsons/EnglishActing"));
+        availableActivities.Add(new ActingActivity("ActingActivity_CheckIn", "英语情景——酒店入住", true, "Hotel", "CourseJsons/EnglishActing"));
 
         // 显示加载界面
         UIManager.instance.Push(new LoadPanel(new UIType("Panels/LoadPanel", "LoadPanel")));

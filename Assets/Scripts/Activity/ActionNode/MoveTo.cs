@@ -15,7 +15,7 @@ namespace Actions
             base.Initialize();
             
             // 场景坐标转为世界坐标
-            pos = (Vector3)actionNode.actionParams["position"];
+            pos = new Vector3(float.Parse(actionNode.actionParams["posX"]), float.Parse(actionNode.actionParams["posY"]), float.Parse(actionNode.actionParams["posZ"]));
             worldPos = pos + SceneLoader.instance.PathToSceneObject[ClassManager.instance.currentScene].transform.position;
 
             // 如果是玩家，则提供任务面板
@@ -34,7 +34,7 @@ namespace Actions
                 Debug.Log($"控制玩家 {role} 移动到 {pos}");
                 do
                 {
-                    if (player == null || Vector3.SqrMagnitude(player.transform.position - worldPos) <= 0.1f)
+                    if (player == null || Vector3.SqrMagnitude(player.transform.position - worldPos) <= 1f)
                     {
                         // 如果玩家已经到达目标位置，则任务完成
                         EventHandler.Trigger(new TaskCompleteEvent() { netId = (uint)playerId, actionNodeId = actionNode.id });

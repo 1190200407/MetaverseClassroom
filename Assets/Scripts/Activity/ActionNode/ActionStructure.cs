@@ -83,8 +83,10 @@ public class ActionTreeLeafNode : IActionTreeNode
     public bool isExecuting { get; set; }
     public string name;
     public string role;
+    public float delayTime;
     public string actionMethodName;
-    public Dictionary<string, object> actionParams;
+    public Dictionary<string, string> actionParams;
+    public Dictionary<string, string> errorHandling;
 
     // 用于同步行为树，指定角色执行完该节点后，通知其他角色该节点执行完成
     public bool accomplished;
@@ -110,6 +112,9 @@ public class ActionTreeLeafNode : IActionTreeNode
             yield break;
         }
 
+        // delayTime单位为ms
+        yield return new WaitForSeconds(delayTime / 1000f);
+
         BaseActionMethod actionMethod = (BaseActionMethod)Activator.CreateInstance(actionMethodType);
         actionMethod.actionNode = this;
         actionMethod.Initialize();
@@ -118,4 +123,13 @@ public class ActionTreeLeafNode : IActionTreeNode
 
         isExecuting = false;
     }
+}
+
+public struct ActionData
+{
+    public float delayTime;
+    public string role;
+    public string actionMethodName;
+    public Dictionary<string, string> actionParams;
+    public Dictionary<string, string> errorHandling;
 }

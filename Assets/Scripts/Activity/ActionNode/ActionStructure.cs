@@ -115,11 +115,16 @@ public class ActionTreeLeafNode : IActionTreeNode
         // delayTime单位为ms
         yield return new WaitForSeconds(delayTime / 1000f);
 
+        // 创建actionMethod实例
         BaseActionMethod actionMethod = (BaseActionMethod)Activator.CreateInstance(actionMethodType);
         actionMethod.actionNode = this;
         actionMethod.Initialize();
 
+        // 执行actionMethod
         yield return actionMethod.ExecuteCoroutine();
+
+        // 执行完成回调
+        actionMethod.OnComplete();
 
         isExecuting = false;
     }

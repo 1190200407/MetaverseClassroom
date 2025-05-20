@@ -102,7 +102,9 @@
             "delayTime": 1000,
             "roleId": "waiter",
             "parameters": {
-                "resources": "order"
+                "resources": "order",
+                "targetElementId": 429,
+                "targetRole": "customer"
             },
             "errorHandling": {
                 "onError": "skip",
@@ -156,7 +158,9 @@
             "delayTime": 1000,
             "roleId": "waiter",
             "parameters": {
-                "resources": "drink"
+                "resources": "drink",
+                "targetElementId": 52,
+                "targetRole": "customer"
             },
             "errorHandling": {
                 "onError": "skip",

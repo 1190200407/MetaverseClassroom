@@ -91,6 +91,9 @@ public class Sit : InteractionScript
         
         // 通过ClassManager更新房间属性
         ClassManager.instance.CommandSetRoomProperty(chairKey, "true");
+
+        // 触发事件
+        EventHandler.Trigger(new InteractionEvent() { interactionType = "sit", elementId = element.id });
     }
 
     private void UpdateChairVisual()

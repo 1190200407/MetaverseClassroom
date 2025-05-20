@@ -70,15 +70,18 @@ public struct TaskCompleteEvent
 public struct ResetItemEvent
 {
     public uint holderId;
+    public string elementId;
 }
 public struct PickItemEvent
 {
     public uint holderId;
+    public string elementId;
     public string itemKey;
 }   
 public struct DropItemEvent
 {
     public uint holderId;
+    public string elementId;
     public Vector3 position;
 }
 
@@ -102,3 +105,11 @@ public struct UIChangeEvent
     public string text;
 }
 #endregion
+
+public struct InteractionEvent
+{
+    public string interactionType;
+    public string elementId;
+}
+
+

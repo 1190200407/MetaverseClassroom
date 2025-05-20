@@ -99,6 +99,7 @@ public struct DropItemCallback
 
 public struct UIChangeEvent
 {
+    public uint holderId;
     public string text;
 }
 #endregion

@@ -71,7 +71,7 @@ public class Pick : InteractionScript
             EventHandler.Register<ResetItemCallback>(ResetItemCallback);
             EventHandler.Register<DropItemCallback>(DropItemCallback);
             //发送UI修改事件
-            EventHandler.Trigger(new UIChangeEvent(){text = "持有物品："+itemName});
+            EventHandler.Trigger(new UIChangeEvent(){holderId = callback.holderId,text = "持有物品："+itemName});
         }
     }
 
@@ -90,7 +90,7 @@ public class Pick : InteractionScript
             EventHandler.Unregister<ResetItemCallback>(ResetItemCallback);
             EventHandler.Unregister<DropItemCallback>(DropItemCallback);
             //发送UI修改事件
-            EventHandler.Trigger(new UIChangeEvent(){text = ""});
+            EventHandler.Trigger(new UIChangeEvent(){holderId = callback.holderId,text = ""});
         }
     }
 
@@ -109,7 +109,7 @@ public class Pick : InteractionScript
             EventHandler.Unregister<ResetItemCallback>(ResetItemCallback);
             EventHandler.Unregister<DropItemCallback>(DropItemCallback);
             //发送UI修改事件
-            EventHandler.Trigger(new UIChangeEvent(){text = ""});
+            EventHandler.Trigger(new UIChangeEvent(){holderId = callback.holderId,text = ""});
         }
     }
     #endregion

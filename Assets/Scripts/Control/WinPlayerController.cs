@@ -64,6 +64,10 @@ public class WinPlayerController : PlayerController
     public void OnDisable() {
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.None;
+    }
+
+    private void OnDestroy()
+    {
         EventHandler.Unregister<PlayerChangeDataEvent>(changePlayerData); //注销用户修改基本参数事件
     }
 

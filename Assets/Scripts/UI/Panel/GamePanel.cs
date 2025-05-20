@@ -192,7 +192,10 @@ public class GamePanel : BasePanel
 
     public void UpdateItemText(UIChangeEvent @event)
     {
-        itemText.text = @event.text;
+        if (PlayerManager.localPlayer.netId == @event.holderId)
+        {
+            itemText.text = @event.text;
+        }
     }
     #endregion
 }

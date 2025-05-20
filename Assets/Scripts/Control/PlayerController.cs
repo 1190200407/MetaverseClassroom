@@ -33,7 +33,7 @@ public class PlayerController : MonoBehaviour
 
     public virtual void ResetTransform(Transform sceneTransform)
     {
-        transform.position = sceneTransform.position;
+        transform.position = sceneTransform.position + new Vector3(0,5,0);
         transform.rotation = Quaternion.identity;
     }
     
@@ -92,7 +92,7 @@ public class PlayerController : MonoBehaviour
     /// 修改当前读取的玩家参数
     /// </summary>
     /// <param name="data"></param>
-    protected void changePlayerData(PlayerChangeDataEvent @event)
+    protected virtual void changePlayerData(PlayerChangeDataEvent @event)
     {
         changeData(@event.data);
     }

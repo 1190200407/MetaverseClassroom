@@ -105,6 +105,7 @@ public class Whiteboard : MonoBehaviour
         EventHandler.Register<RoomPropertyChangeEvent>(OnRoomPropertyChange);
         EventHandler.Register<ChangeSlideEvent>(OnChangeSlideEvent);
         EventHandler.Register<SceneLoadedEvent>(OnSceneLoaded);
+        EventHandler.Register<PPTPathUpdatedEvent>(OnPPTPathUpdated);
     }
 
     private void OnDisable()
@@ -112,6 +113,7 @@ public class Whiteboard : MonoBehaviour
         EventHandler.Unregister<RoomPropertyChangeEvent>(OnRoomPropertyChange);
         EventHandler.Unregister<ChangeSlideEvent>(OnChangeSlideEvent);
         EventHandler.Unregister<SceneLoadedEvent>(OnSceneLoaded);
+        EventHandler.Unregister<PPTPathUpdatedEvent>(OnPPTPathUpdated);
     }
 
     private void OnDestroy()
@@ -214,5 +216,33 @@ public class Whiteboard : MonoBehaviour
                 CurrentMode = WhiteboardMode.Monitor;
             }
         }
+    }
+
+    private void OnPPTPathUpdated(PPTPathUpdatedEvent @event)
+    {
+        // 从ClassManager处获得已更新的PPT文件路径
+        string pptFilePath = @event.newPath;
+        string pptFullPath = Path.Combine(Application.streamingAssetsPath, "PPTs/" + pptFilePath);
+
+        Debug.Log("Whiteboard: PPT路径已更新: " + pptFullPath);
+        // 如果pptFullPath不存在，则退出
+        if (!File.Exists(pptFullPath))
+        {
+            Debug.LogError("PPT文件不存在: " + pptFullPath);
+            return;
+        }
+
+        string outputDir = Path.Combine(Path.GetDirectoryName(pptFullPath), Path.GetFileNameWithoutExtension(pptFilePath) + "_Images");
+
+        // 获取ppt图片
+        pptSlides = PPTToImageConverter.instance.ConvertPPTToImage(pptFullPath, outputDir);
+        Debug.Log("pptSlides.Length: " + pptSlides.Length);
+
+        if (pptSlides.Length == 0)
+        {
+            Debug.Log("ppt的页数不正确");
+        }
+        // 将页码重置为1
+        ChangeSlide(1-currentSlideIndex);
     }
 }

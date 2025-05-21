@@ -50,7 +50,7 @@ public class Pick : InteractionScript
     public override void OnSelectEnter()
     {
         //当被选中，标识选中人
-        EventHandler.Trigger(new PickItemEvent(){holderId = PlayerManager.localPlayer.netId,itemKey = itemKey});
+        EventHandler.Trigger(new PickItemEvent(){holderId = PlayerManager.localPlayer.netId, itemKey = itemKey, elementId = element.id});
     }
     #endregion
     
@@ -71,7 +71,7 @@ public class Pick : InteractionScript
             EventHandler.Register<ResetItemCallback>(ResetItemCallback);
             EventHandler.Register<DropItemCallback>(DropItemCallback);
             //发送UI修改事件
-            EventHandler.Trigger(new UIChangeEvent(){holderId = callback.holderId,text = "持有物品："+itemName});
+            EventHandler.Trigger(new UIChangeEvent(){text = "持有物品：" + itemName});
         }
     }
 
@@ -90,7 +90,9 @@ public class Pick : InteractionScript
             EventHandler.Unregister<ResetItemCallback>(ResetItemCallback);
             EventHandler.Unregister<DropItemCallback>(DropItemCallback);
             //发送UI修改事件
-            EventHandler.Trigger(new UIChangeEvent(){holderId = callback.holderId,text = ""});
+            EventHandler.Trigger(new UIChangeEvent(){text = ""});
+            //发送重置物品事件
+            EventHandler.Trigger(new ResetItemEvent(){elementId = element.id, holderId = callback.holderId});
         }
     }
 
@@ -109,7 +111,9 @@ public class Pick : InteractionScript
             EventHandler.Unregister<ResetItemCallback>(ResetItemCallback);
             EventHandler.Unregister<DropItemCallback>(DropItemCallback);
             //发送UI修改事件
-            EventHandler.Trigger(new UIChangeEvent(){holderId = callback.holderId,text = ""});
+            EventHandler.Trigger(new UIChangeEvent(){text = ""});
+            //发送放下物品事件
+            EventHandler.Trigger(new DropItemEvent(){elementId = element.id, position = callback.position, holderId = callback.holderId});
         }
     }
     #endregion

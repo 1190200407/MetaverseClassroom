@@ -37,6 +37,10 @@ namespace Actions
             }
         }
 
+        public virtual void OnComplete()
+        {
+        }
+
         public virtual IEnumerator ExecuteCoroutine()
         {
             Debug.Log($"ExecuteCoroutine {actionName}");

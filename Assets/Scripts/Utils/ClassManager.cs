@@ -8,6 +8,7 @@ using System;
 public class ClassManager : NetworkSingleton<ClassManager>
 {
     public bool isInClassroom = true;
+    [SyncVar(hook = nameof(OnPPTFilePathChanged))]
     public string pptFilePath;//PPT文件的路径
     public string currentScene;
     public string nextScene;
@@ -112,8 +113,8 @@ public class ClassManager : NetworkSingleton<ClassManager>
 
         // 初始化活动列表
         availableActivities = new List<BaseActivity>();
-        availableActivities.Add(new ActingActivity("ActingActivity_Dining", "英语情景——餐馆点餐", true, "Cafe"));
-        availableActivities.Add(new ActingActivity("ActingActivity_CheckIn", "英语情景——酒店入住", true, "Hotel"));
+        availableActivities.Add(new ActingActivity("ActingActivity_Dining", "英语情景——餐馆点餐", true, "Cafe", "CourseJsons/EnglishActing"));
+        availableActivities.Add(new ActingActivity("ActingActivity_CheckIn", "英语情景——酒店入住", true, "Hotel", "CourseJsons/EnglishActing"));
 
         // 显示加载界面
         UIManager.instance.Push(new LoadPanel(new UIType("Panels/LoadPanel", "LoadPanel")));
@@ -156,6 +157,9 @@ public class ClassManager : NetworkSingleton<ClassManager>
         EventHandler.Register<PickItemEvent>(SendPickItemNetMessage);
         EventHandler.Register<ResetItemEvent>(SendResetItemNetMessage);
         EventHandler.Register<DropItemEvent>(SendDropItemNetMessage);
+        
+        // 注册PPT路径变更事件
+        EventHandler.Register<ChangePPTPathEvent>(OnChangePPTPath);
     }
 
     void OnDisable()
@@ -165,6 +169,9 @@ public class ClassManager : NetworkSingleton<ClassManager>
         EventHandler.Unregister<PickItemEvent>(SendPickItemNetMessage);
         EventHandler.Unregister<ResetItemEvent>(SendResetItemNetMessage);
         EventHandler.Unregister<DropItemEvent>(SendDropItemNetMessage);
+        
+        // 取消注册PPT路径变更事件
+        EventHandler.Unregister<ChangePPTPathEvent>(OnChangePPTPath);
     }
 
     private Delegate onEndActivity;
@@ -339,6 +346,37 @@ public class ClassManager : NetworkSingleton<ClassManager>
     public void SendDropItemCallback(ItemDropMessageData data)
     {
         EventHandler.Trigger(new DropItemCallback(){holderId = data.holderId,position = data.position});
+    }
+    #endregion
+
+    #region PPT路径同步
+    // 处理PPT路径变更事件
+    private void OnChangePPTPath(ChangePPTPathEvent @event)
+    {
+        // 调用Command命令来修改服务器上的PPT路径
+        CommandChangePPTPath(@event.pptPath);
+    }
+    
+    // SyncVar钩子函数，当pptFilePath变量被修改时调用
+    private void OnPPTFilePathChanged(string oldPath, string newPath)
+    {
+        Debug.Log($"PPT路径已更新: {oldPath} -> {newPath}");
+        
+        // 触发PPT路径已更新事件，通知其他组件
+        EventHandler.Trigger(new PPTPathUpdatedEvent { newPath = newPath });
+    }
+    
+    // 服务器端修改PPT路径的Command
+    [Command(requiresAuthority = false)]
+    public void CommandChangePPTPath(string newPath)
+    {
+        // 在服务器上修改PPT路径
+        pptFilePath = newPath;
+        
+        // 通过SyncVar自动同步到所有客户端
+        // 无需额外的RPC调用，因为使用了SyncVar
+        
+        Debug.Log($"服务器PPT路径已更新为: {newPath}");
     }
     #endregion
 }

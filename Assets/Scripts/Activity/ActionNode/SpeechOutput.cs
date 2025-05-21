@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Actions
 {
-    public class Speak : BaseActionMethod
+    public class SpeechOutput : BaseActionMethod
     {
         private string text;
         

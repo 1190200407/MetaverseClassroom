@@ -11,10 +11,18 @@ public class Pick : InteractionScript
     public bool isHeld => holderId != -1;
     public string itemKey;
     private OutlineObject outline;
+    public Vector3 offset;
 
     public Transform originalParent;
     public Vector3 originalPosition;
     public Quaternion originalRotation;
+
+    [Serializable]
+    public class PickContent
+    {
+        public string itemName;
+        public Vector3 offset;
+    }
 
     #region 生命周期
     public override void OnEnable()
@@ -30,7 +38,11 @@ public class Pick : InteractionScript
     public override void Init(SceneElement element)
     {
         base.Init(element);
-        itemName = element.interactionContent;
+        // interactionContent 中有两个属性，一个是 itemName，一个是 offset
+        // 格式和Json一样，需要解析
+        var content = JsonUtility.FromJson<PickContent>(element.interactionContent);
+        itemName = content.itemName;
+        offset = content.offset;
         itemKey = string.Concat("pick_", ClassManager.instance.currentScene, "_", element.id);
         outline = element.gameObject.AddComponent<OutlineObject>();
         outline.enabled = false;
@@ -71,7 +83,7 @@ public class Pick : InteractionScript
             EventHandler.Register<ResetItemCallback>(ResetItemCallback);
             EventHandler.Register<DropItemCallback>(DropItemCallback);
             //发送UI修改事件
-            EventHandler.Trigger(new UIChangeEvent(){text = "持有物品：" + itemName});
+            EventHandler.Trigger(new UIChangeEvent(){text = "持有物品：" + itemName, holderId = callback.holderId});
         }
     }
 
@@ -90,7 +102,7 @@ public class Pick : InteractionScript
             EventHandler.Unregister<ResetItemCallback>(ResetItemCallback);
             EventHandler.Unregister<DropItemCallback>(DropItemCallback);
             //发送UI修改事件
-            EventHandler.Trigger(new UIChangeEvent(){text = ""});
+            EventHandler.Trigger(new UIChangeEvent(){text = "", holderId = callback.holderId});
             //发送重置物品事件
             EventHandler.Trigger(new ResetItemEvent(){elementId = element.id, holderId = callback.holderId});
         }
@@ -102,8 +114,9 @@ public class Pick : InteractionScript
         {
             holderId = -1;
             // 保存原始位置
+            element.transform.position = callback.position;
             element.transform.SetParent(originalParent);
-            element.transform.position = (callback.position+new Vector3(0,0.5f,0));
+            element.transform.localPosition += offset;
             element.transform.localRotation = originalRotation;
             //显示物体
             element.gameObject.SetActive(true);
@@ -111,7 +124,7 @@ public class Pick : InteractionScript
             EventHandler.Unregister<ResetItemCallback>(ResetItemCallback);
             EventHandler.Unregister<DropItemCallback>(DropItemCallback);
             //发送UI修改事件
-            EventHandler.Trigger(new UIChangeEvent(){text = ""});
+            EventHandler.Trigger(new UIChangeEvent(){text = "", holderId = callback.holderId});
             //发送放下物品事件
             EventHandler.Trigger(new DropItemEvent(){elementId = element.id, position = callback.position, holderId = callback.holderId});
         }

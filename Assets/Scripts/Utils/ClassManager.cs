@@ -130,6 +130,7 @@ public class ClassManager : NetworkSingleton<ClassManager>
             SceneLoader.instance.LoadSceneFromXml(activity.sceneName, false);
             yield return new WaitUntil(() => !SceneLoader.instance.isLoading);
         }
+        yield return new WaitForSeconds(0.1f);
 
         // 隐藏加载界面
         UIManager.instance.Pop(false);

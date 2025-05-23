@@ -23347,7 +23347,7 @@ MonoBehaviour:
   id: 
   path: 
   interactType: Pick
-  interactionContent: 
+  interactionContent: "{\"itemName\":\"\u83DC\u5355\",\"offset\":{\"x\":0,\"y\":0.066,\"z\":0}}"
 --- !u!1001 &1101497879
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -26970,7 +26970,7 @@ MonoBehaviour:
   id: 
   path: 
   interactType: Pick
-  interactionContent: 
+  interactionContent: "{\"itemName\":\"\u5496\u5561\",\"offset\":{\"x\":0,\"y\":0,\"z\":0}}"
 --- !u!1001 &1220636035
 PrefabInstance:
   m_ObjectHideFlags: 0

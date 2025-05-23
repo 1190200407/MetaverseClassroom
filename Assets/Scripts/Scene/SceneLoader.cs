@@ -157,6 +157,10 @@ public class SceneLoader : UnitySingleton<SceneLoader>
         }
 
         if (changeScene) ChangeSceneObject(newSceneObject);
+        else
+        {
+            newSceneObject.SetActive(false);
+        }
         isLoading = false;
     }
 }

@@ -33,7 +33,7 @@ public class PlayerController : MonoBehaviour
 
     public virtual void ResetTransform(Transform sceneTransform)
     {
-        transform.position = sceneTransform.position + new Vector3(0,5,0);
+        transform.position = sceneTransform.position;
         transform.rotation = Quaternion.identity;
     }
     

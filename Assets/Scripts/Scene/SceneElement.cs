@@ -36,6 +36,9 @@ public class SceneElement : MonoBehaviour
     }
 
     public void SetInteactionType(string type, string content = "") {
+        // 如果当前有交互脚本，则先执行该脚本的OnDisable，然后切换新脚本
+        interactionScript?.OnDisable();
+
         Type t = Type.GetType(type);
         if (t != null)
         {

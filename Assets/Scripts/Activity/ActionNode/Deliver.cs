@@ -41,12 +41,6 @@ namespace Actions
             if (@event.elementId == targetElementId)
             {
                 EventHandler.Trigger(new TaskCompleteEvent() { netId = (uint)playerId, actionNodeId = actionNode.id });
-
-                // 销毁任务提示箭头
-                GameObject.Destroy(taskHintArrow);
-
-                // 取消注册物品放置回调
-                EventHandler.Unregister<DropItemEvent>(OnDropItemEvent);
             }
         }
 
@@ -61,6 +55,15 @@ namespace Actions
             {
                 Debug.Log($"控制玩家 {playerId} 交付");
                 yield return new WaitUntil(() => actionNode.accomplished);
+
+                if (playerId != -1 && playerId == PlayerManager.localPlayer.netId)
+                {
+                    // 销毁任务提示箭头
+                    GameObject.Destroy(taskHintArrow);
+
+                    // 取消注册物品放置回调
+                    EventHandler.Unregister<DropItemEvent>(OnDropItemEvent);
+                }
             }
         }
     }

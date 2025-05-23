@@ -113,10 +113,16 @@
         },
         {
             "actionId": 5,
-            "actionMethod": "Sit",
+            "actionMethod": "Interact",
             "delayTime": 1000,
             "roleId": "customer",
-            "parameters": {},
+            "parameters":
+            {
+                "targetElementId": "",
+                "interactType": "Sit",
+                "interactWay": "SelectEnter",
+                "taskDescription": "坐下"
+            },
             "errorHandling": {
                 "onError": "forceComplete",
                 "errorMessage": "Sit input timeout"
@@ -125,7 +131,7 @@
         {
             "actionId": 6,
             "actionMethod": "SpeechOutput",
-            "delayTime": 5000,
+            "delayTime": 3000,
             "roleId": "waiter",
             "parameters": {
                 "text": "Are you ready to order?",
@@ -189,6 +195,97 @@
             "roleId": "customer",
             "parameters": {
                 "text": "Thank you.",
+                "emotion": "courteous",
+                "speed": "normal"
+            },
+            "errorHandling": {
+                "onError": "skip",
+                "errorMessage": "Voice input timeout"
+            }
+        },
+        {
+            "actionId": 11,
+            "actionMethod": "ChangeInteractType",
+            "delayTime": 0,
+            "roleId": "system",
+            "parameters": {
+                "targetElementId": 52,
+                "newInteractType": "Drink",
+                "newInteractionContent": ""
+            },
+            "errorHandling": {
+                "onError": "retry",
+                "errorMessage": "Change interactType failed"
+            }
+        },
+        {
+            "actionId": 12,
+            "actionMethod": "Interact",
+            "delayTime": 0,
+            "roleId": "customer",
+            "parameters": {
+                "targetElementId": 52,
+                "interactType": "Drink",
+                "interactWay": "SelectEnter",
+                "taskDescription": "喝咖啡"
+            },
+            "errorHandling": {
+                "onError": "skip",
+                "errorMessage": "interact input timeout"
+            }
+        },
+        {
+            "actionId": 13,
+            "actionMethod": "SpeechOutput",
+            "delayTime": 0,
+            "roleId": "customer",
+            "parameters": {
+                "text": "How much is it?",
+                "emotion": "courteous",
+                "speed": "normal"
+            },
+            "errorHandling": {
+                "onError": "skip",
+                "errorMessage": "Voice input timeout"
+            }
+        },
+        {
+            "actionId": 14,
+            "actionMethod": "SpeechOutput",
+            "delayTime": 0,
+            "roleId": "waiter",
+            "parameters": {
+                "text": "That'll be $2, please.",
+                "emotion": "courteous",
+                "speed": "normal"
+            },
+            "errorHandling": {
+                "onError": "skip",
+                "errorMessage": "Voice input timeout"
+            }
+        },
+        {
+            "actionId": 15,
+            "actionMethod": "SpeechOutput",
+            "delayTime": 0,
+            "roleId": "customer",
+            "parameters": {
+                "text": "Here you go.",
+                "emotion": "courteous",
+                "speed": "normal"
+            },
+            "errorHandling": {
+                "onError": "skip",
+                "errorMessage": "Voice input timeout"
+            }
+        },
+        {
+            "actionId": 16,
+            "actionMethod": "SpeechOutput",
+            "delayTime": 0,
+            "roleId": "waiter",
+            "parameters": {
+                "text": "Thank you. Have a good day!",
                 "emotion": "courteous",
                 "speed": "normal"
             },
@@ -283,6 +380,42 @@
                 "parentNodeId": 4,
                 "isLeafNode": "true",
                 "actionId": 10
+            },
+            {
+                "nodeId": 15,
+                "parentNodeId": 4,
+                "isLeafNode": "true",
+                "actionId": 11
+            },
+            {
+                "nodeId": 16,
+                "parentNodeId": 4,
+                "isLeafNode": "true",
+                "actionId": 12
+            },
+            {
+                "nodeId": 17,
+                "parentNodeId": 4,
+                "isLeafNode": "true",
+                "actionId": 13
+            },
+            {
+                "nodeId": 18,
+                "parentNodeId": 4,
+                "isLeafNode": "true",
+                "actionId": 14
+            },
+            {
+                "nodeId": 19,
+                "parentNodeId": 4,
+                "isLeafNode": "true",
+                "actionId": 15
+            },
+            {
+                "nodeId": 20,
+                "parentNodeId": 4,
+                "isLeafNode": "true",
+                "actionId": 16
             }
         ]
     }

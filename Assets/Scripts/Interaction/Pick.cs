@@ -44,7 +44,15 @@ public class Pick : InteractionScript
         itemName = content.itemName;
         offset = content.offset;
         itemKey = string.Concat("pick_", ClassManager.instance.currentScene, "_", element.id);
-        outline = element.gameObject.AddComponent<OutlineObject>();
+
+        if (element.gameObject.GetComponent<OutlineObject>() == null)
+        {
+            outline = element.gameObject.AddComponent<OutlineObject>();
+        }
+        else
+        {
+            outline = element.gameObject.GetComponent<OutlineObject>();
+        }
         outline.enabled = false;
     }
     #endregion
@@ -55,12 +63,14 @@ public class Pick : InteractionScript
         if (isHeld) return;
         outline.enabled = true;
     }
+    
     public override void OnHoverExit()
     {
         outline.enabled = false;
     }
     public override void OnSelectEnter()
     {
+        base.OnSelectEnter();
         //当被选中，标识选中人
         EventHandler.Trigger(new PickItemEvent(){holderId = PlayerManager.localPlayer.netId, itemKey = itemKey, elementId = element.id});
     }

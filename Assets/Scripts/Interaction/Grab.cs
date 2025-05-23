@@ -34,7 +34,14 @@ public class Grab : InteractionScript
     {
         base.Init(element);
         grabKey = string.Concat("grab_", ClassManager.instance.currentScene, "_", element.id);
-        outline = element.gameObject.AddComponent<OutlineObject>();
+        if (element.gameObject.GetComponent<OutlineObject>() == null)
+        {
+            outline = element.gameObject.AddComponent<OutlineObject>();
+        }
+        else
+        {
+            outline = element.gameObject.GetComponent<OutlineObject>();
+        }
         outline.enabled = false;
     }
 
@@ -59,6 +66,7 @@ public class Grab : InteractionScript
             return;
         }
 
+        base.OnSelectEnter();
         currentGrabing = this;
         // 设置持有者
         ClassManager.instance.CommandSetRoomProperty(grabKey, PlayerManager.localPlayer.netId.ToString());

@@ -13,7 +13,15 @@ public class Sit : InteractionScript
     {
         base.Init(element);
         chairKey = string.Concat("isOccupied_", ClassManager.instance.currentScene, "_", element.id);
-        outline = element.gameObject.AddComponent<OutlineObject>();
+
+        if (element.gameObject.GetComponent<OutlineObject>() == null)
+        {
+            outline = element.gameObject.AddComponent<OutlineObject>();
+        }
+        else
+        {
+            outline = element.gameObject.GetComponent<OutlineObject>();
+        }
         outline.enabled = false;
     }
 
@@ -76,6 +84,8 @@ public class Sit : InteractionScript
     {
         if (isOccupied) return;
 
+        base.OnSelectEnter();
+
         if (currentSitting != null && currentSitting != this)
         {
             currentSitting.ResetSeat();
@@ -91,9 +101,6 @@ public class Sit : InteractionScript
         
         // 通过ClassManager更新房间属性
         ClassManager.instance.CommandSetRoomProperty(chairKey, "true");
-
-        // 触发事件
-        EventHandler.Trigger(new InteractionEvent() { interactionType = "sit", elementId = element.id });
     }
 
     private void UpdateChairVisual()

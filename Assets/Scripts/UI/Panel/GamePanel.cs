@@ -158,7 +158,8 @@ public class GamePanel : BasePanel
 
     private void OnTaskComplete(TaskCompleteEvent @event)
     {
-        if (@event.netId == PlayerManager.localPlayer.netId)
+        // 如果任务是本地玩家完成的，并且完成的任务是现在正在执行的任务, 则关闭任务目标
+        if (@event.netId == PlayerManager.localPlayer.netId && ClassManager.instance.currentActivity.actionTree.leafNodes[@event.actionNodeId].isExecuting)
         {
             actionNodeId = -1;
             CloseGoal();

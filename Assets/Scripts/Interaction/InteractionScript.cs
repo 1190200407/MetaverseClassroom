@@ -34,29 +34,37 @@ public class InteractionScript
 
     /// <summary>
     /// 当射线射中时响应的函数
+    /// 默认会发送InteractionEvent事件, 如果需要忽略, 则不要加base.OnHoverEnter()
     /// </summary>
     public virtual void OnHoverEnter()
     {
+        EventHandler.Trigger(new InteractionEvent() { interactType = element.interactType, interactWay = "HoverEnter", elementId = element.id });
     }
 
     /// <summary>
     /// 当射线离开时响应的函数
+    /// 默认会发送InteractionEvent事件, 如果需要忽略, 则不要加base.OnHoverExit()
     /// </summary>
     public virtual void OnHoverExit()
     {
+        EventHandler.Trigger(new InteractionEvent() { interactType = element.interactType, interactWay = "HoverExit", elementId = element.id });
     }
 
     /// <summary>
     /// 当射线按下时响应的函数
+    /// 默认会发送InteractionEvent事件, 如果需要忽略, 则不要加base.OnSelectEnter()
     /// </summary>
     public virtual void OnSelectEnter()
     {
+        EventHandler.Trigger(new InteractionEvent() { interactType = element.interactType, interactWay = "SelectEnter", elementId = element.id });
     }
 
     /// <summary>
     /// 当射线松开时响应的函数
+    /// 默认会发送InteractionEvent事件, 如果需要忽略, 则不要加base.OnSelectExit()
     /// </summary>
     public virtual void OnSelectExit()
     {
+        EventHandler.Trigger(new InteractionEvent() { interactType = element.interactType, interactWay = "SelectExit", elementId = element.id });
     }
 }

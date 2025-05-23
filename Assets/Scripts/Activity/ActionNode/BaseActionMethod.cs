@@ -21,6 +21,16 @@ namespace Actions
         public virtual void Initialize()
         {
             string roleId = actionNode.role;
+
+            // 系统角色, 用于执行系统任务
+            if (roleId == "system")
+            {
+                role = "系统";
+                playerId = -2;
+                isLocalAction = true;
+                return;
+            }
+
             role = ClassManager.instance.roleList[roleId];
             playerId = ClassManager.instance.roleOccupied[roleId];
             isLocalAction = playerId == -1 || playerId == PlayerManager.localPlayer.netId;

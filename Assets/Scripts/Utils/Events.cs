@@ -121,7 +121,8 @@ public struct UIChangeEvent
 
 public struct InteractionEvent
 {
-    public string interactionType;
+    public string interactType;
+    public string interactWay;
     public string elementId;
 }
 

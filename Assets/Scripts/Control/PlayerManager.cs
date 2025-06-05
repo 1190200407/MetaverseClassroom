@@ -17,6 +17,7 @@ public class PlayerManager : NetworkBehaviour
     public Animator animator;
     public Rigidbody rb;
     public Transform handTransform;
+    public Transform headTransform;
     #endregion
 
     #region 玩家UI
@@ -294,15 +295,15 @@ public class PlayerManager : NetworkBehaviour
                 child.SetAsFirstSibling();
                 animator.Rebind();
 
+                // 需要设置手和头的位置
+                handTransform = child.GetComponent<Animator>().GetBoneTransform(HumanBodyBones.RightHand);
+                headTransform = child.GetComponent<Animator>().GetBoneTransform(HumanBodyBones.Head);
+
                 if (isLocalPlayer)
                 {
                     // 不被摄像机渲染
                     SetLayer(gameObject, LayerMask.NameToLayer("LocalPlayer"));
-                }
-                else
-                {
-                    // 需要设置手的位置
-                    handTransform = child.GetComponent<Animator>().GetBoneTransform(HumanBodyBones.RightHand);
+                    Invoke("ResetCameraTransform", 0.1f);
                 }
             }
             else
@@ -316,6 +317,17 @@ public class PlayerManager : NetworkBehaviour
     {
         rb.isKinematic = newValue;
         animator.SetBool("IsSitting", newValue);
+
+        if (isLocalPlayer)
+        {
+            // 等待0.1秒后，重置摄像机位置
+            Invoke("ResetCameraTransform", 0.1f);
+        }
+    }
+
+    private void ResetCameraTransform()
+    {
+        playerController.ResetCameraTransform();
     }
 
     private void OnCurrentSceneChanged(string oldValue, string newValue)

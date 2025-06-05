@@ -12,7 +12,8 @@ public enum NetworkMessageType
     TaskComplete,
     ItemPickup,
     ItemDrop,
-    ItemReset
+    ItemReset,
+    ElementInteract
 }
 
 public struct NetworkMessageClassroom : NetworkMessage
@@ -53,5 +54,12 @@ public struct ItemDropMessageData
 public struct ItemResetMessageData
 {
     public uint holderId;
+}
+
+[Serializable]
+public struct ElementInteractMessageData
+{
+    public int netId;
+    public string elementId;
 }
 

@@ -165,7 +165,6 @@ public class StartPanel : BasePanel
             UIManager.instance.ShowMessage("名字必须不少于2个字符", 1.5f);
             return;
         }
-        Debug.LogError("name is "+playerName);
         // 设置玩家名称
         PlayerPrefs.SetString("NickName", playerName);
 

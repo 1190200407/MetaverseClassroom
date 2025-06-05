@@ -18,7 +18,7 @@ public class VRPlayerController : PlayerController
 
         if (!playerManager.isLocalPlayer) return;
         GameObject XROrigin = GameObject.Find("XR Origin");
-        XROrigin.transform.SetParent(transform);
+        XROrigin.transform.SetParent(playerManager.headTransform);
         XROrigin.transform.localPosition = Vector3.zero;
 
         // 设定VR相机的位置

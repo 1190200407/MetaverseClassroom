@@ -37,4 +37,16 @@ public class NetworkManagerClassroom : NetworkManager
     {
         Debug.Log("Client started");
     }
+
+    public override void OnClientConnect()
+    {
+        base.OnClientConnect();
+        Debug.Log("Client connected to server");
+    }
+
+    public override void OnClientSceneChanged()
+    {
+        base.OnClientSceneChanged();
+        Debug.Log("Client scene changed");
+    }
 }

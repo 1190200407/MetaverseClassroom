@@ -36,6 +36,11 @@ public class PlayerController : MonoBehaviour
         transform.position = sceneTransform.position;
         transform.rotation = Quaternion.identity;
     }
+
+    public virtual void ResetCameraTransform()
+    {
+        playerCamera.transform.position = playerManager.headTransform.position;
+    }
     
     #region 玩家数据
     

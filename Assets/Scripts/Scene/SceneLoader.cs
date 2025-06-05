@@ -163,4 +163,57 @@ public class SceneLoader : UnitySingleton<SceneLoader>
         }
         isLoading = false;
     }
+
+    // 缓存机制
+    // public async Task<GameObject> LoadMetaverseObject(ElementData element)
+    // {
+    //     string localPath = Path.Combine(Application.persistentDataPath, element.localCache);
+    //     string remotePath = element.webPath;
+
+    //     // 1. 本地是否有缓存？
+    //     bool hasLocal = File.Exists(localPath);
+
+    //     bool needUpdate = true;
+    //     if (hasLocal)
+    //     {
+    //         // 2. 比较时间戳，判断是否需要更新
+    //         DateTime localTime = File.GetLastWriteTime(localPath);
+    //         DateTime remoteTime = await GetRemoteResourceTime(remotePath); // 实现方式视服务器接口而定
+
+    //         needUpdate = remoteTime > localTime;
+    //     }
+
+    //     // 3. 下载或使用缓存
+    //     string resourceToLoadPath = localPath;
+    //     if (needUpdate)
+    //     {
+    //         // 3.1 使用 UnityWebRequest 下载远程资源
+    //         UnityWebRequest www = UnityWebRequest.Get(remotePath);
+    //         await www.SendWebRequest();
+
+    //         if (www.result == UnityWebRequest.Result.Success)
+    //         {
+    //             byte[] data = www.downloadHandler.data;
+    //             File.WriteAllBytes(localPath, data); // 保存本地
+    //             resourceToLoadPath = localPath;
+    //         }
+    //         else
+    //         {
+    //             Debug.LogError($"Download failed: {www.error}");
+    //             return null;
+    //         }
+    //     }
+
+    //     // 4. 加载本地缓存资源（此处假设是 AssetBundle）
+    //     AssetBundle bundle = AssetBundle.LoadFromFile(resourceToLoadPath);
+    //     GameObject prefab = bundle.LoadAsset<GameObject>(element.name);
+    //     GameObject obj = GameObject.Instantiate(prefab);
+
+    //     // 5. 应用位置信息
+    //     obj.transform.position = element.Position;
+    //     obj.transform.rotation = Quaternion.Euler(element.Rotation);
+    //     obj.transform.localScale = element.Scale;
+
+    //     return obj;
+    // }
 }

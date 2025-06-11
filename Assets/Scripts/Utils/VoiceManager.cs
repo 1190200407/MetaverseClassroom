@@ -10,6 +10,8 @@ public class VoiceManager : UnitySingleton<VoiceManager>
     public VoiceBroadcastTrigger voiceBroadcastTrigger;
     public VoiceReceiptTrigger voiceReceiptTrigger;
 
+    public AudioSource audioSource;
+
     // 禁音
     private bool isSelfMute = false;
     private bool isForcelyMute = false;
@@ -45,5 +47,16 @@ public class VoiceManager : UnitySingleton<VoiceManager>
         {
             dissonanceComms.IsMuted = false;
         }
+    }
+
+    public void PlayAudio(AudioClip audioClip)
+    {
+        audioSource.clip = audioClip;
+        audioSource.Play();
+    }
+
+    public void PlayAudioOneShot(AudioClip audioClip)
+    {
+        audioSource.PlayOneShot(audioClip);
     }
 }

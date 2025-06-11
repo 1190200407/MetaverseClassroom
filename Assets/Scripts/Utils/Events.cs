@@ -117,8 +117,6 @@ public struct UIChangeEvent
 }
 #endregion
 
-
-
 public struct InteractionEvent
 {
     public string interactType;
@@ -126,4 +124,10 @@ public struct InteractionEvent
     public string elementId;
 }
 
-
+public struct NPCInteractionEvent
+{
+    public string npcName;
+    public string interactionType;
+    public string interactWay;
+    public string elementId;
+}

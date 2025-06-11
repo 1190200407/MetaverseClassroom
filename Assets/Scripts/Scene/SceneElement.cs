@@ -103,4 +103,12 @@ public class SceneElement : MonoBehaviour
     {
         interactionScript?.OnStartLocalPlayer();
     }
+
+    /// <summary>
+    /// 当NPC交互时响应的函数
+    /// </summary>
+    public void OnNPCInteract(NPCManager npcManager, string interactWay)
+    {
+        interactionScript?.OnNPCInteract(npcManager, interactWay);
+    }
 }

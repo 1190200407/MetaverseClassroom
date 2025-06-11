@@ -138,4 +138,18 @@ public class Sit : InteractionScript
             ResetSeat();
         }
     }
+
+    public override void OnNPCInteract(NPCManager npcManager, string interactWay)
+    {
+        // 如果是NPC SelectEnter，则坐下
+        if (interactWay != "SelectEnter") return;
+
+        npcManager.IsSitting = true;
+        isOccupied = true;
+
+        npcManager.transform.position = element.transform.position + new Vector3(0, 0.1f, 0);
+        npcManager.transform.rotation = element.transform.rotation;
+
+        base.OnNPCInteract(npcManager, interactWay);
+    }
 }

@@ -62,7 +62,7 @@ public class InteractionManager : UnitySingleton<InteractionManager>
         if (RaycastClosed) return null;
 
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-        RaycastHit[] hits = Physics.RaycastAll(ray, 15f);
+        RaycastHit[] hits = Physics.RaycastAll(ray, 5f);
         
         float minDistance = float.MaxValue;
         GameObject closestHitObject = null;

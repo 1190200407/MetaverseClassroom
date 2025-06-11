@@ -67,4 +67,17 @@ public class InteractionScript
     {
         EventHandler.Trigger(new InteractionEvent() { interactType = element.interactType, interactWay = "SelectExit", elementId = element.id });
     }
+
+    /// <summary>
+    /// 操控NPC交互时响应的函数
+    /// </summary>
+    public virtual void OnNPCInteract(NPCManager npcManager, string interactWay)
+    {
+        EventHandler.Trigger(new NPCInteractionEvent()
+        {
+            npcName = npcManager.NPCName,
+            interactionType = element.interactType,
+            elementId = element.id
+        });
+    }
 }

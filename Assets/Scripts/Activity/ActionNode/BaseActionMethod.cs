@@ -38,7 +38,7 @@ namespace Actions
             // 如果playerId为-1，则通过名称获取GameObject
             if (playerId == -1)
             {
-                player = GameObject.Find("NPC" + roleId);
+                player = ClassManager.instance.NPCList[roleId];
             }
             // 如果playerId大于0，则通过netId获取GameObject
             else if (playerId > 0)

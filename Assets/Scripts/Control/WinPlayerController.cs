@@ -185,6 +185,9 @@ public class WinPlayerController : PlayerController
                 if (moveHoldTimer > moveHoldThreshold)
                 {
                     moveHoldTimer = 0f;
+
+                    // 位移一小段距离，防止玩家卡在椅子上
+                    playerManager.transform.position += Vector3.right * x + Vector3.forward * y;
                     Sit.currentSitting.ResetSeat();
                     playerManager.IsSitting = false;
                 }

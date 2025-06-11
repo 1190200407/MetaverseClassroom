@@ -72,6 +72,7 @@ public class ClassManager : NetworkSingleton<ClassManager>
     public Dictionary<string, string> roleList = new Dictionary<string, string>();
     // 角色占用情况, Key为角色Id，Value为玩家ID(0表示未占用， -1表示NPC)
     public Dictionary<string, int> roleOccupied = new Dictionary<string, int>();
+    public Dictionary<string, GameObject> NPCList = new Dictionary<string, GameObject>();
     
     // 服务器端设置属性
     [Command(requiresAuthority = false)]
@@ -176,7 +177,6 @@ public class ClassManager : NetworkSingleton<ClassManager>
     }
 
     private Delegate onEndActivity;
-    private Delegate onStartActionTree;
     private Delegate onStartActivity;
     private Delegate onTaskComplete;
     
@@ -184,7 +184,6 @@ public class ClassManager : NetworkSingleton<ClassManager>
     private Delegate onItemReset;
     private Delegate onItemDrop;
     
-
     public override void OnStartClient()
     {
         base.OnStartClient();
@@ -192,14 +191,11 @@ public class ClassManager : NetworkSingleton<ClassManager>
 
         onTaskComplete = new Action<TaskCompleteMessageData>(OnTaskCompleteMessage);
         onStartActivity = new Action<StartActivityMessageData>(OnStartActivity);
-        onEndActivity = new Action(OnEndActivity);
-        onStartActionTree = new Action(OnStartActionTree);
-        
+        onEndActivity = new Action(OnEndActivity);    
 
         NetworkMessageHandler.instance.RegisterHandler(NetworkMessageType.TaskComplete, onTaskComplete);
         NetworkMessageHandler.instance.RegisterHandler(NetworkMessageType.StartActivity, onStartActivity);
         NetworkMessageHandler.instance.RegisterHandler(NetworkMessageType.EndActivity, onEndActivity);
-        NetworkMessageHandler.instance.RegisterHandler(NetworkMessageType.StartActionTree, onStartActionTree);
         
         #region 物品拾取 网络事件监听
         onItemPick = new Action<ItemPickMessageData>(SendPickItemCallback);
@@ -218,7 +214,6 @@ public class ClassManager : NetworkSingleton<ClassManager>
         NetworkMessageHandler.instance.UnregisterHandler(NetworkMessageType.TaskComplete, onTaskComplete);
         NetworkMessageHandler.instance.UnregisterHandler(NetworkMessageType.StartActivity, onStartActivity);
         NetworkMessageHandler.instance.UnregisterHandler(NetworkMessageType.EndActivity, onEndActivity);
-        NetworkMessageHandler.instance.UnregisterHandler(NetworkMessageType.StartActionTree, onStartActionTree);
         
         #region 物品拾取 网络事件取消监听
         NetworkMessageHandler.instance.UnregisterHandler(NetworkMessageType.ItemPickup, onItemPick);
@@ -239,15 +234,6 @@ public class ClassManager : NetworkSingleton<ClassManager>
         EndActivity();
     }
 
-    public void OnStartActionTree()
-    {
-        if (currentActivity != null)
-        {
-            currentActivity.isActionTreeExecuting = true;
-            StartCoroutine(currentActivity.actionTree.Execute());
-        }
-    }
-
     public void StartActivity(BaseActivity activity)
     {
         if (currentActivity != null)
@@ -260,25 +246,14 @@ public class ClassManager : NetworkSingleton<ClassManager>
 
     public void EndActivity(bool backToClassroom = true)
     {
-        if (currentActivity != null)
+        currentActivity.End();
+        currentActivity = null;
+        EventHandler.Trigger(new EndActivityEvent());
+
+        if (backToClassroom)
         {
-            // 服务器取消选角
-            if (NetworkServer.active)
-            {
-                foreach (var role in roleList)
-                {
-                    CommandSetRoleOccupied(role.Key, 0);
-                }
-            }
-
-            currentActivity.End();
-            currentActivity = null;
-
-            if (backToClassroom)
-            {
-                // 向所有玩家发送切换场景的消息
-                ChangeScene("Classroom");
-            }
+            // 向所有玩家发送切换场景的消息
+            ChangeScene("Classroom");
         }
     }
     
@@ -297,6 +272,27 @@ public class ClassManager : NetworkSingleton<ClassManager>
         PlayerManager.localPlayer.CurrentScene = nextScene;
         EventHandler.Trigger(new ChangeSceneEvent() { sceneName = nextScene });
         isInClassroom = nextScene == "Classroom"; // 切换场景后，判断是否在教室,之后换成其他判断方式
+    }
+
+    public void AddNPC(string roleId)
+    {
+        GameObject npc = Instantiate(Resources.Load<GameObject>("Prefabs/NPCModels/NPC"));
+        NPCManager npcManager = npc.GetComponent<NPCManager>();
+        //TODO 之后需要从脚本获取NPC的名称和角色
+        string npcName = "NPC_" + roleList[roleId];
+        npcManager.Init(npcName, "Dummy1", currentScene);
+        npc.name = npcName;
+
+        NPCList[roleId] = npc;
+    }
+
+    public void RemoveAllNPC()
+    {
+        foreach (var npc in NPCList)
+        {
+            Destroy(npc.Value);
+        }
+        NPCList.Clear();
     }
 
     // 在本地完成任务后，会触发本地的任务完成事件，然后会向客户端全体发送任务完成消息

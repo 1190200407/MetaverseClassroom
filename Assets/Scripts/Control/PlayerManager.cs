@@ -180,6 +180,7 @@ public class PlayerManager : NetworkBehaviour
         {
             if (isLocalPlayer)
             {
+                rb.isKinematic = value;
                 CmdSetIsSitting(value);
             }
         }

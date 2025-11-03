@@ -1,0 +1,124 @@
+fileFormatVersion: 2
+guid: 71de0f9dcbf9652489dfa19c63e0b687
+timeCreated: 1522992034
+licenseType: Store
+ModelImporter:
+  serializedVersion: 22
+  fileIDToRecycleName:
+    100000: burger
+    100002: burger_2
+    100004: cup
+    100006: //RootNode
+    100008: potato
+    100010: potato_b
+    100012: server
+    400000: burger
+    400002: burger_2
+    400004: cup
+    400006: //RootNode
+    400008: potato
+    400010: potato_b
+    400012: server
+    2100000: "\u043A\u0430\u0440\u0442\u043E\u0448\u043A\u0430"
+    2100002: "\u043A\u0430\u0440\u0442\u043E\u043D"
+    2100004: "\u0431\u0443\u043C\u0430\u0433\u0430"
+    2100006: fastfood
+    2100008: "\u043F\u043E\u0434\u043D\u043E\u0441"
+    2300000: burger
+    2300002: burger_2
+    2300004: cup
+    2300006: potato
+    2300008: potato_b
+    2300010: server
+    3300000: burger
+    3300002: burger_2
+    3300004: cup
+    3300006: potato
+    3300008: potato_b
+    3300010: server
+    4300000: potato
+    4300002: potato_b
+    4300004: cup
+    4300006: burger_2
+    4300008: burger
+    4300010: server
+  externalObjects: {}
+  materials:
+    importMaterials: 1
+    materialName: 1
+    materialSearch: 1
+    materialLocation: 0
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 1
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

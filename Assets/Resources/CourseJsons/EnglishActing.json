@@ -57,7 +57,8 @@
             "parameters": {
                 "text": "Hello! How can I help you?",
                 "emotion": "courteous",
-                "speed": "normal"
+                "speed": "normal",
+                "audioPath": "AudioClips/EnglishActing/1"
             },
             "errorHandling": {
                 "onError": "retry",
@@ -73,7 +74,8 @@
             "parameters": {
                 "text": "Of course. Please take a seat!",
                 "emotion": "courteous",
-                "speed": "normal"
+                "speed": "normal",
+                "audioPath": "AudioClips/EnglishActing/2"
             },
             "errorHandling": {
                 "onError": "retry",
@@ -89,7 +91,8 @@
             "parameters": {
                 "text": "Table for one, please.",
                 "emotion": "courteous",
-                "speed": "normal"
+                "speed": "normal",
+                "audioPath": "AudioClips/EnglishActing/3"
             },
             "errorHandling": {
                 "onError": "skip",
@@ -136,7 +139,8 @@
             "parameters": {
                 "text": "Are you ready to order?",
                 "emotion": "courteous",
-                "speed": "normal"
+                "speed": "normal",
+                "audioPath": "AudioClips/EnglishActing/6"
             },
             "errorHandling": {
                 "onError": "skip",
@@ -151,7 +155,8 @@
             "parameters": {
                 "text": "Great! I'll be right back.",
                 "emotion": "courteous",
-                "speed": "normal"
+                "speed": "normal",
+                "audioPath": "AudioClips/EnglishActing/7"
             },
             "errorHandling": {
                 "onError": "skip",
@@ -181,7 +186,8 @@
             "parameters": {
                 "text": "Yes, I'd like the black coffee.",
                 "emotion": "courteous",
-                "speed": "normal"
+                "speed": "normal",
+                "audioPath": "AudioClips/EnglishActing/9"
             },
             "errorHandling": {
                 "onError": "skip",
@@ -196,7 +202,8 @@
             "parameters": {
                 "text": "Thank you.",
                 "emotion": "courteous",
-                "speed": "normal"
+                "speed": "normal",
+                "audioPath": "AudioClips/EnglishActing/10"
             },
             "errorHandling": {
                 "onError": "skip",
@@ -242,7 +249,8 @@
             "parameters": {
                 "text": "How much is it?",
                 "emotion": "courteous",
-                "speed": "normal"
+                "speed": "normal",
+                "audioPath": "AudioClips/EnglishActing/13"
             },
             "errorHandling": {
                 "onError": "skip",
@@ -257,7 +265,8 @@
             "parameters": {
                 "text": "That'll be $2, please.",
                 "emotion": "courteous",
-                "speed": "normal"
+                "speed": "normal",
+                "audioPath": "AudioClips/EnglishActing/14"
             },
             "errorHandling": {
                 "onError": "skip",
@@ -272,7 +281,8 @@
             "parameters": {
                 "text": "Here you go.",
                 "emotion": "courteous",
-                "speed": "normal"
+                "speed": "normal",
+                "audioPath": "AudioClips/EnglishActing/15"
             },
             "errorHandling": {
                 "onError": "skip",
@@ -287,7 +297,8 @@
             "parameters": {
                 "text": "Thank you. Have a good day!",
                 "emotion": "courteous",
-                "speed": "normal"
+                "speed": "normal",
+                "audioPath": "AudioClips/EnglishActing/16"
             },
             "errorHandling": {
                 "onError": "skip",

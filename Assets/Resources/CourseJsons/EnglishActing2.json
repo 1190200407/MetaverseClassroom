@@ -1,0 +1,479 @@
+﻿{
+  "name": "英语口语学习与实践——日常生活实践练习（咖啡馆·两位朋友版）",
+  "version": "1.2",
+  "type": "实践教学脚本",
+  "roles": [
+    {
+      "roleId": "waiter",
+      "name": "服务员",
+      "type": "teacher"
+    },
+    {
+      "roleId": "friend1",
+      "name": "朋友A",
+      "type": "student"
+    },
+    {
+      "roleId": "friend2",
+      "name": "朋友B",
+      "type": "student"
+    }
+  ],
+  "actions": [
+    {
+      "actionId": 1,
+      "actionMethod": "SpeechOutput",
+      "delayTime": 0,
+      "roleId": "waiter",
+      "parameters": {
+        "text": "Hello! Welcome to our café.",
+        "emotion": "courteous",
+        "speed": "normal",
+        "audioPath": "AudioClips/EnglishActing/1"
+      },
+      "errorHandling": {
+        "onError": "retry",
+        "maxRetries": 3,
+        "errorMessage": "Speech synthesis failed"
+      }
+    },
+    {
+      "actionId": 2,
+      "actionMethod": "SpeechOutput",
+      "delayTime": 0,
+      "roleId": "friend1",
+      "parameters": {
+        "text": "Table for two, please.",
+        "emotion": "courteous",
+        "speed": "normal",
+        "audioPath": "AudioClips/EnglishActing/2"
+      },
+      "errorHandling": {
+        "onError": "skip",
+        "errorMessage": "Voice input timeout"
+      }
+    },
+    {
+      "actionId": 3,
+      "actionMethod": "SpeechOutput",
+      "delayTime": 0,
+      "roleId": "waiter",
+      "parameters": {
+        "text": "Right this way. Please follow me.",
+        "emotion": "friendly",
+        "speed": "normal",
+        "audioPath": "AudioClips/EnglishActing/3"
+      },
+      "errorHandling": {
+        "onError": "retry",
+        "maxRetries": 2,
+        "errorMessage": "Navigation failed"
+      }
+    },
+    {
+      "actionId": 4,
+      "actionMethod": "Interact",
+      "delayTime": 500,
+      "roleId": "friend1",
+      "parameters": {
+        "interactType": "Sit",
+        "interactWay": "SelectEnter",
+        "taskDescription": "坐下"
+      },
+      "errorHandling": {
+        "onError": "forceComplete",
+        "errorMessage": "Sit input timeout"
+      }
+    },
+    {
+      "actionId": 5,
+      "actionMethod": "Interact",
+      "delayTime": 500,
+      "roleId": "friend2",
+      "parameters": {
+        "interactType": "Sit",
+        "interactWay": "SelectEnter",
+        "taskDescription": "坐下"
+      },
+      "errorHandling": {
+        "onError": "forceComplete",
+        "errorMessage": "Sit input timeout"
+      }
+    },
+    {
+      "actionId": 7,
+      "actionMethod": "SpeechOutput",
+      "delayTime": 2000,
+      "roleId": "waiter",
+      "parameters": {
+        "text": "Are you ready to order?",
+        "emotion": "courteous",
+        "speed": "normal",
+        "audioPath": "AudioClips/EnglishActing/7"
+      },
+      "errorHandling": {
+        "onError": "skip",
+        "errorMessage": "Voice input timeout"
+      }
+    },
+    {
+      "actionId": 8,
+      "actionMethod": "SpeechOutput",
+      "delayTime": 0,
+      "roleId": "friend1",
+      "parameters": {
+        "text": "I'd like an Americano, please.",
+        "emotion": "neutral",
+        "speed": "normal",
+        "audioPath": "AudioClips/EnglishActing/8"
+      },
+      "errorHandling": {
+        "onError": "skip",
+        "errorMessage": "Voice input timeout"
+      }
+    },
+    {
+      "actionId": 9,
+      "actionMethod": "SpeechOutput",
+      "delayTime": 0,
+      "roleId": "friend2",
+      "parameters": {
+        "text": "I'll have a latte, please.",
+        "emotion": "calm",
+        "speed": "normal",
+        "audioPath": "AudioClips/EnglishActing/9"
+      },
+      "errorHandling": {
+        "onError": "skip",
+        "errorMessage": "Voice input timeout"
+      }
+    },
+    {
+      "actionId": 10,
+      "actionMethod": "SpeechOutput",
+      "delayTime": 500,
+      "roleId": "waiter",
+      "parameters": {
+        "text": "One Americano and one latte. Would you like anything to share? We have fries.",
+        "emotion": "courteous",
+        "speed": "normal",
+        "audioPath": "AudioClips/EnglishActing/10"
+      },
+      "errorHandling": {
+        "onError": "skip",
+        "errorMessage": "Speech synthesis failed"
+      }
+    },
+    {
+      "actionId": 11,
+      "actionMethod": "SpeechOutput",
+      "delayTime": 0,
+      "roleId": "friend1",
+      "parameters": {
+        "text": "Yes, please bring a box of fries for us to share.",
+        "emotion": "cheerful",
+        "speed": "normal",
+        "audioPath": "AudioClips/EnglishActing/11"
+      },
+      "errorHandling": {
+        "onError": "skip",
+        "errorMessage": "Voice input timeout"
+      }
+    },
+    {
+      "actionId": 12,
+      "actionMethod": "SpeechOutput",
+      "delayTime": 500,
+      "roleId": "waiter",
+      "parameters": {
+        "text": "Great choice. I'll bring your drinks and the fries shortly.",
+        "emotion": "courteous",
+        "speed": "normal",
+        "audioPath": "AudioClips/EnglishActing/12"
+      },
+      "errorHandling": {
+        "onError": "retry",
+        "maxRetries": 2,
+        "errorMessage": "Speech synthesis failed"
+      }
+    },
+    {
+      "actionId": 13,
+      "actionMethod": "Deliver",
+      "delayTime": 3000,
+      "roleId": "waiter",
+      "parameters": {
+        "resources": "drinks",
+        "targetElementId": 189,
+        "targetRole": "friend1"
+      },
+      "errorHandling": {
+        "onError": "skip",
+        "errorMessage": "Deliver failed"
+      }
+    },
+    {
+      "actionId": 14,
+      "actionMethod": "Deliver",
+      "delayTime": 1000,
+      "roleId": "waiter",
+      "parameters": {
+        "resources": "drinks",
+        "targetElementId": 190,
+        "targetRole": "friend2"
+      },
+      "errorHandling": {
+        "onError": "skip",
+        "errorMessage": "Deliver failed"
+      }
+    },
+    {
+      "actionId": 15,
+      "actionMethod": "Deliver",
+      "delayTime": 500,
+      "roleId": "waiter",
+      "parameters": {
+        "resources": "fries",
+        "targetElementId": 191,
+        "targetRole": "friend1"
+      },
+      "errorHandling": {
+        "onError": "skip",
+        "errorMessage": "Deliver failed"
+      }
+    },
+    {
+      "actionId": 16,
+      "actionMethod": "SpeechOutput",
+      "delayTime": 500,
+      "roleId": "waiter",
+      "parameters": {
+        "text": "Here are your drinks and a box of fries. Enjoy!",
+        "emotion": "courteous",
+        "speed": "normal",
+        "audioPath": "AudioClips/EnglishActing/16"
+      },
+      "errorHandling": {
+        "onError": "skip",
+        "errorMessage": "Speech synthesis failed"
+      }
+    },
+    {
+      "actionId": 17,
+      "actionMethod": "SpeechOutput",
+      "delayTime": 3000,
+      "roleId": "friend2",
+      "parameters": {
+        "text": "Thanks! This looks delicious.",
+        "emotion": "happy",
+        "speed": "normal",
+        "audioPath": "AudioClips/EnglishActing/17"
+      },
+      "errorHandling": {
+        "onError": "skip",
+        "errorMessage": "Voice input timeout"
+      }
+    },
+    {
+      "actionId": 18,
+      "actionMethod": "SpeechOutput",
+      "delayTime": 2000,
+      "roleId": "friend1",
+      "parameters": {
+        "text": "Excuse me, could we have the bill, please?",
+        "emotion": "polite",
+        "speed": "normal",
+        "audioPath": "AudioClips/EnglishActing/18"
+      },
+      "errorHandling": {
+        "onError": "skip",
+        "errorMessage": "Voice input timeout"
+      }
+    },
+    {
+      "actionId": 19,
+      "actionMethod": "SpeechOutput",
+      "delayTime": 1000,
+      "roleId": "waiter",
+      "parameters": {
+        "text": "Certainly. That will be $12, please.",
+        "emotion": "courteous",
+        "speed": "normal",
+        "audioPath": "AudioClips/EnglishActing/19"
+      },
+      "errorHandling": {
+        "onError": "retry",
+        "maxRetries": 2,
+        "errorMessage": "Speech synthesis failed"
+      }
+    },
+    {
+      "actionId": 20,
+      "actionMethod": "SpeechOutput",
+      "delayTime": 800,
+      "roleId": "friend2",
+      "parameters": {
+        "text": "Here you go. Thank you!",
+        "emotion": "courteous",
+        "speed": "normal",
+        "audioPath": "AudioClips/EnglishActing/20"
+      },
+      "errorHandling": {
+        "onError": "skip",
+        "errorMessage": "Voice input timeout"
+      }
+    },
+    {
+      "actionId": 21,
+      "actionMethod": "SpeechOutput",
+      "delayTime": 500,
+      "roleId": "waiter",
+      "parameters": {
+        "text": "Thank you. Have a nice day!",
+        "emotion": "courteous",
+        "speed": "normal",
+        "audioPath": "AudioClips/EnglishActing/21"
+      },
+      "errorHandling": {
+        "onError": "skip",
+        "errorMessage": "Speech synthesis failed"
+      }
+    }
+  ],
+  "script": {
+    "treeNodes": [
+      {
+        "nodeId": 1,
+        "parentNodeId": -1,
+        "isLeafNode": "false",
+        "compositeType": "Sequence"
+      },
+      {
+        "nodeId": 2,
+        "parentNodeId": 1,
+        "isLeafNode": "true",
+        "actionId": 1
+      },
+      {
+        "nodeId": 3,
+        "parentNodeId": 1,
+        "isLeafNode": "true",
+        "actionId": 2
+      },
+      {
+        "nodeId": 4,
+        "parentNodeId": 1,
+        "isLeafNode": "true",
+        "actionId": 3
+      },
+      {
+        "nodeId": 5,
+        "parentNodeId": 1,
+        "isLeafNode": "false",
+        "compositeType": "Parallel"
+      },
+      {
+        "nodeId": 23,
+        "parentNodeId": 5,
+        "isLeafNode": "true",
+        "actionId": 4
+      },
+      {
+        "nodeId": 24,
+        "parentNodeId": 5,
+        "isLeafNode": "true",
+        "actionId": 5
+      },
+      {
+        "nodeId": 8,
+        "parentNodeId": 1,
+        "isLeafNode": "true",
+        "actionId": 7
+      },
+      {
+        "nodeId": 9,
+        "parentNodeId": 1,
+        "isLeafNode": "true",
+        "actionId": 8
+      },
+      {
+        "nodeId": 10,
+        "parentNodeId": 1,
+        "isLeafNode": "true",
+        "actionId": 9
+      },
+      {
+        "nodeId": 11,
+        "parentNodeId": 1,
+        "isLeafNode": "true",
+        "actionId": 10
+      },
+      {
+        "nodeId": 12,
+        "parentNodeId": 1,
+        "isLeafNode": "true",
+        "actionId": 11
+      },
+      {
+        "nodeId": 13,
+        "parentNodeId": 1,
+        "isLeafNode": "true",
+        "actionId": 12
+      },
+      {
+        "nodeId": 14,
+        "parentNodeId": 1,
+        "isLeafNode": "true",
+        "actionId": 13
+      },
+      {
+        "nodeId": 15,
+        "parentNodeId": 1,
+        "isLeafNode": "true",
+        "actionId": 14
+      },
+      {
+        "nodeId": 16,
+        "parentNodeId": 1,
+        "isLeafNode": "true",
+        "actionId": 15
+      },
+      {
+        "nodeId": 17,
+        "parentNodeId": 1,
+        "isLeafNode": "true",
+        "actionId": 16
+      },
+      {
+        "nodeId": 18,
+        "parentNodeId": 1,
+        "isLeafNode": "true",
+        "actionId": 17
+      },
+      {
+        "nodeId": 19,
+        "parentNodeId": 1,
+        "isLeafNode": "true",
+        "actionId": 18
+      },
+      {
+        "nodeId": 20,
+        "parentNodeId": 1,
+        "isLeafNode": "true",
+        "actionId": 19
+      },
+      {
+        "nodeId": 21,
+        "parentNodeId": 1,
+        "isLeafNode": "true",
+        "actionId": 20
+      },
+      {
+        "nodeId": 22,
+        "parentNodeId": 1,
+        "isLeafNode": "true",
+        "actionId": 21
+      }
+    ]
+  }
+}

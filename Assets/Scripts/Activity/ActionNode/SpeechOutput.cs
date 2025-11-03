@@ -7,12 +7,14 @@ namespace Actions
     public class SpeechOutput : BaseActionMethod
     {
         private string text;
+        private string audioPath;
         
         public override void Initialize()
         {
             base.Initialize();
             text = actionNode.actionParams["text"].ToString();
-            
+            audioPath = actionNode.actionParams["audioPath"].ToString();
+
             // 如果是玩家，则提供任务面板
             if (playerId != -1 && playerId == PlayerManager.localPlayer.netId)
             {
@@ -25,7 +27,9 @@ namespace Actions
             if (playerId == -1)
             {
                 Debug.Log($"控制NPC {role} Speak {text}");
-                yield return new WaitForSeconds(1f);
+                AudioClip clip = Resources.Load<AudioClip>(audioPath);
+                player.GetComponent<AudioSource>().PlayOneShot(clip);
+                yield return new WaitForSeconds(clip.length + 0.5f);
             }
             else
             {

@@ -1,0 +1,267 @@
+fileFormatVersion: 2
+guid: 5442a0107ec6aac4a86893822befc180
+timeCreated: 1521612546
+licenseType: Store
+ModelImporter:
+  serializedVersion: 22
+  fileIDToRecycleName:
+    100000: door
+    100002: door.001
+    100004: door.002
+    100006: door.003
+    100008: //RootNode
+    100010: window.000
+    100012: window.001
+    100014: window.002
+    100016: window.003
+    100018: window.004
+    100020: window.005
+    100022: window.006
+    100024: window.007
+    100026: window.008
+    100028: window.009
+    100030: window.010
+    100032: window.011
+    100034: window.012
+    100036: window_d
+    100038: window_d.001
+    100040: window_d.002
+    100042: window_d.003
+    100044: window_d.004
+    100046: window_d.005
+    100048: window_d.006
+    100050: window_d.007
+    100052: window_d.008
+    100054: window_d.009
+    100056: window_d.010
+    100058: window_d.011
+    100060: window_d.012
+    400000: door
+    400002: door.001
+    400004: door.002
+    400006: door.003
+    400008: //RootNode
+    400010: window.000
+    400012: window.001
+    400014: window.002
+    400016: window.003
+    400018: window.004
+    400020: window.005
+    400022: window.006
+    400024: window.007
+    400026: window.008
+    400028: window.009
+    400030: window.010
+    400032: window.011
+    400034: window.012
+    400036: window_d
+    400038: window_d.001
+    400040: window_d.002
+    400042: window_d.003
+    400044: window_d.004
+    400046: window_d.005
+    400048: window_d.006
+    400050: window_d.007
+    400052: window_d.008
+    400054: window_d.009
+    400056: window_d.010
+    400058: window_d.011
+    400060: window_d.012
+    2100000: door
+    2100002: door_lamp
+    2100004: door_glass
+    2300000: door
+    2300002: door.001
+    2300004: door.002
+    2300006: door.003
+    2300008: window.000
+    2300010: window.001
+    2300012: window.002
+    2300014: window.003
+    2300016: window.004
+    2300018: window.005
+    2300020: window.006
+    2300022: window.007
+    2300024: window.008
+    2300026: window.009
+    2300028: window.010
+    2300030: window.011
+    2300032: window.012
+    2300034: window_d
+    2300036: window_d.001
+    2300038: window_d.002
+    2300040: window_d.003
+    2300042: window_d.004
+    2300044: window_d.005
+    2300046: window_d.006
+    2300048: window_d.007
+    2300050: window_d.008
+    2300052: window_d.009
+    2300054: window_d.010
+    2300056: window_d.011
+    2300058: window_d.012
+    3300000: door
+    3300002: door.001
+    3300004: door.002
+    3300006: door.003
+    3300008: window.000
+    3300010: window.001
+    3300012: window.002
+    3300014: window.003
+    3300016: window.004
+    3300018: window.005
+    3300020: window.006
+    3300022: window.007
+    3300024: window.008
+    3300026: window.009
+    3300028: window.010
+    3300030: window.011
+    3300032: window.012
+    3300034: window_d
+    3300036: window_d.001
+    3300038: window_d.002
+    3300040: window_d.003
+    3300042: window_d.004
+    3300044: window_d.005
+    3300046: window_d.006
+    3300048: window_d.007
+    3300050: window_d.008
+    3300052: window_d.009
+    3300054: window_d.010
+    3300056: window_d.011
+    3300058: window_d.012
+    4300000: door.002
+    4300002: door.003
+    4300004: door
+    4300006: door.001
+    4300008: window.012
+    4300010: window_d.012
+    4300012: window.011
+    4300014: window_d.011
+    4300016: window.010
+    4300018: window_d.010
+    4300020: window.009
+    4300022: window_d.009
+    4300024: window.008
+    4300026: window_d.008
+    4300028: window.007
+    4300030: window_d.007
+    4300032: window.006
+    4300034: window_d.006
+    4300036: window.005
+    4300038: window_d.005
+    4300040: window.004
+    4300042: window_d.004
+    4300044: window.003
+    4300046: window_d.003
+    4300048: window.002
+    4300050: window_d.002
+    4300052: window.000
+    4300054: window_d.001
+    4300056: window.001
+    4300058: window_d
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: door
+    second: {fileID: 2100000, guid: e3e416583e052a849a29f8ead91e2d7f, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: door_glass
+    second: {fileID: 2100000, guid: 106cc9af7a81b194d90881a82a47d0e0, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: door_lamp
+    second: {fileID: 2100000, guid: d3c1c9905974f96449483172854e2e51, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: window
+    second: {fileID: 2100000, guid: 8de337863a319c74f97cf9caf3d6d9c8, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: window_glass
+    second: {fileID: 2100000, guid: 6687592f6563c714f88218e689e5af54, type: 2}
+  materials:
+    importMaterials: 1
+    materialName: 1
+    materialSearch: 1
+    materialLocation: 0
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 1
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

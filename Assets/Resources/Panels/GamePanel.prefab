@@ -288,7 +288,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 40
+  m_fontSize: 37.55
   m_fontSizeBase: 20
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -441,6 +441,8 @@ RectTransform:
   - {fileID: 4651867980496229097}
   - {fileID: 5851006938520483261}
   - {fileID: 3521736934454808888}
+  - {fileID: 7285196562296854195}
+  - {fileID: 7254378438239103168}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -899,6 +901,218 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 1
   m_PixelsPerUnitMultiplier: 0.01
+--- !u!1 &5929167013842547626
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7254378438239103168}
+  - component: {fileID: 2392368826734799267}
+  m_Layer: 0
+  m_Name: SherpaMicrophoneInput
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &7254378438239103168
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5929167013842547626}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 36.350677, y: -40.701843, z: -1.9167725}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1663377977713334457}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2392368826734799267
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5929167013842547626}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1cdd4f1b3722478da74366678415a8d8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  autoStartOnEnable: 0
+  preferredDevice: "\u9EA6\u514B\u98CE (Realtek(R) Audio)"
+  requestedSampleRate: 16000
+  chunkDurationSeconds: 0.2
+  bufferLengthSeconds: 5
+  downmixToMono: 1
+  onChunkReady:
+    m_PersistentCalls:
+      m_Calls: []
+  onRecordingStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!1 &6328910538917329876
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7285196562296854195}
+  - component: {fileID: 5712956746925918146}
+  - component: {fileID: 4153205678229373766}
+  - component: {fileID: 5027322041620095855}
+  - component: {fileID: 6269745152174673953}
+  - component: {fileID: 87635133381413603}
+  m_Layer: 5
+  m_Name: SubTitle
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!224 &7285196562296854195
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6328910538917329876}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1663377977713334457}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.036319368, y: 0.045}
+  m_AnchorMax: {x: 0.9635394, y: 0.10124205}
+  m_AnchoredPosition: {x: -2.269989, y: -0.6600342}
+  m_SizeDelta: {x: 1.8400269, y: 0.033996582}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!222 &5712956746925918146
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6328910538917329876}
+  m_CullTransparentMesh: 1
+--- !u!114 &4153205678229373766
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6328910538917329876}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_FontData:
+    m_Font: {fileID: 12800000, guid: 2827a2a82535dce42b5d11b8de1bbf9f, type: 3}
+    m_FontSize: 14
+    m_FontStyle: 0
+    m_BestFit: 1
+    m_MinSize: 10
+    m_MaxSize: 40
+    m_Alignment: 1
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: "\u6B64\u5904\u5C55\u793A\u6D4F\u89C8\u5185\u5BB9"
+--- !u!114 &5027322041620095855
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6328910538917329876}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e19747de3f5aca642ab2be37e372fb86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectColor: {r: 0, g: 0, b: 0, a: 0.5}
+  m_EffectDistance: {x: 1, y: -1}
+  m_UseGraphicAlpha: 1
+--- !u!114 &6269745152174673953
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6328910538917329876}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7f72b49180da6b54aa5a50b2d62a8ba8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  recognizer: {fileID: 87635133381413603}
+  microphone: {fileID: 2392368826734799267}
+  transcriptText: {fileID: 4153205678229373766}
+  defaultModelID: sherpa-onnx-streaming-zipformer-bilingual-zh-en-2023-02-20
+--- !u!114 &87635133381413603
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6328910538917329876}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3e0495cbaa2d4e699f3b180efb2a0258, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  modelId: 
+  sampleRate: 16000
+  loadOnAwake: 0
+  disposeOnDestroy: 1
+  logFeedbackToConsole: 0
+  onInitializationStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  onFeedbackMessage:
+    m_PersistentCalls:
+      m_Calls: []
+  onError:
+    m_PersistentCalls:
+      m_Calls: []
+  audioInput: {fileID: 2392368826734799267}
+  autoBindInput: 1
+  startCaptureWhenReady: 1
+  processChunksInBackground: 0
+  warnOnDroppedWhileUnready: 1
+  deduplicateStreamingResults: 1
+  startModuleImmediately: 1
+  onTranscriptionReady:
+    m_PersistentCalls:
+      m_Calls: []
+  maxPendingChunks: 8
+  maxInFlightTranscriptions: 2
+  dropIfRecognizerBusy: 1
+  overrideEndpointRules: 0
+  rule1MinTrailingSilence: 2.4
+  rule2MinTrailingSilence: 1.2
+  rule3MinUtteranceLength: 30
 --- !u!1 &6562951057045944453
 GameObject:
   m_ObjectHideFlags: 0
@@ -1098,7 +1312,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\u786E\u8BA4\u5B8C\u6210(E)"
+  m_text: "\u786E\u8BA4\u5B8C\u6210"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: d273698b6e2289d4eab1eb1939b6bdd4, type: 2}
   m_sharedMaterial: {fileID: 9020894382102500418, guid: d273698b6e2289d4eab1eb1939b6bdd4, type: 2}
@@ -1125,7 +1339,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 45.95
+  m_fontSize: 19.65
   m_fontSizeBase: 17.3
   m_fontWeight: 400
   m_enableAutoSizing: 1

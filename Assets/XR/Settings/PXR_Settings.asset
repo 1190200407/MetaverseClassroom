@@ -1,19 +1,3 @@
-%YAML 1.1
-%TAG !u! tag:unity3d.com,2011:
---- !u!114 &11400000
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 0}
-  m_Name: PXR_Settings
-  m_EditorClassIdentifier: Unity.XR.PICO:Unity.XR.PXR:PXR_Settings
-  stereoRenderingModeAndroid: 0
-  systemDisplayFrequency: 0
-  optimizeBufferDiscards: 1
-  enableAppSpaceWarp: 0
-  systemSplashScreen: {fileID: 0}
+version https://git-lfs.github.com/spec/v1
+oid sha256:adc5c8d6d801f6217220e53eac8d5cb5550beed6b94dccf1a0bad28f5f500d6c
+size 547
